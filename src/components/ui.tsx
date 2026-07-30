@@ -419,21 +419,6 @@ export function Phone({
         boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
       }}
     >
-      {/* Dynamic Island */}
-      <div
-        style={{
-          width: 90,
-          height: 26,
-          background: "#1a1a2e",
-          borderRadius: 20,
-          margin: "0 auto",
-          position: "absolute",
-          top: 10,
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 3,
-        }}
-      />
       {imageSrc ? (
         <img
           src={imageSrc}
@@ -447,15 +432,32 @@ export function Phone({
           }}
         />
       ) : (
-        <div
-          style={{
-            padding: "40px 16px 16px",
-            height: "100%",
-            overflow: "hidden",
-          }}
-        >
-          {screen}
-        </div>
+        <>
+          {/* Dynamic Island — only for custom screen mockups, not screenshots */}
+          <div
+            style={{
+              width: 90,
+              height: 26,
+              background: "#1a1a2e",
+              borderRadius: 20,
+              margin: "0 auto",
+              position: "absolute",
+              top: 10,
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 3,
+            }}
+          />
+          <div
+            style={{
+              padding: "40px 16px 16px",
+              height: "100%",
+              overflow: "hidden",
+            }}
+          >
+            {screen}
+          </div>
+        </>
       )}
     </div>
   );

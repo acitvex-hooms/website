@@ -243,6 +243,7 @@ textarea:focus {
 .site-nav {
   height: 64px !important;
   padding: 0 16px !important;
+  overflow: visible !important;
 }
 
 .nav-logo-img {

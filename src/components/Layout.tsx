@@ -25,18 +25,12 @@ export function Nav() {
     location.pathname.startsWith(`${PAGE_PATHS.blog}/`)
       ? "blog"
       : (PATH_TO_PAGE[location.pathname] ?? "home");
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const aboutRef = useRef<HTMLDivElement>(null);
+  const aboutDesktopRef = useRef<HTMLDivElement>(null);
+  const aboutMobileRef = useRef<HTMLDivElement>(null);
   const aboutActive = page === "about" || page === "hooman";
   const isFoundingLanding = location.pathname === "/founding-50";
-
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
-  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -44,21 +38,22 @@ export function Nav() {
   }, [location.pathname]);
 
   useEffect(() => {
+    if (!aboutOpen) return;
     const onDoc = (e: MouseEvent) => {
-      if (!aboutRef.current?.contains(e.target as Node)) setAboutOpen(false);
+      const target = e.target as Node;
+      const inDesktop = aboutDesktopRef.current?.contains(target);
+      const inMobile = aboutMobileRef.current?.contains(target);
+      if (!inDesktop && !inMobile) setAboutOpen(false);
     };
     // Use click (not mousedown) so menu links can navigate before the menu closes
     document.addEventListener("click", onDoc);
     return () => document.removeEventListener("click", onDoc);
-  }, []);
+  }, [aboutOpen]);
 
-  const isHome = page === "home";
-  const navBg = isHome
-    ? scrolled
-      ? "rgba(255,255,255,0.97)"
-      : "transparent"
-    : "rgba(255,255,255,0.97)";
-  const navColor = isHome && !scrolled ? "#fff" : C.navy;
+  // Sticky nav sits above the hero in document flow (not overlaid), so always
+  // use solid treatment — transparent + white logo reads as a blank white bar.
+  const navBg = "rgba(255,255,255,0.97)";
+  const navColor = C.navy;
 
   const linkStyle = (active: boolean): CSSProperties => ({
     color: active ? C.purple : navColor,
@@ -106,11 +101,8 @@ export function Nav() {
           alignItems: "center",
           justifyContent: "space-between",
           background: navBg,
-          backdropFilter: scrolled || !isHome ? "blur(20px)" : "none",
-          borderBottom:
-            scrolled || !isHome
-              ? `1px solid ${C.border}`
-              : "1px solid transparent",
+          backdropFilter: "blur(20px)",
+          borderBottom: `1px solid ${C.border}`,
           transition: "all 0.3s",
         }}
       >
@@ -124,7 +116,7 @@ export function Nav() {
         >
           <img
             className="nav-logo-img"
-            src={isHome && !scrolled ? "/images/logo-white.png" : "/images/logo-black.png"}
+            src="/images/logo-black.png"
             alt="activeX"
             style={{
               height: 56,
@@ -141,10 +133,17 @@ export function Nav() {
         >
           {LINKS.map(({ k, l }) =>
             k === "about-menu" ? (
-              <div key={k} ref={aboutRef} style={{ position: "relative" }}>
+              <div
+                key={k}
+                ref={aboutDesktopRef}
+                style={{ position: "relative" }}
+              >
                 <button
                   type="button"
-                  onClick={() => setAboutOpen((o) => !o)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setAboutOpen((o) => !o);
+                  }}
                   style={{
                     ...linkStyle(aboutActive),
                     display: "inline-flex",
@@ -152,12 +151,14 @@ export function Nav() {
                     gap: 6,
                   }}
                   aria-expanded={aboutOpen}
+                  aria-haspopup="menu"
                 >
                   {l}
                   <span style={{ fontSize: 10, opacity: 0.8 }}>▾</span>
                 </button>
                 {aboutOpen && (
                   <div
+                    role="menu"
                     style={{
                       position: "absolute",
                       top: "calc(100% + 14px)",
@@ -176,6 +177,7 @@ export function Nav() {
                       <Link
                         key={item.to}
                         to={item.to}
+                        role="menuitem"
                         style={{
                           display: "block",
                           padding: "10px 16px",
@@ -211,7 +213,12 @@ export function Nav() {
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((o) => !o)}
+          onClick={() =>
+            setMenuOpen((o) => {
+              if (o) setAboutOpen(false);
+              return !o;
+            })
+          }
           style={{
             display: "none",
             background: "none",
@@ -269,6 +276,7 @@ export function Nav() {
             k === "about-menu" ? (
               <div
                 key={k}
+                ref={aboutMobileRef}
                 style={{ display: "flex", flexDirection: "column", gap: 10 }}
               >
                 <div
