@@ -51,6 +51,8 @@ export function PricingPage() {
               sub: "Less than $19/month",
               badge: "Best Value",
               hi: true,
+              href: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",
+              cta: "Start Annual — Save 24%",
               feats: [
                 "All 40+ structured programs",
                 "600+ exercise library with coaching cues",
@@ -67,6 +69,9 @@ export function PricingPage() {
               price: "$24.99",
               per: "month",
               sub: "Cancel anytime",
+              hi: false,
+              href: "https://buy.stripe.com/8x23cufPielLd3Zenj4ow08",
+              cta: "Start Monthly",
               feats: [
                 "Everything in Annual",
                 "Same full access",
@@ -176,20 +181,106 @@ export function PricingPage() {
                 ))}
                 <CTA
                   variant={t.hi ? "primary" : "secondary"}
-                  href="https://app.activex.fit"
+                  href={t.href}
                   style={{
                     width: "100%",
                     justifyContent: "center",
                     marginTop: 24,
                   }}
                 >
-                  {t.hi ? "Start Annual — Save 24%" : "Start Monthly"}
+                  {t.cta}
                 </CTA>
               </div>
             </Reveal>
           ))}
         </div>
       </Sec>
+
+      <Sec>
+        <Reveal>
+          <h2
+            style={{
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 800,
+              color: C.navy,
+              letterSpacing: -1,
+              textTransform: "uppercase",
+              marginBottom: 32,
+            }}
+          >
+            What&apos;s Inside
+          </h2>
+        </Reveal>
+        <div
+          className="pricing-whats-inside"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+            gap: 16,
+          }}
+        >
+          {[
+            {
+              title: "All Programs",
+              desc: "Every activeX program Beginner, Intermediate, Advanced, & any future releases. Structured training built on the IQ Framework, not random workouts.",
+            },
+            {
+              title: "Exercise Library",
+              desc: "Full library of every exercise with video, coaching cues, & intent. Understand the why behind every movement, not just the how.",
+            },
+            {
+              title: "IQ Framework",
+              desc: "Three pillars. One decision-making system. Every program, workout, & tool inside activeX is built on this framework.",
+            },
+            {
+              title: "Workout Tracking",
+              desc: "Log every session. Track loads, sets, & reps over time. See your progress in real numbers.",
+            },
+            {
+              title: "Macro Tracker",
+              desc: "Simple, built-in nutrition tracking. No separate app needed. Set your targets & log your intake alongside your training.",
+            },
+            {
+              title: "Step Tracker",
+              desc: "Daily movement accountability. Track your steps & stay aware of your activity outside the gym.",
+            },
+          ].map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.05}>
+              <div
+                style={{
+                  background: C.lightGray,
+                  borderRadius: 16,
+                  padding: "28px 24px",
+                  height: "100%",
+                  boxSizing: "border-box",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: 18,
+                    fontWeight: 800,
+                    color: C.navy,
+                    marginBottom: 10,
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: 14,
+                    color: C.textMid,
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Sec>
+
       <Sec bg={C.offWhite}>
         <Reveal>
           <h2
@@ -206,9 +297,10 @@ export function PricingPage() {
           </h2>
         </Reveal>
         <div
+          className="pricing-coaching-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
             gap: 20,
           }}
         >
@@ -246,7 +338,7 @@ export function PricingPage() {
               href: "https://buy.stripe.com/00w9AS46A1yZe83a734ow06",
             },
           ].map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.1}>
+            <Reveal key={c.title} delay={i * 0.1} style={{ height: "100%" }}>
               <div
                 style={{
                   background: C.white,
@@ -289,7 +381,7 @@ export function PricingPage() {
                   {c.desc}
                 </p>
                 <CTA
-                  variant="secondary"
+                  variant="primary"
                   to={c.to}
                   href={c.href}
                   style={{

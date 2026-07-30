@@ -19,6 +19,9 @@ import { PricingPage } from "./pages/PricingPage";
 import { ProgramsPage } from "./pages/ProgramsPage";
 import { VideoConsultPage } from "./pages/VideoConsultPage";
 import { WelcomePage } from "./pages/WelcomePage";
+import { PrivacyPage } from "./pages/PrivacyPage";
+import { TermsPage } from "./pages/TermsPage";
+import { RefundPage } from "./pages/RefundPage";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -56,6 +59,9 @@ function SiteShell() {
           element={<Navigate to="/about/hooms" replace />}
         />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/refund" element={<RefundPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

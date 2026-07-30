@@ -446,6 +446,8 @@ export function HomePage() {
               sub: "Less than $19/month",
               badge: "Save 24%",
               hi: true,
+              href: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",
+              cta: "Start Training",
               feats: [
                 "All 40+ programs",
                 "600+ exercise library",
@@ -460,6 +462,8 @@ export function HomePage() {
               price: "$24.99",
               per: "month",
               sub: "Cancel anytime",
+              href: "https://buy.stripe.com/8x23cufPielLd3Zenj4ow08",
+              cta: "Choose Monthly",
               feats: [
                 "Full access to everything",
                 "All programs & exercise library",
@@ -570,7 +574,7 @@ export function HomePage() {
                   </div>
                 ))}
                 <CTA
-                  to={PAGE_PATHS.pricing}
+                  href={t.href}
                   variant={t.hi ? "primary" : "secondary"}
                   style={{
                     width: "100%",
@@ -578,7 +582,7 @@ export function HomePage() {
                     marginTop: 20,
                   }}
                 >
-                  {t.hi ? "Start Training" : "Choose Monthly"}
+                  {t.cta}
                 </CTA>
               </div>
             </Reveal>

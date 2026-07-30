@@ -92,8 +92,17 @@ export function CTA({
     );
   }
 
+  const isExternal = Boolean(href && /^https?:\/\//i.test(href));
+
   return (
-    <a href={href ?? "#"} style={style} {...handlers}>
+    <a
+      href={href ?? "#"}
+      style={style}
+      {...handlers}
+      {...(isExternal
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
       {children}
     </a>
   );

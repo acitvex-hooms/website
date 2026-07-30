@@ -23,6 +23,12 @@ body {
 
 a {
   color: inherit;
+  cursor: pointer;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
 }
 
 img {
@@ -72,6 +78,24 @@ textarea:focus {
   animation-delay: 0.15s;
 }
 
+.legal-prose p {
+  margin: 0 0 12px;
+}
+
+.legal-prose ul {
+  margin: 0 0 12px;
+  padding-left: 1.25rem;
+}
+
+.legal-prose li {
+  margin-bottom: 6px;
+}
+
+.legal-prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 900px) {
   .nav-desktop {
     display: none !important;
@@ -86,6 +110,14 @@ textarea:focus {
   }
 
   .one-time-options {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pricing-whats-inside {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pricing-coaching-grid {
     grid-template-columns: 1fr !important;
   }
 }

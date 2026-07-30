@@ -27,7 +27,10 @@ export type PageKey =
   | "welcome"
   | "about"
   | "hooman"
-  | "contact";
+  | "contact"
+  | "privacy"
+  | "terms"
+  | "refund";
 
 export const PAGE_PATHS: Record<PageKey, string> = {
   home: "/",
@@ -41,6 +44,9 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   about: "/about",
   hooman: "/about/hooms",
   contact: "/contact",
+  privacy: "/privacy",
+  terms: "/terms",
+  refund: "/refund",
 };
 
 export const PATH_TO_PAGE: Record<string, PageKey> = Object.fromEntries(

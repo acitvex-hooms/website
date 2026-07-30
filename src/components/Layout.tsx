@@ -334,9 +334,9 @@ export function Footer() {
     {
       t: "Legal",
       links: [
-        ["Privacy Policy", "home"],
-        ["Terms of Service", "home"],
-        ["Refund Policy", "home"],
+        ["Privacy Policy", "privacy"],
+        ["Terms of Service", "terms"],
+        ["Refund Policy", "refund"],
       ],
     },
   ];
@@ -482,7 +482,7 @@ export function Footer() {
         }}
       >
         <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
-          © 2026 activeX LLC FZ. Meydan Grandstand, Dubai, U.A.E.
+          © 2026 activeX LLC FZ, Dubai, U.A.E.
         </span>
         <div
           style={{
