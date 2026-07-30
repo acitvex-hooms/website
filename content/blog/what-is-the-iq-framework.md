@@ -1,33 +1,79 @@
 ---
-title: "What is the IQ Framework?"
-date: 2026-07-20
-excerpt: "Most people don't fail because they lack discipline. They fail because they were never taught how to train properly. Here's the system behind every activeX program."
+title: "Spinal Mobility Is Stealing Your Glute Gains"
+date: 2026-05-20
+excerpt: "Mobility is good until it starts working against you. Discover how a lack of spinal control can sabotage glute exercises, what stability really means, and how to correct your form for more effective workouts."
 author: Ana Coppola
 cover: /images/feature-1.jpg
 ---
 
-Most fitness content tells you what to do. Do this workout. Follow this diet. Hit these numbers.
+Spinal mobility is amazing… until it starts stealing your glute gains.
 
-But without understanding the principles behind the plan, people plateau, get injured, or lose consistency.
+Most people are told to move more, stretch more, improve mobility.
 
-That's why activeX is built on the **IQ Framework** — three pillars that turn training into a decision-making system.
+But no one tells you when that mobility becomes the problem.
 
-## Mobility IQ
+You’re training consistently.
+You’re doing glute exercises.
+But you feel your lower back more than your glutes.
 
-Your body needs access to the range it will train in. Mobility IQ is about choosing the right tools for the outcome you want — not stretching randomly before every session.
+That’s not a strength issue.
+That’s a control issue.
 
-When mobility work is intentional, movement quality improves and load becomes safer.
+When your spine moves too much during lower body exercises, your glutes stop doing the job they’re supposed to do.
 
-## Movement IQ
+Instead of producing force through the hips, your body finds an easier path:
+👉 your lower back takes over
 
-Once you can access a range, you need to control it under load. Movement IQ is about stability, intent, and understanding *why* an exercise is in your program — not just copying the motion.
+And over time, this becomes your default pattern.
 
-## Mindset IQ
+You think you’re training glutes.
+But you’re reinforcing compensation.
 
-The best program is the one you will actually follow. Mindset IQ is structure for consistency: clear progressions, tracking, and habits that hold up on the weeks when motivation drops.
+If this concept feels abstract, this is exactly where most people get it wrong.
 
-## How it shows up in activeX
+I break this down step by step here so you can actually see what’s happening:
+WATCH:&nbsp; https://youtu.be/flT-WNKA6T8?si=ACQF-0jgcEB0GYjT
 
-Every program, workout, and tool inside activeX connects back to these three pillars. Membership gives you the framework applied broadly. Coaching applies it specifically to you.
+The goal is not to remove movement.
 
-If you're new, start with a beginner program — the principles it builds carry into everything else.
+The goal is to control it.
+
+Because strong positions create strong muscles.
+
+And without control, more range just means more places to lose tension.
+
+Instead of chasing more mobility, start asking:
+
+- Can I keep my ribs controlled?
+- Can I stabilize my pelvis?
+- Can I create tension where it actually matters?
+
+Because glutes don’t grow from doing more.
+
+They grow from doing things properly.
+
+This is where most people get stuck.
+
+They keep doing more, but without structure, nothing actually improves.
+
+If you want to understand the difference between working out and actually training, read this:
+READ: How To Actually Train For Results
+
+Inside activeX, this is exactly how we coach.
+
+Not just:
+“do this exercise”
+
+But:
+👉 why it exists
+👉 how to perform it
+👉 when to use it
+
+👉 If you’ve been training but not seeing results, this is where you change that.
+
+Inside activeX, you’re not just following workouts.
+You’re learning how to train with structure, control, and progression.
+
+This is how I coach my private clients, now built into a system you can follow anywhere.
+
+Start here, and follow a system that actually works.
