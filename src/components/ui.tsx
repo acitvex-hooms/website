@@ -99,7 +99,14 @@ export function CTA({
   );
 }
 
-export function Pill({ children }: { children: ReactNode }) {
+export function Pill({
+  children,
+  variant = "default",
+}: {
+  children: ReactNode;
+  variant?: "default" | "light";
+}) {
+  const light = variant === "light";
   return (
     <span
       style={{
@@ -110,9 +117,11 @@ export function Pill({ children }: { children: ReactNode }) {
         fontWeight: 600,
         letterSpacing: 1.8,
         textTransform: "uppercase",
-        color: C.purple,
-        background: "rgba(120,40,255,0.07)",
-        border: "1px solid rgba(120,40,255,0.15)",
+        color: light ? "#fff" : C.purple,
+        background: light ? "rgba(255,255,255,0.14)" : "rgba(120,40,255,0.07)",
+        border: light
+          ? "1px solid rgba(255,255,255,0.35)"
+          : "1px solid rgba(120,40,255,0.15)",
       }}
     >
       {children}
@@ -149,10 +158,13 @@ type SplitProps = {
   imgSide?: "left" | "right";
   pill?: string;
   title: string;
-  text: string;
+  text?: string;
   cta?: string;
   ctaTo?: string;
   children?: ReactNode;
+  imgFit?: "cover" | "contain";
+  imgHeight?: number | string;
+  imgRadius?: number;
 };
 
 export function Split({
@@ -164,19 +176,32 @@ export function Split({
   cta,
   ctaTo,
   children,
+  imgFit = "cover",
+  imgHeight = 520,
+  imgRadius = 20,
 }: SplitProps) {
   const imgEl = (
-    <div style={{ flex: 1, minWidth: 280 }}>
+    <div style={{ flex: 1.15, minWidth: 300 }}>
       <div
         style={{
-          background: C.lightGray,
-          borderRadius: 20,
-          height: 400,
+          background:
+            imgFit === "contain" || imgHeight === "auto"
+              ? "transparent"
+              : C.lightGray,
+          borderRadius: imgRadius,
+          height: imgHeight === "auto" ? "auto" : imgHeight,
+          minHeight:
+            imgHeight === "auto"
+              ? undefined
+              : typeof imgHeight === "number"
+                ? imgHeight
+                : 480,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
           position: "relative",
+          padding: 0,
         }}
       >
         {img || (
@@ -201,16 +226,18 @@ export function Split({
       >
         {title}
       </h2>
-      <p
-        style={{
-          fontSize: 17,
-          color: C.textMid,
-          lineHeight: 1.75,
-          marginBottom: 24,
-        }}
-      >
-        {text}
-      </p>
+      {text && (
+        <p
+          style={{
+            fontSize: 17,
+            color: C.textMid,
+            lineHeight: 1.75,
+            marginBottom: 24,
+          }}
+        >
+          {text}
+        </p>
+      )}
       {children}
       {cta && <CTA to={ctaTo}>{cta}</CTA>}
     </div>
@@ -310,6 +337,10 @@ export function Card({ icon, title, desc, style: s }: CardProps) {
           : "0 1px 3px rgba(0,0,0,0.04)",
         transition: "all 0.4s",
         transform: h ? "translateY(-4px)" : "none",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        boxSizing: "border-box",
         ...s,
       }}
     >
@@ -323,10 +354,9 @@ export function Card({ icon, title, desc, style: s }: CardProps) {
             alignItems: "center",
             justifyContent: "center",
             background: "rgba(120,40,255,0.07)",
-            fontSize: 22,
             marginBottom: 16,
             color: C.purple,
-            fontWeight: 700,
+            flexShrink: 0,
           }}
         >
           {icon}
@@ -342,50 +372,73 @@ export function Card({ icon, title, desc, style: s }: CardProps) {
       >
         {title}
       </h3>
-      <p style={{ fontSize: 14, color: C.textMid, lineHeight: 1.7, margin: 0 }}>
+      <p style={{ fontSize: 14, color: C.textMid, lineHeight: 1.7, margin: 0, flex: 1 }}>
         {desc}
       </p>
     </div>
   );
 }
 
-export function Phone({ screen }: { screen: ReactNode }) {
+export function Phone({
+  screen,
+  imageSrc,
+  imageAlt = "App screenshot",
+}: {
+  screen?: ReactNode;
+  imageSrc?: string;
+  imageAlt?: string;
+}) {
   return (
     <div
       style={{
         width: 260,
         height: 520,
-        borderRadius: 36,
+        borderRadius: 40,
         overflow: "hidden",
-        border: "8px solid #1a1a2e",
+        border: "10px solid #1a1a2e",
         background: "#111",
         position: "relative",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.2)",
+        boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
       }}
     >
+      {/* Dynamic Island */}
       <div
         style={{
-          width: 80,
-          height: 24,
+          width: 90,
+          height: 26,
           background: "#1a1a2e",
-          borderRadius: "0 0 16px 16px",
+          borderRadius: 20,
           margin: "0 auto",
           position: "absolute",
-          top: 0,
+          top: 10,
           left: "50%",
           transform: "translateX(-50%)",
-          zIndex: 2,
+          zIndex: 3,
         }}
       />
-      <div
-        style={{
-          padding: "40px 16px 16px",
-          height: "100%",
-          overflow: "hidden",
-        }}
-      >
-        {screen}
-      </div>
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "top center",
+            display: "block",
+          }}
+        />
+      ) : (
+        <div
+          style={{
+            padding: "40px 16px 16px",
+            height: "100%",
+            overflow: "hidden",
+          }}
+        >
+          {screen}
+        </div>
+      )}
     </div>
   );
 }

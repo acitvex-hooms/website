@@ -126,6 +126,13 @@ export function ProgramsPage() {
           text="Name your program, choose how many days a week you train, build each training day from the exercise library, and set your own sets, repetitions, and rest periods. Restructure it whenever your schedule, equipment, or goals change. Tracked exactly the same way as activeX programs."
           cta="Start Building"
           ctaTo={PAGE_PATHS.pricing}
+          img={
+            <img
+              src="/images/feature-1.jpg"
+              alt="Custom program builder"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          }
         />
       </Sec>
       <Sec bg={C.navy} style={{ textAlign: "center", padding: "72px 24px" }}>

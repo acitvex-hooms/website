@@ -49,35 +49,96 @@ export function HomePage() {
               }}
             >
               Most fitness content tells you what to do. The IQ Framework teaches
-              you how to think — so every session has purpose.
+              you how to think so every session has purpose.
             </p>
           </div>
         </Reveal>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 20,
+            alignItems: "stretch",
           }}
+          className="iq-cards"
         >
           {[
             {
-              icon: "M",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Mobility — flexible range / stretch arc */}
+                  <path
+                    d="M7 17a5 5 0 0 1 10 0"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M5 14a7 7 0 0 1 14 0"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    opacity="0.55"
+                  />
+                  <circle cx="12" cy="8" r="2.2" fill="currentColor" />
+                  <path
+                    d="M9.5 11.5 8 19M14.5 11.5 16 19"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ),
               title: "Mobility IQ",
               desc: "Select the right tool for the intended outcome. Dynamic mobility builds usable range. Static stretching supports recovery. Know which to use and when.",
             },
             {
-              icon: "V",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Movement — controlled stance / strength figure */}
+                  <circle cx="12" cy="5.5" r="2" fill="currentColor" />
+                  <path
+                    d="M12 8.2v5.2M8.2 11.2 12 13.4l3.8-2.2M9.2 20.2 12 13.4l2.8 6.8"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M6.5 9.5h11"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    opacity="0.45"
+                  />
+                </svg>
+              ),
               title: "Movement IQ",
-              desc: "Organise and control the body before producing force. Strength improves when stability comes first — not just load.",
+              desc: "Organise and control the body before producing force. Strength improves when stability comes first, not just load.",
             },
             {
-              icon: "I",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Mindset — brain / focus */}
+                  <path
+                    d="M9.2 4.8a3.4 3.4 0 0 1 5.6 0 3.2 3.2 0 0 1 3.7 4.2A3.4 3.4 0 0 1 17 15.6v1.6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-1.6a3.4 3.4 0 0 1-1.5-6.6 3.2 3.2 0 0 1 3.7-4.2Z"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M10 12.2h4M10 15h4"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ),
               title: "Mindset IQ",
               desc: "Motivation is emotional. Consistency is structural. Build progress through small, repeatable commitments that compound.",
             },
           ].map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.12}>
+            <Reveal key={c.title} delay={i * 0.12} style={{ height: "100%" }}>
               <Card {...c} />
             </Reveal>
           ))}
@@ -89,12 +150,69 @@ export function HomePage() {
 
       <Sec bg={C.offWhite}>
         <Split
-          pill="Custom Program Builder"
-          title="Your schedule shapes your program — not the other way around."
-          text="Choose how many days you train, select every exercise from the library, control sets, reps, tempo, and rest periods — all inside one organised program. Follow an activeX program when you want expert structure, or create your own when your goals require more control."
-          cta="See Programs"
-          ctaTo={PAGE_PATHS.programs}
-        />
+          pill="Membership"
+          title="activeX Membership"
+          cta="Join Now"
+          ctaTo={PAGE_PATHS.pricing}
+          imgFit="contain"
+          imgHeight="auto"
+          imgRadius={48}
+          img={
+            <img
+              src="/images/membership.jpg"
+              alt="activeX membership"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                borderRadius: 48,
+              }}
+            />
+          }
+        >
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: "0 0 28px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
+            {[
+              "Full access",
+              "Train at gym or home",
+              "All programs",
+              "Exercise library",
+              "Tracking tools",
+              "Structured Progression",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  fontSize: 17,
+                  color: C.textMid,
+                  lineHeight: 1.5,
+                }}
+              >
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: C.purple,
+                    flexShrink: 0,
+                  }}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Split>
       </Sec>
       <Sec>
         <Split
@@ -104,6 +222,21 @@ export function HomePage() {
           text="Select an exercise, see how it is performed, and understand what you should be controlling before adding it to your program. Every exercise includes video demonstration and coaching direction."
           cta="Learn More"
           ctaTo={PAGE_PATHS.programs}
+          imgFit="contain"
+          imgHeight="auto"
+          imgRadius={48}
+          img={
+            <img
+              src="/images/feature-2.jpg"
+              alt="Ana coaching training session"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                borderRadius: 48,
+              }}
+            />
+          }
         />
       </Sec>
       <Sec bg={C.offWhite}>
@@ -113,6 +246,21 @@ export function HomePage() {
           text="Log every set, every rep, every load. See what you completed previously so the next session is based on progression rather than guesswork. Your self-built programs track exactly the same way as activeX programs."
           cta="Start Tracking"
           ctaTo={PAGE_PATHS.pricing}
+          imgFit="contain"
+          imgHeight="auto"
+          imgRadius={48}
+          img={
+            <img
+              src="/images/feature-4.jpg"
+              alt="Strength training with activeX"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                borderRadius: 48,
+              }}
+            />
+          }
         />
       </Sec>
 
@@ -151,31 +299,102 @@ export function HomePage() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 16,
+            alignItems: "stretch",
           }}
         >
           {[
             {
-              icon: "XP",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Experience Points — burst / spark */}
+                  <path
+                    d="M12 2.8 13.7 8.4l5.8.4-4.5 3.6 1.5 5.6L12 15.4 7.5 18l1.5-5.6L4.5 8.8l5.8-.4L12 2.8Z"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="12" cy="11.2" r="2" fill="currentColor" />
+                </svg>
+              ),
               title: "Experience Points",
               desc: "Earn XP for every completed session and logged workout.",
             },
             {
-              icon: "Lv",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Member Levels — ascending steps */}
+                  <path
+                    d="M4 18h4v-4h4V10h4V6h4"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4 18h16"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    opacity="0.45"
+                  />
+                </svg>
+              ),
               title: "Member Levels",
               desc: "Progress through levels as your consistency builds over time.",
             },
             {
-              icon: "★",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Achievement Badges — medal */}
+                  <circle
+                    cx="12"
+                    cy="10"
+                    r="5.2"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
+                  <path
+                    d="M10.2 8.8 12 10.5l3-3"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9.2 14.8 7.5 21l4.5-2.2L16.5 21l-1.7-6.2"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              ),
               title: "Achievement Badges",
               desc: "Hit milestones and unlock badges for real training behaviour.",
             },
             {
-              icon: "#",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  {/* Leaderboards — podium bars */}
+                  <path
+                    d="M5 19V11h4v8H5Zm5 0V6h4v13h-4Zm5 0v-5h4v5h-4Z"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M4 19h16"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ),
               title: "Leaderboards",
               desc: "See where you stand in the community and stay motivated.",
             },
           ].map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.1}>
+            <Reveal key={c.title} delay={i * 0.1} style={{ height: "100%" }}>
               <Card {...c} />
             </Reveal>
           ))}
@@ -374,7 +593,7 @@ export function HomePage() {
               marginTop: 28,
             }}
           >
-            Your first 2 weeks are on Ana. Start training today — risk-free.
+            Your first 2 weeks are on us. Start training, risk-free.
           </p>
         </Reveal>
       </Sec>
@@ -384,7 +603,14 @@ export function HomePage() {
           imgSide="right"
           pill="Built by a real coach"
           title="Ana Coppola didn't build activeX because the internet needed more exercises."
-          text="She built it because people needed a better way to organise and apply them. After coaching since 2008 — from everyday clients to actors and public figures, from Sydney gym floors to Australian Ninja Warrior and Gladiators Australia — she turned her entire coaching system into a platform anyone can use."
+          text="She built it because people needed a better way to organise and apply them. After coaching since 2008, from everyday clients to actors and public figures, from Sydney gym floors to Australian Ninja Warrior and Gladiators Australia, she turned her entire coaching system into a platform anyone can use."
+          img={
+            <img
+              src="/images/ana-training.jpg"
+              alt="Ana Coppola training"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          }
         >
           <p
             style={{

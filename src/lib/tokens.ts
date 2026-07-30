@@ -22,6 +22,9 @@ export type PageKey =
   | "programs"
   | "pricing"
   | "coaching"
+  | "apply"
+  | "videoConsult"
+  | "welcome"
   | "about"
   | "hooman"
   | "contact";
@@ -32,8 +35,11 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   programs: "/programs",
   pricing: "/pricing",
   coaching: "/coaching",
+  apply: "/apply",
+  videoConsult: "/video-consult",
+  welcome: "/welcome",
   about: "/about",
-  hooman: "/about/hooman",
+  hooman: "/about/hooms",
   contact: "/contact",
 };
 

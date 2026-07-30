@@ -1,14 +1,24 @@
 import { useEffect } from "react";
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { Footer, Nav } from "./components/Layout";
 import { C, FONT } from "./lib/tokens";
-import { AboutPage, HoomanPage } from "./pages/AboutPage";
+import { AboutPage } from "./pages/AboutPage";
+import { ApplyPage } from "./pages/ApplyPage";
+import { HoomsPage } from "./pages/HoomsPage";
 import { CoachingPage } from "./pages/CoachingPage";
 import { ContactPage } from "./pages/ContactPage";
 import { HomePage } from "./pages/HomePage";
 import { IQPage } from "./pages/IQPage";
 import { PricingPage } from "./pages/PricingPage";
 import { ProgramsPage } from "./pages/ProgramsPage";
+import { VideoConsultPage } from "./pages/VideoConsultPage";
+import { WelcomePage } from "./pages/WelcomePage";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,8 +46,15 @@ function SiteShell() {
         <Route path="/programs" element={<ProgramsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/coaching" element={<CoachingPage />} />
+        <Route path="/apply" element={<ApplyPage />} />
+        <Route path="/video-consult" element={<VideoConsultPage />} />
+        <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/about/hooman" element={<HoomanPage />} />
+        <Route path="/about/hooms" element={<HoomsPage />} />
+        <Route
+          path="/about/hooman"
+          element={<Navigate to="/about/hooms" replace />}
+        />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

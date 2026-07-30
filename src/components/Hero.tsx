@@ -1,32 +1,74 @@
+import { useEffect, useState } from "react";
 import { C, PAGE_PATHS } from "../lib/tokens";
-import { AppScreen, CTA, Phone, Pill } from "./ui";
+import { CTA, Phone, Pill } from "./ui";
 
 export function Hero() {
+  const [parallaxY, setParallaxY] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) return;
+
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setParallaxY(window.scrollY * 0.45);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <section
       style={{
         position: "relative",
-        minHeight: "90vh",
+        minHeight: "92vh",
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
         padding: "120px 24px 80px",
       }}
     >
+      {/* Parallax hero banner from activex.fit */}
       <div
-        className="hero-bg"
+        aria-hidden
         style={{
           position: "absolute",
           inset: 0,
           zIndex: 0,
-          background: `linear-gradient(135deg, ${C.navy} 0%, #1a1040 40%, ${C.purple}88 100%)`,
+          overflow: "hidden",
         }}
-      />
+      >
+        <img
+          src="/images/hero-banner.png"
+          alt=""
+          style={{
+            position: "absolute",
+            left: 0,
+            width: "100%",
+            height: "130%",
+            top: "-10%",
+            objectFit: "cover",
+            objectPosition: "center 28%",
+            transform: `translate3d(0, ${parallaxY}px, 0)`,
+            willChange: "transform",
+          }}
+        />
+      </div>
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(0,0,0,0.25)",
+          background:
+            "linear-gradient(115deg, rgba(26,16,64,0.82) 0%, rgba(39,39,137,0.55) 48%, rgba(120,40,255,0.35) 100%)",
           zIndex: 1,
         }}
       />
@@ -41,7 +83,7 @@ export function Hero() {
           borderRadius: "50%",
           background: `radial-gradient(circle, ${C.purple}44, transparent 70%)`,
           filter: "blur(80px)",
-          opacity: 0.5,
+          opacity: 0.45,
           zIndex: 1,
         }}
       />
@@ -56,7 +98,7 @@ export function Hero() {
           borderRadius: "50%",
           background: `radial-gradient(circle, ${C.blue}33, transparent 70%)`,
           filter: "blur(60px)",
-          opacity: 0.4,
+          opacity: 0.35,
           zIndex: 1,
         }}
       />
@@ -75,7 +117,7 @@ export function Hero() {
         }}
       >
         <div className="fade-up" style={{ flex: 1.3, minWidth: 320 }}>
-          <Pill>Coaching since 2008</Pill>
+          <Pill variant="light">Coaching since 2008</Pill>
           <h1
             style={{
               fontSize: "clamp(36px, 6vw, 60px)",
@@ -120,7 +162,7 @@ export function Hero() {
               marginBottom: 32,
             }}
           >
-            <CTA to={PAGE_PATHS.pricing}>Start Training — $19/mo</CTA>
+            <CTA to={PAGE_PATHS.pricing}>Start Training - $19/mo</CTA>
             <CTA
               variant="secondary"
               to={PAGE_PATHS.iq}
@@ -129,34 +171,28 @@ export function Hero() {
               How It Works
             </CTA>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+              flexWrap: "wrap",
+            }}
+          >
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/ae/app/activex-fitness/id6766033150"
               target="_blank"
               rel="noreferrer"
-              style={{
-                background: "rgba(255,255,255,0.1)",
-                borderRadius: 10,
-                padding: "8px 14px",
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                backdropFilter: "blur(10px)",
-                textDecoration: "none",
-              }}
+              style={{ display: "inline-block", lineHeight: 0 }}
             >
-              <span style={{ fontSize: 16, color: "#fff" }}></span>
-              <div>
-                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.6)" }}>
-                  Download on the
-                </div>
-                <div style={{ fontSize: 12, fontWeight: 600, color: "#fff" }}>
-                  App Store
-                </div>
-              </div>
+              <img
+                src="/images/app-store-badge.svg"
+                alt="Download on the App Store"
+                style={{ height: 40, width: "auto" }}
+              />
             </a>
             <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>
-              Your first 2 weeks are on Ana
+              Your first 2 weeks are on us
             </span>
           </div>
         </div>
@@ -169,7 +205,7 @@ export function Hero() {
             justifyContent: "center",
           }}
         >
-          <Phone screen={<AppScreen />} />
+          <Phone imageSrc="/images/app-home.png" imageAlt="activeX home screen" />
         </div>
       </div>
     </section>

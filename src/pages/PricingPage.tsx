@@ -216,20 +216,34 @@ export function PricingPage() {
             {
               title: "Weekly 1-on-1 Coaching",
               price: "$799/mo",
-              desc: "Custom programming, movement analysis, weekly check-ins, ongoing accountability. Directly with Ana Coppola. Limited spots — application only.",
+              desc: "Custom programming, movement analysis, weekly check-ins, ongoing accountability. Directly with Ana or Hooms. Limited spots — application only.",
               cta: "Apply for Coaching",
+              to: PAGE_PATHS.apply,
+              href: undefined as string | undefined,
             },
             {
               title: "12-Week Custom Program",
               price: "$499",
-              desc: "Fully personalised training program built around your goals, experience level, and available equipment. Built on the IQ Framework.",
-              cta: "Learn More",
+              desc: "A fully personalized 12-week training program built around your goals, experience level, & available equipment. Structured on the IQ Framework, Mobility IQ, Movement IQ, & Mindset IQ applied directly to your training. Delivered through the activeX app for members.",
+              cta: "Get Custom Program",
+              to: undefined as string | undefined,
+              href: "https://buy.stripe.com/6oU8wObz2dhH1lh92Z4ow02",
             },
             {
               title: "12-Week Custom Diet",
               price: "$499",
-              desc: "Fully personalised nutrition plan — macro targets, meal structure, and guidance. Delivered through the activeX app.",
-              cta: "Learn More",
+              desc: "A fully personalized 12-week nutrition plan built around your goals, preferences, & lifestyle. Macro targets, meal structure, & guidance designed to support your training and long-term health. Delivered through the activeX app for members.",
+              cta: "Get Custom Diet",
+              to: undefined as string | undefined,
+              href: "https://buy.stripe.com/aFa14mcD62D32plbb74ow03",
+            },
+            {
+              title: "Video Consult",
+              price: "$499",
+              desc: "One-off video consultation directly with Ana or Hooms. Get personalised guidance on your training, movement, nutrition, or goals without committing to ongoing coaching.",
+              cta: "Book a Consult",
+              to: undefined as string | undefined,
+              href: "https://buy.stripe.com/00w9AS46A1yZe83a734ow06",
             },
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 0.1}>
@@ -276,7 +290,8 @@ export function PricingPage() {
                 </p>
                 <CTA
                   variant="secondary"
-                  to={PAGE_PATHS.coaching}
+                  to={c.to}
+                  href={c.href}
                   style={{
                     marginTop: 20,
                     justifyContent: "center",

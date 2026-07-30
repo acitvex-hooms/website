@@ -1,200 +1,339 @@
 import { C, PAGE_PATHS } from "../lib/tokens";
-import { CTA, Pill, Reveal, Sec } from "../components/ui";
+import { CTA, Card, Pill, Reveal, Sec } from "../components/ui";
 
 const pillars = [
   {
     name: "Movement IQ",
     color: C.purple,
-    sub: "Organise and control the body before producing force",
-    points: [
-      "Stability before movement",
-      "Joint positioning under load",
-      "Control appropriate to the task",
-      "Force production without compensation",
-      "Understanding exercise intent",
-      "Maintaining quality under fatigue",
-    ],
+    sub: "Appropriate control for the task",
+    body: "Most people think movement quality improves by doing more reps or lifting heavier. It doesn't. Movement quality improves through intention. Strength is not just about producing force, it's about how well you can organise the body before the force is applied. Creating stability before movement begins. Controlling joint position under load. Producing force without compensation. When Movement IQ is high, movement becomes more efficient, more repeatable, and more resilient under fatigue. This is why strength alone isn't enough. Without control, strength eventually breaks down.",
+    img: "/images/iq-movement.png",
+    imgAlt: "Athlete performing dips with control",
   },
   {
     name: "Mobility IQ",
     color: C.blue,
-    sub: "Select the right tool for the intended outcome",
-    points: [
-      "Controlled access to range",
-      "Movement through range with control",
-      "Preparation for training demands",
-      "Recovery and nervous system regulation",
-      "Dynamic vs. static — know the difference",
-      "Progress through presence, not force",
-    ],
+    sub: "The right tool for the right outcome",
+    body: "Mobility and stretching are not the same thing. Mobility is the ability to move through range with control, built primarily through movement-based drills that teach the body to produce and absorb force through that range. Stretching serves a different role: supporting recovery, improving awareness of range, and down-regulating the nervous system. Mobility IQ is about understanding what tool you're using, why you're using it, and when it belongs in your training. It's not about doing more. It's about choosing the right input for the right outcome.",
+    img: "/images/iq-mobility.png",
+    imgAlt: "Athlete moving through a controlled lunge",
   },
   {
     name: "Mindset IQ",
     color: "#A855F7",
-    sub: "Progress independent of changing emotions",
-    points: [
-      "Small, repeatable commitments",
-      "Clear decisions, not motivation spikes",
-      "Structure over willpower",
-      "Evidence builds confidence",
-      "Actions that compound over time",
-      "Reliability over intensity",
-    ],
+    sub: "Progress independent of how you feel",
+    body: "Most people don't fail because they lack motivation. They fail because they rely on it. Motivation is emotional. Consistency is structural. Mindset IQ is the ability to make progress independent of how you feel. It's built through small, repeatable commitments, clear decision-making, and trust built through action, not intention. Every kept promise builds identity. Every broken one weakens it. Mindset IQ is not about pushing harder. It's about choosing actions that compound. Long-term performance depends less on intensity and more on reliability.",
+    img: "/images/iq-mindset.png",
+    imgAlt: "Athlete committed to consistent training",
+  },
+];
+
+const inside = [
+  {
+    title: "Programs",
+    desc: "Structured training built on the IQ Framework",
+  },
+  {
+    title: "Workouts",
+    desc: "Pick a one-off workout and train anywhere",
+  },
+  {
+    title: "Exercise Library",
+    desc: "Every movement explained with cues and intent",
+  },
+  {
+    title: "Step & Exercise Tracking",
+    desc: "Daily movement accountability",
+  },
+  {
+    title: "Macro Tracker",
+    desc: "Simple nutrition tracking built in",
+  },
+  {
+    title: "IQ Framework",
+    desc: "Movement, mobility and mindset IQ",
   },
 ];
 
 export function IQPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80 }}>
+      {/* Intro */}
+      <Sec style={{ paddingTop: 80, paddingBottom: 72 }}>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
             <Pill>The Foundation</Pill>
             <h1
               style={{
-                fontSize: 48,
+                fontSize: "clamp(36px, 5vw, 52px)",
                 fontWeight: 800,
                 color: C.navy,
                 letterSpacing: -2,
                 marginTop: 16,
-                marginBottom: 16,
+                marginBottom: 20,
+                lineHeight: 1.1,
               }}
             >
-              The IQ Framework
+              Three pillars. One decision making system.
             </h1>
             <p
               style={{
                 fontSize: 18,
                 color: C.textMid,
-                maxWidth: 620,
-                margin: "0 auto",
                 lineHeight: 1.8,
+                margin: 0,
               }}
             >
-              Most fitness content focuses on what to do. Very little explains
-              how to think. The IQ Framework is a decision-making system built on
-              three pillars that changes how you approach training, recovery, and
-              long-term performance.
+              Every program, workout, and tool inside activeX is built on this
+              framework. Not random content, but applied principles that connect
+              your mobility, your movement, and your mindset into one intelligent
+              approach to training.
             </p>
           </div>
         </Reveal>
       </Sec>
-      {pillars.map((p, i) => (
-        <Sec key={p.name} bg={i % 2 === 1 ? C.offWhite : C.white}>
-          <Reveal>
-            <div
-              style={{
-                display: "flex",
-                gap: 56,
-                alignItems: "flex-start",
-                flexWrap: "wrap",
-              }}
-            >
-              <div style={{ flex: 1, minWidth: 300 }}>
-                <div
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: 3,
-                    textTransform: "uppercase",
-                    color: p.color,
-                    marginBottom: 12,
-                  }}
-                >
-                  {p.name}
-                </div>
-                <h2
-                  style={{
-                    fontSize: 36,
-                    fontWeight: 800,
-                    color: C.navy,
-                    letterSpacing: -1,
-                    marginBottom: 12,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {p.sub}
-                </h2>
-                <div
-                  style={{
-                    width: 48,
-                    height: 3,
-                    background: p.color,
-                    borderRadius: 2,
-                    marginBottom: 24,
-                  }}
-                />
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 12,
-                  }}
-                >
-                  {p.points.map((pt) => (
-                    <div
-                      key={pt}
-                      style={{
-                        display: "flex",
-                        gap: 8,
-                        alignItems: "flex-start",
-                      }}
-                    >
-                      <span style={{ color: p.color, fontSize: 14, marginTop: 2 }}>
-                        ✓
-                      </span>
-                      <span
-                        style={{
-                          fontSize: 14,
-                          color: C.textMid,
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        {pt}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div
-                style={{
-                  flex: 0.8,
-                  minWidth: 280,
-                  background: C.lightGray,
-                  borderRadius: 20,
-                  height: 320,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <span style={{ fontSize: 48, opacity: 0.2, color: C.navy, fontWeight: 800 }}>
-                  {p.name.split(" ")[0]}
-                </span>
-              </div>
-            </div>
-          </Reveal>
-        </Sec>
-      ))}
-      <Sec bg={C.navy} style={{ textAlign: "center", padding: "72px 24px" }}>
+
+      {/* Hero visual */}
+      <Sec style={{ paddingTop: 0, paddingBottom: 40 }}>
         <Reveal>
-          <h2
+          <div
             style={{
-              fontSize: 36,
-              fontWeight: 800,
-              color: "#fff",
-              letterSpacing: -1,
-              marginBottom: 16,
+              borderRadius: 28,
+              overflow: "hidden",
             }}
           >
-            Every program, workout, and tool inside activeX is built on this
-            framework.
-          </h2>
-          <CTA to={PAGE_PATHS.pricing} style={{ marginTop: 20 }}>
-            Start Training
-          </CTA>
+            <img
+              src="/images/iq-hero.png"
+              alt="Strength training with activeX"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </div>
         </Reveal>
       </Sec>
+
+      {/* Pillars */}
+      {pillars.map((p, i) => {
+        const imgLeft = i % 2 === 1;
+        const img = (
+          <div style={{ flex: 1, minWidth: 280 }}>
+            <img
+              src={p.img}
+              alt={p.imgAlt}
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                borderRadius: 28,
+              }}
+            />
+          </div>
+        );
+        const copy = (
+          <div style={{ flex: 1.1, minWidth: 300 }}>
+            <div
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: p.color,
+                marginBottom: 12,
+              }}
+            >
+              {p.name}
+            </div>
+            <h2
+              style={{
+                fontSize: "clamp(28px, 4vw, 36px)",
+                fontWeight: 800,
+                color: C.navy,
+                letterSpacing: -1,
+                marginBottom: 16,
+                lineHeight: 1.2,
+              }}
+            >
+              {p.sub}
+            </h2>
+            <div
+              style={{
+                width: 48,
+                height: 3,
+                background: p.color,
+                borderRadius: 2,
+                marginBottom: 20,
+              }}
+            />
+            <p
+              style={{
+                fontSize: 16,
+                color: C.textMid,
+                lineHeight: 1.8,
+                margin: 0,
+              }}
+            >
+              {p.body}
+            </p>
+          </div>
+        );
+        return (
+          <Sec key={p.name} bg={i % 2 === 1 ? C.offWhite : C.white}>
+            <Reveal>
+              <div
+                style={{
+                  display: "flex",
+                  gap: 56,
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                {imgLeft ? (
+                  <>
+                    {img}
+                    {copy}
+                  </>
+                ) : (
+                  <>
+                    {copy}
+                    {img}
+                  </>
+                )}
+              </div>
+            </Reveal>
+          </Sec>
+        );
+      })}
+
+      {/* Together */}
+      <Sec>
+        <Reveal>
+          <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
+            <h2
+              style={{
+                fontSize: "clamp(28px, 4vw, 36px)",
+                fontWeight: 800,
+                color: C.navy,
+                letterSpacing: -1,
+                marginBottom: 16,
+                lineHeight: 1.25,
+              }}
+            >
+              Together, these three pillars form a decision making system.
+            </h2>
+            <p
+              style={{
+                fontSize: 17,
+                color: C.textMid,
+                lineHeight: 1.8,
+                margin: 0,
+              }}
+            >
+              This is how we approach training, recovery, and long-term
+              performance inside activeX. Every program is built on this
+              framework. Every workout applies these principles. It&apos;s not
+              about training harder, it&apos;s about training with intelligence.
+            </p>
+          </div>
+        </Reveal>
+      </Sec>
+
+      {/* What's inside */}
+      <Sec bg={C.offWhite}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <Pill>Platform</Pill>
+            <h2
+              style={{
+                fontSize: 36,
+                fontWeight: 800,
+                color: C.navy,
+                letterSpacing: -1,
+                marginTop: 16,
+                marginBottom: 0,
+              }}
+            >
+              What&apos;s inside activeX
+            </h2>
+          </div>
+        </Reveal>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 16,
+            alignItems: "stretch",
+          }}
+        >
+          {inside.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.06} style={{ height: "100%" }}>
+              <Card title={item.title} desc={item.desc} />
+            </Reveal>
+          ))}
+        </div>
+      </Sec>
+
+      {/* CTA */}
+      <section
+        style={{
+          position: "relative",
+          minHeight: 320,
+          padding: "100px 24px",
+          overflow: "hidden",
+          textAlign: "center",
+        }}
+      >
+        <img
+          src="/images/iq-cta.png"
+          alt=""
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(26, 16, 64, 0.55)",
+          }}
+        />
+        <Reveal>
+          <div style={{ position: "relative", zIndex: 1, maxWidth: 680, margin: "0 auto" }}>
+            <h2
+              style={{
+                fontSize: "clamp(28px, 4vw, 40px)",
+                fontWeight: 800,
+                color: "#fff",
+                letterSpacing: -1,
+                marginBottom: 16,
+                lineHeight: 1.2,
+              }}
+            >
+              Ready to train with intelligence?
+            </h2>
+            <p
+              style={{
+                fontSize: 17,
+                color: "rgba(255,255,255,0.7)",
+                lineHeight: 1.7,
+                marginBottom: 28,
+              }}
+            >
+              Every program, workout, and tool inside activeX is built on this
+              framework.
+            </p>
+            <CTA to={PAGE_PATHS.pricing}>Start Training</CTA>
+          </div>
+        </Reveal>
+      </section>
     </>
   );
 }

@@ -182,17 +182,12 @@ export function ContactPage() {
             },
             {
               label: "Email",
-              value: "hello@activex.fit",
-              href: "mailto:hello@activex.fit",
+              value: "info@activex.fit",
+              href: "mailto:info@activex.fit",
             },
             {
               label: "Location",
-              value: "Meydan Grandstand, 6th Floor, Dubai, U.A.E.",
-            },
-            {
-              label: "Instagram",
-              value: "@_active_x_",
-              href: "https://instagram.com/_active_x_",
+              value: "Dubai, UAE",
             },
           ].map((c) => (
             <div

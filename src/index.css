@@ -80,6 +80,14 @@ textarea:focus {
   .nav-burger {
     display: block !important;
   }
+
+  .iq-cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  .one-time-options {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 @media (min-width: 901px) {

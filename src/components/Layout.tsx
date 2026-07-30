@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { C, PAGE_PATHS, PATH_TO_PAGE, type PageKey } from "../lib/tokens";
 import { CTA } from "./ui";
 
-const LINKS: { k: PageKey; l: string }[] = [
+const LINKS: { k: PageKey | "about-menu"; l: string }[] = [
   { k: "iq", l: "IQ Framework" },
   { k: "programs", l: "Programs" },
   { k: "pricing", l: "Pricing" },
   { k: "coaching", l: "Coaching" },
-  { k: "about", l: "About" },
+  { k: "about-menu", l: "About" },
   { k: "contact", l: "Contact" },
+];
+
+const ABOUT_LINKS = [
+  { to: "/about", l: "About Ana", page: "about" as const },
+  { to: "/about/hooms", l: "About Hooms", page: "hooman" as const },
 ];
 
 export function Nav() {
@@ -17,6 +22,9 @@ export function Nav() {
   const page = PATH_TO_PAGE[location.pathname] ?? "home";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const aboutActive = page === "about" || page === "hooman";
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
@@ -26,7 +34,17 @@ export function Nav() {
 
   useEffect(() => {
     setMenuOpen(false);
+    setAboutOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!aboutRef.current?.contains(e.target as Node)) setAboutOpen(false);
+    };
+    // Use click (not mousedown) so menu links can navigate before the menu closes
+    document.addEventListener("click", onDoc);
+    return () => document.removeEventListener("click", onDoc);
+  }, []);
 
   const isHome = page === "home";
   const navBg = isHome
@@ -35,6 +53,20 @@ export function Nav() {
       : "transparent"
     : "rgba(255,255,255,0.97)";
   const navColor = isHome && !scrolled ? "#fff" : C.navy;
+
+  const linkStyle = (active: boolean): CSSProperties => ({
+    color: active ? C.purple : navColor,
+    textDecoration: "none",
+    fontSize: 14,
+    fontWeight: active ? 600 : 500,
+    transition: "color 0.3s",
+    opacity: 0.85,
+    cursor: "pointer",
+    background: "none",
+    border: "none",
+    fontFamily: "inherit",
+    padding: 0,
+  });
 
   return (
     <>
@@ -60,7 +92,7 @@ export function Nav() {
           top: 0,
           zIndex: 100,
           padding: "0 24px",
-          height: 64,
+          height: 76,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -76,38 +108,91 @@ export function Nav() {
         <Link
           to={PAGE_PATHS.home}
           style={{
-            fontSize: 22,
-            fontWeight: 900,
-            letterSpacing: -0.5,
+            display: "inline-flex",
+            alignItems: "center",
             textDecoration: "none",
-            background: isHome && !scrolled ? C.gradient : "none",
-            WebkitBackgroundClip: isHome && !scrolled ? "text" : "initial",
-            WebkitTextFillColor:
-              isHome && !scrolled ? "transparent" : C.navy,
-            color: C.navy,
+            height: 56,
           }}
         >
-          activeX
+          <img
+            src="/images/logo-black.png"
+            alt="activeX"
+            style={{
+              height: 56,
+              width: "auto",
+              display: "block",
+              borderRadius: 8,
+            }}
+          />
         </Link>
 
-        <div className="nav-desktop" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {LINKS.map(({ k, l }) => (
-            <Link
-              key={k}
-              to={PAGE_PATHS[k]}
-              style={{
-                color: page === k ? C.purple : navColor,
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: page === k ? 600 : 500,
-                transition: "color 0.3s",
-                opacity: 0.85,
-              }}
-            >
-              {l}
-            </Link>
-          ))}
-          <CTA to={PAGE_PATHS.pricing} style={{ padding: "9px 22px", fontSize: 13 }}>
+        <div
+          className="nav-desktop"
+          style={{ display: "flex", gap: 28, alignItems: "center" }}
+        >
+          {LINKS.map(({ k, l }) =>
+            k === "about-menu" ? (
+              <div key={k} ref={aboutRef} style={{ position: "relative" }}>
+                <button
+                  type="button"
+                  onClick={() => setAboutOpen((o) => !o)}
+                  style={{
+                    ...linkStyle(aboutActive),
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                  }}
+                  aria-expanded={aboutOpen}
+                >
+                  {l}
+                  <span style={{ fontSize: 10, opacity: 0.8 }}>▾</span>
+                </button>
+                {aboutOpen && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 14px)",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      minWidth: 170,
+                      background: C.white,
+                      border: `1px solid ${C.border}`,
+                      borderRadius: 12,
+                      boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+                      padding: "8px 0",
+                      zIndex: 120,
+                    }}
+                  >
+                    {ABOUT_LINKS.map((item) => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        style={{
+                          display: "block",
+                          padding: "10px 16px",
+                          color: page === item.page ? C.purple : C.navy,
+                          textDecoration: "none",
+                          fontSize: 14,
+                          fontWeight: page === item.page ? 600 : 500,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {item.l}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link key={k} to={PAGE_PATHS[k]} style={linkStyle(page === k)}>
+                {l}
+              </Link>
+            ),
+          )}
+          <CTA
+            to={PAGE_PATHS.pricing}
+            style={{ padding: "9px 22px", fontSize: 13 }}
+          >
             Join Now
           </CTA>
         </div>
@@ -127,9 +212,32 @@ export function Nav() {
             color: navColor,
           }}
         >
-          <span style={{ display: "block", width: 22, height: 2, background: "currentColor", marginBottom: 5 }} />
-          <span style={{ display: "block", width: 22, height: 2, background: "currentColor", marginBottom: 5 }} />
-          <span style={{ display: "block", width: 22, height: 2, background: "currentColor" }} />
+          <span
+            style={{
+              display: "block",
+              width: 22,
+              height: 2,
+              background: "currentColor",
+              marginBottom: 5,
+            }}
+          />
+          <span
+            style={{
+              display: "block",
+              width: 22,
+              height: 2,
+              background: "currentColor",
+              marginBottom: 5,
+            }}
+          />
+          <span
+            style={{
+              display: "block",
+              width: 22,
+              height: 2,
+              background: "currentColor",
+            }}
+          />
         </button>
       </nav>
 
@@ -138,7 +246,7 @@ export function Nav() {
           className="nav-mobile-panel"
           style={{
             position: "sticky",
-            top: 64,
+            top: 76,
             zIndex: 99,
             background: C.white,
             borderBottom: `1px solid ${C.border}`,
@@ -148,20 +256,52 @@ export function Nav() {
             gap: 16,
           }}
         >
-          {LINKS.map(({ k, l }) => (
-            <Link
-              key={k}
-              to={PAGE_PATHS[k]}
-              style={{
-                color: page === k ? C.purple : C.navy,
-                textDecoration: "none",
-                fontSize: 16,
-                fontWeight: page === k ? 700 : 500,
-              }}
-            >
-              {l}
-            </Link>
-          ))}
+          {LINKS.map(({ k, l }) =>
+            k === "about-menu" ? (
+              <div
+                key={k}
+                style={{ display: "flex", flexDirection: "column", gap: 10 }}
+              >
+                <div
+                  style={{
+                    color: aboutActive ? C.purple : C.navy,
+                    fontSize: 16,
+                    fontWeight: aboutActive ? 700 : 500,
+                  }}
+                >
+                  {l}
+                </div>
+                {ABOUT_LINKS.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    style={{
+                      color: page === item.page ? C.purple : C.navy,
+                      textDecoration: "none",
+                      fontSize: 15,
+                      fontWeight: page === item.page ? 700 : 500,
+                      paddingLeft: 12,
+                    }}
+                  >
+                    {item.l}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <Link
+                key={k}
+                to={PAGE_PATHS[k]}
+                style={{
+                  color: page === k ? C.purple : C.navy,
+                  textDecoration: "none",
+                  fontSize: 16,
+                  fontWeight: page === k ? 700 : 500,
+                }}
+              >
+                {l}
+              </Link>
+            ),
+          )}
           <CTA to={PAGE_PATHS.pricing} style={{ justifyContent: "center" }}>
             Join Now
           </CTA>
@@ -187,8 +327,7 @@ export function Footer() {
       t: "Company",
       links: [
         ["About Ana", "about"],
-        ["About Hooman", "hooman"],
-        ["Blog", "home"],
+        ["About Hooms", "hooman"],
         ["Contact", "contact"],
       ],
     },
@@ -215,17 +354,14 @@ export function Footer() {
         }}
       >
         <div style={{ minWidth: 240 }}>
-          <span
+          <img
+            src="/images/logo-footer.png"
+            alt="activeX"
             style={{
-              fontSize: 22,
-              fontWeight: 900,
-              background: C.gradient,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              height: 40,
+              width: "auto",
             }}
-          >
-            activeX
-          </span>
+          />
           <p
             style={{
               fontSize: 14,
@@ -238,18 +374,66 @@ export function Footer() {
             Train with structure, not guesswork. The intelligent fitness
             operating system by Ana Coppola.
           </p>
-          <div style={{ display: "flex", gap: 16, marginTop: 20 }}>
-            {["Instagram", "TikTok", "YouTube"].map((s) => (
-              <span
-                key={s}
+          <div
+            style={{
+              display: "flex",
+              gap: 14,
+              marginTop: 20,
+              alignItems: "center",
+            }}
+          >
+            {[
+              {
+                name: "Instagram",
+                href: "https://www.instagram.com/_active_x_/",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
+                    <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
+                    <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
+                  </svg>
+                ),
+              },
+              {
+                name: "YouTube",
+                href: "https://www.youtube.com/@active_x_fitness",
+                icon: (
+                  <svg width="24" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-4.8zM9.8 15.5v-7l6.3 3.5-6.3 3.5z" />
+                  </svg>
+                ),
+              },
+              {
+                name: "TikTok",
+                href: "https://www.tiktok.com/@_active_x_",
+                icon: (
+                  <svg width="20" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M19.6 7.8a6.7 6.7 0 0 1-3.9-1.3v7.3a5.9 5.9 0 1 1-5.9-5.9c.3 0 .6 0 .9.1v2.9a3 3 0 1 0 2.1 2.9V2.1h2.8a6.7 6.7 0 0 0 4 5.1v.6z" />
+                  </svg>
+                ),
+              },
+            ].map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.name}
                 style={{
-                  fontSize: 12,
-                  color: "rgba(255,255,255,0.45)",
-                  cursor: "pointer",
+                  color: "#fff",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  background: "rgba(255,255,255,0.06)",
+                  textDecoration: "none",
                 }}
               >
-                {s}
-              </span>
+                {s.icon}
+              </a>
             ))}
           </div>
         </div>
@@ -300,19 +484,46 @@ export function Footer() {
         <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
           © 2026 activeX LLC FZ. Meydan Grandstand, Dubai, U.A.E.
         </span>
-        <div style={{ display: "flex", gap: 8 }}>
-          {["Apple Pay", "Visa", "Mastercard", "Google Pay"].map((p) => (
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            alignItems: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          {[
+            { name: "Apple Pay", src: "/images/payments/apple-pay.png" },
+            { name: "Visa", src: "/images/payments/visa.png" },
+            { name: "Amex", src: "/images/payments/amex.png" },
+            { name: "Mastercard", src: "/images/payments/mastercard.png" },
+          ].map((p) => (
             <span
-              key={p}
+              key={p.name}
+              aria-label={p.name}
+              title={p.name}
               style={{
-                fontSize: 10,
-                color: "rgba(255,255,255,0.3)",
-                padding: "4px 8px",
-                border: "1px solid rgba(255,255,255,0.15)",
-                borderRadius: 4,
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 64,
+                height: 36,
+                padding: "0 8px",
+                borderRadius: 6,
+                background: "#fff",
+                boxSizing: "border-box",
               }}
             >
-              {p}
+              <img
+                src={p.src}
+                alt={p.name}
+                style={{
+                  width: "100%",
+                  height: 18,
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
             </span>
           ))}
         </div>
