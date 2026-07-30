@@ -1,7 +1,8 @@
 # How to add a blog post
 
-1. Copy `_template.md` and rename it (use lowercase words and hyphens).
+1. Copy `_template.md` and create a **new file** with a `.md` ending.
    Example: `why-mobility-matters.md`
+   The filename **must** end in `.md` or the post will not appear.
 2. Fill in the fields between the `---` lines at the top.
 3. Write the post in Markdown below those lines.
 4. Commit and deploy — the post appears on `/blog` automatically.
