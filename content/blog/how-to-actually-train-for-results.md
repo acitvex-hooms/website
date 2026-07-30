@@ -3,7 +3,7 @@ title: "How to Actually Train for Results (Not Just Workouts)"
 date: 2026-07-12
 excerpt: "There’s a big difference between exercising and training. This guide breaks down the importance of structure, progression, and execution – and why random workouts aren’t enough if you want real, lasting change."
 author: Ana Coppola
-cover: /public/images/how to actually train for results.jpg
+cover: /images/how-to-actually-train-for-results.jpg
 ---
 
 You don’t need more workouts.

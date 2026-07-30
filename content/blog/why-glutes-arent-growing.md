@@ -3,7 +3,7 @@ title: "Why Your Glutes Aren’t Growing (Even If You Train Them)"
 date: 2026-06-15
 excerpt: "Most people don’t lack discipline – they lack proper movement. In this article, learn why your glutes still aren’t growing even with consistent training, and how improving technique and awareness can finally unlock real results."
 author: Ana Coppola
-cover: /images/feature-2.jpg
+cover: /images/why-arent-glutes-growing.jpg
 ---
 
 Most people don’t have a motivation problem.

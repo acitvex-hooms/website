@@ -3,7 +3,7 @@ title: "Spinal Mobility Is Stealing Your Glute Gains"
 date: 2026-05-20
 excerpt: "Mobility is good until it starts working against you. Discover how a lack of spinal control can sabotage glute exercises, what stability really means, and how to correct your form for more effective workouts."
 author: Ana Coppola
-cover: /images/feature-1.jpg
+cover: /images/spinal-mobility.jpg
 ---
 
 Spinal mobility is amazing… until it starts stealing your glute gains.

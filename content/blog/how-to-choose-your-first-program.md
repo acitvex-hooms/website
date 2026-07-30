@@ -3,7 +3,7 @@ title: "Rear Delts Without Neck Tension"
 date: 2026-05-02
 excerpt: "If your neck takes over every rear delt exercise, this is not a strength issue. Learn how to fix your positioning and finally train the right muscle."
 author: Ana Coppola
-cover: /images/feature-2.jpg
+cover: /images/neck-tension.jpg
 ---
 
 Rear delts are one of the most misunderstood areas to train.

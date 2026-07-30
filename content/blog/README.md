@@ -15,13 +15,15 @@
 | `date` | Yes | `YYYY-MM-DD` (e.g. `2026-07-30`) |
 | `excerpt` | Yes | Short summary for the listing page |
 | `author` | No | Defaults to `activeX` |
-| `cover` | No | Image path, e.g. `/images/feature-1.jpg` |
+| `cover` | No | Image path from `public/images/`, e.g. `/images/feature-1.jpg` (do **not** include `/public`) |
 
 ## Markdown tips
 
 - Use `#` for the main title only in the `title` field — start body with paragraphs or `##` headings
 - `**bold**`, `*italic*`, lists, links, and images all work
-- Images: `![Alt text](/images/your-image.jpg)` — put image files in `public/images/`
+- Images: put files in `public/images/`, then reference as `/images/your-image.jpg`
+- Use hyphens in filenames, not spaces: `my-cover.jpg` not `my cover.jpg`
+- Never write `/public/images/...` — drop the `public` part
 
 ## URL
 
