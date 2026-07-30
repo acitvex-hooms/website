@@ -1,5 +1,93 @@
+import { useState } from "react";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec, Split } from "../components/ui";
+
+const FAQ = [
+  {
+    q: "What's the difference between buying a program & the membership?",
+    a: "Buying a program gives you lifetime access to that single program. The membership gives you access to every program, plus the full suite of tracking tools, exercise library, and journals for $19/month. If you plan to train with activeX long-term, the membership is significantly better value.",
+  },
+  {
+    q: "Where do I access the programs?",
+    a: "All programs are delivered through the activeX app on iOS or web app for non-iOS devices. After purchase, you'll receive access to log in and start your program immediately.",
+  },
+  {
+    q: "Do I need a gym?",
+    a: "Programs are designed for gym or home environment. Equipment requirements are listed on each program page.",
+  },
+  {
+    q: "Can I do a program & coaching at the same time?",
+    a: "Coaching clients receive fully custom programming, so you wouldn't follow a set program alongside coaching. However, if you're not sure which is right for you, start with a program and apply for coaching later.",
+  },
+  {
+    q: "How do I know which program to start with?",
+    a: "Beginner if you're new or returning to training. Intermediate if you've been training consistently and want to level up. Advanced if you're experienced and want advanced programming. When in doubt, start with Foundation the principles it builds carry into everything else.",
+  },
+];
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        borderBottom: `1px solid ${C.border}`,
+      }}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 16,
+          padding: "20px 0",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+          fontFamily: "inherit",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 16,
+            fontWeight: 700,
+            color: C.navy,
+            lineHeight: 1.4,
+          }}
+        >
+          {q}
+        </span>
+        <span
+          style={{
+            flexShrink: 0,
+            fontSize: 22,
+            fontWeight: 400,
+            color: C.purple,
+            lineHeight: 1,
+          }}
+        >
+          {open ? "−" : "+"}
+        </span>
+      </button>
+      {open && (
+        <p
+          style={{
+            fontSize: 15,
+            color: C.textMid,
+            lineHeight: 1.7,
+            margin: "0 0 20px",
+            maxWidth: 640,
+          }}
+        >
+          {a}
+        </p>
+      )}
+    </div>
+  );
+}
 
 const cats = [
   {
@@ -208,6 +296,29 @@ export function ProgramsPage() {
                   {item.desc}
                 </p>
               </div>
+            </Reveal>
+          ))}
+        </div>
+      </Sec>
+
+      <Sec bg={C.offWhite}>
+        <Reveal>
+          <h2
+            style={{
+              fontSize: 32,
+              fontWeight: 800,
+              color: C.navy,
+              textAlign: "center",
+              marginBottom: 28,
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+        </Reveal>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          {FAQ.map((item) => (
+            <Reveal key={item.q}>
+              <FaqItem {...item} />
             </Reveal>
           ))}
         </div>

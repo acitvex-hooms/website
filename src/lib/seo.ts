@@ -1,3 +1,5 @@
+import { getPostBySlug } from "./blog";
+
 export const SITE_URL = "https://activex.fit";
 export const SITE_NAME = "activeX";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/hero-banner.png`;
@@ -46,6 +48,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     title: "1-on-1 Online Coaching with Ana or Hooms | activeX",
     description:
       "Personalised online coaching with Ana Coppola or Hooman Momtazi. Custom programming, movement analysis, weekly check-ins, and direct access. Apply for limited spots.",
+  },
+  "/blog": {
+    path: "/blog",
+    title: "Blog | Training, Movement & Mindset | activeX",
+    description:
+      "Practical writing on the IQ Framework, programming, and how to train with more intention. Guides from Ana Coppola and the activeX team.",
   },
   "/about": {
     path: "/about",
@@ -120,7 +128,24 @@ export function getSeoForPath(pathname: string): PageSeo {
     pathname.length > 1 && pathname.endsWith("/")
       ? pathname.slice(0, -1)
       : pathname;
-  return PAGE_SEO[normalized] ?? {
+
+  if (PAGE_SEO[normalized]) return PAGE_SEO[normalized];
+
+  if (normalized.startsWith("/blog/")) {
+    const slug = normalized.slice("/blog/".length);
+    const post = getPostBySlug(slug);
+    if (post) {
+      return {
+        path: normalized,
+        title: `${post.title} | activeX Blog`,
+        description: post.excerpt || DEFAULT_SEO.description,
+        ogImage: post.cover ? absoluteUrl(post.cover) : undefined,
+        ogType: "article",
+      };
+    }
+  }
+
+  return {
     ...DEFAULT_SEO,
     path: normalized || "/",
     robots: "noindex, follow",

@@ -11,6 +11,8 @@ import { Footer, Nav } from "./components/Layout";
 import { C, FONT } from "./lib/tokens";
 import { AboutPage } from "./pages/AboutPage";
 import { ApplyPage } from "./pages/ApplyPage";
+import { BlogPage } from "./pages/BlogPage";
+import { BlogPostPage } from "./pages/BlogPostPage";
 import { HoomsPage } from "./pages/HoomsPage";
 import { CoachingPage } from "./pages/CoachingPage";
 import { ContactPage } from "./pages/ContactPage";
@@ -52,6 +54,8 @@ function SiteShell() {
         <Route path="/programs" element={<ProgramsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/coaching" element={<CoachingPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/apply" element={<ApplyPage />} />
         <Route path="/video-consult" element={<VideoConsultPage />} />
         <Route path="/welcome" element={<WelcomePage />} />

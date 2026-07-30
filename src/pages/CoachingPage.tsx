@@ -1,5 +1,93 @@
+import { useState } from "react";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { Card, CTA, Pill, Reveal, Sec, Split } from "../components/ui";
+
+const FAQ = [
+  {
+    q: "How is coaching different from the activeX membership?",
+    a: "The membership gives you access to all programs, workouts, and tools on the platform. Coaching is a fully personalised experience your own custom programming, movement analysis, and direct weekly contact with Ana. Think of membership as the framework applied broadly, and coaching as the framework applied specifically to you.",
+  },
+  {
+    q: "How do check-ins work?",
+    a: "You'll complete a weekly check-in covering training, recovery, and progress. Ana reviews everything and adjusts your plan as needed. You also have ongoing access for form reviews and questions between check-ins.",
+  },
+  {
+    q: "Do I need to train at a gym?",
+    a: "Most coaching clients train at a gym, but programming can be adapted for home setups depending on available equipment. This is discussed during the application process.",
+  },
+  {
+    q: "Is there a minimum commitment?",
+    a: "Yes, coaching requires a minimum 3-month commitment. Real progress takes consistency, and the IQ Framework is designed to build over time, not deliver quick fixes.",
+  },
+  {
+    q: "How many spots are available?",
+    a: "Ana works with a limited number of coaching clients at any time to ensure quality. If spots are full, you can join the waitlist and you'll be contacted when a space opens.",
+  },
+];
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        borderBottom: `1px solid ${C.border}`,
+      }}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 16,
+          padding: "20px 0",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+          fontFamily: "inherit",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 16,
+            fontWeight: 700,
+            color: C.navy,
+            lineHeight: 1.4,
+          }}
+        >
+          {q}
+        </span>
+        <span
+          style={{
+            flexShrink: 0,
+            fontSize: 22,
+            fontWeight: 400,
+            color: C.purple,
+            lineHeight: 1,
+          }}
+        >
+          {open ? "−" : "+"}
+        </span>
+      </button>
+      {open && (
+        <p
+          style={{
+            fontSize: 15,
+            color: C.textMid,
+            lineHeight: 1.7,
+            margin: "0 0 20px",
+            maxWidth: 640,
+          }}
+        >
+          {a}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export function CoachingPage() {
   return (
@@ -459,6 +547,29 @@ export function CoachingPage() {
                   </CTA>
                 </div>
               </div>
+            </Reveal>
+          ))}
+        </div>
+      </Sec>
+
+      <Sec>
+        <Reveal>
+          <h2
+            style={{
+              fontSize: 32,
+              fontWeight: 800,
+              color: C.navy,
+              textAlign: "center",
+              marginBottom: 28,
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+        </Reveal>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          {FAQ.map((item) => (
+            <Reveal key={item.q}>
+              <FaqItem {...item} />
             </Reveal>
           ))}
         </div>

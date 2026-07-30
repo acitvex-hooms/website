@@ -1,5 +1,117 @@
+import { useState } from "react";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
+
+const FAQ = [
+  {
+    q: "What is activeX?",
+    a: "activeX is a fitness training app and coaching platform built on the IQ Framework created by coach Ana Coppola. It gives you 40+ structured training programs and a 600+ exercise library with demonstrations and coaching cues, plus workout tracking, macro tracking, step tracking and journals in one system. You can follow an activeX program or build your own. The idea behind it is simple: most people don't need more exercises, they need a way to organise and progress the ones they're already doing.",
+  },
+  {
+    q: "What's included in an activeX membership?",
+    a: "Full access to every program on the platform, the complete exercise library with video and coaching cues, workout tracking, macro tracker, step tracker, and journals. No locked features. No tiers. Everything is included.",
+  },
+  {
+    q: "Am I locked in?",
+    a: "No. Monthly is cancel-anytime. Annual just saves you money if you're committed.",
+  },
+  {
+    q: "How do I access the platform after I pay?",
+    a: "activeX app can be downloaded for iOS here. You can access it from your device. Anywhere, anytime.",
+  },
+  {
+    q: "Can I build my own training program in activeX?",
+    a: "Yes. The custom program builder lets you name your program, choose how many days a week you train, build each training day from the exercise library, and set your own sets, repetitions and rest periods. You can restructure it whenever your schedule, equipment or goals change. It's tracked exactly the same way as the professionally structured activeX programs, so a plan you built yourself still progresses.",
+  },
+  {
+    q: "Can I switch programs mid-way?",
+    a: "Absolutely. You have access to every program, so you can switch whenever you want. However, we recommend completing a full program cycle for best results.",
+  },
+  {
+    q: "Is activeX suitable for women in their 40s?",
+    a: "Yes, it's a large part of who activeX was built for. Ana Coppola has more than 18 years of coaching experience and trains in her 40s herself, and much of the programming is aimed at women training for strength, glute development and body composition around work, family and travel. The emphasis is on understanding why an exercise is in your program rather than copying sessions, and on structure you can keep to on the weeks when motivation drops.",
+  },
+  {
+    q: "Do I need a membership to buy a custom program or coaching?",
+    a: "No. Custom programs, custom diets, and video consults can be purchased standalone. However, members get the benefit of having everything delivered inside the app with tracking built in. Coaching clients receive full membership access included.",
+  },
+  {
+    q: "Can I upgrade from membership to coaching later?",
+    a: "Absolutely. Many people start with the membership and move to coaching when they're ready for a more personalized approach. Your membership is simply replaced by the coaching subscription, which includes full platform access.",
+  },
+  {
+    q: "Is coaching included in the membership?",
+    a: "No. The membership gives you platform access and all self-guided programs. Coaching is a separate, premium service with direct weekly contact with Ana or Hooms. Coaching does include full membership access though.",
+  },
+  {
+    q: "How do I book a video consult?",
+    a: 'Click "Book a Consult" button and fill out the form with what you\'d like help with, and we\'ll organize a time and the details.',
+  },
+];
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        borderBottom: `1px solid ${C.border}`,
+      }}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 16,
+          padding: "20px 0",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+          fontFamily: "inherit",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 16,
+            fontWeight: 700,
+            color: C.navy,
+            lineHeight: 1.4,
+          }}
+        >
+          {q}
+        </span>
+        <span
+          style={{
+            flexShrink: 0,
+            fontSize: 22,
+            fontWeight: 400,
+            color: C.purple,
+            lineHeight: 1,
+          }}
+        >
+          {open ? "−" : "+"}
+        </span>
+      </button>
+      {open && (
+        <p
+          style={{
+            fontSize: 15,
+            color: C.textMid,
+            lineHeight: 1.7,
+            margin: "0 0 20px",
+            maxWidth: 640,
+          }}
+        >
+          {a}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export function PricingPage() {
   return (
@@ -380,19 +492,54 @@ export function PricingPage() {
                 >
                   {c.desc}
                 </p>
-                <CTA
-                  variant="primary"
-                  to={c.to}
-                  href={c.href}
+                <div
                   style={{
-                    marginTop: 20,
+                    display: "flex",
                     justifyContent: "center",
-                    width: "100%",
+                    marginTop: 20,
                   }}
                 >
-                  {c.cta}
-                </CTA>
+                  <CTA
+                    variant="primary"
+                    to={c.to}
+                    href={c.href}
+                    style={{
+                      width: "100%",
+                      maxWidth: 220,
+                      justifyContent: "center",
+                      boxSizing: "border-box",
+                      textAlign: "center",
+                      padding: "14px 16px",
+                      fontSize: 14,
+                    }}
+                  >
+                    {c.cta}
+                  </CTA>
+                </div>
               </div>
+            </Reveal>
+          ))}
+        </div>
+      </Sec>
+
+      <Sec>
+        <Reveal>
+          <h2
+            style={{
+              fontSize: 32,
+              fontWeight: 800,
+              color: C.navy,
+              textAlign: "center",
+              marginBottom: 28,
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+        </Reveal>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          {FAQ.map((item) => (
+            <Reveal key={item.q}>
+              <FaqItem {...item} />
             </Reveal>
           ))}
         </div>

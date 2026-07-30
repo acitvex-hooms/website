@@ -8,6 +8,7 @@ const LINKS: { k: PageKey | "about-menu"; l: string }[] = [
   { k: "programs", l: "Programs" },
   { k: "pricing", l: "Pricing" },
   { k: "coaching", l: "Coaching" },
+  { k: "blog", l: "Blog" },
   { k: "about-menu", l: "About" },
   { k: "contact", l: "Contact" },
 ];
@@ -19,7 +20,11 @@ const ABOUT_LINKS = [
 
 export function Nav() {
   const location = useLocation();
-  const page = PATH_TO_PAGE[location.pathname] ?? "home";
+  const page =
+    location.pathname === PAGE_PATHS.blog ||
+    location.pathname.startsWith(`${PAGE_PATHS.blog}/`)
+      ? "blog"
+      : (PATH_TO_PAGE[location.pathname] ?? "home");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -323,6 +328,7 @@ export function Footer() {
         ["Programs", "programs"],
         ["Pricing", "pricing"],
         ["Coaching", "coaching"],
+        ["Blog", "blog"],
       ],
     },
     {

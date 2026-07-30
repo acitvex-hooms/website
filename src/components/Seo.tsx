@@ -143,6 +143,27 @@ export function Seo() {
     } else {
       removeJsonLd("ld-service");
     }
+
+    if (pathname.startsWith("/blog/") && seo.ogType === "article") {
+      upsertJsonLd("ld-article", {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: seo.title.replace(/ \| activeX Blog$/, ""),
+        description: seo.description,
+        image: image,
+        url,
+        publisher: {
+          "@type": "Organization",
+          name: "activeX",
+          logo: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}/images/logo-black.png`,
+          },
+        },
+      });
+    } else {
+      removeJsonLd("ld-article");
+    }
   }, [pathname]);
 
   return null;
