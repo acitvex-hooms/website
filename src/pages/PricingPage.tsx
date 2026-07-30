@@ -118,9 +118,10 @@ export function PricingPage() {
     <>
       <Sec style={{ paddingTop: 80 }}>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>Membership</Pill>
             <h1
+              className="page-title"
               style={{
                 fontSize: 48,
                 fontWeight: 800,
@@ -194,8 +195,10 @@ export function PricingPage() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.15}>
               <div
+                className="pricing-card"
                 style={{
                   width: 380,
+                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
                   padding: "40px 32px",
@@ -206,6 +209,7 @@ export function PricingPage() {
                     ? "0 20px 60px rgba(120,40,255,0.1)"
                     : "none",
                   position: "relative",
+                  boxSizing: "border-box",
                 }}
               >
                 {t.badge && (
@@ -241,6 +245,7 @@ export function PricingPage() {
                 </div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
                   <span
+                    className="pricing-price"
                     style={{
                       fontSize: 48,
                       fontWeight: 800,

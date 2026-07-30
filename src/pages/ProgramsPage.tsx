@@ -127,9 +127,10 @@ export function ProgramsPage() {
     <>
       <Sec style={{ paddingTop: 80 }}>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>40+ Programs</Pill>
             <h1
+              className="page-title"
               style={{
                 fontSize: 48,
                 fontWeight: 800,
@@ -157,9 +158,10 @@ export function ProgramsPage() {
           </div>
         </Reveal>
         <div
+          className="auto-grid-programs"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: 20,
           }}
         >

@@ -79,6 +79,7 @@ export function Nav() {
       {!isFoundingLanding && (
         <Link
           to={PAGE_PATHS.pricing}
+          className="promo-banner"
           style={{
             background: C.purple,
             padding: "10px 24px",
@@ -90,11 +91,11 @@ export function Nav() {
             textDecoration: "none",
           }}
         >
-          Founding member spots: <strong>23 of 50 left</strong>. Locked pricing
-          for life <span style={{ marginLeft: 6 }}>→</span>
+          Your first 2 weeks are on us <span style={{ marginLeft: 6 }}>→</span>
         </Link>
       )}
       <nav
+        className="site-nav"
         style={{
           position: "sticky",
           top: 0,
@@ -119,11 +120,11 @@ export function Nav() {
             display: "inline-flex",
             alignItems: "center",
             textDecoration: "none",
-            height: 56,
           }}
         >
           <img
-            src="/images/logo-black.png"
+            className="nav-logo-img"
+            src={isHome && !scrolled ? "/images/logo-white.png" : "/images/logo-black.png"}
             alt="activeX"
             style={{
               height: 56,
@@ -350,8 +351,9 @@ export function Footer() {
   ];
 
   return (
-    <footer style={{ background: C.navy, padding: "72px 24px 40px", color: "#fff" }}>
+    <footer className="site-footer" style={{ background: C.navy, padding: "72px 24px 40px", color: "#fff" }}>
       <div
+        className="footer-grid"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
@@ -361,7 +363,7 @@ export function Footer() {
           gap: 48,
         }}
       >
-        <div style={{ minWidth: 240 }}>
+        <div className="footer-brand" style={{ minWidth: 240 }}>
           <img
             src="/images/logo-footer.png"
             alt="activeX"
@@ -383,6 +385,7 @@ export function Footer() {
             operating system by Ana Coppola.
           </p>
           <div
+            className="footer-social"
             style={{
               display: "flex",
               gap: 14,
@@ -445,39 +448,43 @@ export function Footer() {
             ))}
           </div>
         </div>
-        {cols.map((col) => (
-          <div key={col.t} style={{ minWidth: 140 }}>
-            <div
-              style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: 2,
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.4)",
-                marginBottom: 16,
-              }}
-            >
-              {col.t}
-            </div>
-            {col.links.map(([l, k]) => (
-              <Link
-                key={l}
-                to={PAGE_PATHS[k]}
+        <div className="footer-cols">
+          {cols.map((col) => (
+            <div key={col.t} className="footer-col" style={{ minWidth: 140 }}>
+              <div
+                className="footer-col-title"
                 style={{
-                  display: "block",
-                  color: "rgba(255,255,255,0.65)",
-                  fontSize: 14,
-                  textDecoration: "none",
-                  marginBottom: 10,
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 2,
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.4)",
+                  marginBottom: 16,
                 }}
               >
-                {l}
-              </Link>
-            ))}
-          </div>
-        ))}
+                {col.t}
+              </div>
+              {col.links.map(([l, k]) => (
+                <Link
+                  key={l}
+                  to={PAGE_PATHS[k]}
+                  style={{
+                    display: "block",
+                    color: "rgba(255,255,255,0.65)",
+                    fontSize: 14,
+                    textDecoration: "none",
+                    marginBottom: 10,
+                  }}
+                >
+                  {l}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
       <div
+        className="footer-bottom"
         style={{
           maxWidth: "1200px",
           margin: "48px auto 0",
@@ -508,6 +515,7 @@ export function Footer() {
           ].map((p) => (
             <span
               key={p.name}
+              className="footer-pay"
               aria-label={p.name}
               title={p.name}
               style={{

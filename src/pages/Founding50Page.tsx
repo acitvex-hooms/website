@@ -149,6 +149,7 @@ export function Founding50Page() {
       <Sec bg={C.offWhite}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 36,
               fontWeight: 800,
@@ -204,8 +205,10 @@ export function Founding50Page() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.1}>
               <div
+                className="pricing-card"
                 style={{
                   width: 360,
+                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
                   padding: "40px 32px",
@@ -217,6 +220,7 @@ export function Founding50Page() {
                     : "none",
                   position: "relative",
                   textAlign: "left",
+                  boxSizing: "border-box",
                 }}
               >
                 {t.badge && (
@@ -253,6 +257,7 @@ export function Founding50Page() {
                 </div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
                   <span
+                    className="pricing-price"
                     style={{
                       fontSize: 48,
                       fontWeight: 800,

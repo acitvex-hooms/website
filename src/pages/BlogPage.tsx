@@ -9,9 +9,10 @@ export function BlogPage() {
   return (
     <Sec style={{ paddingTop: 80 }}>
       <Reveal>
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
           <Pill>Blog</Pill>
           <h1
+            className="page-title"
             style={{
               fontSize: 48,
               fontWeight: 800,
@@ -50,9 +51,10 @@ export function BlogPage() {
         </p>
       ) : (
         <div
+          className="auto-grid-blog"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: 24,
           }}
         >

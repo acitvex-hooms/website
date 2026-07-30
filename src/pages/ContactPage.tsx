@@ -14,9 +14,10 @@ export function ContactPage() {
   return (
     <Sec style={{ paddingTop: 80 }}>
       <Reveal>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
           <Pill>Get in touch</Pill>
           <h1
+            className="page-title"
             style={{
               fontSize: 44,
               fontWeight: 800,
@@ -43,6 +44,7 @@ export function ContactPage() {
         </div>
       </Reveal>
       <div
+        className="contact-split"
         style={{
           display: "flex",
           gap: 40,
@@ -51,13 +53,13 @@ export function ContactPage() {
           flexWrap: "wrap",
         }}
       >
-        <Reveal style={{ flex: 1, minWidth: 300 }}>
+        <Reveal style={{ flex: 1, minWidth: 0 }}>
           <form
             onSubmit={onSubmit}
             style={{
               background: C.offWhite,
               borderRadius: 16,
-              padding: 32,
+              padding: 24,
             }}
           >
             {["Name", "Email", "Subject"].map((f) => (
@@ -163,7 +165,7 @@ export function ContactPage() {
             )}
           </form>
         </Reveal>
-        <Reveal delay={0.15} style={{ flex: 0.7, minWidth: 260 }}>
+        <Reveal delay={0.15} style={{ flex: 0.7, minWidth: 0 }}>
           <h3
             style={{
               fontSize: 20,

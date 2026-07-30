@@ -25,9 +25,10 @@ export function HomePage() {
 
       <Sec>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>The IQ Framework</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 42,
                 fontWeight: 800,
@@ -266,9 +267,10 @@ export function HomePage() {
 
       <Sec>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Behavioural Design</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 38,
                 fontWeight: 800,
@@ -295,6 +297,7 @@ export function HomePage() {
           </div>
         </Reveal>
         <div
+          className="auto-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
@@ -403,9 +406,10 @@ export function HomePage() {
 
       <Sec bg={C.offWhite} id="pricing-home">
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Membership</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 42,
                 fontWeight: 800,
@@ -475,8 +479,10 @@ export function HomePage() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.15}>
               <div
+                className="pricing-card"
                 style={{
                   width: 360,
+                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
                   padding: "36px 28px",
@@ -487,6 +493,7 @@ export function HomePage() {
                     ? "0 16px 48px rgba(120,40,255,0.1)"
                     : "0 1px 4px rgba(0,0,0,0.04)",
                   position: "relative",
+                  boxSizing: "border-box",
                 }}
               >
                 {t.badge && (
@@ -521,6 +528,7 @@ export function HomePage() {
                 </div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
                   <span
+                    className="pricing-price"
                     style={{
                       fontSize: 44,
                       fontWeight: 800,
@@ -663,10 +671,12 @@ export function HomePage() {
 
       <Sec
         bg={C.navy}
+        className="sec-cta"
         style={{ textAlign: "center", padding: "80px 24px" }}
       >
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 44,
               fontWeight: 800,

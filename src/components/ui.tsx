@@ -86,7 +86,7 @@ export function CTA({
 
   if (to) {
     return (
-      <Link to={to} style={style} {...handlers}>
+      <Link to={to} className="cta-btn" style={style} {...handlers}>
         {children}
       </Link>
     );
@@ -96,6 +96,7 @@ export function CTA({
 
   return (
     <a
+      className="cta-btn"
       href={href ?? "#"}
       style={style}
       {...handlers}
@@ -143,12 +144,14 @@ type SecProps = {
   bg?: string;
   style?: CSSProperties;
   id?: string;
+  className?: string;
 };
 
-export function Sec({ children, bg = C.white, style, id }: SecProps) {
+export function Sec({ children, bg = C.white, style, id, className }: SecProps) {
   return (
     <section
       id={id}
+      className={["sec", className].filter(Boolean).join(" ")}
       style={{
         background: bg,
         padding: "100px 24px",
@@ -190,8 +193,9 @@ export function Split({
   imgRadius = 20,
 }: SplitProps) {
   const imgEl = (
-    <div style={{ flex: 1.15, minWidth: 300 }}>
+    <div className="split-img" style={{ flex: 1.15, minWidth: 300 }}>
       <div
+        className="split-img-frame"
         style={{
           background:
             imgFit === "contain" || imgHeight === "auto"
@@ -220,9 +224,10 @@ export function Split({
     </div>
   );
   const txtEl = (
-    <div style={{ flex: 1, minWidth: 280 }}>
+    <div className="split-txt" style={{ flex: 1, minWidth: 280 }}>
       {pill && <Pill>{pill}</Pill>}
       <h2
+        className="split-title"
         style={{
           fontSize: 38,
           fontWeight: 800,
@@ -254,6 +259,7 @@ export function Split({
   return (
     <Reveal>
       <div
+        className="split"
         style={{
           display: "flex",
           gap: 64,
@@ -283,19 +289,20 @@ export function StatBar({
   items: { n: string; l: string }[];
 }) {
   return (
-    <Sec bg={C.navy} style={{ padding: "56px 24px" }}>
+    <Sec bg={C.navy} className="sec-tight" style={{ padding: "56px 24px" }}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-around",
           flexWrap: "wrap",
-          gap: 32,
+          gap: 24,
         }}
       >
         {items.map((s, i) => (
           <Reveal key={s.l} delay={i * 0.1}>
-            <div style={{ textAlign: "center", minWidth: 120 }}>
+            <div style={{ textAlign: "center", minWidth: 100, flex: "1 1 120px" }}>
               <div
+                className="stat-n"
                 style={{
                   fontSize: 44,
                   fontWeight: 800,
@@ -334,6 +341,7 @@ export function Card({ icon, title, desc, style: s }: CardProps) {
   const [h, setH] = useState(false);
   return (
     <div
+      className="card"
       onMouseEnter={() => setH(true)}
       onMouseLeave={() => setH(false)}
       style={{
@@ -399,6 +407,7 @@ export function Phone({
 }) {
   return (
     <div
+      className="phone-frame"
       style={{
         width: 260,
         height: 520,

@@ -7,6 +7,7 @@ export function Hero() {
 
   return (
     <section
+      className="hero"
       style={{
         position: "relative",
         minHeight: "92vh",
@@ -27,6 +28,7 @@ export function Hero() {
         }}
       >
         <img
+          className="hero-bg-img"
           src="/images/hero-banner.png"
           alt=""
           style={{
@@ -43,6 +45,7 @@ export function Hero() {
         />
       </div>
       <div
+        className="hero-overlay"
         style={{
           position: "absolute",
           inset: 0,
@@ -52,7 +55,7 @@ export function Hero() {
         }}
       />
       <div
-        className="orb orb-a"
+        className="orb orb-a hero-orb"
         style={{
           position: "absolute",
           top: "10%",
@@ -67,7 +70,7 @@ export function Hero() {
         }}
       />
       <div
-        className="orb orb-b"
+        className="orb orb-b hero-orb"
         style={{
           position: "absolute",
           bottom: "10%",
@@ -83,6 +86,7 @@ export function Hero() {
       />
 
       <div
+        className="hero-inner"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
@@ -95,7 +99,7 @@ export function Hero() {
           width: "100%",
         }}
       >
-        <div className="fade-up" style={{ flex: 1.3, minWidth: 320 }}>
+        <div className="fade-up hero-copy" style={{ flex: 1.3, minWidth: 320 }}>
           <Pill variant="light">Coaching since 2008</Pill>
           <h1
             style={{
@@ -176,7 +180,7 @@ export function Hero() {
           </div>
         </div>
         <div
-          className="fade-up fade-up-delay"
+          className="fade-up fade-up-delay hero-phone"
           style={{
             flex: 0.7,
             minWidth: 280,
