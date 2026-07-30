@@ -38,7 +38,7 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
             Body measurements and progress photos if you choose to upload them
           </li>
           <li>
-            Payment information processed by Stripe — we do not store card
+            Payment information processed by Stripe. We do not store card
             details directly
           </li>
           <li>Communications when you contact our support team</li>
@@ -132,19 +132,19 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
         </p>
         <ul>
           <li>
-            Stripe — payment processing. Stripe&apos;s privacy policy applies to
+            Stripe: payment processing. Stripe&apos;s privacy policy applies to
             payment data.
           </li>
-          <li>Railway — cloud hosting for our backend infrastructure</li>
-          <li>FatSecret — food and nutrition database lookups</li>
+          <li>Railway: cloud hosting for our backend infrastructure</li>
+          <li>FatSecret: food and nutrition database lookups</li>
           <li>
-            Apple — if you use Sign in with Apple or Apple Health integration
+            Apple: if you use Sign in with Apple or Apple Health integration
           </li>
           <li>
-            Spotify — if you connect your Spotify account to access playlists
+            Spotify: if you connect your Spotify account to access playlists
           </li>
           <li>
-            Law enforcement — if required by law or to protect our legal rights
+            Law enforcement: if required by law or to protect our legal rights
           </li>
         </ul>
         <p>We do not sell your personal data to any third party.</p>

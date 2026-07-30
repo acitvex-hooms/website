@@ -30,7 +30,7 @@ export function PricingPage() {
               }}
             >
               No tiers, no locked features. Every tool, every program, every
-              exercise — included. Choose how you pay.
+              exercise, included. Choose how you pay.
             </p>
           </div>
         </Reveal>
@@ -52,12 +52,12 @@ export function PricingPage() {
               badge: "Best Value",
               hi: true,
               href: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",
-              cta: "Start Annual — Save 24%",
+              cta: "Start Annual. Save 24%",
               feats: [
                 "All 40+ structured programs",
                 "600+ exercise library with coaching cues",
                 "Custom Program Builder",
-                "Workout tracking — loads, sets, reps",
+                "Workout tracking: loads, sets, reps",
                 "Macro Tracker & Step Tracker",
                 "XP, levels, badges & leaderboards",
                 "IQ Framework built into everything",
@@ -308,7 +308,7 @@ export function PricingPage() {
             {
               title: "Weekly 1-on-1 Coaching",
               price: "$799/mo",
-              desc: "Custom programming, movement analysis, weekly check-ins, ongoing accountability. Directly with Ana or Hooms. Limited spots — application only.",
+              desc: "Custom programming, movement analysis, weekly check-ins, ongoing accountability. Directly with Ana or Hooms. Limited spots. Application only.",
               cta: "Apply for Coaching",
               to: PAGE_PATHS.apply,
               href: undefined as string | undefined,

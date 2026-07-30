@@ -25,6 +25,7 @@ export function Nav() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
   const aboutActive = page === "about" || page === "hooman";
+  const isFoundingLanding = location.pathname === "/founding-50";
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
@@ -70,22 +71,24 @@ export function Nav() {
 
   return (
     <>
-      <Link
-        to={PAGE_PATHS.pricing}
-        style={{
-          background: C.purple,
-          padding: "10px 24px",
-          textAlign: "center",
-          fontSize: 13,
-          fontWeight: 500,
-          color: "#fff",
-          display: "block",
-          textDecoration: "none",
-        }}
-      >
-        Founding member spots: <strong>23 of 50 left</strong> — locked pricing
-        for life <span style={{ marginLeft: 6 }}>→</span>
-      </Link>
+      {!isFoundingLanding && (
+        <Link
+          to={PAGE_PATHS.pricing}
+          style={{
+            background: C.purple,
+            padding: "10px 24px",
+            textAlign: "center",
+            fontSize: 13,
+            fontWeight: 500,
+            color: "#fff",
+            display: "block",
+            textDecoration: "none",
+          }}
+        >
+          Founding member spots: <strong>23 of 50 left</strong>. Locked pricing
+          for life <span style={{ marginLeft: 6 }}>→</span>
+        </Link>
+      )}
       <nav
         style={{
           position: "sticky",
@@ -319,7 +322,6 @@ export function Footer() {
         ["IQ Framework", "iq"],
         ["Programs", "programs"],
         ["Pricing", "pricing"],
-        ["Exercise Library", "home"],
         ["Coaching", "coaching"],
       ],
     },

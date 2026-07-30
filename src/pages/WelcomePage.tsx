@@ -191,7 +191,7 @@ export function WelcomePage() {
       ? "You're booked for a video consult."
       : isCoaching
         ? "You're in. Coaching onboarding is next."
-        : "Congratulations — you're in.";
+        : "Congratulations. You're in.";
 
   const sub = isCustom
     ? "Here's how to get set up. Download the app first, then complete the short intake so we can personalise your plan."

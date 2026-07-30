@@ -66,7 +66,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Mobility — flexible range / stretch arc */}
+                  {/* Mobility. flexible range / stretch arc */}
                   <path
                     d="M7 17a5 5 0 0 1 10 0"
                     stroke="currentColor"
@@ -95,7 +95,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Movement — controlled stance / strength figure */}
+                  {/* Movement. controlled stance / strength figure */}
                   <circle cx="12" cy="5.5" r="2" fill="currentColor" />
                   <path
                     d="M12 8.2v5.2M8.2 11.2 12 13.4l3.8-2.2M9.2 20.2 12 13.4l2.8 6.8"
@@ -119,7 +119,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Mindset — brain / focus */}
+                  {/* Mindset. brain / focus */}
                   <path
                     d="M9.2 4.8a3.4 3.4 0 0 1 5.6 0 3.2 3.2 0 0 1 3.7 4.2A3.4 3.4 0 0 1 17 15.6v1.6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-1.6a3.4 3.4 0 0 1-1.5-6.6 3.2 3.2 0 0 1 3.7-4.2Z"
                     stroke="currentColor"
@@ -306,7 +306,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Experience Points — burst / spark */}
+                  {/* Experience Points. burst / spark */}
                   <path
                     d="M12 2.8 13.7 8.4l5.8.4-4.5 3.6 1.5 5.6L12 15.4 7.5 18l1.5-5.6L4.5 8.8l5.8-.4L12 2.8Z"
                     stroke="currentColor"
@@ -322,7 +322,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Member Levels — ascending steps */}
+                  {/* Member Levels. ascending steps */}
                   <path
                     d="M4 18h4v-4h4V10h4V6h4"
                     stroke="currentColor"
@@ -345,7 +345,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Achievement Badges — medal */}
+                  {/* Achievement Badges. medal */}
                   <circle
                     cx="12"
                     cy="10"
@@ -375,7 +375,7 @@ export function HomePage() {
             {
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  {/* Leaderboards — podium bars */}
+                  {/* Leaderboards. podium bars */}
                   <path
                     d="M5 19V11h4v8H5Zm5 0V6h4v13h-4Zm5 0v-5h4v5h-4Z"
                     stroke="currentColor"
@@ -446,7 +446,7 @@ export function HomePage() {
               sub: "Less than $19/month",
               badge: "Save 24%",
               hi: true,
-              href: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",
+              href: "https://buy.stripe.com/28E5kCbz27Xn6FB0wt4ow01",
               cta: "Start Training",
               feats: [
                 "All 40+ programs",
@@ -462,7 +462,7 @@ export function HomePage() {
               price: "$24.99",
               per: "month",
               sub: "Cancel anytime",
-              href: "https://buy.stripe.com/8x23cufPielLd3Zenj4ow08",
+              href: "https://buy.stripe.com/14A28q9qU4Lb2plcfb4ow00",
               cta: "Choose Monthly",
               feats: [
                 "Full access to everything",

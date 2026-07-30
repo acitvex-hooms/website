@@ -1,30 +1,9 @@
-import { useEffect, useState } from "react";
+import { useParallax } from "../hooks/useParallax";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Phone, Pill } from "./ui";
 
 export function Hero() {
-  const [parallaxY, setParallaxY] = useState(0);
-
-  useEffect(() => {
-    let frame = 0;
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduceMotion) return;
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        setParallaxY(window.scrollY * 0.45);
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+  const parallaxY = useParallax(0.45);
 
   return (
     <section

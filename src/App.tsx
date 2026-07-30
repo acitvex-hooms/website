@@ -6,6 +6,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import { Seo } from "./components/Seo";
 import { Footer, Nav } from "./components/Layout";
 import { C, FONT } from "./lib/tokens";
 import { AboutPage } from "./pages/AboutPage";
@@ -22,6 +23,7 @@ import { WelcomePage } from "./pages/WelcomePage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { TermsPage } from "./pages/TermsPage";
 import { RefundPage } from "./pages/RefundPage";
+import { Founding50Page } from "./pages/Founding50Page";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -41,6 +43,7 @@ function SiteShell() {
         minHeight: "100vh",
       }}
     >
+      <Seo />
       <ScrollToTop />
       <Nav />
       <Routes>
@@ -62,6 +65,7 @@ function SiteShell() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/refund" element={<RefundPage />} />
+        <Route path="/founding-50" element={<Founding50Page />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

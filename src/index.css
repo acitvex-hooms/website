@@ -120,6 +120,14 @@ textarea:focus {
   .pricing-coaching-grid {
     grid-template-columns: 1fr !important;
   }
+
+  .programs-whats-inside {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .founding-whats-inside {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 @media (min-width: 901px) {
@@ -128,8 +136,8 @@ textarea:focus {
   }
 }
 
-@media (max-width: 768px) {
-  .hero-bg + * {
-    /* keep layout stacking on mobile */
+@media (max-width: 600px) {
+  .programs-whats-inside {
+    grid-template-columns: 1fr !important;
   }
 }

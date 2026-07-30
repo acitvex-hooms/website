@@ -532,7 +532,7 @@ export function AppScreen() {
             marginTop: 4,
           }}
         >
-          Push Day — Upper
+          Push Day: Upper
         </div>
         <div
           style={{
@@ -572,7 +572,7 @@ export function AppScreen() {
           </div>
         ))}
       </div>
-      {["Glute Strength — Wk 4", "Home Full Body — Wk 2"].map((p) => (
+      {["Glute Strength: Wk 4", "Home Full Body: Wk 2"].map((p) => (
         <div
           key={p}
           style={{

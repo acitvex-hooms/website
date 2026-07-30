@@ -135,6 +135,84 @@ export function ProgramsPage() {
           }
         />
       </Sec>
+
+      <Sec>
+        <Reveal>
+          <h2
+            style={{
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 800,
+              color: C.navy,
+              letterSpacing: -1,
+              textTransform: "uppercase",
+              marginBottom: 32,
+            }}
+          >
+            What&apos;s Inside Every Program
+          </h2>
+        </Reveal>
+        <div
+          className="programs-whats-inside"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+            gap: 16,
+          }}
+        >
+          {[
+            {
+              title: "Structured Phases",
+              desc: "Every program is broken into phases with clear progressions. You always know what you're doing, why you're doing it, & what comes next.",
+            },
+            {
+              title: "Video Instruction",
+              desc: "Every exercise comes with video demonstration & coaching cues so you understand the intent behind each movement not just the motion.",
+            },
+            {
+              title: "Mobility & Movement Prep",
+              desc: "Each session includes targeted mobility & movement preparation built into the program not bolted on as an afterthought.",
+            },
+            {
+              title: "Tracking & Logging",
+              desc: "Log your sessions, track your loads, & monitor your progress over time through the activeX platform.",
+            },
+          ].map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.05} style={{ height: "100%" }}>
+              <div
+                style={{
+                  background: C.lightGray,
+                  borderRadius: 16,
+                  padding: "28px 24px",
+                  height: "100%",
+                  boxSizing: "border-box",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: 18,
+                    fontWeight: 800,
+                    color: C.navy,
+                    marginBottom: 10,
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: 14,
+                    color: C.textMid,
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Sec>
+
       <Sec bg={C.navy} style={{ textAlign: "center", padding: "72px 24px" }}>
         <Reveal>
           <h2

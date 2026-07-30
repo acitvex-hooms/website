@@ -1,6 +1,6 @@
 # activeX Website
 
-Marketing site for [activeX](https://activex.fit) — structured training, the IQ Framework, and membership.
+Marketing site for [activeX](https://activex.fit): structured training, the IQ Framework, and membership.
 
 ## Develop
 

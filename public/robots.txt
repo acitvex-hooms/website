@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /welcome
+Disallow: /apply
+Disallow: /video-consult
+Disallow: /founding-50
+
+Sitemap: https://activex.fit/sitemap.xml

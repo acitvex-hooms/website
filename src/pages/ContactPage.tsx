@@ -130,7 +130,7 @@ export function ContactPage() {
                   margin: 0,
                 }}
               >
-                Thanks — we&apos;ll get back to you soon.
+                Thanks. We&apos;ll get back to you soon.
               </p>
             ) : (
               <button
