@@ -225,6 +225,7 @@ export function HoomsPage() {
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>Philosophy</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 36,
                 fontWeight: 800,
@@ -239,6 +240,7 @@ export function HoomsPage() {
           </div>
         </Reveal>
         <div
+          className="auto-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",

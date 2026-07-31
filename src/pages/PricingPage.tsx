@@ -401,6 +401,7 @@ export function PricingPage() {
       <Sec bg={C.offWhite}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 36,
               fontWeight: 800,
@@ -530,6 +531,7 @@ export function PricingPage() {
       <Sec>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 32,
               fontWeight: 800,

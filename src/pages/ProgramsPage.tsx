@@ -306,6 +306,7 @@ export function ProgramsPage() {
       <Sec bg={C.offWhite}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 32,
               fontWeight: 800,
@@ -326,9 +327,14 @@ export function ProgramsPage() {
         </div>
       </Sec>
 
-      <Sec bg={C.navy} style={{ textAlign: "center", padding: "72px 24px" }}>
+      <Sec
+        bg={C.navy}
+        className="sec-cta"
+        style={{ textAlign: "center", padding: "72px 24px" }}
+      >
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 36,
               fontWeight: 800,

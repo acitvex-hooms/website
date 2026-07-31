@@ -38,6 +38,11 @@ export function Nav() {
   }, [location.pathname]);
 
   useEffect(() => {
+    document.body.classList.toggle("nav-open", menuOpen);
+    return () => document.body.classList.remove("nav-open");
+  }, [menuOpen]);
+
+  useEffect(() => {
     if (!aboutOpen) return;
     const onDoc = (e: MouseEvent) => {
       const target = e.target as Node;
@@ -259,7 +264,7 @@ export function Nav() {
 
       {menuOpen && (
         <div
-          className="nav-mobile-panel"
+          className="nav-mobile-panel is-open"
           style={{
             position: "sticky",
             top: 76,

@@ -50,6 +50,7 @@ function AppDownloadBlock({
 }) {
   return (
     <div
+      className="app-download-block"
       style={{
         background: C.offWhite,
         borderRadius: 20,

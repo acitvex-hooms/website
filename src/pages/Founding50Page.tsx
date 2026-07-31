@@ -424,6 +424,7 @@ export function Founding50Page() {
           <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
             <Pill>Who built it</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 32,
                 fontWeight: 800,
@@ -457,6 +458,7 @@ export function Founding50Page() {
       <Sec bg={C.offWhite}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 32,
               fontWeight: 800,

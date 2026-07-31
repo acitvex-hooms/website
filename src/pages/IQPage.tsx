@@ -119,7 +119,7 @@ export function IQPage() {
       {pillars.map((p, i) => {
         const imgLeft = i % 2 === 1;
         const img = (
-          <div style={{ flex: 1, minWidth: 280 }}>
+          <div className="split-img" style={{ flex: 1, minWidth: 0 }}>
             <img
               src={p.img}
               alt={p.imgAlt}
@@ -133,7 +133,7 @@ export function IQPage() {
           </div>
         );
         const copy = (
-          <div style={{ flex: 1.1, minWidth: 300 }}>
+          <div className="split-txt" style={{ flex: 1.1, minWidth: 0 }}>
             <div
               style={{
                 fontSize: 12,
@@ -183,6 +183,7 @@ export function IQPage() {
           <Sec key={p.name} bg={i % 2 === 1 ? C.offWhite : C.white}>
             <Reveal>
               <div
+                className="split"
                 style={{
                   display: "flex",
                   gap: 56,
@@ -246,6 +247,7 @@ export function IQPage() {
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <Pill>Platform</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 36,
                 fontWeight: 800,
@@ -260,6 +262,7 @@ export function IQPage() {
           </div>
         </Reveal>
         <div
+          className="auto-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -277,6 +280,7 @@ export function IQPage() {
 
       {/* CTA */}
       <section
+        className="iq-cta"
         style={{
           position: "relative",
           minHeight: 320,

@@ -42,6 +42,7 @@ export function TallyEmbed({
   if (variant === "inline") {
     return (
       <div
+        className="tally-embed-inline"
         style={{
           position: "relative",
           width: "100%",
@@ -78,6 +79,7 @@ export function TallyEmbed({
 
   return (
     <div
+      className="tally-embed-page"
       style={{
         position: "relative",
         width: "100%",

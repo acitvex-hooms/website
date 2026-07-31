@@ -259,6 +259,7 @@ export function CoachingPage() {
       <Sec>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 36,
               fontWeight: 800,
@@ -284,6 +285,7 @@ export function CoachingPage() {
           </p>
         </Reveal>
         <div
+          className="auto-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -323,6 +325,7 @@ export function CoachingPage() {
         <Reveal>
           <Pill>How it works</Pill>
           <h2
+            className="section-title"
             style={{
               fontSize: 36,
               fontWeight: 800,
@@ -335,6 +338,7 @@ export function CoachingPage() {
           </h2>
         </Reveal>
         <div
+          className="auto-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -410,6 +414,7 @@ export function CoachingPage() {
         <Reveal style={{ textAlign: "center" }}>
           <Pill>One-time options</Pill>
           <h2
+            className="section-title"
             style={{
               fontSize: 36,
               fontWeight: 800,
@@ -470,6 +475,7 @@ export function CoachingPage() {
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 0.1} style={{ height: "100%" }}>
               <div
+                className="one-time-card"
                 style={{
                   background: C.white,
                   borderRadius: 16,
@@ -555,6 +561,7 @@ export function CoachingPage() {
       <Sec>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 32,
               fontWeight: 800,
@@ -578,6 +585,7 @@ export function CoachingPage() {
       <Sec bg={C.navy} style={{ textAlign: "center" }}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 32,
               fontWeight: 800,

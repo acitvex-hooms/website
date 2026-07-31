@@ -55,6 +55,7 @@ export function ContactPage() {
       >
         <Reveal style={{ flex: 1, minWidth: 0 }}>
           <form
+            className="contact-form"
             onSubmit={onSubmit}
             style={{
               background: C.offWhite,
@@ -84,7 +85,7 @@ export function ContactPage() {
                     padding: "12px 16px",
                     borderRadius: 10,
                     border: `1px solid ${C.border}`,
-                    fontSize: 14,
+                    fontSize: 16,
                     fontFamily: FONT,
                     outline: "none",
                     boxSizing: "border-box",
@@ -114,7 +115,7 @@ export function ContactPage() {
                   padding: "12px 16px",
                   borderRadius: 10,
                   border: `1px solid ${C.border}`,
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: FONT,
                   outline: "none",
                   resize: "vertical",

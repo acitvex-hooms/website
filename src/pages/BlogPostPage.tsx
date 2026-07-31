@@ -72,6 +72,7 @@ export function BlogPostPage() {
         <Sec style={{ paddingTop: 0, paddingBottom: 24 }}>
           <Reveal>
             <div
+              className="blog-cover"
               style={{
                 borderRadius: 20,
                 overflow: "hidden",
