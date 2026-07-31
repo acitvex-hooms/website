@@ -1,4 +1,5 @@
 import { C, PAGE_PATHS } from "../lib/tokens";
+import { EmailSubscribe } from "../components/EmailSubscribe";
 import { Hero } from "../components/Hero";
 import {
   CTA,
@@ -702,6 +703,8 @@ export function HomePage() {
           <CTA to={PAGE_PATHS.pricing}>Start Your Membership</CTA>
         </Reveal>
       </Sec>
+
+      <EmailSubscribe />
     </>
   );
 }
