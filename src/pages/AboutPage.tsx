@@ -1,15 +1,43 @@
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Card, Pill, Reveal, Sec, Split } from "../components/ui";
 
-const press = [
-  { date: "July 2021", outlet: "Daily Mail Australia" },
-  { date: "September 2019", outlet: "Daily Mail" },
-  { date: "June 2019", outlet: "Fitness First Australia" },
-  { date: "July 2016", outlet: "Australian Men's Health" },
-  { date: "Winter 2015", outlet: "WNiF - What's New In Fitness Australia" },
-  { date: "July/August 2013", outlet: "Fitness First Australia" },
-  { date: "June 2013", outlet: "Fitness First Australia" },
-  { date: "May/June 2012", outlet: "Fitness First Australia" },
+const television = [
+  {
+    title: "Australian Ninja Warrior",
+    meta: "Season 5 | Channel 9",
+    image: "/images/media/ninja-warrior.png",
+    href: "https://www.imdb.com/title/tt7090918/",
+  },
+  {
+    title: "Gladiators Australia",
+    meta: "Season 1, Premiere | Channel 10 | 10PLAY",
+    image: "/images/media/gladiators.png",
+    href: "https://www.imdb.com/title/tt30816886/",
+  },
+  {
+    title: "The Morning Show",
+    meta: "Sunrise on 7 | Channel 7 | 7NEWS",
+    image: "/images/media/morning-show.png",
+    href: "https://7news.com.au/the-morning-show",
+  },
+];
+
+const printPress = [
+  {
+    title: "Women's Fitness",
+    image: "/images/media/womens-fitness.png",
+    href: "https://womensfitnessmag.com.au/wellness-journeys-koh-samui/",
+  },
+  {
+    title: "Daily Mail",
+    image: "/images/media/daily-mail.png",
+    href: "https://www.dailymail.com/auhome/index.html",
+  },
+  {
+    title: "Men's Health",
+    image: "/images/media/mens-health.png",
+    href: "https://menshealth.com.au/",
+  },
 ];
 
 const beliefs = [
@@ -67,13 +95,14 @@ export function AboutPage() {
         </Split>
       </Sec>
 
-      <Sec bg={C.offWhite}>
+      <Sec bg={C.offWhite} className="media-section">
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <Pill>Press</Pill>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <Pill>Media</Pill>
             <h2
+              className="section-title"
               style={{
-                fontSize: 36,
+                fontSize: 40,
                 fontWeight: 800,
                 color: C.navy,
                 letterSpacing: -1,
@@ -81,52 +110,53 @@ export function AboutPage() {
                 marginBottom: 0,
               }}
             >
-              As seen on
+              Press & Appearances
             </h2>
           </div>
         </Reveal>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 16,
-          }}
-        >
-          {press.map((p, i) => (
-            <Reveal key={`${p.outlet}-${p.date}`} delay={i * 0.05}>
-              <div
-                style={{
-                  background: C.white,
-                  border: `1px solid ${C.border}`,
-                  borderRadius: 16,
-                  padding: 20,
-                }}
+
+        <Reveal>
+          <h3 className="media-group-title">Television</h3>
+          <div className="media-grid">
+            {television.map((item) => (
+              <a
+                key={item.title}
+                className="media-item media-item-link"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <div
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: C.purple,
-                    letterSpacing: 0.5,
-                    marginBottom: 6,
-                  }}
-                >
-                  {p.date}
-                </div>
-                <div
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 700,
-                    color: C.navy,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {p.outlet}
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+                <img src={item.image} alt={item.title} loading="lazy" />
+                <span className="media-item-caption">
+                  <strong>{item.title}</strong>
+                  <span>{item.meta}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <h3 className="media-group-title" style={{ marginTop: 48 }}>
+            Print & Digital Press
+          </h3>
+          <div className="media-grid">
+            {printPress.map((item) => (
+              <a
+                key={item.title}
+                className="media-item media-item-link"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={item.image} alt={item.title} loading="lazy" />
+                <span className="media-item-caption">
+                  <strong>{item.title}</strong>
+                </span>
+              </a>
+            ))}
+          </div>
+        </Reveal>
       </Sec>
 
       <Sec>
@@ -223,6 +253,7 @@ export function AboutPage() {
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>Philosophy</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 36,
                 fontWeight: 800,
@@ -237,6 +268,7 @@ export function AboutPage() {
           </div>
         </Reveal>
         <div
+          className="auto-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
