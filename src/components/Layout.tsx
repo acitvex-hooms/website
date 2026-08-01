@@ -220,7 +220,7 @@ export function Nav() {
           aria-expanded={menuOpen}
           onClick={() =>
             setMenuOpen((o) => {
-              if (o) setAboutOpen(false);
+              setAboutOpen(false);
               return !o;
             })
           }
@@ -284,30 +284,61 @@ export function Nav() {
                 ref={aboutMobileRef}
                 style={{ display: "flex", flexDirection: "column", gap: 10 }}
               >
-                <div
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setAboutOpen((o) => !o);
+                  }}
+                  aria-expanded={aboutOpen}
+                  aria-haspopup="menu"
                   style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    gap: 8,
                     color: aboutActive ? C.purple : C.navy,
                     fontSize: 16,
                     fontWeight: aboutActive ? 700 : 500,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    fontFamily: "inherit",
+                    cursor: "pointer",
+                    textAlign: "left",
                   }}
                 >
                   {l}
-                </div>
-                {ABOUT_LINKS.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
+                  <span
+                    aria-hidden
                     style={{
-                      color: page === item.page ? C.purple : C.navy,
-                      textDecoration: "none",
-                      fontSize: 15,
-                      fontWeight: page === item.page ? 700 : 500,
-                      paddingLeft: 12,
+                      fontSize: 12,
+                      opacity: 0.75,
+                      transform: aboutOpen ? "rotate(180deg)" : "none",
+                      transition: "transform 0.2s ease",
+                      lineHeight: 1,
                     }}
                   >
-                    {item.l}
-                  </Link>
-                ))}
+                    ▾
+                  </span>
+                </button>
+                {aboutOpen &&
+                  ABOUT_LINKS.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      style={{
+                        color: page === item.page ? C.purple : C.navy,
+                        textDecoration: "none",
+                        fontSize: 15,
+                        fontWeight: page === item.page ? 700 : 500,
+                        paddingLeft: 12,
+                      }}
+                    >
+                      {item.l}
+                    </Link>
+                  ))}
               </div>
             ) : (
               <Link
