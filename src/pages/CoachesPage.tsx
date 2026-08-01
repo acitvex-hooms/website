@@ -57,14 +57,14 @@ const steps = [
 export function CoachesPage() {
   return (
     <>
-      <Sec className="coaches-hero" style={{ paddingTop: 72 }}>
+      <Sec className="coaches-hero" style={{ paddingTop: 56 }}>
         <div className="coaches-hero-grid">
           <Reveal>
             <Pill>Coach partners</Pill>
             <h1
               className="page-title"
               style={{
-                fontSize: "clamp(32px, 6vw, 52px)",
+                fontSize: "clamp(30px, 8vw, 52px)",
                 fontWeight: 800,
                 color: C.navy,
                 letterSpacing: -1.5,
@@ -77,7 +77,7 @@ export function CoachesPage() {
             </h1>
             <p
               style={{
-                fontSize: 17,
+                fontSize: 16,
                 color: C.textMid,
                 lineHeight: 1.7,
                 maxWidth: 520,
@@ -116,7 +116,8 @@ export function CoachesPage() {
               alt="Training with activeX"
               style={{
                 width: "100%",
-                height: "100%",
+                height: "auto",
+                aspectRatio: "1 / 1",
                 objectFit: "cover",
                 display: "block",
                 borderRadius: 28,
@@ -182,6 +183,7 @@ export function CoachesPage() {
           {features.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05}>
               <div
+                className="coaches-feature-card"
                 style={{
                   background: C.lightGray,
                   borderRadius: 16,
@@ -283,6 +285,7 @@ export function CoachesPage() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
               <div
+                className="pricing-card"
                 style={{
                   width: 360,
                   maxWidth: "100%",
@@ -505,7 +508,7 @@ export function CoachesPage() {
           </h2>
           <p
             style={{
-              fontSize: 17,
+              fontSize: 16,
               color: "rgba(255,255,255,0.65)",
               maxWidth: 560,
               margin: "0 auto 16px",
@@ -518,7 +521,7 @@ export function CoachesPage() {
           </p>
           <p
             style={{
-              fontSize: 16,
+              fontSize: 15,
               color: "rgba(255,255,255,0.55)",
               maxWidth: 520,
               margin: "0 auto 28px",
