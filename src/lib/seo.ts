@@ -49,6 +49,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       "Personalised online coaching with Ana Coppola or Hooman Momtazi. Custom programming, movement analysis, weekly check-ins, and direct access. Apply for limited spots.",
   },
+  "/coaches": {
+    path: "/coaches",
+    title: "Coach Partner Pricing | activeX for Clients",
+    description:
+      "Your coach recommended activeX. Get partner pricing on full membership access: programs, tracking, and the IQ Framework for the days between sessions.",
+  },
   "/blog": {
     path: "/blog",
     title: "Blog | Training, Movement & Mindset | activeX",

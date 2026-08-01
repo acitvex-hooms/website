@@ -42,6 +42,7 @@ Only the public key is used in the browser. Do not add a private API key.
 | `/programs` | Programs |
 | `/pricing` | Pricing |
 | `/coaching` | Coaching |
+| `/coaches` | Coach partner pricing |
 | `/about` | About Ana |
 | `/about/hooman` | About Hooman |
 | `/contact` | Contact |

@@ -342,6 +342,7 @@ export function Footer() {
         ["Programs", "programs"],
         ["Pricing", "pricing"],
         ["Coaching", "coaching"],
+        ["Coaches", "coaches"],
         ["Blog", "blog"],
       ],
     },
