@@ -50,7 +50,7 @@ export function HoomsPage() {
             }}
           >
             Competitive Bodybuilder with over 20 years of training experience,
-            IFBB Pro league competitor in the Classic Physique division.
+            IFBB Pro league competitor in the Classic Physique division. Specializing in advanced hypertrophy & fast fat loss for males.
           </p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {[
