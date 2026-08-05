@@ -224,6 +224,7 @@ export function WelcomePage() {
         <Reveal>
           <Pill>Welcome</Pill>
           <h1
+            className="page-title"
             style={{
               fontSize: "clamp(28px, 4.5vw, 44px)",
               fontWeight: 800,
@@ -251,9 +252,10 @@ export function WelcomePage() {
       </Sec>
 
       {product === "membership" && (
-        <Sec bg={C.offWhite} style={{ paddingTop: 40 }}>
+        <Sec bg={C.offWhite} className="sec-pt-40">
           <Reveal>
             <h2
+              className="section-title"
               style={{
                 fontSize: 28,
                 fontWeight: 800,
@@ -283,7 +285,7 @@ export function WelcomePage() {
       )}
 
       {(isCustom || isCoaching) && (
-        <Sec bg={C.offWhite} style={{ paddingTop: 24 }}>
+        <Sec bg={C.offWhite} className="sec-pt-24">
           <Reveal>
             <AppDownloadBlock
               title="1. Download the app & create your account"
@@ -294,7 +296,7 @@ export function WelcomePage() {
       )}
 
       {isVideo && (
-        <Sec bg={C.offWhite} style={{ paddingTop: 24 }}>
+        <Sec bg={C.offWhite} className="sec-pt-24">
           <Reveal>
             <AppDownloadBlock
               optional
@@ -306,11 +308,12 @@ export function WelcomePage() {
       )}
 
       {formSrc && (
-        <Sec style={{ paddingTop: 24 }}>
+        <Sec className="sec-pt-24">
           <Reveal>
             <div style={{ textAlign: "center", marginBottom: 28 }}>
               <Pill>{isVideo ? "Prepare for your consult" : "Intake"}</Pill>
               <h2
+                className="section-title"
                 style={{
                   fontSize: 28,
                   fontWeight: 800,

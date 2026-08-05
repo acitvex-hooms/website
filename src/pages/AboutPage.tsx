@@ -5,19 +5,19 @@ const television = [
   {
     title: "Australian Ninja Warrior",
     meta: "Season 5 | Channel 9",
-    image: "/images/media/ninja-warrior.png",
+    image: "/images/media/ninja-warrior.webp",
     href: "https://www.imdb.com/title/tt7090918/",
   },
   {
     title: "Gladiators Australia",
     meta: "Season 1, Premiere | Channel 10 | 10PLAY",
-    image: "/images/media/gladiators.png",
+    image: "/images/media/gladiators.webp",
     href: "https://www.imdb.com/title/tt30816886/",
   },
   {
     title: "The Morning Show",
     meta: "Sunrise on 7 | Channel 7 | 7NEWS",
-    image: "/images/media/morning-show.png",
+    image: "/images/media/morning-show.webp",
     href: "https://7news.com.au/the-morning-show",
   },
 ];
@@ -25,17 +25,17 @@ const television = [
 const printPress = [
   {
     title: "Women's Fitness",
-    image: "/images/media/womens-fitness.png",
+    image: "/images/media/womens-fitness.webp",
     href: "https://womensfitnessmag.com.au/wellness-journeys-koh-samui/",
   },
   {
     title: "Daily Mail",
-    image: "/images/media/daily-mail.png",
+    image: "/images/media/daily-mail.webp",
     href: "https://www.dailymail.com/auhome/index.html",
   },
   {
     title: "Men's Health",
-    image: "/images/media/mens-health.png",
+    image: "/images/media/mens-health.webp",
     href: "https://menshealth.com.au/",
   },
 ];
@@ -69,7 +69,7 @@ export function AboutPage() {
           imgRadius={28}
           img={
             <img
-              src="/images/ana-hero.png"
+              src="/images/ana-hero.webp"
               alt="Ana Coppola"
               style={{
                 width: "100%",
@@ -97,7 +97,7 @@ export function AboutPage() {
 
       <Sec bg={C.offWhite} className="media-section">
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div className="media-header" style={{ textAlign: "center", marginBottom: 48 }}>
             <Pill>Media</Pill>
             <h2
               className="section-title"
@@ -137,7 +137,7 @@ export function AboutPage() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h3 className="media-group-title" style={{ marginTop: 48 }}>
+          <h3 className="media-group-title media-group-spaced">
             Print & Digital Press
           </h3>
           <div className="media-grid">

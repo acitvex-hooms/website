@@ -64,6 +64,7 @@ export function IQPage() {
           <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
             <Pill>The Foundation</Pill>
             <h1
+              className="page-title"
               style={{
                 fontSize: "clamp(36px, 5vw, 52px)",
                 fontWeight: 800,
@@ -94,7 +95,7 @@ export function IQPage() {
       </Sec>
 
       {/* Hero visual */}
-      <Sec style={{ paddingTop: 0, paddingBottom: 40 }}>
+      <Sec className="sec-pt-0 sec-pb-40">
         <Reveal>
           <div
             style={{

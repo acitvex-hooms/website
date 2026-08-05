@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Testimonials } from "../components/Testimonials";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { Card, CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 
@@ -92,10 +93,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export function CoachingPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80, paddingBottom: 24, textAlign: "center" }}>
+      <Sec className="sec-pb-24" style={{ paddingTop: 80, textAlign: "center" }}>
         <Reveal>
           <Pill>Limited Spots</Pill>
           <h1
+            className="page-title"
             style={{
               fontSize: "clamp(32px, 5vw, 48px)",
               fontWeight: 800,
@@ -122,7 +124,7 @@ export function CoachingPage() {
         </Reveal>
       </Sec>
 
-      <Sec style={{ paddingTop: 24 }}>
+      <Sec className="sec-pt-24">
         <Split
           pill="Ana Coppola"
           title="Work directly with Ana."
@@ -467,7 +469,7 @@ export function CoachingPage() {
             {
               title: "Video Consult",
               price: "$499",
-              desc: "One-off video consultation directly with Ana or Hooms. Get personalised guidance on your training, movement, nutrition, or goals without committing to ongoing coaching.\n\nPerfect for: a second opinion on your current program, specific movement or mobility questions, nutrition guidance for a specific goal, or figuring out which activeX path is right for you.",
+              desc: "One-off video consultation directly with Ana or Hooms. Get personalised guidance on your training, movement, nutrition, or goals without committing to ongoing coaching.",
               cta: "Book a Consult",
               href: "https://buy.stripe.com/00w9AS46A1yZe83a734ow06",
               to: undefined as string | undefined,
@@ -479,12 +481,11 @@ export function CoachingPage() {
                 style={{
                   background: C.white,
                   borderRadius: 16,
-                  padding: "32px 28px",
+                  padding: "28px 22px",
                   border: `1px solid ${C.border}`,
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",
-                  minHeight: 420,
                   textAlign: "left",
                   boxSizing: "border-box",
                 }}
@@ -581,6 +582,8 @@ export function CoachingPage() {
           ))}
         </div>
       </Sec>
+
+      <Testimonials />
 
       <Sec bg={C.navy} style={{ textAlign: "center" }}>
         <Reveal>

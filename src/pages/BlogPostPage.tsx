@@ -13,7 +13,7 @@ export function BlogPostPage() {
 
   return (
     <>
-      <Sec style={{ paddingTop: 80, paddingBottom: 24 }}>
+      <Sec className="sec-pb-24" style={{ paddingTop: 80 }}>
         <Reveal>
           <Link
             to={PAGE_PATHS.blog}
@@ -40,6 +40,7 @@ export function BlogPostPage() {
             {post.author}
           </div>
           <h1
+            className="page-title"
             style={{
               fontSize: "clamp(32px, 5vw, 48px)",
               fontWeight: 800,
@@ -69,7 +70,7 @@ export function BlogPostPage() {
       </Sec>
 
       {post.cover && (
-        <Sec style={{ paddingTop: 0, paddingBottom: 24 }}>
+        <Sec className="sec-pt-0 sec-pb-24">
           <Reveal>
             <div
               className="blog-cover"
@@ -94,7 +95,7 @@ export function BlogPostPage() {
         </Sec>
       )}
 
-      <Sec style={{ paddingTop: 16 }}>
+      <Sec className="sec-pt-16">
         <Reveal>
           <article
             className="blog-prose"

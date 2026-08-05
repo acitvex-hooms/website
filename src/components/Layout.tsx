@@ -267,7 +267,7 @@ export function Nav() {
           className="nav-mobile-panel is-open"
           style={{
             position: "sticky",
-            top: 76,
+            top: 64,
             zIndex: 99,
             background: C.white,
             borderBottom: `1px solid ${C.border}`,

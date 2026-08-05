@@ -116,6 +116,7 @@ export function Founding50Page() {
             Your first 2 weeks are on us
           </p>
           <h1
+            className="page-title"
             style={{
               fontSize: "clamp(32px, 5vw, 52px)",
               fontWeight: 800,

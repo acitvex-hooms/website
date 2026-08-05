@@ -1,6 +1,7 @@
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { EmailSubscribe } from "../components/EmailSubscribe";
 import { Hero } from "../components/Hero";
+import { Testimonials } from "../components/Testimonials";
 import {
   CTA,
   Card,
@@ -669,6 +670,8 @@ export function HomePage() {
           <CTA to={PAGE_PATHS.about}>Ana&apos;s Full Story</CTA>
         </Split>
       </Sec>
+
+      <Testimonials />
 
       <Sec
         bg={C.navy}

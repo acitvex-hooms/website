@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Testimonials } from "../components/Testimonials";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
@@ -527,6 +528,8 @@ export function PricingPage() {
           ))}
         </div>
       </Sec>
+
+      <Testimonials />
 
       <Sec>
         <Reveal>
