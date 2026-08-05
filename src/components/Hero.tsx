@@ -29,7 +29,7 @@ export function Hero() {
       >
         <img
           className="hero-bg-img"
-          src="/images/hero-banner.png"
+          src="/images/hero-banner.webp"
           alt=""
           style={{
             position: "absolute",

@@ -94,7 +94,7 @@ export function CoachesPage() {
           <Reveal delay={0.1}>
             <img
               className="coaches-hero-img"
-              src="/images/coaches-app.png"
+              src="/images/coaches-app.webp"
               alt="activeX app on iPad"
             />
           </Reveal>

@@ -2,7 +2,7 @@ import { getPostBySlug } from "./blog";
 
 export const SITE_URL = "https://activex.fit";
 export const SITE_NAME = "activeX";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/hero-banner.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/hero-banner.jpg`;
 
 export type PageSeo = {
   title: string;
