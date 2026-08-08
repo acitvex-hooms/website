@@ -3,7 +3,7 @@ title: "Progressive Overload for Muscle Growth"
 date: 2026-08-08
 excerpt: "Progressive overload is not just adding weight. Seven variables you can progress, the rule that keeps it honest, and where most lifters stall."
 author: Hooman Momtazi
-cover: /images/progressive-overload.HEIC
+cover: /images/progressive-overload.png
 ---
 Most men who stop growing did not stop training hard. They stopped training differently.
 
