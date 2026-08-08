@@ -77,6 +77,24 @@ VITE_KLAVIYO_LIST_ID=your_list_id
 
 Only the public key is used in the browser. Do not add a private API key.
 
+## Google Tag Manager / Ads / Analytics
+
+The site loads **one** Google Tag Manager container via `VITE_GTM_ID`. Put GA4 and Google Ads tags inside that GTM container (same pattern as Shopify’s GTM app).
+
+1. In [Google Tag Manager](https://tagmanager.google.com), open your container and copy the ID (`GTM-XXXXXXX`).
+2. Add to `.env` and Railway:
+
+```bash
+VITE_GTM_ID=GTM-XXXXXXX
+```
+
+3. Redeploy (Vite bakes env into the build).
+4. In GTM, add/update:
+   - **GA4 Configuration** tag → your Measurement ID (`G-XXXXXXXX`)
+   - Trigger: **Custom Event** = `page_view` (this site pushes that on every React route change) *or* History Change
+   - **Google Ads** Conversion Linker + remarketing / conversion tags as needed
+5. Publish the GTM container, then verify with [Tag Assistant](https://tagassistant.google.com) on `https://activex.fit`.
+
 ## Pages
 
 | Path | Page |
