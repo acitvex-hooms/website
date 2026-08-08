@@ -172,6 +172,8 @@ type SplitProps = {
   imgSide?: "left" | "right";
   pill?: string;
   title: string;
+  /** Use h1 for page heroes (About / Hooms); default h2 */
+  titleAs?: "h1" | "h2";
   text?: string;
   cta?: string;
   ctaTo?: string;
@@ -186,6 +188,7 @@ export function Split({
   imgSide = "left",
   pill,
   title,
+  titleAs = "h2",
   text,
   cta,
   ctaTo,
@@ -194,6 +197,7 @@ export function Split({
   imgHeight = 520,
   imgRadius = 20,
 }: SplitProps) {
+  const TitleTag = titleAs;
   const imgEl = (
     <div className="split-img" style={{ flex: 1.15, minWidth: 300 }}>
       <div
@@ -228,8 +232,8 @@ export function Split({
   const txtEl = (
     <div className="split-txt" style={{ flex: 1, minWidth: 280 }}>
       {pill && <Pill>{pill}</Pill>}
-      <h2
-        className="split-title"
+      <TitleTag
+        className={`split-title${titleAs === "h1" ? " page-title" : ""}`}
         style={{
           fontSize: 38,
           fontWeight: 800,
@@ -241,7 +245,7 @@ export function Split({
         }}
       >
         {title}
-      </h2>
+      </TitleTag>
       {text && (
         <p
           style={{

@@ -449,7 +449,7 @@ export function HomePage() {
               name: "Annual",
               price: "$229",
               per: "year",
-              sub: "Less than $19/month",
+              sub: "$19/month billed annually",
               badge: "Save 24%",
               hi: true,
               href: "https://buy.stripe.com/28E5kCbz27Xn6FB0wt4ow01",

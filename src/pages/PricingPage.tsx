@@ -162,7 +162,7 @@ export function PricingPage() {
               name: "Annual",
               price: "$229",
               per: "year",
-              sub: "Less than $19/month",
+              sub: "$19/month billed annually",
               badge: "Best Value",
               hi: true,
               href: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",

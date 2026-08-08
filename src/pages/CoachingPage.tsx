@@ -585,7 +585,7 @@ export function CoachingPage() {
 
       <Testimonials />
 
-      <Sec bg={C.navy} style={{ textAlign: "center" }}>
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
             className="section-title"
@@ -608,7 +608,7 @@ export function CoachingPage() {
             }}
           >
             Full access to all programs, workouts, tracking tools, and the IQ
-            Framework for $19/month.
+            Framework — from $19/month billed annually, or $24.99/month.
           </p>
           <CTA to={PAGE_PATHS.pricing}>Join activeX</CTA>
         </Reveal>

@@ -248,6 +248,7 @@ export function PrivacyPage() {
       <Reveal>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <h1
+            className="page-title"
             style={{
               fontSize: "clamp(32px, 5vw, 44px)",
               fontWeight: 800,

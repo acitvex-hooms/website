@@ -480,7 +480,7 @@ export function Founding50Page() {
         </div>
       </Sec>
 
-      <Sec bg={C.navy} style={{ textAlign: "center" }}>
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
             style={{

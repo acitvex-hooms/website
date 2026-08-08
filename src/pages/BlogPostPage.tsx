@@ -105,9 +105,10 @@ export function BlogPostPage() {
         </Reveal>
       </Sec>
 
-      <Sec bg={C.offWhite} style={{ textAlign: "center" }}>
+      <Sec bg={C.offWhite} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: 28,
               fontWeight: 800,

@@ -63,6 +63,7 @@ export function AboutPage() {
           imgSide="right"
           pill="Co-founder & Head Coach"
           title="Ana Coppola"
+          titleAs="h1"
           text="Co-founder of activeX. Creator of the IQ Framework. Online Coach."
           imgFit="contain"
           imgHeight="auto"
@@ -228,7 +229,7 @@ export function AboutPage() {
           pill="Platform"
           title="What activeX is today"
           text="What started as personalized online coaching has grown into a full platform. activeX gives members access to programs, workouts, an exercise library, macro tracking, step tracking, and exercise tracking all built on the IQ Framework. It's not a random collection of workouts. Every piece of content is connected to the same system. For people who want a more hands-on approach, Ana still coaches a limited number of clients 1-on-1."
-          cta="Join activeX - $19/mo"
+          cta="Join activeX — from $19/mo annually"
           ctaTo={PAGE_PATHS.pricing}
           imgFit="contain"
           imgHeight="auto"
@@ -284,9 +285,10 @@ export function AboutPage() {
         </div>
       </Sec>
 
-      <Sec bg={C.navy} style={{ textAlign: "center", padding: "80px 24px" }}>
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
@@ -299,15 +301,16 @@ export function AboutPage() {
           </h2>
           <p
             style={{
-              fontSize: 17,
+              fontSize: 16,
               color: "rgba(255,255,255,0.65)",
               maxWidth: 520,
               margin: "0 auto 28px",
               lineHeight: 1.7,
             }}
           >
-            Join activeX for $19/month. Full access to every program, tool, and
-            resource. Or apply for 1-on-1 coaching with Ana.
+            Join activeX from $19/month billed annually, or $24.99/month.
+            Full access to every program, tool, and resource. Or apply for
+            1-on-1 coaching with Ana.
           </p>
           <div
             style={{

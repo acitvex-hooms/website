@@ -145,7 +145,7 @@ export function Hero() {
               marginBottom: 32,
             }}
           >
-            <CTA to={PAGE_PATHS.pricing}>Start Training - $19/mo</CTA>
+            <CTA to={PAGE_PATHS.pricing}>Start Training — from $19/mo annually</CTA>
             <CTA
               variant="secondary"
               to={PAGE_PATHS.iq}

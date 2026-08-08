@@ -49,8 +49,11 @@ img {
   border: 0;
 }
 
-.email-subscribe {
-  padding: 56px 20px !important;
+.sec.email-subscribe {
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
 .email-subscribe .section-title {
@@ -68,8 +71,11 @@ img {
 }
 
 @media (min-width: 601px) {
-  .email-subscribe {
-    padding: 72px 24px !important;
+  .sec.email-subscribe {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 
   .email-subscribe-form {
@@ -316,6 +322,19 @@ textarea:focus {
   box-sizing: border-box;
 }
 
+@media (min-width: 901px) {
+  .pricing-card {
+    padding: 40px 32px !important;
+  }
+
+  .sec.email-subscribe {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
 .pricing-price {
   font-size: clamp(36px, 10vw, 48px) !important;
 }
@@ -339,7 +358,8 @@ textarea:focus {
   top: 64px !important;
   padding: 12px 20px 20px !important;
   gap: 12px !important;
-  max-height: calc(100dvh - 64px);
+  /* nav (64) + promo banner (~40) when menu opens near top */
+  max-height: calc(100dvh - 64px - 40px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -510,8 +530,9 @@ textarea:focus {
 }
 
 .tally-embed-inline {
-  min-height: min(65dvh, 560px) !important;
-  height: min(65dvh, 560px) !important;
+  min-height: min(85dvh, 720px) !important;
+  height: min(85dvh, 720px) !important;
+  overflow: auto !important;
 }
 
 .iq-cta {
@@ -635,7 +656,10 @@ body.nav-open {
     display: block !important;
   }
 
-  .cta-btn {
+  /* Don't crush compact nav/CTA variants */
+  .sec .cta-btn,
+  .hero .cta-btn,
+  .iq-cta .cta-btn {
     padding: 13px 22px !important;
     font-size: 14px !important;
   }

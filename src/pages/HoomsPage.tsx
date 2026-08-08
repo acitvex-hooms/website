@@ -24,6 +24,7 @@ export function HoomsPage() {
           imgSide="right"
           pill="Co-founder"
           title="Hooman Momtazi"
+          titleAs="h1"
           text="Co-founder of activeX. Competitive bodybuilder. 20+ years training experience."
           imgFit="contain"
           imgHeight="auto"
@@ -215,7 +216,7 @@ export function HoomsPage() {
               same three pillars, Mobility, Movement, Mindset, so progress
               compounds instead of resetting every time you open the app.
             </p>
-            <CTA to={PAGE_PATHS.pricing}>Join activeX - $19/month</CTA>
+            <CTA to={PAGE_PATHS.pricing}>Join activeX — from $19/mo annually</CTA>
           </div>
         </Reveal>
       </Sec>
@@ -256,9 +257,10 @@ export function HoomsPage() {
         </div>
       </Sec>
 
-      <Sec bg={C.navy} style={{ textAlign: "center", padding: "80px 24px" }}>
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
@@ -271,15 +273,16 @@ export function HoomsPage() {
           </h2>
           <p
             style={{
-              fontSize: 17,
+              fontSize: 16,
               color: "rgba(255,255,255,0.65)",
               maxWidth: 520,
               margin: "0 auto 28px",
               lineHeight: 1.7,
             }}
           >
-            Join activeX for $19/month. Full access to every program, tool, and
-            resource. Or apply for 1-on-1 coaching with Hooms.
+            Join activeX from $19/month billed annually, or $24.99/month.
+            Full access to every program, tool, and resource. Or apply for
+            1-on-1 coaching with Hooms.
           </p>
           <div
             style={{

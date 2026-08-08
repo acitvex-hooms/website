@@ -5,7 +5,7 @@ import { CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 const FAQ = [
   {
     q: "What's the difference between buying a program & the membership?",
-    a: "Buying a program gives you lifetime access to that single program. The membership gives you access to every program, plus the full suite of tracking tools, exercise library, and journals for $19/month. If you plan to train with activeX long-term, the membership is significantly better value.",
+    a: "Buying a program gives you lifetime access to that single program. The membership gives you access to every program, plus the full suite of tracking tools, exercise library, and journals — $24.99/month, or from $19/month when billed annually ($229/year). If you plan to train with activeX long-term, the membership is significantly better value.",
   },
   {
     q: "Where do I access the programs?",
@@ -229,6 +229,7 @@ export function ProgramsPage() {
       <Sec>
         <Reveal>
           <h2
+            className="section-title"
             style={{
               fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
@@ -351,7 +352,8 @@ export function ProgramsPage() {
               marginBottom: 24,
             }}
           >
-            $24.99/month or $229/year (save 24%). No locked content.
+            $24.99/month, or $229/year (from $19/month billed annually). No
+            locked content.
           </p>
           <CTA to={PAGE_PATHS.pricing}>Join activeX</CTA>
         </Reveal>
