@@ -524,22 +524,31 @@ textarea:focus {
 }
 
 .shop-hero-sec.sec {
-  padding-bottom: 40px !important;
+  padding-bottom: 32px !important;
 }
 
 .shop-products-sec.sec {
-  padding-top: 40px !important;
+  padding-top: 32px !important;
 }
 
 .shop-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
   align-items: stretch;
 }
 
+/* Lead with best-value offer on small screens */
+.shop-card-wrap {
+  height: 100%;
+}
+
+.shop-card-wrap.is-featured {
+  order: -1;
+}
+
 .shop-card-media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   background: #f3f4f6;
   overflow: hidden;
 }
@@ -549,6 +558,25 @@ textarea:focus {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.shop-card-body {
+  padding: 22px 20px 24px !important;
+  gap: 10px !important;
+}
+
+.shop-card-title {
+  font-size: clamp(20px, 5.5vw, 24px) !important;
+  letter-spacing: -0.6px !important;
+}
+
+.shop-card-price {
+  font-size: clamp(20px, 5vw, 22px) !important;
+}
+
+.shop-hero-copy {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
 }
 
 .coaches-hero-grid {
@@ -754,6 +782,36 @@ body.nav-open {
   .coaches-hero-img {
     max-width: 480px;
   }
+
+  .shop-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .shop-card-wrap.is-featured {
+    order: 0;
+    grid-column: 1 / -1;
+    max-width: 520px;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .shop-card-body {
+    padding: 28px 24px 32px !important;
+    gap: 12px !important;
+  }
+
+  .shop-hero-sec.sec {
+    padding-bottom: 40px !important;
+  }
+
+  .shop-products-sec.sec {
+    padding-top: 40px !important;
+  }
+
+  .shop-hero-copy {
+    font-size: 17px !important;
+  }
 }
 
 @media (min-width: 901px) {
@@ -766,12 +824,24 @@ body.nav-open {
     gap: 28px;
   }
 
+  .shop-card-wrap.is-featured {
+    order: 0;
+    grid-column: auto;
+    max-width: none;
+    justify-self: stretch;
+  }
+
   .shop-hero-sec.sec {
     padding-bottom: 48px !important;
   }
 
   .shop-products-sec.sec {
     padding-top: 48px !important;
+  }
+
+  .shop-hero-copy {
+    font-size: 18px !important;
+    line-height: 1.8 !important;
   }
 
   .coaches-hero-grid {

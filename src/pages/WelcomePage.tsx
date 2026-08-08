@@ -267,11 +267,12 @@ export function WelcomePage() {
           </h1>
           <p
             style={{
-              fontSize: 17,
+              fontSize: "clamp(15px, 3.8vw, 17px)",
               color: C.textMid,
               maxWidth: 560,
               margin: "0 auto",
               lineHeight: 1.7,
+              padding: "0 4px",
             }}
           >
             {sub}

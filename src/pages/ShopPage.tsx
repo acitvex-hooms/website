@@ -87,7 +87,11 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
   const viaStripe = Boolean(product.stripeUrl);
 
   return (
-    <Reveal delay={delay}>
+    <Reveal
+      delay={delay}
+      className={`shop-card-wrap${product.featured ? " is-featured" : ""}`}
+      style={{ height: "100%" }}
+    >
       <article
         className={`shop-card${product.featured ? " is-featured" : ""}`}
         style={{
@@ -106,9 +110,17 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
         }}
       >
         <div className="shop-card-media">
-          <img src={product.image} alt={product.name} loading="lazy" />
+          <img
+            src={product.image}
+            alt={product.name}
+            width={900}
+            height={900}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div
+          className="shop-card-body"
           style={{
             padding: "28px 24px 32px",
             display: "flex",
@@ -150,6 +162,7 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
                 </span>
               )}
               <strong
+                className="shop-card-price"
                 style={{
                   fontSize: 22,
                   fontWeight: 800,
@@ -162,6 +175,7 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
             </div>
           </div>
           <h2
+            className="shop-card-title"
             style={{
               fontSize: 24,
               fontWeight: 800,
@@ -245,17 +259,19 @@ export function ShopPage() {
             <h1
               className="page-title"
               style={{
-                fontSize: 48,
+                fontSize: "clamp(30px, 8vw, 48px)",
                 fontWeight: 800,
                 color: C.navy,
                 letterSpacing: -2,
                 marginTop: 16,
                 marginBottom: 16,
+                lineHeight: 1.1,
               }}
             >
               BBE tools for serious glute training
             </h1>
             <p
+              className="shop-hero-copy"
               style={{
                 fontSize: 18,
                 color: C.textMid,
@@ -283,6 +299,7 @@ export function ShopPage() {
           <div style={{ maxWidth: 720, margin: "0 auto" }}>
             <Pill>FAQ</Pill>
             <h2
+              className="section-title"
               style={{
                 fontSize: 36,
                 fontWeight: 800,
