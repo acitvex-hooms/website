@@ -1,5 +1,5 @@
 ---
-title: "Progressive Overload for Muscle Growth: Why Adding Weight Is Not Enough"
+title: "Progressive Overload for Muscle Growth"
 date: 2026-07-30
 excerpt: "Progressive overload is not just adding weight. Seven variables you can progress, the rule that keeps it honest, and where most lifters stall."
 author: Hooman Momtazi
