@@ -1,6 +1,6 @@
 ---
 title: "Progressive Overload for Muscle Growth"
-date: 2026-07-30
+date: 2026-08-08
 excerpt: "Progressive overload is not just adding weight. Seven variables you can progress, the rule that keeps it honest, and where most lifters stall."
 author: Hooman Momtazi
 cover: /images/progressive-overload.HEIC
