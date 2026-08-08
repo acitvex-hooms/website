@@ -23,6 +23,7 @@ export type PageKey =
   | "pricing"
   | "coaching"
   | "coaches"
+  | "shop"
   | "blog"
   | "apply"
   | "videoConsult"
@@ -41,6 +42,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   pricing: "/pricing",
   coaching: "/coaching",
   coaches: "/coaches",
+  shop: "/shop",
   blog: "/blog",
   apply: "/apply",
   videoConsult: "/video-consult",

@@ -15,6 +15,10 @@ dist-ssr
 .env.*
 !.env.example
 
+# Paid digital goods — never commit the real PDF
+private/*.pdf
+!private/README.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

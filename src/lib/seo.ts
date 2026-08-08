@@ -55,6 +55,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       "Your coach recommended activeX. Get partner pricing on full membership access: programs, tracking, and the IQ Framework for the days between sessions.",
   },
+  "/shop": {
+    path: "/shop",
+    title: "Shop | BBE eBook & Ankle Strap | activeX",
+    description:
+      "Shop Ana’s BBE eBook and Brazilian-made ankle strap. Buy separately or as a bundle for glute training at home or in the gym.",
+  },
   "/blog": {
     path: "/blog",
     title: "Blog | Training, Movement & Mindset | activeX",

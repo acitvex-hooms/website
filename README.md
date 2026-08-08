@@ -6,15 +6,59 @@ Marketing site for [activeX](https://activex.fit): structured training, the IQ F
 
 ```bash
 npm install
-npm run dev
+cp .env.example .env   # fill keys as needed
+npm run dev            # Vite (5173) + API (8787), /api proxied
 ```
 
-## Build
+API only: `npm run dev:api`  
+Site only: `npm run dev:web`
+
+## Build & production
 
 ```bash
 npm run build
-npm run preview
+npm start              # serves dist/ + Stripe webhook + eBook download API
 ```
+
+Railway should use **Build:** `npm run build` and **Start:** `npm start` (not a static-only server).
+
+## Shop fulfillment (Stripe → email + download)
+
+After a shop Stripe Payment Link succeeds, the server:
+
+1. Receives `checkout.session.completed` at `POST /api/stripe/webhook`
+2. Emails the customer (Google Workspace SMTP) with a **signed 7-day eBook download link** when relevant
+3. Emails `SHIP_NOTIFY_EMAIL` with the shipping address for ankle strap / bundle
+
+### One-time setup
+
+1. **Google Workspace SMTP** — enable 2-Step Verification for the sending user, create an **App Password**, then set:
+   - `SMTP_USER` (e.g. `info@activex.fit`)
+   - `SMTP_PASS` (16-character app password)
+   - `EMAIL_FROM` (e.g. `activeX Shop <info@activex.fit>`)
+   - Defaults: `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=465`
+2. **eBook file** — add `private/bbe-ebook.pdf` to the deploy, *or* set `EBOOK_FILE_URL` to a private file URL
+3. **Stripe webhook** — Developers → Webhooks → Add endpoint  
+   - URL: `https://activex.fit/api/stripe/webhook`  
+   - Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`  
+   - Copy signing secret → `STRIPE_WEBHOOK_SECRET`
+4. **Stripe secret key** → `STRIPE_SECRET_KEY`
+5. **Download signing** → set `DOWNLOAD_SECRET` to a long random string
+6. **Payment Links** — success URLs:  
+   - eBook → `https://activex.fit/welcome?product=bbe-ebook`  
+   - Ankle → `https://activex.fit/welcome?product=bbe-ankle`  
+   - Bundle → `https://activex.fit/welcome?product=bbe-bundle`  
+   Enable **shipping address** on ankle + bundle
+7. Optional: set `STRIPE_PRICE_EBOOK` / `ANKLE` / `BUNDLE` to Price IDs for reliable matching
+
+### Local webhook testing
+
+```bash
+stripe listen --forward-to localhost:8787/api/stripe/webhook
+npm run dev
+```
+
+Use the `whsec_...` from `stripe listen` as `STRIPE_WEBHOOK_SECRET` locally.
 
 ## Email signup (Klaviyo)
 
@@ -43,6 +87,7 @@ Only the public key is used in the browser. Do not add a private API key.
 | `/pricing` | Pricing |
 | `/coaching` | Coaching |
 | `/coaches` | Coach partner pricing |
+| `/shop` | BBE eBook & ankle strap |
 | `/about` | About Ana |
-| `/about/hooman` | About Hooman |
+| `/about/hooms` | About Hooms |
 | `/contact` | Contact |

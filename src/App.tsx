@@ -21,6 +21,7 @@ import { HomePage } from "./pages/HomePage";
 import { IQPage } from "./pages/IQPage";
 import { PricingPage } from "./pages/PricingPage";
 import { ProgramsPage } from "./pages/ProgramsPage";
+import { ShopPage } from "./pages/ShopPage";
 import { VideoConsultPage } from "./pages/VideoConsultPage";
 import { WelcomePage } from "./pages/WelcomePage";
 import { PrivacyPage } from "./pages/PrivacyPage";
@@ -56,6 +57,7 @@ function SiteShell() {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/coaching" element={<CoachingPage />} />
         <Route path="/coaches" element={<CoachesPage />} />
+        <Route path="/shop" element={<ShopPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/apply" element={<ApplyPage />} />

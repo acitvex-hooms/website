@@ -11,7 +11,10 @@ type WelcomeProduct =
   | "custom-program"
   | "custom-diet"
   | "video-consult"
-  | "coaching";
+  | "coaching"
+  | "bbe-ebook"
+  | "bbe-ankle"
+  | "bbe-bundle";
 
 function resolveProduct(raw: string | null): WelcomeProduct {
   const v = (raw ?? "membership").toLowerCase().trim();
@@ -35,6 +38,15 @@ function resolveProduct(raw: string | null): WelcomeProduct {
   }
   if (v === "coaching" || v === "1-on-1" || v === "1on1") {
     return "coaching";
+  }
+  if (v === "bbe-ebook" || v === "ebook" || v === "bbe_ebook") {
+    return "bbe-ebook";
+  }
+  if (v === "bbe-ankle" || v === "ankle" || v === "bbe_ankle") {
+    return "bbe-ankle";
+  }
+  if (v === "bbe-bundle" || v === "bundle" || v === "bbe_bundle") {
+    return "bbe-bundle";
   }
   return "membership";
 }
@@ -183,6 +195,10 @@ export function WelcomePage() {
     product === "custom-program" || product === "custom-diet";
   const isVideo = product === "video-consult";
   const isCoaching = product === "coaching";
+  const isShop =
+    product === "bbe-ebook" ||
+    product === "bbe-ankle" ||
+    product === "bbe-bundle";
 
   const headline = isCustom
     ? product === "custom-program"
@@ -192,7 +208,13 @@ export function WelcomePage() {
       ? "You're booked for a video consult."
       : isCoaching
         ? "You're in. Coaching onboarding is next."
-        : "Congratulations. You're in.";
+        : isShop
+          ? product === "bbe-ankle"
+            ? "Thanks — your ankle strap order is in."
+            : product === "bbe-bundle"
+              ? "Thanks — your BBE bundle is confirmed."
+              : "Thanks — your BBE eBook is on the way."
+          : "Congratulations. You're in.";
 
   const sub = isCustom
     ? "Here's how to get set up. Download the app first, then complete the short intake so we can personalise your plan."
@@ -200,7 +222,13 @@ export function WelcomePage() {
       ? "Complete the short form below so we can prepare for your consult. Downloading the app is optional, but it's the best way to stay in the activeX ecosystem."
       : isCoaching
         ? "Create your activeX account while we prepare your onboarding. We'll be in touch within 24 hours to schedule your call."
-        : "Here's what to do next to start training with structure.";
+        : isShop
+          ? product === "bbe-ankle"
+            ? "We'll pack and ship your BBE Ankle Strap within 2 business days. Watch your inbox for tracking once it goes out."
+            : product === "bbe-bundle"
+              ? "We'll email your eBook shortly, and ship the ankle strap within 2 business days to the address from checkout."
+              : "Check the email you used at checkout — we'll send your BBE eBook download there. If it's not in inbox, look in spam."
+          : "Here's what to do next to start training with structure.";
 
   const formSrc =
     product === "custom-program"
@@ -279,6 +307,61 @@ export function WelcomePage() {
                 title="Download the app"
                 text="Get activeX on iOS and create your account with the email you paid with."
               />
+            </div>
+          </Reveal>
+        </Sec>
+      )}
+
+      {isShop && (
+        <Sec bg={C.offWhite} className="sec-pt-40">
+          <Reveal>
+            <h2
+              className="section-title"
+              style={{
+                fontSize: 28,
+                fontWeight: 800,
+                color: C.navy,
+                textAlign: "center",
+                marginBottom: 28,
+              }}
+            >
+              What happens next
+            </h2>
+            <StepList
+              steps={
+                product === "bbe-ebook"
+                  ? [
+                      "Watch for an email from activeX with your BBE eBook download.",
+                      "Save the file and start the 10-week program at your pace.",
+                      "Questions? Email info@activex.fit with your order email.",
+                    ]
+                  : product === "bbe-ankle"
+                    ? [
+                        "We process and ship ankle straps within 2 business days.",
+                        "You'll get a confirmation email with shipping details.",
+                        "Questions about your order? Email info@activex.fit.",
+                      ]
+                    : [
+                        "We'll email your BBE eBook to your checkout address.",
+                        "Your ankle strap ships within 2 business days.",
+                        "Questions? Email info@activex.fit with your order email.",
+                      ]
+              }
+            />
+            <div
+              style={{
+                marginTop: 36,
+                textAlign: "center",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 12,
+                justifyContent: "center",
+              }}
+            >
+              <CTA to={PAGE_PATHS.shop}>Back to shop</CTA>
+              <CTA to={PAGE_PATHS.home} variant="secondary">
+                Home
+              </CTA>
             </div>
           </Reveal>
         </Sec>

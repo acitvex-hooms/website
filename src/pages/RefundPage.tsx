@@ -13,12 +13,12 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
         <p>
           This Refund Policy applies to purchases made through activex.fit and
           related Stripe checkout links, including memberships, coaching, custom
-          programs, custom diet plans, and video consultations.
+          programs, custom diet plans, video consultations, and shop products
+          (BBE eBook, BBE Ankle Strap, and bundles).
         </p>
         <p>
-          Because most of our offerings are digital services, this policy is
-          designed for digital delivery rather than physical goods. For related
-          terms, see our{" "}
+          Digital products and physical goods have different rules below. For
+          related terms, see our{" "}
           <Link to={PAGE_PATHS.terms} style={linkStyle}>
             Terms of Service
           </Link>{" "}
@@ -79,6 +79,22 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
             refund at our discretion. Completed coaching sessions and time
             already delivered are non-refundable.
           </li>
+          <li>
+            <strong>BBE eBook (digital):</strong> Eligible within 30 days if you
+            have not downloaded or opened the file. Once delivered and accessed,
+            digital downloads are generally non-refundable.
+          </li>
+          <li>
+            <strong>BBE Ankle Strap (physical):</strong> Eligible within 30 days
+            if unused and in original condition. Return shipping is the buyer’s
+            responsibility unless the item arrived damaged or incorrect. Opened
+            or used straps may not qualify.
+          </li>
+          <li>
+            <strong>eBook + Ankle Strap bundle:</strong> Each component follows
+            its own rule above. Partial refunds may apply if only one part is
+            eligible.
+          </li>
         </ul>
       </>
     ),
@@ -96,6 +112,13 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
             hours of the scheduled time
           </li>
           <li>Sale, promotional, or gift purchases where stated as final</li>
+          <li>
+            Digital eBooks that have already been downloaded or opened
+          </li>
+          <li>
+            Physical ankle straps that are used, damaged by the buyer, or
+            returned outside the 30-day window
+          </li>
         </ul>
         <p>
           If you have questions about a specific purchase, contact{" "}
