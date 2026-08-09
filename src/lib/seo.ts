@@ -47,7 +47,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: "/coaching",
     title: "1-on-1 Online Coaching with Ana or Hooms | activeX",
     description:
-      "Personalised online coaching with Ana Coppola or Hooman Momtazi. Custom programming, movement analysis, weekly check-ins, and direct access. Apply for limited spots.",
+      "Personalised online coaching with Ana Coppola or Hooms. Custom programming, movement analysis, weekly check-ins, and direct access. Apply for limited spots.",
   },
   "/coaches": {
     path: "/coaches",
@@ -75,9 +75,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   "/about/hooms": {
     path: "/about/hooms",
-    title: "About Hooman Momtazi | Co-founder of activeX",
+    title: "About Hooms | Co-founder of activeX",
     description:
-      "Meet Hooman Momtazi (Hooms), co-founder of activeX. Competitive bodybuilder with 20+ years of training experience and hypertrophy specialist. Learn his story.",
+      "Meet Hooms, co-founder of activeX. Competitive bodybuilder with 20+ years of training experience and hypertrophy specialist. Learn his story.",
   },
   "/contact": {
     path: "/contact",

@@ -115,7 +115,7 @@ export function CoachingPage() {
       <Sec bg={C.offWhite}>
         <Split
           imgSide="right"
-          pill="Hooman Momtazi"
+          pill="Hooms"
           title="Work directly with Hooms."
           text="1-on-1 coaching focused on building muscle, losing fat, and training with structure. Custom programming, weekly check-ins, form reviews, and direct access. Hypertrophy coaching from a competitive bodybuilder with 20+ years of training experience."
           imgFit="contain"
@@ -123,7 +123,7 @@ export function CoachingPage() {
           imgRadius={28}
           img={
             <img
-              src="/images/hooms-portrait.png"
+              src="/images/hooms-portrait.webp"
               alt="1-on-1 coaching with Hooms"
               style={{
                 width: "100%",
@@ -177,7 +177,7 @@ export function CoachingPage() {
             <CTA to={PAGE_PATHS.apply}>
               Apply to work with Hooms
             </CTA>
-            <CTA to={PAGE_PATHS.hooman} variant="secondary">
+            <CTA to={PAGE_PATHS.hooms} variant="secondary">
               Learn more about Hooms
             </CTA>
           </div>

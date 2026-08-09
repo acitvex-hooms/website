@@ -103,7 +103,7 @@ export function CoachesPage() {
           imgSide="right"
           pill="What is activeX?"
           title="Built by coaches. Made for the days between sessions."
-          text="activeX is a training app built by Ana Coppola and Hooman Momtazi. Ana has coached since 2008, competed on Australian Ninja Warrior and Gladiators Australia, and created the IQ Framework. Hooman brings 20+ years of training experience as a competitive bodybuilder."
+          text="activeX is a training app built by Ana Coppola and Hooms. Ana has coached since 2008, competed on Australian Ninja Warrior and Gladiators Australia, and created the IQ Framework. Hooms brings 20+ years of training experience as a competitive bodybuilder."
           imgFit="cover"
           imgHeight="auto"
           imgRadius={28}

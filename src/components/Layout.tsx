@@ -17,7 +17,7 @@ const LINKS: { k: PageKey | "about-menu"; l: string }[] = [
 
 const ABOUT_LINKS = [
   { to: "/about", l: "About Ana", page: "about" as const },
-  { to: "/about/hooms", l: "About Hooms", page: "hooman" as const },
+  { to: "/about/hooms", l: "About Hooms", page: "hooms" as const },
 ];
 
 export function Nav() {
@@ -31,7 +31,7 @@ export function Nav() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const aboutDesktopRef = useRef<HTMLDivElement>(null);
   const aboutMobileRef = useRef<HTMLDivElement>(null);
-  const aboutActive = page === "about" || page === "hooman";
+  const aboutActive = page === "about" || page === "hooms";
   const isFoundingLanding = location.pathname === "/founding-50";
 
   useEffect(() => {
@@ -384,7 +384,7 @@ export function Footer() {
       t: "Company",
       links: [
         ["About Ana", "about"],
-        ["About Hooms", "hooman"],
+        ["About Hooms", "hooms"],
         ["Contact", "contact"],
       ],
     },

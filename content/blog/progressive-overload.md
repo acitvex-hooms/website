@@ -2,8 +2,8 @@
 title: "Progressive Overload for Muscle Growth"
 date: 2026-08-08
 excerpt: "Progressive overload is not just adding weight. Seven variables you can progress, the rule that keeps it honest, and where most lifters stall."
-author: Hooman Momtazi
-cover: /images/progressive-overload.png
+author: Hooms
+cover: /images/progressive-overload.webp
 ---
 Most men who stop growing did not stop training hard. They stopped training differently.
 
@@ -85,9 +85,9 @@ Tracking solves the memory problem. It does not solve the judgment problem.
 
 Knowing the seven variables is not the same as knowing which one your chest needs in week six, or whether the reason your incline press stalled is fatigue, execution, exercise selection, or something you are doing three days earlier in the week. That call requires someone who can see the movement, read the trend across weeks, and make the change before the plateau costs you a month.
 
-This is what 1-on-1 coaching with Hooman Momtazi is built for. 20+ years of training experience, his work has always been about the decision behind the set rather than the set itself. Weekly coaching covers custom programming, movement analysis, form reviews, weekly check-ins and ongoing accountability, with full activeX platform access included.
+This is what 1-on-1 coaching with Hooms is built for. 20+ years of training experience, his work has always been about the decision behind the set rather than the set itself. Weekly coaching covers custom programming, movement analysis, form reviews, weekly check-ins and ongoing accountability, with full activeX platform access included.
 
-Programming for hypertrophy and male-oriented training also draws directly on co-founder Hooman Momtazi's bodybuilding expertise, which informs exercise selection and progression standards inside the product.
+Programming for hypertrophy and male-oriented training also draws directly on co-founder Hooms' bodybuilding expertise, which informs exercise selection and progression standards inside the product.
 
 Coaching is application-only and spots are limited. Applications take about two minutes.
 

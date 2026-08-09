@@ -39,7 +39,7 @@ export type PageKey =
   | "videoConsult"
   | "welcome"
   | "about"
-  | "hooman"
+  | "hooms"
   | "contact"
   | "privacy"
   | "terms"
@@ -58,7 +58,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   videoConsult: "/video-consult",
   welcome: "/welcome",
   about: "/about",
-  hooman: "/about/hooms",
+  hooms: "/about/hooms",
   contact: "/contact",
   privacy: "/privacy",
   terms: "/terms",

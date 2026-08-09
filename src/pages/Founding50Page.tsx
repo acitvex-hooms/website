@@ -1,12 +1,12 @@
 import { FaqAccordion } from "../components/FaqAccordion";
-import { STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
+import { STRIPE_FOUNDING } from "../lib/membershipCtas";
 import { C } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
 const APP_STORE =
   "https://apps.apple.com/ae/app/activex-fitness/id6766033150";
-const STRIPE_ANNUAL = STRIPE_MEMBERSHIP.annual;
-const STRIPE_MONTHLY = STRIPE_MEMBERSHIP.monthly;
+const STRIPE_ANNUAL = STRIPE_FOUNDING.annual;
+const STRIPE_MONTHLY = STRIPE_FOUNDING.monthly;
 
 const FAQ = [
   {
@@ -357,9 +357,8 @@ export function Founding50Page() {
             >
               activeX was created by Ana Coppola, celebrity coach with 18+
               years of experience, Gladiators and Ninja Warrior Australia
-              competitor, and creator of the IQ Framework, along with Hooman
-              Momtazi, competitive bodybuilder with 20+ years of training
-              experience. We didn&apos;t build this because the internet needed
+              competitor, and creator of the IQ Framework, along with Hooms,
+              competitive bodybuilder with 20+ years of training experience. We didn&apos;t build this because the internet needed
               more exercises. We built it because people needed a better way to
               organise and apply them.
             </p>

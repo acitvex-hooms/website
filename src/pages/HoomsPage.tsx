@@ -24,7 +24,7 @@ export function HoomsPage() {
         <Split
           imgSide="right"
           pill="Co-founder"
-          title="Hooman Momtazi"
+          title="Hooms"
           titleAs="h1"
           text="Co-founder of activeX. Competitive bodybuilder. 20+ years training experience."
           imgFit="contain"
@@ -32,13 +32,13 @@ export function HoomsPage() {
           imgRadius={28}
           img={
             <img
-              src="/images/hooms-portrait.png"
-              alt="Hooman Momtazi"
+              src="/images/hooms-portrait.webp"
+              alt="Hooms"
+              className="img-portrait"
               style={{
                 width: "100%",
                 height: "auto",
                 display: "block",
-                borderRadius: 28,
               }}
             />
           }
@@ -90,7 +90,7 @@ export function HoomsPage() {
           img={
             <img
               src="/images/hooms-hero.jpg"
-              alt="Hooman training"
+              alt="Hooms training"
               style={{
                 width: "100%",
                 height: "auto",

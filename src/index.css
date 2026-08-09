@@ -586,60 +586,145 @@ textarea:focus {
 
 /* Hero — mobile first */
 .hero {
-  min-height: 0 !important;
-  padding: 88px 20px 48px !important;
-  align-items: flex-start !important;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+  padding: 80px 20px 40px;
+  align-items: flex-start;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .hero-bg-img {
-  height: 100% !important;
-  top: 0 !important;
-  object-position: 68% 42% !important;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  object-fit: cover;
+  object-position: 68% 42%;
 }
 
 .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background: linear-gradient(
     160deg,
-    rgba(26, 16, 64, 0.72) 0%,
-    rgba(39, 39, 137, 0.48) 45%,
-    rgba(120, 40, 255, 0.28) 100%
-  ) !important;
+    rgba(26, 16, 64, 0.78) 0%,
+    rgba(39, 39, 137, 0.52) 45%,
+    rgba(120, 40, 255, 0.3) 100%
+  );
 }
 
 .hero-orb {
-  display: none !important;
+  display: none;
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.orb-a.hero-orb {
+  top: 10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(120, 40, 255, 0.27), transparent 70%);
+  opacity: 0.45;
+}
+
+.orb-b.hero-orb {
+  bottom: 10%;
+  left: 5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(100, 191, 244, 0.2), transparent 70%);
+  filter: blur(60px);
+  opacity: 0.35;
 }
 
 .hero-inner {
-  gap: 36px !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
 }
 
 .hero-copy {
-  flex: 1 1 auto !important;
-  min-width: 0 !important;
+  flex: 1 1 auto;
+  min-width: 0;
   width: 100%;
 }
 
 .hero-copy h1 {
-  font-size: clamp(30px, 9vw, 44px) !important;
-  letter-spacing: -1.5px !important;
-  margin-top: 14px !important;
-  margin-bottom: 14px !important;
+  font-size: clamp(28px, 8.5vw, 40px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -1.4px;
+  margin: 12px 0;
+}
+
+.hero-accent {
+  background: linear-gradient(135deg, #7828ff, #64bff4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-copy > p {
-  font-size: 15px !important;
-  margin-bottom: 24px !important;
-  line-height: 1.65 !important;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 20px;
+  line-height: 1.6;
+  max-width: 28rem;
+}
+
+.hero-ctas {
+  margin-bottom: 18px;
+}
+
+.hero-store-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-store-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.hero-store-link img {
+  height: 36px;
+  width: auto;
+}
+
+.hero-trial {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .hero-phone {
-  flex: 0 0 auto !important;
-  min-width: 0 !important;
+  flex: 0 0 auto;
+  min-width: 0;
   width: 100%;
-  justify-content: center !important;
+  display: flex;
+  justify-content: center;
 }
 
 .auto-grid,
@@ -973,11 +1058,24 @@ body.nav-open {
   }
 
   .hero {
-    padding: 100px 24px 56px !important;
+    padding: 100px 24px 56px;
   }
 
   .hero-inner {
-    gap: 48px !important;
+    gap: 40px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(34px, 6vw, 48px);
+    letter-spacing: -1.8px;
+  }
+
+  .hero-copy > p {
+    font-size: 16px;
+  }
+
+  .hero-store-link img {
+    height: 40px;
   }
 
   .site-footer {
@@ -1293,15 +1391,15 @@ body.nav-open {
   }
 
   .hero {
-    min-height: 92vh !important;
-    padding: 120px 24px 80px !important;
-    align-items: center !important;
+    min-height: 88vh;
+    padding: 120px 24px 72px;
+    align-items: center;
   }
 
   .hero-bg-img {
-    height: 130% !important;
-    top: -10% !important;
-    object-position: center 28% !important;
+    height: 130%;
+    top: -10%;
+    object-position: center 28%;
   }
 
   .hero-overlay {
@@ -1310,41 +1408,44 @@ body.nav-open {
       rgba(26, 16, 64, 0.82) 0%,
       rgba(39, 39, 137, 0.55) 48%,
       rgba(120, 40, 255, 0.35) 100%
-    ) !important;
+    );
   }
 
   .hero-orb {
-    display: block !important;
+    display: block;
   }
 
   .hero-inner {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    gap: 80px !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 64px;
   }
 
   .hero-copy {
-    flex: 1.3 1 320px !important;
-    min-width: 320px !important;
+    flex: 1.2 1 0;
+    min-width: 0;
+    max-width: 560px;
   }
 
   .hero-copy h1 {
-    font-size: clamp(36px, 6vw, 60px) !important;
-    letter-spacing: -2.5px !important;
-    margin-top: 20px !important;
-    margin-bottom: 20px !important;
+    font-size: clamp(40px, 4.5vw, 56px);
+    letter-spacing: -2.2px;
+    margin: 16px 0 18px;
   }
 
   .hero-copy > p {
-    font-size: 18px !important;
-    margin-bottom: 32px !important;
-    line-height: 1.7 !important;
+    font-size: 17px;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .hero-ctas {
+    margin-bottom: 24px;
   }
 
   .hero-phone {
-    flex: 0.7 1 280px !important;
-    min-width: 280px !important;
+    flex: 0 0 auto;
     width: auto;
   }
 
@@ -1427,22 +1528,31 @@ body.nav-open {
   }
 
   .hero {
-    padding: 80px 16px 40px !important;
+    padding: 76px 16px 36px;
   }
 
   .hero-inner {
-    gap: 28px !important;
+    gap: 24px;
   }
 
   .hero-phone .phone-frame {
-    width: 168px !important;
-    height: 336px !important;
+    width: 160px !important;
+    height: 320px !important;
     border-radius: 28px !important;
     border-width: 7px !important;
   }
 
   .hero-copy h1 {
-    font-size: clamp(28px, 8.5vw, 36px) !important;
+    font-size: clamp(26px, 8vw, 34px);
+  }
+
+  .hero-copy > p {
+    font-size: 14.5px;
+    margin-bottom: 18px;
+  }
+
+  .hero-ctas {
+    margin-bottom: 14px;
   }
 
   .site-footer {
