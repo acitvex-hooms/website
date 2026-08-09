@@ -1,4 +1,5 @@
-import { C, PAGE_PATHS } from "../lib/tokens";
+import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
+import { C, IMG, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Card, Pill, Reveal, Sec, Split } from "../components/ui";
 
 const television = [
@@ -58,7 +59,7 @@ const beliefs = [
 export function AboutPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80 }}>
+      <Sec className="sec-page-hero">
         <Split
           imgSide="right"
           pill="Co-founder & Head Coach"
@@ -67,7 +68,7 @@ export function AboutPage() {
           text="Co-founder of activeX. Creator of the IQ Framework. Online Coach."
           imgFit="contain"
           imgHeight="auto"
-          imgRadius={28}
+          imgRadius={IMG.portraitRadius}
           img={
             <img
               src="/images/ana-hero.webp"
@@ -167,7 +168,7 @@ export function AboutPage() {
           text="A week after landing in Australia in 2008, while still in a hostel, I started working at, then, the world's largest privately owned health club: Fitness First (initially at the Randwick and later also at the Bondi club, both located on the Eastern suburbs of Sydney) - where I worked for 12 years and became a senior personal trainer, a boxing group fitness instructor, a writer and an ambassador for both Australia and Malaysia groups."
           imgFit="contain"
           imgHeight="auto"
-          imgRadius={28}
+          imgRadius={IMG.portraitRadius}
           img={
             <img
               src="/images/ana-started.jpg"
@@ -208,7 +209,7 @@ export function AboutPage() {
           ctaTo={PAGE_PATHS.iq}
           imgFit="contain"
           imgHeight="auto"
-          imgRadius={28}
+          imgRadius={IMG.portraitRadius}
           img={
             <img
               src="/images/ana-iq.jpg"
@@ -229,11 +230,11 @@ export function AboutPage() {
           pill="Platform"
           title="What activeX is today"
           text="What started as personalized online coaching has grown into a full platform. activeX gives members access to programs, workouts, an exercise library, macro tracking, step tracking, and exercise tracking all built on the IQ Framework. It's not a random collection of workouts. Every piece of content is connected to the same system. For people who want a more hands-on approach, Ana still coaches a limited number of clients 1-on-1."
-          cta="Join activeX — from $19/mo annually"
+          cta={MEMBERSHIP_CTAS.joinFromAnnual}
           ctaTo={PAGE_PATHS.pricing}
           imgFit="contain"
           imgHeight="auto"
-          imgRadius={28}
+          imgRadius={IMG.portraitRadius}
           img={
             <img
               src="/images/ana-platform.jpg"
@@ -320,7 +321,7 @@ export function AboutPage() {
               flexWrap: "wrap",
             }}
           >
-            <CTA to={PAGE_PATHS.pricing}>Join activeX</CTA>
+            <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.join}</CTA>
             <CTA
               variant="secondary"
               to={PAGE_PATHS.apply}

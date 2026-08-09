@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FaqAccordion } from "../components/FaqAccordion";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 
@@ -24,70 +24,6 @@ const FAQ = [
     a: "Beginner if you're new or returning to training. Intermediate if you've been training consistently and want to level up. Advanced if you're experienced and want advanced programming. When in doubt, start with Foundation the principles it builds carry into everything else.",
   },
 ];
-
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div
-      style={{
-        borderBottom: `1px solid ${C.border}`,
-      }}
-    >
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 16,
-          padding: "20px 0",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          fontFamily: "inherit",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 16,
-            fontWeight: 700,
-            color: C.navy,
-            lineHeight: 1.4,
-          }}
-        >
-          {q}
-        </span>
-        <span
-          style={{
-            flexShrink: 0,
-            fontSize: 22,
-            fontWeight: 400,
-            color: C.purple,
-            lineHeight: 1,
-          }}
-        >
-          {open ? "−" : "+"}
-        </span>
-      </button>
-      {open && (
-        <p
-          style={{
-            fontSize: 15,
-            color: C.textMid,
-            lineHeight: 1.7,
-            margin: "0 0 20px",
-            maxWidth: 640,
-          }}
-        >
-          {a}
-        </p>
-      )}
-    </div>
-  );
-}
 
 const cats = [
   {
@@ -125,7 +61,7 @@ const cats = [
 export function ProgramsPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80 }}>
+      <Sec className="sec-page-hero">
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>40+ Programs</Pill>
@@ -305,34 +241,10 @@ export function ProgramsPage() {
       </Sec>
 
       <Sec bg={C.offWhite}>
-        <Reveal>
-          <h2
-            className="section-title"
-            style={{
-              fontSize: 32,
-              fontWeight: 800,
-              color: C.navy,
-              textAlign: "center",
-              marginBottom: 28,
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-        </Reveal>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          {FAQ.map((item) => (
-            <Reveal key={item.q}>
-              <FaqItem {...item} />
-            </Reveal>
-          ))}
-        </div>
+        <FaqAccordion items={FAQ} />
       </Sec>
 
-      <Sec
-        bg={C.navy}
-        className="sec-cta"
-        style={{ textAlign: "center", padding: "72px 24px" }}
-      >
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
             className="section-title"

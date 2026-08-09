@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { Testimonials } from "../components/Testimonials";
+import { FaqAccordion } from "../components/FaqAccordion";
+import { MEMBERSHIP_CTAS, STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
@@ -50,74 +51,11 @@ const FAQ = [
   },
 ];
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div
-      style={{
-        borderBottom: `1px solid ${C.border}`,
-      }}
-    >
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 16,
-          padding: "20px 0",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          fontFamily: "inherit",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 16,
-            fontWeight: 700,
-            color: C.navy,
-            lineHeight: 1.4,
-          }}
-        >
-          {q}
-        </span>
-        <span
-          style={{
-            flexShrink: 0,
-            fontSize: 22,
-            fontWeight: 400,
-            color: C.purple,
-            lineHeight: 1,
-          }}
-        >
-          {open ? "−" : "+"}
-        </span>
-      </button>
-      {open && (
-        <p
-          style={{
-            fontSize: 15,
-            color: C.textMid,
-            lineHeight: 1.7,
-            margin: "0 0 20px",
-            maxWidth: 640,
-          }}
-        >
-          {a}
-        </p>
-      )}
-    </div>
-  );
-}
 
 export function PricingPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80 }}>
+      <Sec className="sec-page-hero">
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <Pill>Membership</Pill>
@@ -162,11 +100,11 @@ export function PricingPage() {
               name: "Annual",
               price: "$229",
               per: "year",
-              sub: "$19/month billed annually",
-              badge: "Best Value",
+              sub: MEMBERSHIP_CTAS.annualSub,
+              badge: MEMBERSHIP_CTAS.annualBadge,
               hi: true,
-              href: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",
-              cta: "Start Annual. Save 24%",
+              href: STRIPE_MEMBERSHIP.annual,
+              cta: MEMBERSHIP_CTAS.annualCta,
               feats: [
                 "All 40+ structured programs",
                 "600+ exercise library with coaching cues",
@@ -182,10 +120,10 @@ export function PricingPage() {
               name: "Monthly",
               price: "$24.99",
               per: "month",
-              sub: "Cancel anytime",
+              sub: MEMBERSHIP_CTAS.monthlySub,
               hi: false,
-              href: "https://buy.stripe.com/8x23cufPielLd3Zenj4ow08",
-              cta: "Start Monthly",
+              href: STRIPE_MEMBERSHIP.monthly,
+              cta: MEMBERSHIP_CTAS.monthlyCta,
               feats: [
                 "Everything in Annual",
                 "Same full access",
@@ -532,27 +470,7 @@ export function PricingPage() {
       <Testimonials />
 
       <Sec>
-        <Reveal>
-          <h2
-            className="section-title"
-            style={{
-              fontSize: 32,
-              fontWeight: 800,
-              color: C.navy,
-              textAlign: "center",
-              marginBottom: 28,
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-        </Reveal>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          {FAQ.map((item) => (
-            <Reveal key={item.q}>
-              <FaqItem {...item} />
-            </Reveal>
-          ))}
-        </div>
+        <FaqAccordion items={FAQ} />
       </Sec>
     </>
   );

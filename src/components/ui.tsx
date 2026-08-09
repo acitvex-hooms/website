@@ -48,6 +48,8 @@ type CTAProps = {
   to?: string;
   href?: string;
   onClick?: () => void;
+  /** Renders a <button> when set (for forms). Ignored if `to` or `href` is set. */
+  type?: "button" | "submit";
   style?: CSSProperties;
 };
 
@@ -57,6 +59,7 @@ export function CTA({
   to,
   href,
   onClick,
+  type,
   style: s,
 }: CTAProps) {
   const [h, setH] = useState(false);
@@ -64,6 +67,7 @@ export function CTA({
   const style: CSSProperties = {
     display: "inline-flex",
     alignItems: "center",
+    justifyContent: "center",
     gap: 8,
     textDecoration: "none",
     cursor: "pointer",
@@ -72,6 +76,7 @@ export function CTA({
     fontWeight: 600,
     fontSize: isPri ? 15 : 14,
     letterSpacing: 0.2,
+    fontFamily: "inherit",
     transition: "all 0.35s",
     background: isPri ? (h ? C.navy : C.purple) : "transparent",
     color: isPri ? "#fff" : C.navy,
@@ -91,6 +96,14 @@ export function CTA({
       <Link to={to} className="cta-btn" style={style} {...handlers}>
         {children}
       </Link>
+    );
+  }
+
+  if (type) {
+    return (
+      <button type={type} className="cta-btn" style={style} {...handlers}>
+        {children}
+      </button>
     );
   }
 

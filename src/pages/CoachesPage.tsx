@@ -57,7 +57,7 @@ const steps = [
 export function CoachesPage() {
   return (
     <>
-      <Sec className="coaches-hero" style={{ paddingTop: 56 }}>
+      <Sec className="coaches-hero sec-page-hero">
         <div className="coaches-hero-grid">
           <Reveal>
             <Pill>Coach partners</Pill>

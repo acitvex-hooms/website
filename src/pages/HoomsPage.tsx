@@ -1,3 +1,4 @@
+import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Card, Pill, Reveal, Sec, Split } from "../components/ui";
 
@@ -19,7 +20,7 @@ const hoomsBeliefs = [
 export function HoomsPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80 }}>
+      <Sec className="sec-page-hero">
         <Split
           imgSide="right"
           pill="Co-founder"
@@ -216,7 +217,7 @@ export function HoomsPage() {
               same three pillars, Mobility, Movement, Mindset, so progress
               compounds instead of resetting every time you open the app.
             </p>
-            <CTA to={PAGE_PATHS.pricing}>Join activeX — from $19/mo annually</CTA>
+            <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.joinFromAnnual}</CTA>
           </div>
         </Reveal>
       </Sec>
@@ -292,7 +293,7 @@ export function HoomsPage() {
               flexWrap: "wrap",
             }}
           >
-            <CTA to={PAGE_PATHS.pricing}>Join activeX</CTA>
+            <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.join}</CTA>
             <CTA
               variant="secondary"
               to={PAGE_PATHS.apply}

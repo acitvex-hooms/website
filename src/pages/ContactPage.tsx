@@ -1,10 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { C, FONT } from "../lib/tokens";
-import { Pill, Reveal, Sec } from "../components/ui";
+import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
 export function ContactPage() {
   const [sent, setSent] = useState(false);
-  const [hover, setHover] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -12,17 +11,15 @@ export function ContactPage() {
   };
 
   return (
-    <Sec style={{ paddingTop: 80 }}>
+    <Sec className="sec-page-hero">
       <Reveal>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <Pill>Get in touch</Pill>
           <h1
             className="page-title"
             style={{
-              fontSize: 44,
               fontWeight: 800,
               color: C.navy,
-              letterSpacing: -1.5,
               marginTop: 16,
               marginBottom: 12,
             }}
@@ -136,33 +133,9 @@ export function ContactPage() {
                 Thanks. We&apos;ll get back to you soon.
               </p>
             ) : (
-              <button
-                type="submit"
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-                style={{
-                  width: "100%",
-                  display: "inline-flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: "15px 32px",
-                  borderRadius: 50,
-                  border: "none",
-                  cursor: "pointer",
-                  fontWeight: 600,
-                  fontSize: 15,
-                  fontFamily: FONT,
-                  color: "#fff",
-                  background: hover ? C.navy : C.purple,
-                  transition: "all 0.35s",
-                  transform: hover ? "translateY(-2px)" : "none",
-                  boxShadow: hover
-                    ? "0 8px 32px rgba(120,40,255,0.25)"
-                    : "none",
-                }}
-              >
+              <CTA type="submit" style={{ width: "100%" }}>
                 Send Message
-              </button>
+              </CTA>
             )}
           </form>
         </Reveal>

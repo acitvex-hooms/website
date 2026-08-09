@@ -244,7 +244,7 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
 
 export function PrivacyPage() {
   return (
-    <Sec style={{ paddingTop: 80, paddingBottom: 80 }}>
+    <Sec className="sec-page-hero" style={{ paddingBottom: 80 }}>
       <Reveal>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <h1

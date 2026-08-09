@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
 import { C, PAGE_PATHS, PATH_TO_PAGE, type PageKey } from "../lib/tokens";
 import { CTA } from "./ui";
 
@@ -210,7 +211,7 @@ export function Nav() {
             to={PAGE_PATHS.pricing}
             style={{ padding: "9px 22px", fontSize: 13 }}
           >
-            Join Now
+            {MEMBERSHIP_CTAS.nav}
           </CTA>
         </div>
 
@@ -357,7 +358,7 @@ export function Nav() {
             ),
           )}
           <CTA to={PAGE_PATHS.pricing} style={{ justifyContent: "center" }}>
-            Join Now
+            {MEMBERSHIP_CTAS.nav}
           </CTA>
         </div>
       )}

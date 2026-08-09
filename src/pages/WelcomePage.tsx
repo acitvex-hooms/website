@@ -248,7 +248,7 @@ export function WelcomePage() {
 
   return (
     <>
-      <Sec style={{ paddingTop: 80, textAlign: "center" }}>
+      <Sec className="sec-page-hero" style={{ textAlign: "center" }}>
         <Reveal>
           <Pill>Welcome</Pill>
           <h1

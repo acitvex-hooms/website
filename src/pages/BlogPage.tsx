@@ -7,7 +7,7 @@ export function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <Sec style={{ paddingTop: 80 }}>
+    <Sec className="sec-page-hero">
       <Reveal>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <Pill>Blog</Pill>
@@ -83,12 +83,14 @@ export function BlogPage() {
                     }}
                   >
                     <img
+                      className="img-card"
                       src={post.cover}
                       alt=""
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        borderRadius: 0,
+                        aspectRatio: "auto",
                       }}
                     />
                   </div>

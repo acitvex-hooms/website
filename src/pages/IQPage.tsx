@@ -20,7 +20,7 @@ const pillars = [
   },
   {
     name: "Mindset IQ",
-    color: "#A855F7",
+    color: C.purpleSoft,
     sub: "Progress independent of how you feel",
     body: "Most people don't fail because they lack motivation. They fail because they rely on it. Motivation is emotional. Consistency is structural. Mindset IQ is the ability to make progress independent of how you feel. It's built through small, repeatable commitments, clear decision-making, and trust built through action, not intention. Every kept promise builds identity. Every broken one weakens it. Mindset IQ is not about pushing harder. It's about choosing actions that compound. Long-term performance depends less on intensity and more on reliability.",
     img: "/images/iq-mindset.png",
@@ -59,7 +59,7 @@ export function IQPage() {
   return (
     <>
       {/* Intro */}
-      <Sec style={{ paddingTop: 80, paddingBottom: 72 }}>
+      <Sec className="sec-page-hero" style={{ paddingBottom: 72 }}>
         <Reveal>
           <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
             <Pill>The Foundation</Pill>
@@ -250,10 +250,8 @@ export function IQPage() {
             <h2
               className="section-title"
               style={{
-                fontSize: 36,
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 0,
               }}

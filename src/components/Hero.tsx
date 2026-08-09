@@ -1,4 +1,5 @@
 import { useParallax } from "../hooks/useParallax";
+import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
 import { C, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Phone, Pill } from "./ui";
 
@@ -104,7 +105,7 @@ export function Hero() {
           <h1
             style={{
               fontSize: "clamp(36px, 6vw, 60px)",
-              fontWeight: 900,
+              fontWeight: 800,
               color: C.white,
               lineHeight: 1.05,
               letterSpacing: -2.5,
@@ -145,7 +146,7 @@ export function Hero() {
               marginBottom: 32,
             }}
           >
-            <CTA to={PAGE_PATHS.pricing}>Start Training — from $19/mo annually</CTA>
+            <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.hero}</CTA>
             <CTA
               variant="secondary"
               to={PAGE_PATHS.iq}

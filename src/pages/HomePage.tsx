@@ -1,7 +1,8 @@
-import { C, PAGE_PATHS } from "../lib/tokens";
 import { EmailSubscribe } from "../components/EmailSubscribe";
 import { Hero } from "../components/Hero";
 import { Testimonials } from "../components/Testimonials";
+import { MEMBERSHIP_CTAS, STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
+import { C, PAGE_PATHS } from "../lib/tokens";
 import {
   CTA,
   Card,
@@ -449,11 +450,11 @@ export function HomePage() {
               name: "Annual",
               price: "$229",
               per: "year",
-              sub: "$19/month billed annually",
-              badge: "Save 24%",
+              sub: MEMBERSHIP_CTAS.annualSub,
+              badge: MEMBERSHIP_CTAS.annualBadge,
               hi: true,
-              href: "https://buy.stripe.com/28E5kCbz27Xn6FB0wt4ow01",
-              cta: "Start Training",
+              href: STRIPE_MEMBERSHIP.annual,
+              cta: MEMBERSHIP_CTAS.annualCta,
               feats: [
                 "All 40+ programs",
                 "600+ exercise library",
@@ -467,9 +468,9 @@ export function HomePage() {
               name: "Monthly",
               price: "$24.99",
               per: "month",
-              sub: "Cancel anytime",
-              href: "https://buy.stripe.com/14A28q9qU4Lb2plcfb4ow00",
-              cta: "Choose Monthly",
+              sub: MEMBERSHIP_CTAS.monthlySub,
+              href: STRIPE_MEMBERSHIP.monthly,
+              cta: MEMBERSHIP_CTAS.monthlyCta,
               feats: [
                 "Full access to everything",
                 "All programs & exercise library",
@@ -676,7 +677,7 @@ export function HomePage() {
       <Sec
         bg={C.navy}
         className="sec-cta"
-        style={{ textAlign: "center", padding: "80px 24px" }}
+        style={{ textAlign: "center" }}
       >
         <Reveal>
           <h2

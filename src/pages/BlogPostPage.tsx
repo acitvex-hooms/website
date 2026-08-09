@@ -13,7 +13,7 @@ export function BlogPostPage() {
 
   return (
     <>
-      <Sec className="sec-pb-24" style={{ paddingTop: 80 }}>
+      <Sec className="sec-page-hero sec-pb-24">
         <Reveal>
           <Link
             to={PAGE_PATHS.blog}

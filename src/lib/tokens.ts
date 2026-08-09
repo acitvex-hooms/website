@@ -1,5 +1,7 @@
 export const C = {
   purple: "#7828FF",
+  /** Lighter brand purple for tertiary accents (e.g. Mindset IQ) */
+  purpleSoft: "#9B5CFF",
   blue: "#64BFF4",
   navy: "#272789",
   white: "#FFFFFF",
@@ -11,6 +13,14 @@ export const C = {
   border: "#e5e7eb",
   cardBg: "#FFFFFF",
   gradient: "linear-gradient(135deg, #7828FF, #64BFF4)",
+} as const;
+
+/** Image treatment roles — pair with CSS classes in index.css */
+export const IMG = {
+  portraitRadius: 28,
+  editorialRadius: 20,
+  cardRadius: 16,
+  productRadius: 16,
 } as const;
 
 export const MAX = "1200px";

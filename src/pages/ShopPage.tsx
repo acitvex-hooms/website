@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FaqAccordion } from "../components/FaqAccordion";
 import { SHOP_PRODUCTS, shopBuyHref, type ShopProduct } from "../lib/shop";
 import { C } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
@@ -22,65 +22,6 @@ const FAQ = [
   },
 ];
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div style={{ borderBottom: `1px solid ${C.border}` }}>
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 16,
-          padding: "20px 0",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          fontFamily: "inherit",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 16,
-            fontWeight: 700,
-            color: C.navy,
-            lineHeight: 1.4,
-          }}
-        >
-          {q}
-        </span>
-        <span
-          style={{
-            flexShrink: 0,
-            fontSize: 22,
-            fontWeight: 400,
-            color: C.purple,
-            lineHeight: 1,
-          }}
-        >
-          {open ? "−" : "+"}
-        </span>
-      </button>
-      {open && (
-        <p
-          style={{
-            fontSize: 15,
-            color: C.textMid,
-            lineHeight: 1.7,
-            margin: "0 0 20px",
-            maxWidth: 640,
-          }}
-        >
-          {a}
-        </p>
-      )}
-    </div>
-  );
-}
 
 function ProductCard({ product, delay }: { product: ShopProduct; delay: number }) {
   const href = shopBuyHref(product);
@@ -252,7 +193,7 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
 export function ShopPage() {
   return (
     <>
-      <Sec style={{ paddingTop: 80 }} className="shop-hero-sec">
+      <Sec className="sec-page-hero shop-hero-sec">
         <Reveal>
           <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
             <Pill>Shop</Pill>
@@ -295,27 +236,7 @@ export function ShopPage() {
       </Sec>
 
       <Sec>
-        <Reveal>
-          <div style={{ maxWidth: 720, margin: "0 auto" }}>
-            <Pill>FAQ</Pill>
-            <h2
-              className="section-title"
-              style={{
-                fontSize: 36,
-                fontWeight: 800,
-                color: C.navy,
-                letterSpacing: -1.5,
-                marginTop: 16,
-                marginBottom: 28,
-              }}
-            >
-              Shopping questions
-            </h2>
-            {FAQ.map((item) => (
-              <FaqItem key={item.q} q={item.q} a={item.a} />
-            ))}
-          </div>
-        </Reveal>
+        <FaqAccordion items={FAQ} pill="FAQ" />
       </Sec>
     </>
   );

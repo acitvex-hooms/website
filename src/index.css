@@ -229,6 +229,44 @@ textarea:focus {
   padding-bottom: 56px !important;
 }
 
+/* First section under sticky nav — use instead of inline paddingTop: 80 */
+.sec-page-hero {
+  padding-top: 64px !important;
+}
+
+/* Image role utilities */
+.img-portrait {
+  border-radius: 28px !important;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.img-editorial {
+  border-radius: 20px !important;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.img-card {
+  border-radius: 16px !important;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.img-product {
+  border-radius: 16px !important;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
 /* Vertical spacing modifiers — win over default .sec padding */
 .sec-pt-0 {
   padding-top: 0 !important;
@@ -715,6 +753,10 @@ body.nav-open {
     padding-bottom: 64px !important;
   }
 
+  .sec-page-hero {
+    padding-top: 72px !important;
+  }
+
   .sec-pt-0 {
     padding-top: 0 !important;
   }
@@ -896,6 +938,10 @@ body.nav-open {
   .sec-cta {
     padding-top: 80px !important;
     padding-bottom: 80px !important;
+  }
+
+  .sec-page-hero {
+    padding-top: 80px !important;
   }
 
   .sec-pt-0 {
