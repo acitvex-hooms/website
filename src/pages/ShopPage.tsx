@@ -200,23 +200,17 @@ export function ShopPage() {
             <h1
               className="page-title"
               style={{
-                fontSize: "clamp(30px, 8vw, 48px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -2,
                 marginTop: 16,
                 marginBottom: 16,
-                lineHeight: 1.1,
               }}
             >
               BBE tools for serious glute training
             </h1>
             <p
-              className="shop-hero-copy"
+              className="shop-hero-copy page-lede"
               style={{
-                fontSize: 18,
-                color: C.textMid,
-                lineHeight: 1.8,
                 margin: 0,
               }}
             >

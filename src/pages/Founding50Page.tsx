@@ -55,11 +55,8 @@ export function Founding50Page() {
           <h1
             className="page-title"
             style={{
-              fontSize: "clamp(32px, 5vw, 52px)",
               fontWeight: 800,
               color: C.navy,
-              letterSpacing: -1.5,
-              lineHeight: 1.12,
               marginBottom: 16,
               maxWidth: 720,
               marginLeft: "auto",
@@ -68,15 +65,7 @@ export function Founding50Page() {
           >
             Pay $14.99/month &amp; save 40%
           </h1>
-          <p
-            style={{
-              fontSize: 17,
-              color: C.textMid,
-              maxWidth: 520,
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="page-lede" style={{ margin: "0 auto" }}>
             Founding member spots:{" "}
             <strong style={{ color: C.navy }}>23 of 50 left</strong>. Locked
             pricing for life.
@@ -89,12 +78,10 @@ export function Founding50Page() {
           <h2
             className="section-title"
             style={{
-              fontSize: 36,
               fontWeight: 800,
               color: C.navy,
               textAlign: "center",
               marginBottom: 12,
-              letterSpacing: -1,
             }}
           >
             Founding member pricing
@@ -104,20 +91,13 @@ export function Founding50Page() {
               fontSize: 16,
               color: C.textMid,
               textAlign: "center",
-              marginBottom: 40,
+              marginBottom: 32,
             }}
           >
             Only 50 spots available.
           </p>
         </Reveal>
-        <div
-          style={{
-            display: "flex",
-            gap: 24,
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="pricing-cards" style={{ marginBottom: 0 }}>
           {[
             {
               name: "Annual",
@@ -145,11 +125,8 @@ export function Founding50Page() {
               <div
                 className="pricing-card"
                 style={{
-                  width: 360,
-                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
-                  padding: "40px 32px",
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
@@ -158,7 +135,6 @@ export function Founding50Page() {
                     : "none",
                   position: "relative",
                   textAlign: "left",
-                  boxSizing: "border-box",
                 }}
               >
                 {t.badge && (
@@ -197,10 +173,8 @@ export function Founding50Page() {
                   <span
                     className="pricing-price"
                     style={{
-                      fontSize: 48,
                       fontWeight: 800,
                       color: C.navy,
-                      letterSpacing: -2,
                     }}
                   >
                     {t.price}

@@ -57,44 +57,26 @@ export function PricingPage() {
     <>
       <Sec className="sec-page-hero">
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
             <Pill>Membership</Pill>
             <h1
               className="page-title"
               style={{
-                fontSize: 48,
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -2,
                 marginTop: 16,
                 marginBottom: 16,
               }}
             >
               Full access. One price.
             </h1>
-            <p
-              style={{
-                fontSize: 18,
-                color: C.textMid,
-                maxWidth: 520,
-                margin: "0 auto",
-                lineHeight: 1.8,
-              }}
-            >
+            <p className="page-lede" style={{ margin: "0 auto" }}>
               No tiers, no locked features. Every tool, every program, every
               exercise, included. Choose how you pay.
             </p>
           </div>
         </Reveal>
-        <div
-          style={{
-            display: "flex",
-            gap: 24,
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: 64,
-          }}
-        >
+        <div className="pricing-cards">
           {[
             {
               name: "Annual",
@@ -136,11 +118,8 @@ export function PricingPage() {
               <div
                 className="pricing-card"
                 style={{
-                  width: 380,
-                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
-                  padding: "40px 32px",
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
@@ -148,7 +127,6 @@ export function PricingPage() {
                     ? "0 20px 60px rgba(120,40,255,0.1)"
                     : "none",
                   position: "relative",
-                  boxSizing: "border-box",
                 }}
               >
                 {t.badge && (
@@ -186,10 +164,8 @@ export function PricingPage() {
                   <span
                     className="pricing-price"
                     style={{
-                      fontSize: 48,
                       fontWeight: 800,
                       color: C.navy,
-                      letterSpacing: -2,
                     }}
                   >
                     {t.price}

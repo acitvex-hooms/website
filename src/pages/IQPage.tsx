@@ -59,32 +59,22 @@ export function IQPage() {
   return (
     <>
       {/* Intro */}
-      <Sec className="sec-page-hero" style={{ paddingBottom: 72 }}>
+      <Sec className="sec-page-hero">
         <Reveal>
           <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
             <Pill>The Foundation</Pill>
             <h1
               className="page-title"
               style={{
-                fontSize: "clamp(36px, 5vw, 52px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -2,
                 marginTop: 16,
                 marginBottom: 20,
-                lineHeight: 1.1,
               }}
             >
               Three pillars. One decision making system.
             </h1>
-            <p
-              style={{
-                fontSize: 18,
-                color: C.textMid,
-                lineHeight: 1.8,
-                margin: 0,
-              }}
-            >
+            <p className="page-lede" style={{ margin: 0 }}>
               Every program, workout, and tool inside activeX is built on this
               framework. Not random content, but applied principles that connect
               your mobility, your movement, and your mindset into one intelligent

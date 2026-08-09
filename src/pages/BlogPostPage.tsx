@@ -42,11 +42,8 @@ export function BlogPostPage() {
           <h1
             className="page-title"
             style={{
-              fontSize: "clamp(32px, 5vw, 48px)",
               fontWeight: 800,
               color: C.navy,
-              letterSpacing: -1.5,
-              lineHeight: 1.15,
               maxWidth: 800,
               marginBottom: 20,
             }}
@@ -54,15 +51,7 @@ export function BlogPostPage() {
             {post.title}
           </h1>
           {post.excerpt && (
-            <p
-              style={{
-                fontSize: 18,
-                color: C.textMid,
-                lineHeight: 1.7,
-                maxWidth: 640,
-                margin: 0,
-              }}
-            >
+            <p className="page-lede" style={{ margin: 0, maxWidth: 640 }}>
               {post.excerpt}
             </p>
           )}

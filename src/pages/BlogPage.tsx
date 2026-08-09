@@ -9,30 +9,20 @@ export function BlogPage() {
   return (
     <Sec className="sec-page-hero">
       <Reveal>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
           <Pill>Blog</Pill>
           <h1
             className="page-title"
             style={{
-              fontSize: 48,
               fontWeight: 800,
               color: C.navy,
-              letterSpacing: -2,
               marginTop: 16,
               marginBottom: 16,
             }}
           >
             Training, movement & mindset.
           </h1>
-          <p
-            style={{
-              fontSize: 18,
-              color: C.textMid,
-              maxWidth: 540,
-              margin: "0 auto",
-              lineHeight: 1.8,
-            }}
-          >
+          <p className="page-lede" style={{ margin: "0 auto" }}>
             Practical writing on the IQ Framework, programming, and how to train
             with more intention.
           </p>

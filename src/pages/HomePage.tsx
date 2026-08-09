@@ -437,14 +437,7 @@ export function HomePage() {
             </p>
           </div>
         </Reveal>
-        <div
-          style={{
-            display: "flex",
-            gap: 24,
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="pricing-cards" style={{ marginBottom: 0 }}>
           {[
             {
               name: "Annual",
@@ -484,11 +477,8 @@ export function HomePage() {
               <div
                 className="pricing-card"
                 style={{
-                  width: 360,
-                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
-                  padding: "36px 28px",
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
@@ -496,7 +486,6 @@ export function HomePage() {
                     ? "0 16px 48px rgba(120,40,255,0.1)"
                     : "0 1px 4px rgba(0,0,0,0.04)",
                   position: "relative",
-                  boxSizing: "border-box",
                 }}
               >
                 {t.badge && (
@@ -533,10 +522,8 @@ export function HomePage() {
                   <span
                     className="pricing-price"
                     style={{
-                      fontSize: 44,
                       fontWeight: 800,
                       color: C.navy,
-                      letterSpacing: -2,
                     }}
                   >
                     {t.price}

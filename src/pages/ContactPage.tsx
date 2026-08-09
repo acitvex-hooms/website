@@ -26,15 +26,7 @@ export function ContactPage() {
           >
             Contact activeX
           </h1>
-          <p
-            style={{
-              fontSize: 17,
-              color: C.textMid,
-              maxWidth: 480,
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="page-lede" style={{ margin: "0 auto" }}>
             Questions about membership, coaching, or partnerships? We&apos;d love
             to hear from you.
           </p>
@@ -44,10 +36,8 @@ export function ContactPage() {
         className="contact-split"
         style={{
           display: "flex",
-          gap: 40,
           maxWidth: 800,
           margin: "0 auto",
-          flexWrap: "wrap",
         }}
       >
         <Reveal style={{ flex: 1, minWidth: 0 }}>
@@ -57,7 +47,6 @@ export function ContactPage() {
             style={{
               background: C.offWhite,
               borderRadius: 16,
-              padding: 24,
             }}
           >
             {["Name", "Email", "Subject"].map((f) => (

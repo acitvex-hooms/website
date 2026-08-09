@@ -63,30 +63,20 @@ export function ProgramsPage() {
     <>
       <Sec className="sec-page-hero">
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
             <Pill>40+ Programs</Pill>
             <h1
               className="page-title"
               style={{
-                fontSize: 48,
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -2,
                 marginTop: 16,
                 marginBottom: 16,
               }}
             >
               Choose your program. Or build your own.
             </h1>
-            <p
-              style={{
-                fontSize: 18,
-                color: C.textMid,
-                maxWidth: 580,
-                margin: "0 auto",
-                lineHeight: 1.8,
-              }}
-            >
+            <p className="page-lede" style={{ margin: "0 auto" }}>
               Follow a professionally structured program when you want expert
               guidance, or create your own using the Custom Program Builder when
               your schedule, equipment, or goals require more control.

@@ -66,7 +66,6 @@ function AppDownloadBlock({
       style={{
         background: C.offWhite,
         borderRadius: 20,
-        padding: "36px 32px",
         border: `1px solid ${C.border}`,
         textAlign: "center",
       }}
@@ -254,13 +253,10 @@ export function WelcomePage() {
           <h1
             className="page-title"
             style={{
-              fontSize: "clamp(28px, 4.5vw, 44px)",
               fontWeight: 800,
               color: C.navy,
               marginTop: 16,
               marginBottom: 14,
-              letterSpacing: -1,
-              lineHeight: 1.15,
             }}
           >
             {headline}

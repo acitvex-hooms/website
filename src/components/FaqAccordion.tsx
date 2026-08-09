@@ -7,59 +7,19 @@ export type FaqItemData = { q: string; a: string };
 function FaqItem({ q, a }: FaqItemData) {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: `1px solid ${C.border}` }}>
+    <div className="faq-acc-item">
       <button
         type="button"
+        className="faq-acc-btn"
         onClick={() => setOpen((v) => !v)}
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 16,
-          padding: "20px 0",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          fontFamily: "inherit",
-        }}
+        aria-expanded={open}
       >
-        <span
-          style={{
-            fontSize: 16,
-            fontWeight: 700,
-            color: C.navy,
-            lineHeight: 1.4,
-          }}
-        >
-          {q}
-        </span>
-        <span
-          style={{
-            flexShrink: 0,
-            fontSize: 22,
-            fontWeight: 400,
-            color: C.purple,
-            lineHeight: 1,
-          }}
-        >
+        <span className="faq-acc-q">{q}</span>
+        <span className="faq-acc-icon" aria-hidden>
           {open ? "−" : "+"}
         </span>
       </button>
-      {open && (
-        <p
-          style={{
-            fontSize: 15,
-            color: C.textMid,
-            lineHeight: 1.7,
-            margin: "0 0 20px",
-            maxWidth: 640,
-          }}
-        >
-          {a}
-        </p>
-      )}
+      {open && <p className="faq-acc-a">{a}</p>}
     </div>
   );
 }
@@ -80,13 +40,11 @@ export function FaqAccordion({
   centered = true,
 }: FaqAccordionProps) {
   return (
-    <div style={{ maxWidth: 720, margin: "0 auto" }}>
+    <div className="faq-acc">
       <Reveal>
         <div
-          style={{
-            textAlign: centered ? "center" : "left",
-            marginBottom: 28,
-          }}
+          className="faq-acc-head"
+          style={{ textAlign: centered ? "center" : "left" }}
         >
           {pill && <Pill>{pill}</Pill>}
           <h2

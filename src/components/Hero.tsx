@@ -138,14 +138,7 @@ export function Hero() {
             structured programs, exercise education, and workout tracking in one
             intelligent system.
           </p>
-          <div
-            style={{
-              display: "flex",
-              gap: 12,
-              flexWrap: "wrap",
-              marginBottom: 32,
-            }}
-          >
+          <div className="cta-row" style={{ marginBottom: 32 }}>
             <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.hero}</CTA>
             <CTA
               variant="secondary"

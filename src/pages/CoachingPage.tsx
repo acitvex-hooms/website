@@ -35,25 +35,15 @@ export function CoachingPage() {
           <h1
             className="page-title"
             style={{
-              fontSize: "clamp(32px, 5vw, 48px)",
               fontWeight: 800,
               color: C.navy,
               marginTop: 16,
               marginBottom: 12,
-              letterSpacing: -1.5,
             }}
           >
             Online coaching
           </h1>
-          <p
-            style={{
-              fontSize: 17,
-              color: C.textMid,
-              maxWidth: 560,
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="page-lede" style={{ margin: "0 auto" }}>
             A fully personalised approach to training, built around the IQ
             Framework. Work directly with Ana or Hooms. Spots are limited.
           </p>

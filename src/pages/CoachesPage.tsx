@@ -64,13 +64,10 @@ export function CoachesPage() {
             <h1
               className="page-title"
               style={{
-                fontSize: "clamp(30px, 8vw, 52px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1.5,
                 marginTop: 16,
                 marginBottom: 16,
-                lineHeight: 1.1,
               }}
             >
               The structure between your sessions.
@@ -250,16 +247,7 @@ export function CoachesPage() {
           </div>
         </Reveal>
 
-        <div
-          className="coaches-pricing"
-          style={{
-            display: "flex",
-            gap: 24,
-            justifyContent: "center",
-            flexWrap: "wrap",
-            alignItems: "stretch",
-          }}
-        >
+        <div className="coaches-pricing pricing-cards" style={{ marginBottom: 0 }}>
           {[
             {
               name: "Annual",
@@ -287,11 +275,8 @@ export function CoachesPage() {
               <div
                 className="pricing-card"
                 style={{
-                  width: 360,
-                  maxWidth: "100%",
                   background: C.white,
                   borderRadius: 20,
-                  padding: "40px 32px",
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
@@ -299,7 +284,6 @@ export function CoachesPage() {
                     ? "0 20px 60px rgba(120,40,255,0.1)"
                     : "none",
                   position: "relative",
-                  boxSizing: "border-box",
                   height: "100%",
                 }}
               >
@@ -338,10 +322,8 @@ export function CoachesPage() {
                   <span
                     className="pricing-price"
                     style={{
-                      fontSize: 48,
                       fontWeight: 800,
                       color: C.navy,
-                      letterSpacing: -2,
                     }}
                   >
                     {t.price}
