@@ -407,6 +407,36 @@ export function PricingPage() {
       <Sec>
         <FaqAccordion items={FAQ} />
       </Sec>
+
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
+        <Reveal>
+          <h2
+            className="section-title"
+            style={{
+              fontWeight: 800,
+              color: C.white,
+              marginBottom: 12,
+            }}
+          >
+            Ready to train smarter?
+          </h2>
+          <p
+            style={{
+              fontSize: 16,
+              color: "rgba(255,255,255,0.75)",
+              maxWidth: 480,
+              margin: "0 auto 28px",
+              lineHeight: 1.7,
+            }}
+          >
+            Full access to every program, tool, and the IQ Framework — from
+            $19/month billed annually, or $24.99/month.
+          </p>
+          <CTA href={STRIPE_MEMBERSHIP.annual}>
+            {MEMBERSHIP_CTAS.annualCta}
+          </CTA>
+        </Reveal>
+      </Sec>
     </>
   );
 }

@@ -331,6 +331,25 @@ textarea:focus-visible {
   box-sizing: border-box;
 }
 
+/* Primary CTAs outside .cta-row — full-width under ~600px */
+.home-sec-cta > .cta-btn,
+.sec-cta > .cta-btn,
+.iq-cta .cta-btn,
+.pricing-card > .cta-btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.store-badge-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  line-height: 0;
+}
+
 /* Pricing card stacks */
 .pricing-cards {
   display: flex;
@@ -593,7 +612,7 @@ textarea:focus-visible {
 .one-time-options,
 .founding-whats-inside {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr !important;
   gap: 16px;
   align-items: stretch;
 }
@@ -638,6 +657,36 @@ textarea:focus-visible {
   backdrop-filter: blur(var(--nav-blur));
 }
 
+/* Mobile-first nav: burger by default, desktop links from 901px */
+.nav-desktop {
+  display: none !important;
+}
+
+.nav-burger {
+  display: block !important;
+}
+
+.nav-mobile-panel.is-open {
+  box-shadow: var(--shadow-nav);
+}
+
+/* Compact section CTAs on mobile (don't crush nav CTA) */
+.sec .cta-btn,
+.hero .cta-btn,
+.iq-cta .cta-btn {
+  padding: 13px 22px !important;
+  font-size: 14px !important;
+}
+
+.blog-prose {
+  font-size: 16px;
+}
+
+.blog-prose h2 {
+  font-size: 24px;
+  margin: 32px 0 12px;
+}
+
 .nav-logo-img {
   height: 44px !important;
 }
@@ -653,7 +702,7 @@ textarea:focus-visible {
 }
 
 .site-footer {
-  padding: 40px 20px 28px !important;
+  padding: 36px 16px 24px !important;
 }
 
 .footer-grid {
@@ -692,10 +741,14 @@ textarea:focus-visible {
 
 .footer-cols {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
   width: 100%;
   flex: 1 1 100%;
+}
+
+.footer-cols .footer-col:last-child {
+  grid-column: 1 / -1;
 }
 
 .footer-col {
@@ -735,7 +788,7 @@ textarea:focus-visible {
   display: flex;
   overflow: hidden;
   min-height: 0;
-  padding: 80px 20px 40px;
+  padding: 76px 16px 36px;
   align-items: flex-start;
 }
 
@@ -805,7 +858,7 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 28px;
+  gap: 24px;
 }
 
 .hero-copy {
@@ -815,7 +868,7 @@ textarea:focus-visible {
 }
 
 .hero-copy h1 {
-  font-size: clamp(28px, 8.5vw, 40px);
+  font-size: clamp(26px, 8vw, 34px);
   font-weight: 800;
   color: #fff;
   line-height: 1.08;
@@ -831,15 +884,22 @@ textarea:focus-visible {
 }
 
 .hero-copy > p {
-  font-size: 15px;
+  font-size: 15.5px;
   color: rgba(255, 255, 255, 0.78);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   line-height: 1.6;
   max-width: 28rem;
 }
 
 .hero-ctas {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
+}
+
+.hero-phone .phone-frame {
+  width: 160px !important;
+  height: 320px !important;
+  border-radius: 28px !important;
+  border-width: 7px !important;
 }
 
 .hero-store-row {
@@ -1099,37 +1159,6 @@ body.nav-open {
   overflow: hidden;
 }
 
-@media (max-width: 900px) {
-  .nav-desktop {
-    display: none !important;
-  }
-
-  .nav-burger {
-    display: block !important;
-  }
-
-  /* Don't crush compact nav/CTA variants */
-  .sec .cta-btn,
-  .hero .cta-btn,
-  .iq-cta .cta-btn {
-    padding: 13px 22px !important;
-    font-size: 14px !important;
-  }
-
-  .blog-prose {
-    font-size: 16px;
-  }
-
-  .blog-prose h2 {
-    font-size: 24px;
-    margin: 32px 0 12px;
-  }
-
-  .nav-mobile-panel.is-open {
-    box-shadow: var(--shadow-nav);
-  }
-}
-
 @media (min-width: 601px) {
   .sec {
     padding-left: 24px !important;
@@ -1176,26 +1205,52 @@ body.nav-open {
     width: auto;
   }
 
+  .home-sec-cta > .cta-btn,
+  .sec-cta > .cta-btn,
+  .iq-cta .cta-btn {
+    width: auto;
+  }
+
+  .store-badge-link {
+    width: auto;
+  }
+
   .surface-card {
     padding: 28px 24px;
   }
 
+  .hero-phone .phone-frame {
+    width: 200px !important;
+    height: 400px !important;
+    border-radius: 32px !important;
+    border-width: 8px !important;
+  }
+
+  .hero-copy > p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .hero-ctas {
+    margin-bottom: 18px;
+  }
+
   .pricing-whats-inside,
   .founding-whats-inside {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .pricing-coaching-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 20px;
   }
 
   .programs-whats-inside {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .one-time-options {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 20px;
   }
 
@@ -1277,6 +1332,10 @@ body.nav-open {
   .footer-cols {
     grid-template-columns: 1fr 1fr !important;
     gap: 24px 28px;
+  }
+
+  .footer-cols .footer-col:last-child {
+    grid-column: auto;
   }
 
   .phone-frame {
@@ -1396,8 +1455,23 @@ body.nav-open {
 }
 
 @media (min-width: 901px) {
+  .nav-desktop {
+    display: flex !important;
+  }
+
+  .nav-burger {
+    display: none !important;
+  }
+
   .nav-mobile-panel {
     display: none !important;
+  }
+
+  .sec .cta-btn,
+  .hero .cta-btn,
+  .iq-cta .cta-btn {
+    padding: 15px 32px !important;
+    font-size: 15px !important;
   }
 
   .shop-grid {
@@ -1503,15 +1577,15 @@ body.nav-open {
   }
 
   .pricing-whats-inside {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
 
   .programs-whats-inside {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 
   .one-time-options {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
 
   .pricing-cards {
@@ -1800,49 +1874,6 @@ body.nav-open {
   }
 }
 
-@media (max-width: 600px) {
-  .footer-cols {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 16px;
-  }
-
-  .footer-cols .footer-col:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .hero {
-    padding: 76px 16px 36px;
-  }
-
-  .hero-inner {
-    gap: 24px;
-  }
-
-  .hero-phone .phone-frame {
-    width: 160px !important;
-    height: 320px !important;
-    border-radius: 28px !important;
-    border-width: 7px !important;
-  }
-
-  .hero-copy h1 {
-    font-size: clamp(26px, 8vw, 34px);
-  }
-
-  .hero-copy > p {
-    font-size: 14.5px;
-    margin-bottom: 18px;
-  }
-
-  .hero-ctas {
-    margin-bottom: 14px;
-  }
-
-  .site-footer {
-    padding: 36px 16px 24px !important;
-  }
-}
-
 .media-header {
   margin-bottom: 28px !important;
 }
@@ -1942,11 +1973,11 @@ body.nav-open {
 }
 
 .testimonials-heading {
-  font-size: clamp(26px, 7.5vw, 34px);
+  font-size: clamp(26px, 7.5vw, 34px) !important;
   font-weight: 800;
   font-style: italic;
   color: #272789;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.8px !important;
   margin: 14px 0 0;
   line-height: 1.15;
 }
@@ -2157,8 +2188,8 @@ body.nav-open {
   }
 
   .testimonials-heading {
-    font-size: clamp(30px, 5vw, 40px);
-    letter-spacing: -1px;
+    font-size: clamp(30px, 5vw, 40px) !important;
+    letter-spacing: -1px !important;
     margin-top: 16px;
   }
 
@@ -2494,16 +2525,17 @@ body.nav-open {
   }
 
   .screenshot-strip {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 28px;
-    overflow-x: visible;
-    padding: 4px 0 0;
+    /* Keep scroll until 901 — three ~200px phones clip on mid widths */
+    overflow-x: auto;
+    padding: 4px 0 12px;
     margin: 0;
   }
 
   .screenshot-phone .phone-frame {
-    width: 200px !important;
-    height: 400px !important;
+    width: 180px !important;
+    height: 360px !important;
     border-radius: 32px !important;
     border-width: 8px !important;
   }
@@ -2545,7 +2577,10 @@ body.nav-open {
   }
 
   .screenshot-strip {
+    justify-content: center;
     gap: 40px;
+    overflow-x: visible;
+    padding: 4px 0 0;
   }
 
   .screenshot-phone .phone-frame {

@@ -89,7 +89,7 @@ export function HoomsPage() {
           imgRadius={IMG.portraitRadius}
           img={
             <img
-              src="/images/hooms-hero.jpg"
+              src="/images/hooms-hero.webp"
               alt="Hooms training"
               className="img-portrait"
             />
@@ -119,11 +119,10 @@ export function HoomsPage() {
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <Pill>Competition</Pill>
             <h2
+              className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 36px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 16,
               }}
@@ -170,11 +169,10 @@ export function HoomsPage() {
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <Pill>Mission</Pill>
             <h2
+              className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 36px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 16,
               }}
@@ -224,10 +222,8 @@ export function HoomsPage() {
             <h2
               className="section-title"
               style={{
-                fontSize: 36,
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 0,
               }}

@@ -94,15 +94,13 @@ export function AboutPage() {
 
       <Sec bg={C.offWhite} className="media-section">
         <Reveal>
-          <div className="media-header" style={{ textAlign: "center", marginBottom: 48 }}>
+          <div className="media-header" style={{ textAlign: "center" }}>
             <Pill>Media</Pill>
             <h2
               className="section-title"
               style={{
-                fontSize: 40,
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 0,
               }}
@@ -202,7 +200,7 @@ export function AboutPage() {
           imgRadius={IMG.portraitRadius}
           img={
             <img
-              src="/images/ana-iq.jpg"
+              src="/images/ana-iq.webp"
               alt="IQ Framework in practice"
               className="img-portrait"
             />
@@ -222,7 +220,7 @@ export function AboutPage() {
           imgRadius={IMG.portraitRadius}
           img={
             <img
-              src="/images/ana-platform.jpg"
+              src="/images/ana-platform.webp"
               alt="activeX training"
               className="img-portrait"
             />
@@ -270,10 +268,8 @@ export function AboutPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: "#fff",
-              letterSpacing: -1,
               marginBottom: 16,
             }}
           >
@@ -292,14 +288,7 @@ export function AboutPage() {
             Full access to every program, tool, and resource. Or apply for
             1-on-1 coaching with Ana.
           </p>
-          <div
-            style={{
-              display: "flex",
-              gap: 12,
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="cta-row" style={{ justifyContent: "center" }}>
             <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.join}</CTA>
             <CTA
               variant="secondary"

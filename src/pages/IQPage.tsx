@@ -128,11 +128,10 @@ export function IQPage() {
               {p.name}
             </div>
             <h2
+              className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 36px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginBottom: 16,
                 lineHeight: 1.2,
               }}
@@ -194,11 +193,10 @@ export function IQPage() {
         <Reveal>
           <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
             <h2
+              className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 36px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginBottom: 16,
                 lineHeight: 1.25,
               }}
@@ -288,11 +286,10 @@ export function IQPage() {
         <Reveal>
           <div style={{ position: "relative", zIndex: 1, maxWidth: 680, margin: "0 auto" }}>
             <h2
+              className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
                 fontWeight: 800,
                 color: "#fff",
-                letterSpacing: -1,
                 marginBottom: 16,
                 lineHeight: 1.2,
               }}

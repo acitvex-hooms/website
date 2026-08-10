@@ -327,7 +327,7 @@ export function StatBar({
   items: { n: string; l: string }[];
 }) {
   return (
-    <Sec bg={C.navy} className="sec-tight" style={{ padding: "56px 24px" }}>
+    <Sec bg={C.navy} className="sec-tight">
       <div
         style={{
           display: "flex",
@@ -342,7 +342,6 @@ export function StatBar({
               <div
                 className="stat-n"
                 style={{
-                  fontSize: 44,
                   fontWeight: 800,
                   color: C.white,
                   letterSpacing: -2,

@@ -99,7 +99,6 @@ export function BlogPostPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 28,
               fontWeight: 800,
               color: C.navy,
               marginBottom: 12,

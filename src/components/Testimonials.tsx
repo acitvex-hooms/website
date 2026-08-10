@@ -127,7 +127,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
       <Reveal>
         <div className="testimonials-header">
           <Pill>Testimonials</Pill>
-          <h2 className="testimonials-heading">What clients say</h2>
+          <h2 className="section-title testimonials-heading">What clients say</h2>
         </div>
       </Reveal>
 

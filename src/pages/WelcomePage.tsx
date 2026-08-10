@@ -282,7 +282,6 @@ export function WelcomePage() {
             <h2
               className="section-title"
               style={{
-                fontSize: 28,
                 fontWeight: 800,
                 color: C.navy,
                 textAlign: "center",
@@ -315,7 +314,6 @@ export function WelcomePage() {
             <h2
               className="section-title"
               style={{
-                fontSize: 28,
                 fontWeight: 800,
                 color: C.navy,
                 textAlign: "center",
@@ -395,7 +393,6 @@ export function WelcomePage() {
               <h2
                 className="section-title"
                 style={{
-                  fontSize: 28,
                   fontWeight: 800,
                   color: C.navy,
                   marginTop: 14,
@@ -436,7 +433,6 @@ export function WelcomePage() {
             <h2
               className="section-title"
               style={{
-                fontSize: 26,
                 fontWeight: 800,
                 color: C.navy,
                 marginBottom: 12,

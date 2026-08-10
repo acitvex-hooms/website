@@ -38,7 +38,7 @@ const FAQ = [
 export function Founding50Page() {
   return (
     <>
-      <Sec style={{ paddingTop: 72, textAlign: "center" }}>
+      <Sec className="sec-page-hero" style={{ textAlign: "center" }}>
         <Reveal>
           <Pill>Limited offer · 50 spots only</Pill>
           <p
@@ -220,11 +220,10 @@ export function Founding50Page() {
       <Sec style={{ textAlign: "center" }}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: C.navy,
-              letterSpacing: -1,
               marginBottom: 16,
               maxWidth: 640,
               marginLeft: "auto",
@@ -253,11 +252,10 @@ export function Founding50Page() {
       <Sec bg={C.offWhite}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: C.navy,
-              letterSpacing: -1,
               textTransform: "uppercase",
               marginBottom: 32,
             }}
@@ -265,14 +263,7 @@ export function Founding50Page() {
             What&apos;s Inside
           </h2>
         </Reveal>
-        <div
-          className="founding-whats-inside"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-            gap: 16,
-          }}
-        >
+        <div className="founding-whats-inside">
           {[
             {
               title: "A system, not a workout library",
@@ -326,7 +317,6 @@ export function Founding50Page() {
             <h2
               className="section-title"
               style={{
-                fontSize: 32,
                 fontWeight: 800,
                 color: C.navy,
                 marginTop: 16,
@@ -361,12 +351,11 @@ export function Founding50Page() {
       <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
+            className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: C.white,
               marginBottom: 12,
-              letterSpacing: -1,
             }}
           >
             50 founding spots. First come, first locked in.
@@ -384,21 +373,19 @@ export function Founding50Page() {
             email.
           </p>
           <div
+            className="cta-row"
             style={{
-              display: "flex",
-              gap: 16,
               justifyContent: "center",
               alignItems: "center",
-              flexWrap: "wrap",
               marginBottom: 24,
             }}
           >
             <CTA href={STRIPE_ANNUAL}>Claim your founding spot</CTA>
             <a
+              className="store-badge-link"
               href={APP_STORE}
               target="_blank"
               rel="noreferrer"
-              style={{ display: "inline-block", lineHeight: 0 }}
             >
               <img
                 src="/images/app-store-badge.svg"

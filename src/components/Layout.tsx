@@ -139,7 +139,7 @@ export function Nav() {
 
         <div
           className="nav-desktop"
-          style={{ display: "flex", gap: 28, alignItems: "center" }}
+          style={{ gap: 28, alignItems: "center" }}
         >
           {LINKS.map(({ k, l }) =>
             k === "about-menu" ? (
@@ -230,11 +230,17 @@ export function Nav() {
             })
           }
           style={{
-            display: "none",
             background: "none",
             border: "none",
             cursor: "pointer",
-            padding: 8,
+            padding: 12,
+            margin: -4,
+            minWidth: 44,
+            minHeight: 44,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
             color: navColor,
           }}
         >
@@ -338,7 +344,7 @@ export function Nav() {
                         textDecoration: "none",
                         fontSize: 15,
                         fontWeight: page === item.page ? 700 : 500,
-                        paddingLeft: 12,
+                        padding: "10px 0 10px 12px",
                       }}
                     >
                       {item.l}
