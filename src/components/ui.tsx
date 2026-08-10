@@ -328,38 +328,20 @@ export function StatBar({
 }) {
   return (
     <Sec bg={C.navy} className="sec-tight">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-          gap: 24,
-        }}
-      >
+      <div className="stat-bar">
         {items.map((s, i) => (
-          <Reveal key={s.l} delay={i * 0.1}>
-            <div style={{ textAlign: "center", minWidth: 100, flex: "1 1 120px" }}>
-              <div
-                className="stat-n"
-                style={{
-                  fontWeight: 800,
-                  color: C.white,
-                  letterSpacing: -2,
-                }}
-              >
-                {s.n}
-              </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  color: "rgba(255,255,255,0.6)",
-                  marginTop: 4,
-                  fontWeight: 500,
-                }}
-              >
-                {s.l}
-              </div>
+          <Reveal key={s.l} delay={i * 0.1} className="stat-bar-item">
+            <div
+              className="stat-n"
+              style={{
+                fontWeight: 800,
+                color: C.white,
+                letterSpacing: -2,
+              }}
+            >
+              {s.n}
             </div>
+            <div className="stat-bar-label">{s.l}</div>
           </Reveal>
         ))}
       </div>

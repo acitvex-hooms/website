@@ -529,6 +529,29 @@ textarea:focus-visible {
   font-size: clamp(28px, 8vw, 44px) !important;
 }
 
+.stat-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 12px;
+  align-items: start;
+  justify-items: center;
+  text-align: center;
+}
+
+.stat-bar-item {
+  min-width: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.stat-bar-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
 .page-title {
   font-size: clamp(28px, 8vw, 48px) !important;
   letter-spacing: -1.2px !important;
@@ -1546,6 +1569,11 @@ body.nav-open {
     padding-bottom: 56px !important;
   }
 
+  .stat-bar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
   .sec-cta {
     padding-top: 80px !important;
     padding-bottom: 80px !important;
@@ -2365,13 +2393,13 @@ body.nav-open {
 .screenshot-strip {
   display: flex;
   gap: 20px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-end;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   padding: 8px 4px 12px;
-  margin: 0 -4px;
+  margin: 0;
   scrollbar-width: none;
 }
 
@@ -2525,11 +2553,10 @@ body.nav-open {
   }
 
   .screenshot-strip {
-    justify-content: flex-start;
+    justify-content: center;
     gap: 28px;
-    /* Keep scroll until 901 — three ~200px phones clip on mid widths */
-    overflow-x: auto;
-    padding: 4px 0 12px;
+    overflow-x: visible;
+    padding: 4px 0 0;
     margin: 0;
   }
 
