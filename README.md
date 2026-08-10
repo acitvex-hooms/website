@@ -104,7 +104,7 @@ VITE_GTM_ID=GTM-XXXXXXX
 | `/programs` | Programs |
 | `/pricing` | Pricing |
 | `/coaching` | Coaching |
-| `/coaches` | Coach partner pricing |
+| `/coaches` | Coach partner funnel (unlisted / noindex) |
 | `/shop` | BBE eBook & ankle strap |
 | `/about` | About Ana |
 | `/about/hooms` | About Hooms |

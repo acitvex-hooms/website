@@ -54,6 +54,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     title: "Coach Partner Pricing | activeX for Clients",
     description:
       "Your coach recommended activeX. Get partner pricing on full membership access: programs, tracking, and the IQ Framework for the days between sessions.",
+    robots: "noindex, nofollow",
   },
   "/shop": {
     path: "/shop",

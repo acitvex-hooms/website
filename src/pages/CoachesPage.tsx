@@ -72,21 +72,15 @@ export function CoachesPage() {
             >
               The structure between your sessions.
             </h1>
-            <p
-              style={{
-                fontSize: 16,
-                color: C.textMid,
-                lineHeight: 1.7,
-                maxWidth: 520,
-                marginBottom: 28,
-              }}
-            >
+            <p className="page-lede coaches-hero-lede">
               activeX gives you professionally designed training programs,
               workout tracking, and the IQ Framework, so every session with your
               coach builds on the last, and every session without them still
               counts.
             </p>
-            <CTA href="#partner-pricing">Start Training</CTA>
+            <div className="cta-row coaches-hero-cta">
+              <CTA href="#partner-pricing">Start Training</CTA>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <img
@@ -109,6 +103,7 @@ export function CoachesPage() {
           imgRadius={28}
           img={
             <img
+              className="img-editorial"
               src="/images/coaches-training.jpg"
               alt="Training with activeX"
               style={{
@@ -117,7 +112,6 @@ export function CoachesPage() {
                 aspectRatio: "1 / 1",
                 objectFit: "cover",
                 display: "block",
-                borderRadius: 28,
               }}
             />
           }
@@ -141,42 +135,25 @@ export function CoachesPage() {
 
       <Sec>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div className="coaches-section-head">
             <Pill>Membership</Pill>
             <h2
               className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 12,
               }}
             >
               What You Get
             </h2>
-            <p
-              style={{
-                fontSize: 16,
-                color: C.textMid,
-                maxWidth: 480,
-                margin: "0 auto",
-                lineHeight: 1.7,
-              }}
-            >
+            <p className="page-lede" style={{ margin: "0 auto" }}>
               Full membership access. No locked features. No tiers.
             </p>
           </div>
         </Reveal>
-        <div
-          className="coaches-features"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-            gap: 16,
-          }}
-        >
+        <div className="coaches-features">
           {features.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05}>
               <div
@@ -184,7 +161,6 @@ export function CoachesPage() {
                 style={{
                   background: C.lightGray,
                   borderRadius: 16,
-                  padding: "28px 24px",
                   height: "100%",
                   boxSizing: "border-box",
                 }}
@@ -217,30 +193,20 @@ export function CoachesPage() {
 
       <Sec id="partner-pricing" bg={C.offWhite}>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div className="coaches-section-head">
             <Pill>Partner Pricing</Pill>
             <h2
               className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 12,
               }}
             >
               Exclusive pricing through your coach
             </h2>
-            <p
-              style={{
-                fontSize: 16,
-                color: C.textMid,
-                maxWidth: 520,
-                margin: "0 auto",
-                lineHeight: 1.7,
-              }}
-            >
+            <p className="page-lede" style={{ margin: "0 auto" }}>
               Because your coach is part of the activeX partner network, you get
               exclusive pricing.
             </p>
@@ -403,15 +369,13 @@ export function CoachesPage() {
 
       <Sec>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div className="coaches-section-head">
             <Pill>Getting started</Pill>
             <h2
               className="section-title"
               style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
                 fontWeight: 800,
                 color: C.navy,
-                letterSpacing: -1,
                 marginTop: 16,
                 marginBottom: 0,
               }}
@@ -420,14 +384,7 @@ export function CoachesPage() {
             </h2>
           </div>
         </Reveal>
-        <div
-          className="coaches-steps"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div className="coaches-steps">
           {steps.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.06}>
               <div style={{ textAlign: "center" }}>
@@ -474,58 +431,35 @@ export function CoachesPage() {
         </div>
       </Sec>
 
-      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
+      <Sec bg={C.navy} className="sec-cta coaches-closing" style={{ textAlign: "center" }}>
         <Reveal>
           <h2
             className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: "#fff",
-              letterSpacing: -1,
               marginBottom: 16,
             }}
           >
             Built to Complement Your Coach
           </h2>
-          <p
-            style={{
-              fontSize: 16,
-              color: "rgba(255,255,255,0.65)",
-              maxWidth: 560,
-              margin: "0 auto 16px",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="coaches-closing-copy">
             activeX is not a replacement for your coach. It&apos;s the layer
             between your sessions that keeps you progressing: structured
             training, tracked results, and a system that compounds over time.
           </p>
-          <p
-            style={{
-              fontSize: 15,
-              color: "rgba(255,255,255,0.55)",
-              maxWidth: 520,
-              margin: "0 auto 28px",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="coaches-closing-copy coaches-closing-copy-soft">
             Your coach brings the relationship, accountability, and personal
             attention. activeX brings the programming structure, tracking, and
             the IQ Framework on the days you train alone. Together, you progress
             faster.
           </p>
-          <p
-            style={{
-              fontSize: 15,
-              fontWeight: 600,
-              color: "#fff",
-              marginBottom: 28,
-            }}
-          >
+          <p className="coaches-closing-line">
             Your coach recommended activeX for a reason.
           </p>
-          <CTA href="#partner-pricing">Start Training</CTA>
+          <div className="cta-row coaches-closing-cta">
+            <CTA href="#partner-pricing">Start Training</CTA>
+          </div>
         </Reveal>
       </Sec>
     </>

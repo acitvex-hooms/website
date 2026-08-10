@@ -32,7 +32,9 @@ export function Nav() {
   const aboutDesktopRef = useRef<HTMLDivElement>(null);
   const aboutMobileRef = useRef<HTMLDivElement>(null);
   const aboutActive = page === "about" || page === "hooms";
-  const isFoundingLanding = location.pathname === "/founding-50";
+  const isPartnerFunnel =
+    location.pathname === "/founding-50" ||
+    location.pathname === PAGE_PATHS.coaches;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -78,7 +80,7 @@ export function Nav() {
 
   return (
     <>
-      {!isFoundingLanding && (
+      {!isPartnerFunnel && (
         <Link
           to={PAGE_PATHS.pricing}
           className="promo-banner"
@@ -375,7 +377,6 @@ export function Footer() {
         ["Programs", "programs"],
         ["Pricing", "pricing"],
         ["Coaching", "coaching"],
-        ["Coaches", "coaches"],
         ["Shop", "shop"],
         ["Blog", "blog"],
       ],
