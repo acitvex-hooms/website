@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
-import { C, PAGE_PATHS, PATH_TO_PAGE, type PageKey } from "../lib/tokens";
+import { C, PAGE_PATHS, PATH_TO_PAGE, RADIUS, SHADOW, type PageKey } from "../lib/tokens";
 import { CTA } from "./ui";
 
 const LINKS: { k: PageKey | "about-menu"; l: string }[] = [
@@ -69,7 +69,7 @@ export function Nav() {
     textDecoration: "none",
     fontSize: 14,
     fontWeight: active ? 600 : 500,
-    transition: "color 0.3s",
+    transition: "color var(--duration-ui)",
     opacity: 0.85,
     cursor: "pointer",
     background: "none",
@@ -110,9 +110,10 @@ export function Nav() {
           alignItems: "center",
           justifyContent: "space-between",
           background: navBg,
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(var(--nav-blur))",
+          WebkitBackdropFilter: "blur(var(--nav-blur))",
           borderBottom: `1px solid ${C.border}`,
-          transition: "all 0.3s",
+          transition: "background var(--duration-ui), border-color var(--duration-ui)",
         }}
       >
         <Link
@@ -131,7 +132,7 @@ export function Nav() {
               height: 56,
               width: "auto",
               display: "block",
-              borderRadius: 8,
+              borderRadius: RADIUS.sm,
             }}
           />
         </Link>
@@ -176,8 +177,8 @@ export function Nav() {
                       minWidth: 170,
                       background: C.white,
                       border: `1px solid ${C.border}`,
-                      borderRadius: 12,
-                      boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+                      borderRadius: RADIUS.md,
+                      boxShadow: SHADOW.nav,
                       padding: "8px 0",
                       zIndex: 120,
                     }}

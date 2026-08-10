@@ -87,12 +87,7 @@ export function IQPage() {
       {/* Hero visual */}
       <Sec className="sec-pt-0 sec-pb-40">
         <Reveal>
-          <div
-            style={{
-              borderRadius: 28,
-              overflow: "hidden",
-            }}
-          >
+          <div className="img-hero-frame">
             <img
               src="/images/iq-hero.png"
               alt="Strength training with activeX"
@@ -114,12 +109,7 @@ export function IQPage() {
             <img
               src={p.img}
               alt={p.imgAlt}
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           </div>
         );
@@ -154,7 +144,7 @@ export function IQPage() {
                 width: 48,
                 height: 3,
                 background: p.color,
-                borderRadius: 2,
+                borderRadius: 999,
                 marginBottom: 20,
               }}
             />
@@ -254,7 +244,6 @@ export function IQPage() {
           className="auto-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: 16,
             alignItems: "stretch",
           }}
@@ -272,8 +261,6 @@ export function IQPage() {
         className="iq-cta"
         style={{
           position: "relative",
-          minHeight: 320,
-          padding: "100px 24px",
           overflow: "hidden",
           textAlign: "center",
         }}

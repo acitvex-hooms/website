@@ -23,6 +23,34 @@ export const IMG = {
   productRadius: 16,
 } as const;
 
+/** Soft UI surface radii — mirrors CSS `--radius-*` */
+export const RADIUS = {
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+} as const;
+
+/**
+ * Soft UI shadows — prefer CSS vars so mobile/desktop scales stay in sync.
+ * Use these in inline styles; definitions live in `src/index.css` `:root`.
+ */
+export const SHADOW = {
+  soft: "var(--shadow-soft)",
+  lift: "var(--shadow-lift)",
+  featured: "var(--shadow-featured)",
+  cta: "var(--shadow-cta)",
+  focus: "var(--shadow-focus)",
+  nav: "var(--shadow-nav)",
+} as const;
+
+/** Soft UI motion — mirrors `--duration-ui` / `--ease-ui` */
+export const MOTION = {
+  durationUi: 0.25,
+  durationUiMs: "var(--duration-ui)",
+  easeUi: "var(--ease-ui)",
+} as const;
+
 export const MAX = "1200px";
 export const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 

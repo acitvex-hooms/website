@@ -1,6 +1,6 @@
 import { Testimonials } from "../components/Testimonials";
 import { FaqAccordion } from "../components/FaqAccordion";
-import { C, PAGE_PATHS } from "../lib/tokens";
+import { C, IMG, PAGE_PATHS } from "../lib/tokens";
 import { Card, CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 
 const FAQ = [
@@ -101,7 +101,7 @@ export function CoachingPage() {
           >
             Minimum 3-month commitment. Applications reviewed before accepted.
           </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div className="cta-row">
             <CTA to={PAGE_PATHS.apply}>
               Apply to work with Ana
             </CTA>
@@ -120,17 +120,12 @@ export function CoachingPage() {
           text="1-on-1 coaching focused on building muscle, losing fat, and training with structure. Custom programming, weekly check-ins, form reviews, and direct access. Hypertrophy coaching from a competitive bodybuilder with 20+ years of training experience."
           imgFit="contain"
           imgHeight="auto"
-          imgRadius={28}
+          imgRadius={IMG.portraitRadius}
           img={
             <img
               src="/images/hooms-portrait.webp"
               alt="1-on-1 coaching with Hooms"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           }
         >
@@ -173,7 +168,7 @@ export function CoachingPage() {
           >
             Minimum 3-month commitment. Applications reviewed before accepted.
           </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div className="cta-row">
             <CTA to={PAGE_PATHS.apply}>
               Apply to work with Hooms
             </CTA>
@@ -189,7 +184,6 @@ export function CoachingPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 36,
               fontWeight: 800,
               color: C.navy,
               textAlign: "center",
@@ -216,7 +210,6 @@ export function CoachingPage() {
           className="auto-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: 16,
           }}
         >
@@ -255,7 +248,6 @@ export function CoachingPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 36,
               fontWeight: 800,
               color: C.navy,
               marginTop: 16,
@@ -269,7 +261,6 @@ export function CoachingPage() {
           className="auto-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
             gap: 20,
             textAlign: "left",
           }}
@@ -292,15 +283,7 @@ export function CoachingPage() {
             },
           ].map((s, i) => (
             <Reveal key={s.t} delay={i * 0.1}>
-              <div
-                style={{
-                  background: C.white,
-                  borderRadius: 16,
-                  padding: 28,
-                  border: `1px solid ${C.border}`,
-                  height: "100%",
-                }}
-              >
+              <div className="surface-card">
                 <div
                   style={{
                     fontSize: 13,
@@ -344,7 +327,6 @@ export function CoachingPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 36,
               fontWeight: 800,
               color: C.navy,
               marginTop: 16,
@@ -366,15 +348,7 @@ export function CoachingPage() {
             situation.
           </p>
         </Reveal>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-            gap: 20,
-            alignItems: "stretch",
-          }}
-          className="one-time-options"
-        >
+        <div className="one-time-options">
           {[
             {
               title: "12-Week Custom Program",
@@ -406,14 +380,10 @@ export function CoachingPage() {
                 className="one-time-card"
                 style={{
                   background: C.white,
-                  borderRadius: 16,
-                  padding: "28px 22px",
                   border: `1px solid ${C.border}`,
                   display: "flex",
                   flexDirection: "column",
-                  height: "100%",
                   textAlign: "left",
-                  boxSizing: "border-box",
                 }}
               >
                 <h3
@@ -456,22 +426,11 @@ export function CoachingPage() {
                     </p>
                   ))}
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "auto",
-                  }}
-                >
+                <div className="cta-block-full" style={{ marginTop: "auto" }}>
                   <CTA
                     href={c.href}
                     to={c.to}
                     style={{
-                      width: "100%",
-                      maxWidth: 220,
-                      justifyContent: "center",
-                      boxSizing: "border-box",
-                      textAlign: "center",
                       padding: "14px 16px",
                       fontSize: 14,
                     }}
@@ -496,7 +455,6 @@ export function CoachingPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 32,
               fontWeight: 800,
               color: C.white,
               marginBottom: 12,

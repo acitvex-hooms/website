@@ -1,10 +1,14 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { useParallax } from "../hooks/useParallax";
 import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
+import { revealItem, staggerContainer, tweenReveal } from "../lib/motion";
 import { PAGE_PATHS } from "../lib/tokens";
 import { CTA, Phone, Pill } from "./ui";
 
 export function Hero() {
   const parallaxY = useParallax(0.45);
+  const reduce = useReducedMotion();
+  const item = revealItem(reduce);
 
   return (
     <section className="hero">
@@ -15,7 +19,7 @@ export function Hero() {
           alt=""
           style={{
             transform: `translate3d(0, ${parallaxY}px, 0)`,
-            willChange: "transform",
+            willChange: reduce ? "auto" : "transform",
           }}
         />
       </div>
@@ -24,17 +28,24 @@ export function Hero() {
       <div className="orb orb-b hero-orb" aria-hidden />
 
       <div className="hero-inner">
-        <div className="fade-up hero-copy">
-          <Pill variant="light">activeX</Pill>
-          <h1>
+        <motion.div
+          className="hero-copy"
+          variants={staggerContainer(reduce, 0.09, 0.06)}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={item}>
+            <Pill variant="light">activeX</Pill>
+          </motion.div>
+          <motion.h1 variants={item}>
             Train like you{" "}
             <span className="hero-accent">understand</span> your body.
-          </h1>
-          <p>
+          </motion.h1>
+          <motion.p variants={item}>
             Structured programs, exercise education, and tracking — one
             intelligent system. From $19/mo billed annually.
-          </p>
-          <div className="cta-row hero-ctas">
+          </motion.p>
+          <motion.div className="cta-row hero-ctas" variants={item}>
             <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.hero}</CTA>
             <CTA
               variant="secondary"
@@ -43,8 +54,8 @@ export function Hero() {
             >
               How It Works
             </CTA>
-          </div>
-          <div className="hero-store-row">
+          </motion.div>
+          <motion.div className="hero-store-row" variants={item}>
             <a
               href="https://apps.apple.com/ae/app/activex-fitness/id6766033150"
               target="_blank"
@@ -57,11 +68,20 @@ export function Hero() {
               />
             </a>
             <span className="hero-trial">Your first 2 weeks are on us</span>
-          </div>
-        </div>
-        <div className="fade-up fade-up-delay hero-phone">
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="hero-phone"
+          initial={reduce ? false : { opacity: 0, y: 20, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            ...tweenReveal,
+            delay: reduce ? 0 : 0.28,
+            duration: reduce ? 0 : 0.55,
+          }}
+        >
           <Phone imageSrc="/images/app-home.png" imageAlt="activeX home screen" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

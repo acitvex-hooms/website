@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { MotionConfig } from "framer-motion";
 import {
   BrowserRouter,
   Navigate,
@@ -86,7 +87,9 @@ function SiteShell() {
 export default function App() {
   return (
     <BrowserRouter>
-      <SiteShell />
+      <MotionConfig reducedMotion="user">
+        <SiteShell />
+      </MotionConfig>
     </BrowserRouter>
   );
 }

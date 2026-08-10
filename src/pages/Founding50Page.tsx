@@ -1,6 +1,6 @@
 import { FaqAccordion } from "../components/FaqAccordion";
 import { STRIPE_FOUNDING } from "../lib/membershipCtas";
-import { C } from "../lib/tokens";
+import { C, RADIUS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
 const APP_STORE =
@@ -123,16 +123,13 @@ export function Founding50Page() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.1}>
               <div
-                className="pricing-card"
+                className={`pricing-card${t.hi ? " is-featured" : ""}`}
                 style={{
                   background: C.white,
-                  borderRadius: 20,
+                  borderRadius: RADIUS.xl,
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
-                  boxShadow: t.hi
-                    ? "0 20px 60px rgba(120,40,255,0.1)"
-                    : "none",
                   position: "relative",
                   textAlign: "left",
                 }}
@@ -295,16 +292,7 @@ export function Founding50Page() {
             },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05} style={{ height: "100%" }}>
-              <div
-                style={{
-                  background: C.white,
-                  borderRadius: 16,
-                  padding: "28px 24px",
-                  height: "100%",
-                  border: `1px solid ${C.border}`,
-                  boxSizing: "border-box",
-                }}
-              >
+              <div className="surface-card">
                 <h3
                   style={{
                     fontSize: 18,

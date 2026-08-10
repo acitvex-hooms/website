@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { C, FONT, MAX, PAGE_PATHS, type PageKey } from "../lib/tokens";
+import { tweenReveal } from "../lib/motion";
+import { C, FONT, MAX, MOTION, PAGE_PATHS, RADIUS, SHADOW, type PageKey } from "../lib/tokens";
 
 type RevealProps = {
   children: ReactNode;
@@ -9,36 +11,25 @@ type RevealProps = {
   className?: string;
 };
 
+/** Scroll-into-view fade/rise. Honors prefers-reduced-motion. */
 export function Reveal({ children, delay = 0, style, className }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [v, setV] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const o = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) setV(true);
-      },
-      { threshold: 0.1 },
-    );
-    o.observe(el);
-    return () => o.disconnect();
-  }, []);
+  const reduce = useReducedMotion();
 
   return (
-    <div
-      ref={ref}
+    <motion.div
       className={className}
-      style={{
-        opacity: v ? 1 : 0,
-        transform: v ? "translateY(0)" : "translateY(36px)",
-        transition: `opacity 0.7s ${delay}s cubic-bezier(.22,1,.36,1), transform 0.7s ${delay}s cubic-bezier(.22,1,.36,1)`,
-        ...style,
+      style={style}
+      initial={reduce ? false : { opacity: 0, y: 16 }}
+      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12, margin: "0px 0px -8% 0px" }}
+      transition={{
+        ...tweenReveal,
+        delay: reduce ? 0 : delay,
+        duration: reduce ? 0 : tweenReveal.duration,
       }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -53,6 +44,10 @@ type CTAProps = {
   style?: CSSProperties;
 };
 
+const MotionLink = motion.create(Link);
+const MotionA = motion.create("a");
+const MotionButton = motion.create("button");
+
 export function CTA({
   children,
   variant = "primary",
@@ -63,6 +58,7 @@ export function CTA({
   style: s,
 }: CTAProps) {
   const [h, setH] = useState(false);
+  const reduce = useReducedMotion();
   const isPri = variant === "primary";
   const style: CSSProperties = {
     display: "inline-flex",
@@ -77,12 +73,11 @@ export function CTA({
     fontSize: isPri ? 15 : 14,
     letterSpacing: 0.2,
     fontFamily: "inherit",
-    transition: "all 0.35s",
+    transition: `background ${MOTION.durationUiMs}, color ${MOTION.durationUiMs}, box-shadow ${MOTION.durationUiMs}`,
     background: isPri ? (h ? C.navy : C.purple) : "transparent",
     color: isPri ? "#fff" : C.navy,
     border: isPri ? "none" : `2px solid ${C.border}`,
-    boxShadow: isPri && h ? "0 8px 32px rgba(120,40,255,0.25)" : "none",
-    transform: h ? "translateY(-2px)" : "none",
+    boxShadow: isPri && h ? SHADOW.cta : "none",
     ...s,
   };
   const handlers = {
@@ -90,37 +85,62 @@ export function CTA({
     onMouseLeave: () => setH(false),
     onClick,
   };
+  const tap = reduce ? undefined : { scale: 0.97 };
+  const hoverLift = reduce ? undefined : { y: -2 };
+  const uiTween = {
+    duration: MOTION.durationUi,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  };
 
   if (to) {
     return (
-      <Link to={to} className="cta-btn" style={style} {...handlers}>
+      <MotionLink
+        to={to}
+        className="cta-btn"
+        style={style}
+        whileTap={tap}
+        whileHover={hoverLift}
+        transition={uiTween}
+        {...handlers}
+      >
         {children}
-      </Link>
+      </MotionLink>
     );
   }
 
   if (type) {
     return (
-      <button type={type} className="cta-btn" style={style} {...handlers}>
+      <MotionButton
+        type={type}
+        className="cta-btn"
+        style={style}
+        whileTap={tap}
+        whileHover={hoverLift}
+        transition={uiTween}
+        {...handlers}
+      >
         {children}
-      </button>
+      </MotionButton>
     );
   }
 
   const isExternal = Boolean(href && /^https?:\/\//i.test(href));
 
   return (
-    <a
+    <MotionA
       className="cta-btn"
       href={href ?? "#"}
       style={style}
+      whileTap={tap}
+      whileHover={hoverLift}
+      transition={uiTween}
       {...handlers}
       {...(isExternal
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
     >
       {children}
-    </a>
+    </MotionA>
   );
 }
 
@@ -208,11 +228,11 @@ export function Split({
   children,
   imgFit = "cover",
   imgHeight = 520,
-  imgRadius = 20,
+  imgRadius = RADIUS.xl,
 }: SplitProps) {
   const TitleTag = titleAs;
   const imgEl = (
-    <div className="split-img" style={{ flex: 1.15, minWidth: 300 }}>
+    <div className="split-img" style={{ flex: 1.15, minWidth: 0 }}>
       <div
         className="split-img-frame"
         style={{
@@ -243,12 +263,11 @@ export function Split({
     </div>
   );
   const txtEl = (
-    <div className="split-txt" style={{ flex: 1, minWidth: 280 }}>
+    <div className="split-txt" style={{ flex: 1, minWidth: 0 }}>
       {pill && <Pill>{pill}</Pill>}
       <TitleTag
         className={`split-title${titleAs === "h1" ? " page-title" : ""}`}
         style={{
-          fontSize: 38,
           fontWeight: 800,
           color: C.navy,
           lineHeight: 1.15,
@@ -357,22 +376,13 @@ type CardProps = {
 };
 
 export function Card({ icon, title, desc, style: s }: CardProps) {
-  const [h, setH] = useState(false);
   return (
     <div
       className="card"
-      onMouseEnter={() => setH(true)}
-      onMouseLeave={() => setH(false)}
       style={{
         background: C.white,
-        borderRadius: 16,
+        borderRadius: RADIUS.lg,
         padding: 32,
-        border: `1px solid ${h ? "rgba(120,40,255,0.3)" : C.border}`,
-        boxShadow: h
-          ? "0 12px 40px rgba(120,40,255,0.08)"
-          : "0 1px 3px rgba(0,0,0,0.04)",
-        transition: "all 0.4s",
-        transform: h ? "translateY(-4px)" : "none",
         height: "100%",
         display: "flex",
         flexDirection: "column",
@@ -385,7 +395,7 @@ export function Card({ icon, title, desc, style: s }: CardProps) {
           style={{
             width: 48,
             height: 48,
-            borderRadius: 12,
+            borderRadius: RADIUS.md,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -621,5 +631,5 @@ export function AppScreen() {
   );
 }
 
-export { C, FONT, MAX, PAGE_PATHS };
+export { C, FONT, MAX, MOTION, PAGE_PATHS, RADIUS, SHADOW };
 export type { PageKey };

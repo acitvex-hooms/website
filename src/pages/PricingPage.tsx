@@ -1,7 +1,7 @@
 import { Testimonials } from "../components/Testimonials";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { MEMBERSHIP_CTAS, STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
-import { C, PAGE_PATHS } from "../lib/tokens";
+import { C, PAGE_PATHS, RADIUS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
 const FAQ = [
@@ -116,16 +116,13 @@ export function PricingPage() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.15}>
               <div
-                className="pricing-card"
+                className={`pricing-card${t.hi ? " is-featured" : ""}`}
                 style={{
                   background: C.white,
-                  borderRadius: 20,
+                  borderRadius: RADIUS.xl,
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
-                  boxShadow: t.hi
-                    ? "0 20px 60px rgba(120,40,255,0.1)"
-                    : "none",
                   position: "relative",
                 }}
               >
@@ -231,8 +228,8 @@ export function PricingPage() {
       <Sec>
         <Reveal>
           <h2
+            className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: C.navy,
               letterSpacing: -1,
@@ -243,14 +240,7 @@ export function PricingPage() {
             What&apos;s Inside
           </h2>
         </Reveal>
-        <div
-          className="pricing-whats-inside"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-            gap: 16,
-          }}
-        >
+        <div className="pricing-whats-inside">
           {[
             {
               title: "All Programs",
@@ -278,15 +268,7 @@ export function PricingPage() {
             },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05}>
-              <div
-                style={{
-                  background: C.lightGray,
-                  borderRadius: 16,
-                  padding: "28px 24px",
-                  height: "100%",
-                  boxSizing: "border-box",
-                }}
-              >
+              <div className="surface-card surface-card--muted">
                 <h3
                   style={{
                     fontSize: 18,
@@ -318,7 +300,6 @@ export function PricingPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 36,
               fontWeight: 800,
               color: C.navy,
               textAlign: "center",
@@ -329,14 +310,7 @@ export function PricingPage() {
             Go further with coaching & custom plans
           </h2>
         </Reveal>
-        <div
-          className="pricing-coaching-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div className="pricing-coaching-grid">
           {[
             {
               title: "Weekly 1-on-1 Coaching",
@@ -373,14 +347,10 @@ export function PricingPage() {
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 0.1} style={{ height: "100%" }}>
               <div
+                className="surface-card"
                 style={{
-                  background: C.white,
-                  borderRadius: 16,
-                  padding: 32,
-                  border: `1px solid ${C.border}`,
                   display: "flex",
                   flexDirection: "column",
-                  height: "100%",
                 }}
               >
                 <h3
@@ -413,23 +383,12 @@ export function PricingPage() {
                 >
                   {c.desc}
                 </p>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: 20,
-                  }}
-                >
+                <div className="cta-block-full">
                   <CTA
                     variant="primary"
                     to={c.to}
                     href={c.href}
                     style={{
-                      width: "100%",
-                      maxWidth: 220,
-                      justifyContent: "center",
-                      boxSizing: "border-box",
-                      textAlign: "center",
                       padding: "14px 16px",
                       fontSize: 14,
                     }}

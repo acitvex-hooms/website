@@ -83,30 +83,17 @@ export function ProgramsPage() {
             </p>
           </div>
         </Reveal>
-        <div
-          className="auto-grid-programs"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div className="auto-grid-programs">
           {cats.map((c, i) => (
             <Reveal key={c.name} delay={i * 0.08}>
-              <div
-                style={{
-                  background: C.offWhite,
-                  borderRadius: 16,
-                  padding: 32,
-                  border: `1px solid ${C.border}`,
-                }}
-              >
+              <div className="surface-card">
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
                     marginBottom: 12,
+                    gap: 12,
                   }}
                 >
                   <h3
@@ -146,7 +133,7 @@ export function ProgramsPage() {
             <img
               src="/images/feature-1.jpg"
               alt="Custom program builder"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              className="img-editorial"
             />
           }
         />
@@ -157,7 +144,6 @@ export function ProgramsPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: C.navy,
               letterSpacing: -1,
@@ -168,14 +154,7 @@ export function ProgramsPage() {
             What&apos;s Inside Every Program
           </h2>
         </Reveal>
-        <div
-          className="programs-whats-inside"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-            gap: 16,
-          }}
-        >
+        <div className="programs-whats-inside">
           {[
             {
               title: "Structured Phases",
@@ -195,15 +174,7 @@ export function ProgramsPage() {
             },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05} style={{ height: "100%" }}>
-              <div
-                style={{
-                  background: C.lightGray,
-                  borderRadius: 16,
-                  padding: "28px 24px",
-                  height: "100%",
-                  boxSizing: "border-box",
-                }}
-              >
+              <div className="surface-card surface-card--muted">
                 <h3
                   style={{
                     fontSize: 18,
@@ -239,7 +210,6 @@ export function ProgramsPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: 36,
               fontWeight: 800,
               color: "#fff",
               marginBottom: 16,

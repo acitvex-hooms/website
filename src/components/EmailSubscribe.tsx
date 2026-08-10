@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
-import { C, FONT, PAGE_PATHS } from "../lib/tokens";
+import { C, FONT, MOTION, PAGE_PATHS } from "../lib/tokens";
 import { subscribeToKlaviyo } from "../lib/klaviyo";
 import { Pill, Reveal, Sec } from "./ui";
 
@@ -160,7 +160,7 @@ export function EmailSubscribe() {
                 fontSize: 15,
                 fontFamily: FONT,
                 cursor: status === "loading" ? "wait" : "pointer",
-                transition: "background 0.3s",
+                transition: `background ${MOTION.durationUiMs}`,
                 opacity: status === "loading" ? 0.75 : 1,
               }}
             >

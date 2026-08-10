@@ -73,12 +73,7 @@ export function AboutPage() {
             <img
               src="/images/ana-hero.webp"
               alt="Ana Coppola"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           }
         >
@@ -173,12 +168,7 @@ export function AboutPage() {
             <img
               src="/images/ana-started.jpg"
               alt="Ana coaching beginnings"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           }
         >
@@ -214,12 +204,7 @@ export function AboutPage() {
             <img
               src="/images/ana-iq.jpg"
               alt="IQ Framework in practice"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           }
         />
@@ -239,12 +224,7 @@ export function AboutPage() {
             <img
               src="/images/ana-platform.jpg"
               alt="activeX training"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           }
         />
@@ -257,7 +237,6 @@ export function AboutPage() {
             <h2
               className="section-title"
               style={{
-                fontSize: 36,
                 fontWeight: 800,
                 color: C.navy,
                 letterSpacing: -1,

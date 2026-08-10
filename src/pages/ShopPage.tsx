@@ -1,6 +1,6 @@
 import { FaqAccordion } from "../components/FaqAccordion";
 import { SHOP_PRODUCTS, shopBuyHref, type ShopProduct } from "../lib/shop";
-import { C } from "../lib/tokens";
+import { C, RADIUS, SHADOW } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
 const FAQ = [
@@ -37,7 +37,7 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
         className={`shop-card${product.featured ? " is-featured" : ""}`}
         style={{
           background: C.white,
-          borderRadius: 20,
+          borderRadius: RADIUS.xl,
           border: product.featured
             ? `2px solid ${C.purple}`
             : `1px solid ${C.border}`,
@@ -45,9 +45,7 @@ function ProductCard({ product, delay }: { product: ShopProduct; delay: number }
           display: "flex",
           flexDirection: "column",
           height: "100%",
-          boxShadow: product.featured
-            ? "0 16px 40px rgba(120,40,255,0.12)"
-            : "none",
+          boxShadow: product.featured ? SHADOW.featured : SHADOW.soft,
         }}
       >
         <div className="shop-card-media">

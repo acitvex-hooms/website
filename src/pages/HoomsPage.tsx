@@ -1,5 +1,5 @@
 import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
-import { C, PAGE_PATHS } from "../lib/tokens";
+import { C, IMG, PAGE_PATHS } from "../lib/tokens";
 import { CTA, Card, Pill, Reveal, Sec, Split } from "../components/ui";
 
 const hoomsBeliefs = [
@@ -86,17 +86,12 @@ export function HoomsPage() {
           text={`Growing up, I was the chubby kid. Then, almost overnight it felt like, that flipped completely, I shot up, dropped the weight, and ended up 65kg at 5'11". Skinny. Not the transformation people usually picture. My brother had been asking me to start training with him for a while partly to get me in the gym, partly just to have a reason to spend more time together. I kept putting it off.`}
           imgFit="contain"
           imgHeight="auto"
-          imgRadius={28}
+          imgRadius={IMG.portraitRadius}
           img={
             <img
               src="/images/hooms-hero.jpg"
               alt="Hooms training"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                borderRadius: 28,
-              }}
+              className="img-portrait"
             />
           }
         >

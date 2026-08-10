@@ -1,4 +1,4 @@
-import { C } from "../lib/tokens";
+import { C, RADIUS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 
 const STRIPE_ANNUAL = "https://buy.stripe.com/28E5kCbz27Xn6FB0wt4ow01";
@@ -157,10 +157,8 @@ export function CoachesPage() {
           {features.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05}>
               <div
-                className="coaches-feature-card"
+                className="coaches-feature-card surface-card surface-card--muted"
                 style={{
-                  background: C.lightGray,
-                  borderRadius: 16,
                   height: "100%",
                   boxSizing: "border-box",
                 }}
@@ -239,16 +237,13 @@ export function CoachesPage() {
           ].map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
               <div
-                className="pricing-card"
+                className={`pricing-card${t.hi ? " is-featured" : ""}`}
                 style={{
                   background: C.white,
-                  borderRadius: 20,
+                  borderRadius: RADIUS.xl,
                   border: t.hi
                     ? `2px solid ${C.purple}`
                     : `1px solid ${C.border}`,
-                  boxShadow: t.hi
-                    ? "0 20px 60px rgba(120,40,255,0.1)"
-                    : "none",
                   position: "relative",
                   height: "100%",
                 }}

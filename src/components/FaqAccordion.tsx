@@ -1,4 +1,6 @@
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
+import { tweenExit, tweenReveal } from "../lib/motion";
 import { C } from "../lib/tokens";
 import { Pill, Reveal } from "./ui";
 
@@ -6,6 +8,8 @@ export type FaqItemData = { q: string; a: string };
 
 function FaqItem({ q, a }: FaqItemData) {
   const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+
   return (
     <div className="faq-acc-item">
       <button
@@ -19,7 +23,28 @@ function FaqItem({ q, a }: FaqItemData) {
           {open ? "−" : "+"}
         </span>
       </button>
-      {open && <p className="faq-acc-a">{a}</p>}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="answer"
+            initial={reduce ? false : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={
+              reduce
+                ? { opacity: 0 }
+                : { height: 0, opacity: 0, transition: tweenExit }
+            }
+            transition={
+              reduce
+                ? { duration: 0 }
+                : { ...tweenReveal, duration: 0.32 }
+            }
+            style={{ overflow: "hidden" }}
+          >
+            <p className="faq-acc-a">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
