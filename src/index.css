@@ -101,46 +101,6 @@ img {
   border: 0;
 }
 
-.sec.email-subscribe {
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-
-.email-subscribe .section-title {
-  font-size: clamp(28px, 7vw, 40px) !important;
-}
-
-.email-subscribe-form {
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.email-subscribe-form input,
-.email-subscribe-form button {
-  width: 100%;
-}
-
-@media (min-width: 601px) {
-  .sec.email-subscribe {
-    padding-top: 72px !important;
-    padding-bottom: 72px !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-
-  .email-subscribe-form {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .email-subscribe-form input,
-  .email-subscribe-form button {
-    width: auto;
-  }
-}
-
 input:focus,
 textarea:focus,
 input:focus-visible,
@@ -663,12 +623,6 @@ textarea:focus-visible {
     padding: 40px 32px !important;
   }
 
-  .sec.email-subscribe {
-    padding-top: 72px !important;
-    padding-bottom: 72px !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
 }
 
 .promo-banner {
@@ -943,8 +897,7 @@ textarea:focus-visible {
 }
 
 .contact-form input,
-.contact-form textarea,
-.email-subscribe-form input {
+.contact-form textarea {
   font-size: 16px !important;
 }
 

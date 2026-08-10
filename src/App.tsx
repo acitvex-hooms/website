@@ -32,10 +32,30 @@ import { RefundPage } from "./pages/RefundPage";
 import { Founding50Page } from "./pages/Founding50Page";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [pathname]);
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  useEffect(() => {
+    // Instant jump — smooth scroll leaves the new page mid-viewport
+    // when navigating from a deep scroll position.
+    if (hash) {
+      const id = decodeURIComponent(hash.replace(/^#/, ""));
+      const el = id ? document.getElementById(id) : null;
+      if (el) {
+        el.scrollIntoView();
+        return;
+      }
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [pathname, hash]);
+
   return null;
 }
 

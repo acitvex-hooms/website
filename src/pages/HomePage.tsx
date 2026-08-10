@@ -1,5 +1,4 @@
 import { AppStoreBand } from "../components/AppStoreBand";
-import { EmailSubscribe } from "../components/EmailSubscribe";
 import { Hero } from "../components/Hero";
 import { MotionItem, Stagger } from "../components/motion";
 import { ScreenshotStrip } from "../components/ScreenshotStrip";
@@ -475,7 +474,6 @@ export function HomePage() {
       </Sec>
 
       <AppStoreBand />
-      <EmailSubscribe />
     </>
   );
 }
