@@ -17,6 +17,8 @@ export function Hero() {
           className="hero-bg-img"
           src="/images/hero-banner.webp"
           alt=""
+          fetchPriority="high"
+          decoding="async"
           style={{
             transform: `translate3d(0, ${parallaxY}px, 0)`,
             willChange: reduce ? "auto" : "transform",

@@ -410,10 +410,12 @@ export function Phone({
   screen,
   imageSrc,
   imageAlt = "App screenshot",
+  loading = "lazy",
 }: {
   screen?: ReactNode;
   imageSrc?: string;
   imageAlt?: string;
+  loading?: "lazy" | "eager";
 }) {
   return (
     <div
@@ -433,6 +435,8 @@ export function Phone({
         <img
           src={imageSrc}
           alt={imageAlt}
+          loading={loading}
+          decoding="async"
           style={{
             width: "100%",
             height: "100%",

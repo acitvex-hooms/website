@@ -332,10 +332,10 @@ textarea:focus-visible {
 }
 
 /* Primary CTAs outside .cta-row — full-width under ~600px */
-.home-sec-cta > .cta-btn,
-.sec-cta > .cta-btn,
+.home-sec-cta .cta-btn,
+.sec-cta .cta-btn,
 .iq-cta .cta-btn,
-.pricing-card > .cta-btn {
+.pricing-card .cta-btn {
   width: 100%;
   justify-content: center;
   text-align: center;
@@ -697,8 +697,10 @@ textarea:focus-visible {
 .sec .cta-btn,
 .hero .cta-btn,
 .iq-cta .cta-btn {
-  padding: 13px 22px !important;
+  padding: 14px 22px !important;
   font-size: 14px !important;
+  min-height: 44px;
+  box-sizing: border-box;
 }
 
 .blog-prose {
@@ -1228,8 +1230,8 @@ body.nav-open {
     width: auto;
   }
 
-  .home-sec-cta > .cta-btn,
-  .sec-cta > .cta-btn,
+  .home-sec-cta .cta-btn,
+  .sec-cta .cta-btn,
   .iq-cta .cta-btn {
     width: auto;
   }

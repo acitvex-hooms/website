@@ -314,7 +314,8 @@ export function Nav() {
                     fontWeight: aboutActive ? 700 : 500,
                     background: "none",
                     border: "none",
-                    padding: 0,
+                    padding: "12px 0",
+                    minHeight: 44,
                     fontFamily: "inherit",
                     cursor: "pointer",
                     textAlign: "left",
@@ -360,6 +361,10 @@ export function Nav() {
                   textDecoration: "none",
                   fontSize: 16,
                   fontWeight: page === k ? 700 : 500,
+                  padding: "12px 0",
+                  minHeight: 44,
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
                 {l}

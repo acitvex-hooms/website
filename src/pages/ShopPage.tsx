@@ -1,6 +1,7 @@
 import { FaqAccordion } from "../components/FaqAccordion";
+import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
 import { SHOP_PRODUCTS, shopBuyHref, type ShopProduct } from "../lib/shop";
-import { C, RADIUS, SHADOW } from "../lib/tokens";
+import { C, PAGE_PATHS, RADIUS, SHADOW } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
 
 const FAQ = [
@@ -229,6 +230,34 @@ export function ShopPage() {
 
       <Sec>
         <FaqAccordion items={FAQ} pill="FAQ" />
+      </Sec>
+
+      <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
+        <Reveal>
+          <h2
+            className="section-title"
+            style={{
+              fontWeight: 800,
+              color: C.white,
+              marginBottom: 12,
+            }}
+          >
+            Want the full activeX system?
+          </h2>
+          <p
+            style={{
+              fontSize: 16,
+              color: "rgba(255,255,255,0.75)",
+              maxWidth: 440,
+              margin: "0 auto 24px",
+              lineHeight: 1.7,
+            }}
+          >
+            Membership includes 40+ programs, the exercise library, and tracking
+            — built on the IQ Framework.
+          </p>
+          <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.join}</CTA>
+        </Reveal>
       </Sec>
     </>
   );

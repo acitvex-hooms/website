@@ -210,7 +210,9 @@ export function HoomsPage() {
               same three pillars, Mobility, Movement, Mindset, so progress
               compounds instead of resetting every time you open the app.
             </p>
-            <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.joinFromAnnual}</CTA>
+            <div className="cta-row">
+              <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.joinFromAnnual}</CTA>
+            </div>
           </div>
         </Reveal>
       </Sec>
@@ -254,10 +256,8 @@ export function HoomsPage() {
           <h2
             className="section-title"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 800,
               color: "#fff",
-              letterSpacing: -1,
               marginBottom: 16,
             }}
           >
@@ -276,14 +276,7 @@ export function HoomsPage() {
             Full access to every program, tool, and resource. Or apply for
             1-on-1 coaching with Hooms.
           </p>
-          <div
-            style={{
-              display: "flex",
-              gap: 12,
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="cta-row" style={{ justifyContent: "center" }}>
             <CTA to={PAGE_PATHS.pricing}>{MEMBERSHIP_CTAS.join}</CTA>
             <CTA
               variant="secondary"

@@ -104,7 +104,7 @@ export function CoachesPage() {
           img={
             <img
               className="img-editorial"
-              src="/images/coaches-training.jpg"
+              src="/images/coaches-training.webp"
               alt="Training with activeX"
               style={{
                 width: "100%",

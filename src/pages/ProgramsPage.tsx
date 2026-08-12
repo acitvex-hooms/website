@@ -131,7 +131,7 @@ export function ProgramsPage() {
           ctaTo={PAGE_PATHS.pricing}
           img={
             <img
-              src="/images/feature-1.jpg"
+              src="/images/feature-1.webp"
               alt="Custom program builder"
               className="img-editorial"
             />
