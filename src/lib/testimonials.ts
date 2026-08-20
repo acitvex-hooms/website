@@ -6,6 +6,12 @@ export type Testimonial = {
   imdb: string;
 };
 
+/**
+ * Flip to true once client permission is confirmed and quotes are finalized.
+ * Keeps Home / Pricing / Coaching mounts intact while hidden.
+ */
+export const SHOW_TESTIMONIALS = false;
+
 /** Drop matching files into public/images/testimonials/ */
 export const TESTIMONIALS: Testimonial[] = [
   {

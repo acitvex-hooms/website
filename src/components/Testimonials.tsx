@@ -5,7 +5,11 @@ import {
   useState,
   type TouchEvent,
 } from "react";
-import { TESTIMONIALS, type Testimonial } from "../lib/testimonials";
+import {
+  TESTIMONIALS,
+  SHOW_TESTIMONIALS,
+  type Testimonial,
+} from "../lib/testimonials";
 import { C } from "../lib/tokens";
 import { Pill, Reveal, Sec } from "./ui";
 
@@ -34,6 +38,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   };
 
   useEffect(() => {
+    if (!SHOW_TESTIMONIALS) return;
     const mq = window.matchMedia(DESKTOP_MQ);
     const sync = () => {
       const desktop = mq.matches;
@@ -51,7 +56,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   }, []);
 
   useEffect(() => {
-    if (count <= 1 || paused) return;
+    if (!SHOW_TESTIMONIALS || count <= 1 || paused) return;
     const id = window.setInterval(() => {
       setActive((i) => (i + 1) % count);
     }, 5000);
@@ -59,13 +64,14 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   }, [count, paused, active]);
 
   useEffect(() => {
-    if (!paused) return;
+    if (!SHOW_TESTIMONIALS || !paused) return;
     const id = window.setTimeout(() => setPaused(false), 12000);
     return () => window.clearTimeout(id);
   }, [paused]);
 
   // Lock every card to the tallest natural height so active scale looks identical.
   useLayoutEffect(() => {
+    if (!SHOW_TESTIMONIALS) return;
     const track = trackRef.current;
     if (!track) return;
 
@@ -106,7 +112,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
     ? CARD_TOP + cardHeight + TRACK_PAD_BOTTOM
     : undefined;
 
-  if (!count) return null;
+  if (!SHOW_TESTIMONIALS || !count) return null;
 
   const onTouchStart = (e: TouchEvent) => {
     touchStartX.current = e.changedTouches[0]?.clientX ?? null;
