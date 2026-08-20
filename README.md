@@ -28,7 +28,7 @@ After a shop Stripe Payment Link succeeds, the server:
 
 1. Receives `checkout.session.completed` at `POST /api/stripe/webhook`
 2. Emails the customer (Google Workspace SMTP) with a **signed 7-day eBook download link** when relevant
-3. Emails `SHIP_NOTIFY_EMAIL` with the shipping address for ankle strap / bundle
+3. Emails `ORDER_NOTIFY_EMAIL` / `SHIP_NOTIFY_EMAIL` (default `info@activex.fit`) with **full order details** for every shop purchase — customer name, email, phone, products, total, payment type, shipping & billing addresses, plus a Stripe link. Physical SKUs are flagged to pack & ship.
 
 ### One-time setup
 

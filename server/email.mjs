@@ -29,8 +29,14 @@ function fromAddress() {
   );
 }
 
-function teamInbox() {
-  return process.env.SHIP_NOTIFY_EMAIL || process.env.SMTP_USER || "info@activex.fit";
+/** Inbox for every shop order (default info@activex.fit). */
+export function teamInbox() {
+  return (
+    process.env.ORDER_NOTIFY_EMAIL ||
+    process.env.SHIP_NOTIFY_EMAIL ||
+    process.env.SMTP_USER ||
+    "info@activex.fit"
+  );
 }
 
 function escapeHtml(s) {
@@ -39,6 +45,31 @@ function escapeHtml(s) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function formatMoney(amountTotal, currency) {
+  if (typeof amountTotal !== "number") return "—";
+  const code = (currency || "usd").toUpperCase();
+  try {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: code,
+    }).format(amountTotal / 100);
+  } catch {
+    return `${(amountTotal / 100).toFixed(2)} ${code}`;
+  }
+}
+
+function formatAddress(addr) {
+  if (!addr) return null;
+  const lines = [
+    addr.name,
+    addr.line1,
+    addr.line2,
+    [addr.city, addr.state, addr.postal_code].filter(Boolean).join(", "),
+    addr.country,
+  ].filter(Boolean);
+  return lines.length ? lines.map(escapeHtml).join("<br/>") : null;
 }
 
 /**
@@ -97,14 +128,31 @@ export async function sendCustomerOrderEmail(opts) {
 }
 
 /**
+ * Full order alert to the team for every shop purchase.
  * @param {{
  *   customerEmail: string,
  *   customerName?: string | null,
+ *   customerPhone?: string | null,
+ *   skuId?: string | null,
  *   skuName: string,
+ *   hasEbook?: boolean,
+ *   hasPhysical?: boolean,
  *   sessionId: string,
+ *   paymentIntentId?: string | null,
  *   amountTotal: number | null,
  *   currency: string | null,
+ *   paymentType?: string | null,
+ *   lineItems?: Array<{ name: string, quantity: number, amount: number | null }>,
  *   shipping?: {
+ *     name?: string | null,
+ *     line1?: string | null,
+ *     line2?: string | null,
+ *     city?: string | null,
+ *     state?: string | null,
+ *     postal_code?: string | null,
+ *     country?: string | null,
+ *   } | null,
+ *   billing?: {
  *     name?: string | null,
  *     line1?: string | null,
  *     line2?: string | null,
@@ -115,42 +163,91 @@ export async function sendCustomerOrderEmail(opts) {
  *   } | null,
  * }} opts
  */
-export async function sendTeamShipEmail(opts) {
-  const ship = opts.shipping;
-  const addressLines = ship
-    ? [
-        ship.name,
-        ship.line1,
-        ship.line2,
-        [ship.city, ship.state, ship.postal_code].filter(Boolean).join(", "),
-        ship.country,
-      ]
-        .filter(Boolean)
-        .map(escapeHtml)
-        .join("<br/>")
-    : "<em>No shipping address on session — check Stripe Dashboard.</em>";
+export async function sendTeamOrderEmail(opts) {
+  const amount = formatMoney(opts.amountTotal, opts.currency);
+  const shipHtml =
+    formatAddress(opts.shipping) ||
+    "<em>No shipping address on session (digital-only or not collected).</em>";
+  const billHtml =
+    formatAddress(opts.billing) ||
+    "<em>No billing address on session.</em>";
 
-  const amount =
-    typeof opts.amountTotal === "number"
-      ? `${(opts.amountTotal / 100).toFixed(2)} ${(opts.currency || "usd").toUpperCase()}`
-      : "—";
+  const lines = (opts.lineItems || [])
+    .map((item) => {
+      const qty = item.quantity > 1 ? ` × ${item.quantity}` : "";
+      const lineAmount =
+        typeof item.amount === "number"
+          ? ` — ${formatMoney(item.amount, opts.currency)}`
+          : "";
+      return `<li>${escapeHtml(item.name)}${qty}${escapeHtml(lineAmount)}</li>`;
+    })
+    .join("");
 
+  const productsHtml = lines
+    ? `<ul style="padding-left:18px;margin:8px 0;">${lines}</ul>`
+    : `<p>${escapeHtml(opts.skuName)}</p>`;
+
+  const fulfillmentNotes = [];
+  if (opts.hasEbook) fulfillmentNotes.push("eBook download emailed to customer");
+  if (opts.hasPhysical) fulfillmentNotes.push("Physical item — pack & ship");
+  if (!opts.hasEbook && !opts.hasPhysical) {
+    fulfillmentNotes.push("Check Stripe for fulfillment needs");
+  }
+
+  const dashboardUrl = `https://dashboard.stripe.com/payments/${encodeURIComponent(
+    opts.paymentIntentId || opts.sessionId,
+  )}`;
+
+  const subjectPrefix = opts.hasPhysical ? "New order (ship)" : "New order";
   const info = await transporter().sendMail({
     from: fromAddress(),
     to: teamInbox(),
-    subject: `Ship order: ${opts.skuName} — ${opts.customerEmail}`,
+    replyTo: opts.customerEmail,
+    subject: `${subjectPrefix}: ${opts.skuName} — ${opts.customerEmail}`,
     html: `
-      <div style="font-family:Montserrat,Helvetica,Arial,sans-serif;max-width:560px;margin:0 auto;">
-        <h2 style="color:#272789;">Pack & ship — BBE Ankle Strap</h2>
-        <p><strong>Product:</strong> ${escapeHtml(opts.skuName)}</p>
-        <p><strong>Customer:</strong> ${escapeHtml(opts.customerName || "—")} &lt;${escapeHtml(opts.customerEmail)}&gt;</p>
-        <p><strong>Amount:</strong> ${escapeHtml(amount)}</p>
-        <p><strong>Stripe session:</strong> ${escapeHtml(opts.sessionId)}</p>
-        <p><strong>Ship to:</strong><br/>${addressLines}</p>
-        <p style="color:#7a7a9a;font-size:13px;">Automated from activex.fit Stripe webhook.</p>
+      <div style="font-family:Montserrat,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <h2 style="color:#272789;margin-bottom:8px;">New shop order</h2>
+        <p style="color:#4a4a6a;margin-top:0;">Automated from activex.fit Stripe checkout.</p>
+
+        <h3 style="color:#272789;font-size:15px;margin-bottom:6px;">Customer</h3>
+        <p style="margin:0 0 4px;"><strong>Name:</strong> ${escapeHtml(opts.customerName || "—")}</p>
+        <p style="margin:0 0 4px;"><strong>Email:</strong> ${escapeHtml(opts.customerEmail)}</p>
+        <p style="margin:0 0 16px;"><strong>Phone:</strong> ${escapeHtml(opts.customerPhone || "—")}</p>
+
+        <h3 style="color:#272789;font-size:15px;margin-bottom:6px;">Products</h3>
+        ${productsHtml}
+        <p style="margin:8px 0;"><strong>Matched SKU:</strong> ${escapeHtml(opts.skuName)}${opts.skuId ? ` (${escapeHtml(opts.skuId)})` : ""}</p>
+        <p style="margin:0 0 16px;"><strong>Fulfillment:</strong> ${escapeHtml(fulfillmentNotes.join(" · "))}</p>
+
+        <h3 style="color:#272789;font-size:15px;margin-bottom:6px;">Payment</h3>
+        <p style="margin:0 0 4px;"><strong>Total:</strong> ${escapeHtml(amount)}</p>
+        <p style="margin:0 0 4px;"><strong>Payment type:</strong> ${escapeHtml(opts.paymentType || "—")}</p>
+        <p style="margin:0 0 4px;"><strong>Stripe session:</strong> ${escapeHtml(opts.sessionId)}</p>
+        ${
+          opts.paymentIntentId
+            ? `<p style="margin:0 0 4px;"><strong>Payment intent:</strong> ${escapeHtml(opts.paymentIntentId)}</p>`
+            : ""
+        }
+        <p style="margin:0 0 16px;"><a href="${escapeHtml(dashboardUrl)}">Open in Stripe</a></p>
+
+        <h3 style="color:#272789;font-size:15px;margin-bottom:6px;">Shipping address</h3>
+        <p style="margin:0 0 16px;line-height:1.5;">${shipHtml}</p>
+
+        <h3 style="color:#272789;font-size:15px;margin-bottom:6px;">Billing address</h3>
+        <p style="margin:0 0 8px;line-height:1.5;">${billHtml}</p>
       </div>
     `,
   });
 
   return { id: info.messageId };
+}
+
+/**
+ * @deprecated Use sendTeamOrderEmail — kept as alias for older imports.
+ */
+export async function sendTeamShipEmail(opts) {
+  return sendTeamOrderEmail({
+    ...opts,
+    hasPhysical: true,
+  });
 }
