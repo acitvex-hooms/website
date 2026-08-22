@@ -14,15 +14,18 @@ export const MEMBERSHIP_CTAS = {
 
 /**
  * Founding member Payment Links ($14.99/mo · $179/yr).
- * These are not coach-partner links; they are the founding checkout products.
+ * Only used on `/founding-50`.
  */
 export const STRIPE_FOUNDING = {
   annual: "https://buy.stripe.com/4gM6oG9qU91rd3Z3IF4ow09",
   monthly: "https://buy.stripe.com/8x23cufPielLd3Zenj4ow08",
 } as const;
 
-/** Public membership CTAs (Home / Pricing) — founding Payment Links during the offer. */
+/**
+ * Standard public membership Payment Links (Home, Pricing, Coaches, etc.).
+ * Promo/referral codes from coaches are entered at Stripe checkout.
+ */
 export const STRIPE_MEMBERSHIP = {
-  annual: STRIPE_FOUNDING.annual,
-  monthly: STRIPE_FOUNDING.monthly,
+  annual: "https://buy.stripe.com/28E5kCbz27Xn6FB0wt4ow01",
+  monthly: "https://buy.stripe.com/14A28q9qU4Lb2plcfb4ow00",
 } as const;

@@ -1,8 +1,6 @@
+import { STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
 import { C, RADIUS } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec, Split } from "../components/ui";
-
-const STRIPE_ANNUAL = "https://buy.stripe.com/28E5kCbz27Xn6FB0wt4ow01";
-const STRIPE_MONTHLY = "https://buy.stripe.com/14A28q9qU4Lb2plcfb4ow00";
 
 const features = [
   {
@@ -220,7 +218,7 @@ export function CoachesPage() {
               per: "mo",
               sub: "$194 billed yearly",
               compare: "Standard: $229/yr",
-              href: STRIPE_ANNUAL,
+              href: STRIPE_MEMBERSHIP.annual,
               cta: "Choose Annual →",
               hi: true,
             },
@@ -230,7 +228,7 @@ export function CoachesPage() {
               per: "mo",
               sub: "Cancel anytime",
               compare: "Standard: $24.99/mo",
-              href: STRIPE_MONTHLY,
+              href: STRIPE_MEMBERSHIP.monthly,
               cta: "Choose Monthly →",
               hi: false,
             },
