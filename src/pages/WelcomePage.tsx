@@ -220,7 +220,7 @@ export function WelcomePage() {
     : isVideo
       ? "Complete the short form below so we can prepare for your consult. Downloading the app is optional, but it's the best way to stay in the activeX ecosystem."
       : isCoaching
-        ? "Create your activeX account while we prepare your onboarding. We'll be in touch within 24 hours to schedule your call."
+        ? "Here's how to get set up. Download the app first, then complete the short intake so we can prepare your coaching onboarding."
         : isShop
           ? product === "bbe-ankle"
             ? "We'll pack and ship your BBE Ankle Strap within 2 business days. Watch your inbox for tracking once it goes out."
@@ -236,14 +236,18 @@ export function WelcomePage() {
         ? "https://tally.so/r/MelGNA"
         : product === "video-consult"
           ? "https://tally.so/r/9qyVe5"
-          : null;
+          : product === "coaching"
+            ? "https://tally.so/r/kd1q6d"
+            : null;
 
   const formTitle =
     product === "custom-program"
       ? "Custom Program Intake"
       : product === "custom-diet"
         ? "Custom Diet Intake"
-        : "Video Consultation";
+        : product === "coaching"
+          ? "1-on-1 Coaching Intake"
+          : "Video Consultation";
 
   return (
     <>
@@ -450,7 +454,7 @@ export function WelcomePage() {
               }}
             >
               {isCoaching
-                ? "We'll personally reach out within 24 hours to schedule your onboarding call."
+                ? "After you submit the intake, we'll personally reach out within 24 hours to schedule your onboarding call."
                 : isVideo
                   ? "After you submit the form, we'll confirm timing and details for your video consultation."
                   : "We'll review your answers and be in touch within 24 hours to discuss your plan."}
