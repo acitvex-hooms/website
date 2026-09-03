@@ -68,6 +68,7 @@ export type PageKey =
   | "welcome"
   | "about"
   | "hooms"
+  | "results"
   | "contact"
   | "privacy"
   | "terms"
@@ -87,6 +88,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   welcome: "/welcome",
   about: "/about",
   hooms: "/about/hooms",
+  results: "/results",
   contact: "/contact",
   privacy: "/privacy",
   terms: "/terms",

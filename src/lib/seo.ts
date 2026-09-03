@@ -80,6 +80,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       "Meet Hooms, co-founder of activeX. Competitive bodybuilder with 20+ years of training experience and hypertrophy specialist. Learn his story.",
   },
+  "/results": {
+    path: "/results",
+    title: "Client Transformations | Real Results | activeX",
+    description:
+      "See client transformations from activeX coaching. Real physiques built with structure — Hannah, Eric, Miryana, Charlie, and more. Results vary.",
+  },
   "/contact": {
     path: "/contact",
     title: "Contact activeX | Support & Partnerships",

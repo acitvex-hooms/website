@@ -23,6 +23,7 @@ import { HomePage } from "./pages/HomePage";
 import { IQPage } from "./pages/IQPage";
 import { PricingPage } from "./pages/PricingPage";
 import { ProgramsPage } from "./pages/ProgramsPage";
+import { ResultsPage } from "./pages/ResultsPage";
 import { ShopPage } from "./pages/ShopPage";
 import { VideoConsultPage } from "./pages/VideoConsultPage";
 import { WelcomePage } from "./pages/WelcomePage";
@@ -88,6 +89,7 @@ function SiteShell() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/about/hooms" element={<HoomsPage />} />
+        <Route path="/results" element={<ResultsPage />} />
         <Route
           path="/about/hooman"
           element={<Navigate to="/about/hooms" replace />}

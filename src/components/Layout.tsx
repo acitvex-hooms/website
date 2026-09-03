@@ -18,6 +18,7 @@ const LINKS: { k: PageKey | "about-menu"; l: string }[] = [
 const ABOUT_LINKS = [
   { to: "/about", l: "About Ana", page: "about" as const },
   { to: "/about/hooms", l: "About Hooms", page: "hooms" as const },
+  { to: "/results", l: "Results", page: "results" as const },
 ];
 
 export function Nav() {
@@ -31,7 +32,8 @@ export function Nav() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const aboutDesktopRef = useRef<HTMLDivElement>(null);
   const aboutMobileRef = useRef<HTMLDivElement>(null);
-  const aboutActive = page === "about" || page === "hooms";
+  const aboutActive =
+    page === "about" || page === "hooms" || page === "results";
   const isPartnerFunnel =
     location.pathname === "/founding-50" ||
     location.pathname === PAGE_PATHS.coaches;
@@ -398,6 +400,7 @@ export function Footer() {
       links: [
         ["About Ana", "about"],
         ["About Hooms", "hooms"],
+        ["Results", "results"],
         ["Contact", "contact"],
       ],
     },

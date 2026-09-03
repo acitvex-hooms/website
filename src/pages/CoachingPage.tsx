@@ -1,4 +1,5 @@
 import { Testimonials } from "../components/Testimonials";
+import { TransformationsTeaser } from "../components/TransformationsTeaser";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { C, IMG, PAGE_PATHS } from "../lib/tokens";
 import { Card, CTA, Pill, Reveal, Sec, Split } from "../components/ui";
@@ -443,6 +444,8 @@ export function CoachingPage() {
           ))}
         </div>
       </Sec>
+
+      <TransformationsTeaser compact />
 
       <Sec>
         <FaqAccordion items={FAQ} />
