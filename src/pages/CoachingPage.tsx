@@ -1,4 +1,4 @@
-import { Testimonials } from "../components/Testimonials";
+import { CelebrityClients } from "../components/CelebrityClients";
 import { TransformationsTeaser } from "../components/TransformationsTeaser";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { C, IMG, PAGE_PATHS } from "../lib/tokens";
@@ -451,7 +451,7 @@ export function CoachingPage() {
         <FaqAccordion items={FAQ} />
       </Sec>
 
-      <Testimonials />
+      <CelebrityClients />
 
       <Sec bg={C.navy} className="sec-cta" style={{ textAlign: "center" }}>
         <Reveal>

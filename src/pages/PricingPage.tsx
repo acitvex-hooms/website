@@ -1,4 +1,4 @@
-import { Testimonials } from "../components/Testimonials";
+import { CelebrityClients } from "../components/CelebrityClients";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { MEMBERSHIP_CTAS, STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
 import { C, PAGE_PATHS, RADIUS } from "../lib/tokens";
@@ -402,7 +402,7 @@ export function PricingPage() {
         </div>
       </Sec>
 
-      <Testimonials />
+      <CelebrityClients />
 
       <Sec>
         <FaqAccordion items={FAQ} />

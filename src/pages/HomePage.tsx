@@ -2,7 +2,7 @@ import { AppStoreBand } from "../components/AppStoreBand";
 import { Hero } from "../components/Hero";
 import { MotionItem, Stagger } from "../components/motion";
 import { ScreenshotStrip } from "../components/ScreenshotStrip";
-import { Testimonials } from "../components/Testimonials";
+import { CelebrityClients } from "../components/CelebrityClients";
 import { TransformationsTeaser } from "../components/TransformationsTeaser";
 import { MEMBERSHIP_CTAS, STRIPE_MEMBERSHIP } from "../lib/membershipCtas";
 import { C, PAGE_PATHS, RADIUS } from "../lib/tokens";
@@ -273,7 +273,7 @@ export function HomePage() {
         </Stagger>
       </Sec>
 
-      <Testimonials />
+      <CelebrityClients />
 
       <TransformationsTeaser />
 

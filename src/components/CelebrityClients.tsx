@@ -6,10 +6,10 @@ import {
   type TouchEvent,
 } from "react";
 import {
-  TESTIMONIALS,
-  SHOW_TESTIMONIALS,
-  type Testimonial,
-} from "../lib/testimonials";
+  CELEBRITY_CLIENTS,
+  SHOW_CELEBRITY_CLIENTS,
+  type CelebrityClient,
+} from "../lib/celebrityClients";
 import { C } from "../lib/tokens";
 import { Pill, Reveal, Sec } from "./ui";
 
@@ -18,11 +18,13 @@ const TRACK_PAD_BOTTOM = 28;
 const SWIPE_THRESHOLD = 48;
 const DESKTOP_MQ = "(min-width: 901px)";
 
-type TestimonialsProps = {
-  items?: Testimonial[];
+type CelebrityClientsProps = {
+  items?: CelebrityClient[];
 };
 
-export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
+export function CelebrityClients({
+  items = CELEBRITY_CLIENTS,
+}: CelebrityClientsProps) {
   const [active, setActive] = useState(0);
   const [cardHeight, setCardHeight] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -38,7 +40,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   };
 
   useEffect(() => {
-    if (!SHOW_TESTIMONIALS) return;
+    if (!SHOW_CELEBRITY_CLIENTS) return;
     const mq = window.matchMedia(DESKTOP_MQ);
     const sync = () => {
       const desktop = mq.matches;
@@ -56,7 +58,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   }, []);
 
   useEffect(() => {
-    if (!SHOW_TESTIMONIALS || count <= 1 || paused) return;
+    if (!SHOW_CELEBRITY_CLIENTS || count <= 1 || paused) return;
     const id = window.setInterval(() => {
       setActive((i) => (i + 1) % count);
     }, 5000);
@@ -64,20 +66,20 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   }, [count, paused, active]);
 
   useEffect(() => {
-    if (!SHOW_TESTIMONIALS || !paused) return;
+    if (!SHOW_CELEBRITY_CLIENTS || !paused) return;
     const id = window.setTimeout(() => setPaused(false), 12000);
     return () => window.clearTimeout(id);
   }, [paused]);
 
   // Lock every card to the tallest natural height so active scale looks identical.
   useLayoutEffect(() => {
-    if (!SHOW_TESTIMONIALS) return;
+    if (!SHOW_CELEBRITY_CLIENTS) return;
     const track = trackRef.current;
     if (!track) return;
 
     const measure = () => {
       const cards = Array.from(
-        track.querySelectorAll<HTMLElement>(".testimonial-card"),
+        track.querySelectorAll<HTMLElement>(".celeb-client-card"),
       );
       if (!cards.length) return;
 
@@ -112,7 +114,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
     ? CARD_TOP + cardHeight + TRACK_PAD_BOTTOM
     : undefined;
 
-  if (!SHOW_TESTIMONIALS || !count) return null;
+  if (!SHOW_CELEBRITY_CLIENTS || !count) return null;
 
   const onTouchStart = (e: TouchEvent) => {
     touchStartX.current = e.changedTouches[0]?.clientX ?? null;
@@ -129,18 +131,18 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
   };
 
   return (
-    <Sec bg={C.offWhite} className="testimonials-section">
+    <Sec bg={C.offWhite} className="celeb-clients-section">
       <Reveal>
-        <div className="testimonials-header">
+        <div className="celeb-clients-header">
           <Pill>Clients</Pill>
-          <h2 className="section-title testimonials-heading">Celebrity Clients</h2>
+          <h2 className="section-title celeb-clients-heading">Celebrity Clients</h2>
         </div>
       </Reveal>
 
-      <div className="testimonials-carousel">
+      <div className="celeb-clients-carousel">
         <div
           ref={trackRef}
-          className="testimonials-track"
+          className="celeb-clients-track"
           aria-live="polite"
           style={trackHeight ? { height: trackHeight } : undefined}
           onTouchStart={onTouchStart}
@@ -168,7 +170,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
               <article
                 key={item.name}
                 className={[
-                  "testimonial-card",
+                  "celeb-client-card",
                   isActive ? "is-active" : "",
                   visible ? "is-visible" : "",
                 ]
@@ -191,22 +193,22 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
                   if (!isActive) go(i);
                 }}
               >
-                <div className="testimonial-quote-mark" aria-hidden>
+                <div className="celeb-client-quote-mark" aria-hidden>
                   “
                 </div>
-                <p className="testimonial-quote">{item.quote}</p>
+                <p className="celeb-client-quote">{item.quote}</p>
                 <img
-                  className="testimonial-photo"
+                  className="celeb-client-photo"
                   src={item.image}
                   alt={item.name}
                   loading={isActive || visible ? "eager" : "lazy"}
                 />
-                <div className="testimonial-meta">
+                <div className="celeb-client-meta">
                   <strong>{item.date}</strong>
                   <span>{item.name}</span>
                 </div>
                 <a
-                  className="testimonial-imdb"
+                  className="celeb-client-imdb"
                   href={item.imdb}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -219,10 +221,10 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
           })}
         </div>
 
-        <div className="testimonials-controls">
+        <div className="celeb-clients-controls">
           <button
             type="button"
-            className="testimonials-arrow"
+            className="celeb-clients-arrow"
             aria-label="Previous celebrity client"
             onClick={() => go(active - 1)}
           >
@@ -230,7 +232,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
           </button>
 
           <div
-            className="testimonials-dots"
+            className="celeb-clients-dots"
             role="tablist"
             aria-label="Celebrity clients"
           >
@@ -241,7 +243,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
                 role="tab"
                 aria-selected={i === active}
                 aria-label={`Show ${item.name}`}
-                className={`testimonials-dot${i === active ? " is-active" : ""}`}
+                className={`celeb-clients-dot${i === active ? " is-active" : ""}`}
                 onClick={() => go(i)}
               />
             ))}
@@ -249,7 +251,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
 
           <button
             type="button"
-            className="testimonials-arrow"
+            className="celeb-clients-arrow"
             aria-label="Next celebrity client"
             onClick={() => go(active + 1)}
           >

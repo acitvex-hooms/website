@@ -1,4 +1,4 @@
-export type Testimonial = {
+export type CelebrityClient = {
   quote: string;
   name: string;
   date: string;
@@ -13,16 +13,16 @@ export type Testimonial = {
  * Edit the `quote` strings below — that is the card body copy.
  * Write it in ActiveX's voice (not as a first-person client quote).
  */
-export const SHOW_TESTIMONIALS = false;
+export const SHOW_CELEBRITY_CLIENTS = false;
 
-/** Drop matching files into public/images/testimonials/ */
-export const TESTIMONIALS: Testimonial[] = [
+/** Drop matching files into public/images/celebrity-clients/ */
+export const CELEBRITY_CLIENTS: CelebrityClient[] = [
   {
     quote:
       "I worked with Ana for over 2 years and in that time she helped me build a stronger physique. She taught me how to move with intention and being strong is sexy. Having her as my coach changed my body drastically and couldn't have done it without her.",
     name: "Pia Miller",
     date: "June 2021",
-    image: "/images/testimonials/pia-miller.png",
+    image: "/images/celebrity-clients/pia-miller.png",
     imdb: "https://www.imdb.com/name/nm3880536/",
   },
   {
@@ -30,7 +30,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "I am an actor and needed to get into the best shape of my life for a big role on a Netflix produced movie called Territory. Ana was recommended to me by another actor colleague that she had also helped get into shape for their role. We worked together and was able to bring my best package to date and helped land me the role.",
     name: "Philippa Northeast",
     date: "September 2025",
-    image: "/images/testimonials/philippa-northeast.png",
+    image: "/images/celebrity-clients/philippa-northeast.png",
     imdb: "https://www.imdb.com/name/nm5923287/",
   },
   {
@@ -38,7 +38,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "I met Ana at an event and I needed help to get back into training. We worked together for many years, but within 3 months we had added 4kgs of muscle and eliminated 5kgs of fat. So once she launched her app I downloaded it straight away and haven't stopped using it since.",
     name: "Charlie Clausen",
     date: "October 2023",
-    image: "/images/testimonials/charlie-clausen.png",
+    image: "/images/celebrity-clients/charlie-clausen.png",
     imdb: "https://www.imdb.com/name/nm0165310/",
   },
   {
@@ -46,15 +46,15 @@ export const TESTIMONIALS: Testimonial[] = [
       "I scored a role on Spartacus: House of Ashur produced by Starz. I needed to look like a gladiator with a lot of shirtless scenes and was referred to Ana to get the job done. We worked together to achieve the look on camera.",
     name: "Jackson Gallagher",
     date: "August 2025",
-    image: "/images/testimonials/jackson-gallagher.png",
+    image: "/images/celebrity-clients/jackson-gallagher.png",
     imdb: "https://www.imdb.com/name/nm3370453/",
   },
-    {
+  {
     quote:
       "I scored a role on Spartacus: House of Ashur produced by Starz. I needed to look like a gladiator with a lot of shirtless scenes and was referred to Ana to get the job done. We worked together to achieve the look on camera.",
     name: "Cassie Howarth",
     date: "August 2025",
-    image: "/images/testimonials/Cassie Howarth.png",
+    image: "/images/celebrity-clients/cassie-howarth.png",
     imdb: "https://www.imdb.com/name/nm3777585/",
   },
 ];
