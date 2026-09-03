@@ -46,4 +46,12 @@ export const TESTIMONIALS: Testimonial[] = [
     image: "/images/testimonials/jackson-gallagher.png",
     imdb: "https://www.imdb.com/name/nm3370453/",
   },
+    {
+    quote:
+      "I scored a role on Spartacus: House of Ashur produced by Starz. I needed to look like a gladiator with a lot of shirtless scenes and was referred to Ana to get the job done. We worked together to achieve the look on camera.",
+    name: "Cassie Howarth",
+    date: "August 2025",
+    image: "/images/testimonials/jackson-gallagher.png",
+    imdb: "https://www.imdb.com/name/nm3777585/",
+  },
 ];
