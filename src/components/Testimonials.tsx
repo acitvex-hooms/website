@@ -132,8 +132,8 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
     <Sec bg={C.offWhite} className="testimonials-section">
       <Reveal>
         <div className="testimonials-header">
-          <Pill>Testimonials</Pill>
-          <h2 className="section-title testimonials-heading">What clients say</h2>
+          <Pill>Clients</Pill>
+          <h2 className="section-title testimonials-heading">Celebrity Clients</h2>
         </div>
       </Reveal>
 
@@ -223,7 +223,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
           <button
             type="button"
             className="testimonials-arrow"
-            aria-label="Previous testimonial"
+            aria-label="Previous celebrity client"
             onClick={() => go(active - 1)}
           >
             ‹
@@ -232,7 +232,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
           <div
             className="testimonials-dots"
             role="tablist"
-            aria-label="Client testimonials"
+            aria-label="Celebrity clients"
           >
             {items.map((item, i) => (
               <button
@@ -240,7 +240,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
                 type="button"
                 role="tab"
                 aria-selected={i === active}
-                aria-label={`Show testimonial from ${item.name}`}
+                aria-label={`Show ${item.name}`}
                 className={`testimonials-dot${i === active ? " is-active" : ""}`}
                 onClick={() => go(i)}
               />
@@ -250,7 +250,7 @@ export function Testimonials({ items = TESTIMONIALS }: TestimonialsProps) {
           <button
             type="button"
             className="testimonials-arrow"
-            aria-label="Next testimonial"
+            aria-label="Next celebrity client"
             onClick={() => go(active + 1)}
           >
             ›

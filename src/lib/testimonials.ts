@@ -7,8 +7,11 @@ export type Testimonial = {
 };
 
 /**
- * Flip to true once client permission is confirmed and quotes are finalized.
+ * Flip to true once celebrity-client copy is finalized.
  * Keeps Home / Pricing / Coaching mounts intact while hidden.
+ *
+ * Edit the `quote` strings below — that is the card body copy.
+ * Write it in ActiveX's voice (not as a first-person client quote).
  */
 export const SHOW_TESTIMONIALS = false;
 
