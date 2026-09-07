@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { GoogleTags } from "./components/GoogleTags";
+import { MetaPixel } from "./components/MetaPixel";
 import { Seo } from "./components/Seo";
 import { Footer, Nav } from "./components/Layout";
 import { C, FONT } from "./lib/tokens";
@@ -72,6 +73,7 @@ function SiteShell() {
     >
       <Seo />
       <GoogleTags />
+      <MetaPixel />
       <ScrollToTop />
       <Nav />
       <Routes>

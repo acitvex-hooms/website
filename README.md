@@ -95,6 +95,24 @@ VITE_GTM_ID=GTM-XXXXXXX
    - **Google Ads** Conversion Linker + remarketing / conversion tags as needed
 5. Publish the GTM container, then verify with [Tag Assistant](https://tagassistant.google.com) on `https://activex.fit`.
 
+## Meta Pixel (Facebook / Instagram ads)
+
+The official Meta snippet is in `index.html` (dataset `1376005510875234`). SPA events (route PageView, InitiateCheckout, Purchase, Lead) fire from the React pixel helper. Do not add a second Meta Pixel inside GTM.
+
+Events Manager only sees **https://activex.fit**, not localhost. After deploy:
+
+1. Open [Events Manager](https://business.facebook.com/events_manager) → dataset **activeX** → **Test events**
+2. In the same browser, with ad blockers off (or a clean Incognito window logged into Facebook), visit `https://activex.fit`
+3. Click a Stripe button and open `/welcome?product=membership` — PageView, InitiateCheckout, and Purchase should appear within a few seconds
+4. **Settings → Connected assets** → attach the ad account
+5. Business settings → **Brand Safety → Domains** → verify `activex.fit` (needed for iOS / Aggregated Event Measurement)
+
+Optional env override (defaults to the dataset ID above):
+
+```bash
+VITE_META_PIXEL_ID=1376005510875234
+```
+
 ## Pages
 
 | Path | Page |

@@ -1,12 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { C, FONT } from "../lib/tokens";
 import { CTA, Pill, Reveal, Sec } from "../components/ui";
+import { trackLead } from "../lib/metaPixel";
 
 export function ContactPage() {
   const [sent, setSent] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    trackLead("Contact");
     setSent(true);
   };
 
