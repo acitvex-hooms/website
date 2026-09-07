@@ -47,7 +47,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: "/coaching",
     title: "1-on-1 Online Coaching with Ana or Hooms | activeX",
     description:
-      "Personalised online coaching with Ana Coppola or Hooms. Custom programming, movement analysis, weekly check-ins, and direct access. Apply for limited spots.",
+      "Personalised online coaching with Ana Coppola or Hooms. Monthly from $799, 6 months $3,999, or annual $5,999. Custom programming, weekly check-ins, and direct access.",
   },
   "/coaches": {
     path: "/coaches",

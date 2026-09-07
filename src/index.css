@@ -335,7 +335,8 @@ textarea:focus-visible {
 .home-sec-cta .cta-btn,
 .sec-cta .cta-btn,
 .iq-cta .cta-btn,
-.pricing-card .cta-btn {
+.pricing-card .cta-btn,
+.coaching-plan .cta-btn {
   width: 100%;
   justify-content: center;
   text-align: center;
@@ -580,6 +581,129 @@ textarea:focus-visible {
   box-shadow: var(--shadow-featured);
 }
 
+/* Coaching payment plans — compact 3-up, mobile stacked */
+.coaching-plans-lede {
+  font-size: 16px;
+  color: #4a4a6a;
+  max-width: 420px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+
+.coaching-plans {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.coaching-plan {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  padding: 22px 20px;
+  box-sizing: border-box;
+  min-width: 0;
+  position: relative;
+  transition:
+    box-shadow var(--duration-ui) var(--ease-ui),
+    border-color var(--duration-ui) var(--ease-ui),
+    transform var(--duration-ui) var(--ease-ui);
+}
+
+.coaching-plan.is-featured {
+  border: 2px solid var(--color-purple);
+  box-shadow: var(--shadow-featured);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .coaching-plan:hover {
+    box-shadow: var(--shadow-lift);
+  }
+
+  .coaching-plan.is-featured:hover {
+    box-shadow: var(--shadow-featured), var(--shadow-lift);
+  }
+}
+
+.coaching-plan-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #7828ff, #64bff4);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+.coaching-plan-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #7a7a9a;
+  margin-bottom: 6px;
+}
+
+.coaching-plan.is-featured .coaching-plan-name {
+  padding-right: 92px;
+}
+
+.coaching-plan-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #272789;
+  line-height: 1.1;
+}
+
+.coaching-plan-per {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #7a7a9a;
+}
+
+.coaching-plan-note {
+  font-size: 14px;
+  font-weight: 600;
+  color: #7828ff;
+  margin: 8px 0 0;
+  line-height: 1.4;
+}
+
+.coaching-plan-cta {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.coaching-plan-cta .cta-btn,
+.coaching-plan .cta-btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.coaching-plans-foot {
+  text-align: center;
+  font-size: 13px;
+  color: #7a7a9a;
+  margin: 16px 0 0;
+  line-height: 1.5;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .pricing-card:hover {
     box-shadow: var(--shadow-lift);
@@ -665,6 +789,22 @@ textarea:focus-visible {
     padding: 40px 32px !important;
   }
 
+  .coaching-plans {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .coaching-plan {
+    padding: 28px 24px;
+  }
+
+  .coaching-plan-price {
+    font-size: 36px;
+  }
+
+  .coaching-plans-lede {
+    margin-bottom: 36px;
+  }
 }
 
 .promo-banner {
@@ -1095,7 +1235,8 @@ textarea:focus-visible {
   margin-bottom: 28px;
 }
 
-#partner-pricing {
+#partner-pricing,
+#plans {
   scroll-margin-top: 88px;
 }
 
@@ -1428,7 +1569,8 @@ body.nav-open {
     line-height: 1.7;
   }
 
-  #partner-pricing {
+  #partner-pricing,
+  #plans {
     scroll-margin-top: 100px;
   }
 }

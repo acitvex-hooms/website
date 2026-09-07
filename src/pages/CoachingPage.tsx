@@ -1,6 +1,7 @@
 import { CelebrityClients } from "../components/CelebrityClients";
 import { TransformationsTeaser } from "../components/TransformationsTeaser";
 import { FaqAccordion } from "../components/FaqAccordion";
+import { COACHING_PLANS } from "../lib/coachingPlans";
 import { C, IMG, PAGE_PATHS } from "../lib/tokens";
 import { Card, CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 
@@ -19,7 +20,7 @@ const FAQ = [
   },
   {
     q: "Is there a minimum commitment?",
-    a: "Yes, coaching requires a minimum 3-month commitment. Real progress takes consistency, and the IQ Framework is designed to build over time, not deliver quick fixes.",
+    a: "Monthly coaching has a 3-month minimum. You can also pay 6 months ($3,999) or a year ($5,999) upfront and save. Real progress takes consistency, and the IQ Framework is designed to build over time.",
   },
   {
     q: "How many spots are available?",
@@ -68,39 +69,11 @@ export function CoachingPage() {
             style={{
               fontSize: 15,
               color: C.textMid,
-              marginBottom: 16,
+              marginBottom: 20,
               lineHeight: 1.6,
             }}
           >
             Co-founder of activeX · Online Coach · Creator of the IQ Framework
-          </p>
-          <div
-            style={{
-              fontSize: 32,
-              fontWeight: 800,
-              color: C.navy,
-              marginBottom: 8,
-            }}
-          >
-            $799
-            <span
-              style={{
-                fontSize: 16,
-                fontWeight: 500,
-                color: C.textLight,
-              }}
-            >
-              /month
-            </span>
-          </div>
-          <p
-            style={{
-              fontSize: 14,
-              color: C.textMid,
-              marginBottom: 20,
-            }}
-          >
-            Minimum 3-month commitment. Applications reviewed before accepted.
           </p>
           <div className="cta-row">
             <CTA to={PAGE_PATHS.apply}>
@@ -134,40 +107,12 @@ export function CoachingPage() {
             style={{
               fontSize: 15,
               color: C.textMid,
-              marginBottom: 16,
+              marginBottom: 20,
               lineHeight: 1.6,
             }}
           >
             Co-founder of activeX · Competitive Bodybuilder · Hypertrophy
             Specialist
-          </p>
-          <div
-            style={{
-              fontSize: 32,
-              fontWeight: 800,
-              color: C.navy,
-              marginBottom: 8,
-            }}
-          >
-            $799
-            <span
-              style={{
-                fontSize: 16,
-                fontWeight: 500,
-                color: C.textLight,
-              }}
-            >
-              /month
-            </span>
-          </div>
-          <p
-            style={{
-              fontSize: 14,
-              color: C.textMid,
-              marginBottom: 20,
-            }}
-          >
-            Minimum 3-month commitment. Applications reviewed before accepted.
           </p>
           <div className="cta-row">
             <CTA to={PAGE_PATHS.apply}>
@@ -243,7 +188,58 @@ export function CoachingPage() {
         </div>
       </Sec>
 
-      <Sec bg={C.offWhite} style={{ textAlign: "center" }}>
+      <Sec bg={C.offWhite} id="plans">
+        <Reveal style={{ textAlign: "center" }}>
+          <Pill>Plans</Pill>
+          <h2
+            className="section-title"
+            style={{
+              fontWeight: 800,
+              color: C.navy,
+              marginTop: 16,
+              marginBottom: 8,
+            }}
+          >
+            Choose how you pay.
+          </h2>
+          <p className="coaching-plans-lede">
+            Same coaching. Same access. Pay monthly, or save by paying upfront.
+          </p>
+        </Reveal>
+        <div className="coaching-plans">
+          {COACHING_PLANS.map((p, i) => (
+            <Reveal key={p.id} delay={i * 0.08} style={{ height: "100%" }}>
+              <div
+                className={`coaching-plan${p.featured ? " is-featured" : ""}`}
+              >
+                {p.badge && (
+                  <div className="coaching-plan-badge">{p.badge}</div>
+                )}
+                <div className="coaching-plan-name">{p.name}</div>
+                <div className="coaching-plan-price">
+                  {p.price}
+                  {p.per && <span className="coaching-plan-per">{p.per}</span>}
+                </div>
+                <p className="coaching-plan-note">{p.note}</p>
+                <div className="coaching-plan-cta">
+                  <CTA
+                    variant={p.featured ? "primary" : "secondary"}
+                    href={p.href}
+                    to={p.to}
+                  >
+                    {p.cta}
+                  </CTA>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <p className="coaching-plans-foot">
+          Applications reviewed before accepted. Spots are limited.
+        </p>
+      </Sec>
+
+      <Sec style={{ textAlign: "center" }}>
         <Reveal>
           <Pill>How it works</Pill>
           <h2

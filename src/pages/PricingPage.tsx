@@ -314,10 +314,10 @@ export function PricingPage() {
           {[
             {
               title: "Weekly 1-on-1 Coaching",
-              price: "$799/mo",
-              desc: "Custom programming, movement analysis, weekly check-ins, ongoing accountability. Directly with Ana or Hooms. Limited spots. Application only.",
-              cta: "Apply for Coaching",
-              to: PAGE_PATHS.apply,
+              price: "From $799/mo",
+              desc: "Monthly, 6 months, or annual. Custom programming, weekly check-ins, and direct access with Ana or Hooms. Limited spots.",
+              cta: "See coaching plans",
+              to: `${PAGE_PATHS.coaching}#plans`,
               href: undefined as string | undefined,
             },
             {

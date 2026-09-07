@@ -74,10 +74,11 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
             within 24 hours are non-refundable.
           </li>
           <li>
-            <strong>1-on-1 coaching:</strong> Coaching requires a minimum
-            commitment. Unused future months may be considered for partial
-            refund at our discretion. Completed coaching sessions and time
-            already delivered are non-refundable.
+            <strong>1-on-1 coaching:</strong> Monthly coaching has a 3-month
+            minimum. 6-month and annual plans are paid in full at the start.
+            Unused future months may be considered for partial refund at our
+            discretion. Completed coaching sessions and time already delivered
+            are non-refundable.
           </li>
           <li>
             <strong>BBE eBook (digital):</strong> Eligible within 30 days if you
