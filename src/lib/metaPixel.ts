@@ -99,6 +99,7 @@ const WELCOME_PURCHASE: Record<string, MetaCommerce> = {
   "custom-diet": item("12-Week Custom Diet", "custom-diet", 499),
   "video-consult": item("Video Consult", "video-consult", 499),
   coaching: item("1-on-1 Coaching", "coaching", 799),
+  "8-week-challenge": item("8-Week Challenge", "8-week-challenge", 0),
   "bbe-ebook": item("BBE eBook", "bbe-ebook", 60),
   "bbe-ankle": item("BBE Ankle Strap", "bbe-ankle", 81),
   "bbe-bundle": item("BBE Bundle", "bbe-bundle", 136),
@@ -109,6 +110,7 @@ const TALLY_LEAD_NAMES: Record<string, string> = {
   "9qyVe5": "Video consult form",
   kdXree: "Custom program intake",
   MelGNA: "Custom diet intake",
+  xXADME: "8-week challenge intake",
 };
 
 export function commerceForStripeHref(href: string): MetaCommerce | undefined {

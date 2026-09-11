@@ -27,6 +27,7 @@ import { ProgramsPage } from "./pages/ProgramsPage";
 import { ResultsPage } from "./pages/ResultsPage";
 import { ShopPage } from "./pages/ShopPage";
 import { VideoConsultPage } from "./pages/VideoConsultPage";
+import { ChallengeWelcomePage } from "./pages/ChallengeWelcomePage";
 import { WelcomePage } from "./pages/WelcomePage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { TermsPage } from "./pages/TermsPage";
@@ -89,6 +90,7 @@ function SiteShell() {
         <Route path="/apply" element={<ApplyPage />} />
         <Route path="/video-consult" element={<VideoConsultPage />} />
         <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/welcome-challenge" element={<ChallengeWelcomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/about/hooms" element={<HoomsPage />} />
         <Route path="/results" element={<ResultsPage />} />

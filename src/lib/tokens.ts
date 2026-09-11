@@ -66,6 +66,7 @@ export type PageKey =
   | "apply"
   | "videoConsult"
   | "welcome"
+  | "welcomeChallenge"
   | "about"
   | "hooms"
   | "results"
@@ -86,6 +87,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   apply: "/apply",
   videoConsult: "/video-consult",
   welcome: "/welcome",
+  welcomeChallenge: "/welcome-challenge",
   about: "/about",
   hooms: "/about/hooms",
   results: "/results",

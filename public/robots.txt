@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Disallow: /welcome
+Disallow: /welcome-challenge
 Disallow: /apply
 Disallow: /video-consult
 Disallow: /founding-50
