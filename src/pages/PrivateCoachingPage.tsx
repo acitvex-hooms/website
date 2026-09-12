@@ -1,12 +1,10 @@
-import { useState, type FormEvent } from "react";
+import { TallyEmbed } from "../components/TallyEmbed";
 import { Reveal, Sec } from "../components/ui";
-import { trackLead, trackMeta } from "../lib/metaPixel";
+import { trackMeta } from "../lib/metaPixel";
 import {
   BENEFITS,
-  FREQUENCY_OPTIONS,
+  PRIVATE_COACHING_ENQUIRY_FORM,
   STEPS,
-  TIMEFRAME_OPTIONS,
-  WHO_OPTIONS,
 } from "../lib/privateCoaching";
 
 function pushDataLayer(event: string) {
@@ -17,29 +15,14 @@ function pushDataLayer(event: string) {
 function GoldCta({
   href = "#request",
   children = "Request Private Coaching",
-  type,
 }: {
   href?: string;
   children?: string;
-  type?: "submit";
 }) {
   const onClick = () => {
     trackMeta("Contact", { content_name: "Private Coaching CTA" });
     pushDataLayer("private_coaching_cta");
   };
-
-  if (type === "submit") {
-    return (
-      <button
-        type="submit"
-        className="pc-cta"
-        style={{ width: "100%" }}
-        disabled={children === "Sending…"}
-      >
-        {children}
-      </button>
-    );
-  }
 
   return (
     <a href={href} className="pc-cta" onClick={onClick}>
@@ -75,150 +58,6 @@ function HeroArtwork() {
         </p>
       </div>
     </div>
-  );
-}
-
-function EnquiryForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
-
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    if (String(data.get("company") || "").trim()) {
-      setStatus("sent");
-      return;
-    }
-
-    const payload = {
-      name: String(data.get("name") || "").trim(),
-      email: String(data.get("email") || "").trim(),
-      whatsapp: String(data.get("whatsapp") || "").trim(),
-      whoFor: String(data.get("whoFor") || "").trim(),
-      goal: String(data.get("goal") || "").trim(),
-      frequency: String(data.get("frequency") || "").trim(),
-      timeframe: String(data.get("timeframe") || "").trim(),
-      notes: String(data.get("notes") || "").trim(),
-    };
-
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/private-coaching", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("send failed");
-      trackLead("Private coaching enquiry");
-      pushDataLayer("private_coaching_lead");
-      setStatus("sent");
-      form.reset();
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  return (
-    <form className="pc-form" onSubmit={onSubmit}>
-      <p className="pc-hp" aria-hidden>
-        <label>
-          Company
-          <input name="company" tabIndex={-1} autoComplete="off" />
-        </label>
-      </p>
-      <div className="pc-field">
-        <label htmlFor="pc-name">Name</label>
-        <input id="pc-name" name="name" required autoComplete="name" />
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-email">Email</label>
-        <input
-          id="pc-email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-        />
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-whatsapp">WhatsApp</label>
-        <input
-          id="pc-whatsapp"
-          name="whatsapp"
-          required
-          autoComplete="tel"
-          inputMode="tel"
-        />
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-who">Who coaching is for</label>
-        <select id="pc-who" name="whoFor" required defaultValue="">
-          <option value="" disabled>
-            Select
-          </option>
-          {WHO_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-goal">Main goal</label>
-        <input id="pc-goal" name="goal" required />
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-frequency">Preferred training frequency</label>
-        <select id="pc-frequency" name="frequency" required defaultValue="">
-          <option value="" disabled>
-            Select
-          </option>
-          {FREQUENCY_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-timeframe">Preferred start timeframe</label>
-        <select id="pc-timeframe" name="timeframe" required defaultValue="">
-          <option value="" disabled>
-            Select
-          </option>
-          {TIMEFRAME_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="pc-field">
-        <label htmlFor="pc-notes">Short notes</label>
-        <textarea id="pc-notes" name="notes" rows={4} />
-      </div>
-      {status === "sent" && (
-        <p className="pc-status">
-          Received. Ana will follow up directly.
-        </p>
-      )}
-      {status === "error" && (
-        <p className="pc-status pc-error">
-          Couldn&apos;t send just now. Email{" "}
-          <a href="mailto:ana@activex.fit" style={{ color: "#c9a962" }}>
-            ana@activex.fit
-          </a>
-          .
-        </p>
-      )}
-      {status !== "sent" && (
-        <GoldCta type="submit">
-          {status === "sending" ? "Sending…" : "Request Private Coaching"}
-        </GoldCta>
-      )}
-    </form>
   );
 }
 
@@ -440,7 +279,12 @@ export function PrivateCoachingPage() {
               receives the level of attention the service is built around.
             </p>
           </div>
-          <EnquiryForm />
+          <TallyEmbed
+            className="pc-tally"
+            src={PRIVATE_COACHING_ENQUIRY_FORM}
+            title="Request Private Coaching"
+            variant="inline"
+          />
           <p className="pc-fine">
             Already speaking with Ana? Your coaching schedule and next steps can
             be arranged directly.

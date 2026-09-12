@@ -142,11 +142,13 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
             </BuyCta>
           </Reveal>
           <Reveal delay={0.06}>
-            <figure className="ch-figure">
-              <img
-                src={challenge.heroImage.src}
-                alt={challenge.heroImage.alt}
-              />
+            <figure className="ch-figure ch-hero-photo">
+              <div className="ch-hero-photo-frame">
+                <img
+                  src={challenge.heroImage.src}
+                  alt={challenge.heroImage.alt}
+                />
+              </div>
               {challenge.photoCredit && (
                 <figcaption>Photo: {challenge.photoCredit}</figcaption>
               )}
@@ -167,6 +169,24 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
 
       <Sec className="ch-sec" bg="#07050c">
         <Reveal>
+          <p className="ch-kicker">Built from your answers</p>
+          <h2 className="ch-title ch-title-md">{challenge.customTitle}</h2>
+          <p className="ch-lede" style={{ maxWidth: 680, marginBottom: 28 }}>
+            {challenge.customLede}
+          </p>
+          <ul className="ch-custom">
+            {challenge.customPoints.map((item) => (
+              <li key={item.title}>
+                <strong>{item.title}</strong>
+                <span>{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </Sec>
+
+      <Sec className="ch-sec ch-sec-alt" bg="#0c0814">
+        <Reveal>
           <p className="ch-kicker">The real problem</p>
           <h2 className="ch-title ch-title-md">{challenge.problemTitle}</h2>
           <p className="ch-lede" style={{ maxWidth: 680, marginBottom: 32 }}>
@@ -181,7 +201,7 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
         </Reveal>
       </Sec>
 
-      <Sec className="ch-sec ch-sec-alt" bg="#0c0814">
+      <Sec className="ch-sec" bg="#07050c">
         <div className="ch-split">
           <Reveal>
             <p className="ch-kicker">{challenge.builtKicker}</p>
@@ -208,21 +228,21 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
         </div>
       </Sec>
 
-      <Sec className="ch-sec" bg="#07050c">
+      <Sec className="ch-sec ch-sec-alt" bg="#0c0814">
         <Reveal>
           <p className="ch-kicker">The prize</p>
           <h2 className="ch-title ch-title-md">
             {challenge.prize} for the biggest transformation.
           </h2>
           <p className="ch-lede" style={{ maxWidth: 680 }}>
-            {challenge.prizeDetail} This is a short, measured block — every
-            session logged, every change coming from your data — so the result
+            {challenge.prizeDetail} This is a short, measured block. Every
+            session logged, every change coming from your data, so the result
             at week 8 is visible.
           </p>
         </Reveal>
       </Sec>
 
-      <Sec id="pricing" className="ch-sec ch-sec-alt" bg="#0c0814">
+      <Sec id="pricing" className="ch-sec" bg="#07050c">
         <Reveal className="ch-join">
           <p className="ch-kicker">Join the challenge</p>
           <h2 className="ch-title ch-title-md">
@@ -230,8 +250,8 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
           </h2>
           <p className="ch-lede" style={{ maxWidth: 640, marginBottom: 28 }}>
             Only {challenge.places} places. {challenge.startsLabel}. After
-            payment you&apos;ll land on onboarding to download the app and
-            complete your intake.
+            payment you land on onboarding. Your answers write your custom
+            program, diet, and movement targets, then you download the app.
           </p>
           <PricingCard challenge={challenge} />
         </Reveal>

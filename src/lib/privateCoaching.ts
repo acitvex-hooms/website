@@ -1,5 +1,7 @@
 export const PRIVATE_COACHING_PATH = "/private-coaching";
 
+export const PRIVATE_COACHING_ENQUIRY_FORM = "https://tally.so/r/ZjMV60";
+
 export const BENEFITS = [
   {
     title: "Private Coaching",
@@ -66,20 +68,6 @@ export const STEPS = [
     title: "Review + Adjust",
     text: "We'll periodically review what's improving, what's not, and whether your goals or priorities have changed — then adjust the next training block accordingly.",
   },
-] as const;
-
-export const WHO_OPTIONS = ["Myself", "Couple", "Family", "Other"] as const;
-export const FREQUENCY_OPTIONS = [
-  "1 session / week",
-  "2 sessions / week",
-  "3+ sessions / week",
-  "To be discussed",
-] as const;
-export const TIMEFRAME_OPTIONS = [
-  "Immediately",
-  "Within 2 weeks",
-  "Within a month",
-  "Flexible",
 ] as const;
 
 /** Stripe Payment Link → After payment → Redirect to /private-coaching/welcome */

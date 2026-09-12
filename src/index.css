@@ -3347,6 +3347,14 @@ body.pc-body ::selection {
   margin: 0 auto;
 }
 
+.pc-tally {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #111111 !important;
+  border: 1px solid rgba(201, 169, 98, 0.28) !important;
+  border-radius: 2px !important;
+}
+
 .pc-field {
   margin-bottom: 16px;
 }
@@ -3878,10 +3886,57 @@ body.ch-body ::selection {
   object-position: center top;
 }
 
-.ch-hero .ch-figure img {
+.ch-hero-photo-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-hero-photo-frame img {
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: 38% 16%;
+}
+
+.ch-hero-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #07050c 0%,
+    transparent 16%,
+    transparent 84%,
+    #07050c 100%
+  );
+}
+
+.ch-custom {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.ch-custom li {
+  padding: 20px 18px;
+  background: #0c0814;
+  border: 1px solid rgba(120, 40, 255, 0.22);
+  display: grid;
+  gap: 8px;
+}
+
+.ch-custom strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ch-custom span {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #c9c0dc;
 }
 
 .ch-figure figcaption {
@@ -3941,7 +3996,7 @@ body.ch-body ::selection {
   height: 12px;
   border: 2px solid #64bff4;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 3px #0c0814;
+  box-shadow: inset 0 0 0 3px #07050c;
   background: #64bff4;
 }
 
@@ -4039,10 +4094,37 @@ body.ch-body ::selection {
   }
 }
 
+@media (min-width: 601px) {
+  .ch-hero-photo-frame::after {
+    background: linear-gradient(
+      90deg,
+      #07050c 0%,
+      transparent 18%,
+      transparent 82%,
+      #07050c 100%
+    );
+  }
+}
+
 @media (min-width: 901px) {
   .ch-hero,
   .ch-split {
     grid-template-columns: 1.05fr 0.95fr;
     gap: 64px;
+  }
+
+  .ch-custom {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .ch-hero-photo-frame::after {
+    background: linear-gradient(
+      90deg,
+      #07050c 0%,
+      transparent 20%,
+      transparent 80%,
+      #07050c 100%
+    );
   }
 }

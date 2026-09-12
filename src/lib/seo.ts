@@ -157,7 +157,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: "/Hooms-challenge",
     title: "Xmas Shred Challenge | Hooms | activeX",
     description:
-      "8-week Xmas Shred Challenge with Hooms. $999 for 8 weeks. Only 5 places. $500 prize for the biggest transformation.",
+      "8 week Xmas Shred Challenge with Hooms. $999 for 8 weeks. Only 5 places. $500 prize for the biggest transformation.",
     ogImage: `${SITE_URL}/images/hooms-stage.jpg`,
     robots: "noindex, nofollow",
   },

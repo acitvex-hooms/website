@@ -10,6 +10,7 @@ type WelcomeProduct =
   | "membership"
   | "custom-program"
   | "custom-diet"
+  | "custom-program-diet"
   | "video-consult"
   | "coaching"
   | "bbe-ebook"
@@ -18,6 +19,15 @@ type WelcomeProduct =
 
 function resolveProduct(raw: string | null): WelcomeProduct {
   const v = (raw ?? "membership").toLowerCase().trim();
+  if (
+    v === "custom-program-diet" ||
+    v === "program-diet" ||
+    v === "program-and-diet" ||
+    v === "custom_program_diet" ||
+    v === "program_and_diet"
+  ) {
+    return "custom-program-diet";
+  }
   if (
     v === "custom-program" ||
     v === "program" ||
@@ -191,7 +201,9 @@ export function WelcomePage() {
   const product = resolveProduct(params.get("product"));
 
   const isCustom =
-    product === "custom-program" || product === "custom-diet";
+    product === "custom-program" ||
+    product === "custom-diet" ||
+    product === "custom-program-diet";
   const isVideo = product === "video-consult";
   const isCoaching = product === "coaching";
   const isShop =
@@ -200,11 +212,13 @@ export function WelcomePage() {
     product === "bbe-bundle";
 
   const headline = isCustom
-    ? product === "custom-program"
-      ? "Your custom program is being built."
-      : "Your custom diet is being built."
+    ? product === "custom-program-diet"
+      ? "Your custom program and diet are being built."
+      : product === "custom-program"
+        ? "Your custom program is being built."
+        : "Your custom diet is being built."
     : isVideo
-      ? "You're booked for a video consult."
+      ? "You purchased a video consult"
       : isCoaching
         ? "You're in. Coaching onboarding is next."
         : isShop
@@ -230,24 +244,28 @@ export function WelcomePage() {
           : "Here's what to do next to start training with structure.";
 
   const formSrc =
-    product === "custom-program"
-      ? "https://tally.so/r/kdXree"
-      : product === "custom-diet"
-        ? "https://tally.so/r/MelGNA"
-        : product === "video-consult"
-          ? "https://tally.so/r/9qyVe5"
-          : product === "coaching"
-            ? "https://tally.so/r/kd1q6d"
-            : null;
+    product === "custom-program-diet"
+      ? "https://tally.so/r/Y51OMz"
+      : product === "custom-program"
+        ? "https://tally.so/r/kdXree"
+        : product === "custom-diet"
+          ? "https://tally.so/r/MelGNA"
+          : product === "video-consult"
+            ? "https://tally.so/r/9qyVe5"
+            : product === "coaching"
+              ? "https://tally.so/r/kd1q6d"
+              : null;
 
   const formTitle =
-    product === "custom-program"
-      ? "Custom Program Intake"
-      : product === "custom-diet"
-        ? "Custom Diet Intake"
-        : product === "coaching"
-          ? "1-on-1 Coaching Intake"
-          : "Video Consultation";
+    product === "custom-program-diet"
+      ? "Custom Program and Diet Intake"
+      : product === "custom-program"
+        ? "Custom Program Intake"
+        : product === "custom-diet"
+          ? "Custom Diet Intake"
+          : product === "coaching"
+            ? "1-on-1 Coaching Intake"
+            : "Video Consultation";
 
   return (
     <>
@@ -457,7 +475,9 @@ export function WelcomePage() {
                 ? "After you submit the intake, we'll personally reach out within 24 hours to schedule your onboarding call."
                 : isVideo
                   ? "After you submit the form, we'll confirm timing and details for your video consultation."
-                  : "We'll review your answers and be in touch within 24 hours to discuss your plan."}
+                  : product === "custom-program-diet"
+                    ? "We'll review your answers and be in touch within 24 hours to discuss your program and diet."
+                    : "We'll review your answers and be in touch within 24 hours to discuss your plan."}
             </p>
             <CTA to={PAGE_PATHS.home} variant="secondary">
               Back to home

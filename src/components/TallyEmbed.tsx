@@ -6,6 +6,7 @@ type TallyEmbedProps = {
   /** Full-viewport page embed vs inline section embed */
   variant?: "page" | "inline";
   height?: number | string;
+  className?: string;
 };
 
 function tallySrc(src: string) {
@@ -18,6 +19,7 @@ export function TallyEmbed({
   title,
   variant = "page",
   height = 900,
+  className,
 }: TallyEmbedProps) {
   const embedSrc = tallySrc(src);
 
@@ -42,7 +44,7 @@ export function TallyEmbed({
   if (variant === "inline") {
     return (
       <div
-        className="tally-embed-inline"
+        className={["tally-embed-inline", className].filter(Boolean).join(" ")}
         style={{
           position: "relative",
           width: "100%",

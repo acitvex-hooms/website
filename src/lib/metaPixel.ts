@@ -101,6 +101,11 @@ const WELCOME_PURCHASE: Record<string, MetaCommerce> = {
   membership: item("Membership", "membership", 229),
   "custom-program": item("12-Week Custom Program", "custom-program", 499),
   "custom-diet": item("12-Week Custom Diet", "custom-diet", 499),
+  "custom-program-diet": item(
+    "12-Week Custom Program and Diet",
+    "custom-program-diet",
+    998,
+  ),
   "video-consult": item("Video Consult", "video-consult", 499),
   coaching: item("1-on-1 Coaching", "coaching", 799),
   "8-week-challenge": item("8-Week Challenge", "8-week-challenge", 999),
@@ -115,7 +120,9 @@ const TALLY_LEAD_NAMES: Record<string, string> = {
   "9qyVe5": "Video consult form",
   kdXree: "Custom program intake",
   MelGNA: "Custom diet intake",
+  Y51OMz: "Custom program and diet intake",
   xXADME: "8-week challenge intake",
+  ZjMV60: "Private coaching enquiry",
 };
 
 export function commerceForStripeHref(href: string): MetaCommerce | undefined {
@@ -216,6 +223,14 @@ export function tallyLeadName(formId: string | undefined): string {
 function welcomeProductKey(search: string): string {
   const raw = new URLSearchParams(search).get("product");
   const v = (raw ?? "").toLowerCase().trim();
+  if (
+    v === "program-diet" ||
+    v === "program-and-diet" ||
+    v === "custom_program_diet" ||
+    v === "program_and_diet"
+  ) {
+    return "custom-program-diet";
+  }
   if (v === "program" || v === "custom_program") return "custom-program";
   if (v === "diet" || v === "custom_diet") return "custom-diet";
   if (v === "video" || v === "consult" || v === "video_consult") {

@@ -37,6 +37,9 @@ export type ChallengeConfig = {
   builtTitle: string;
   builtLede: string;
   builtClose: string;
+  customTitle: string;
+  customLede: string;
+  customPoints: { title: string; text: string }[];
   features: { title: string; text: string }[];
   inboxName: string;
 };
@@ -56,12 +59,12 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
     navLabel: "Hooms Challenge",
     kicker: "Hooms",
     name: "Xmas Shred Challenge",
-    duration: "8-week challenge",
+    duration: "8 week challenge",
     audience:
-      "For men in their 20s, 30s & 40s who perform everywhere else — and still can't hold a training week together.",
+      "For men in their 20s, 30s and 40s who perform everywhere else, and still can't hold a training week together.",
     headline: "Less body fat. More output. A week that holds.",
     lede:
-      "Eight weeks of structure designed to shift body fat and build a routine that survives a real schedule. Built for quick, visible results — not another plan that dies when the week gets busy.",
+      "Eight weeks of structure designed to shift body fat and build a routine that survives a real schedule. Built for quick, visible results. Not another plan that dies when the week gets busy.",
     startsLabel: "Starts Monday 21st",
     places: 5,
     price: "$999",
@@ -71,7 +74,7 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
     cta: "Join the challenge",
     prize: "$500",
     prizeDetail:
-      "The $500 prize goes to the top performer — the biggest transformation during the 8 weeks.",
+      "The $500 prize goes to the top performer, the biggest transformation during the 8 weeks.",
     instagramUrl: "https://www.instagram.com/_active_x_/",
     instagramHandle: "@_active_x_",
     instagramKeyword: "CHALLENGE",
@@ -91,32 +94,50 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
     problemClose: "Eight weeks from now, what's actually different?",
     builtKicker: "That's why I built",
     builtTitle: "Xmas Shred Challenge",
-    builtLede: "Eight weeks. One structure. Every session measured.",
-    builtClose: "Structure, not templates.",
+    builtLede:
+      "Eight weeks. One structure. Every session measured. Your program, diet, and movement targets are written from the answers you give in onboarding.",
+    builtClose: "Written for you. Not a template.",
+    customTitle: "Custom program. Custom diet. Movement targets.",
+    customLede:
+      "After payment you complete a short onboarding. Those answers write the whole 8 weeks. Nothing is generic. Nothing is sent to the group as one plan.",
+    customPoints: [
+      {
+        title: "Custom program",
+        text: "Your training is written from your onboarding answers. Work hours, training days, equipment, and starting point. Built around the week you actually have.",
+      },
+      {
+        title: "Custom diet",
+        text: "Calories, macros, and food direction come from what you eat now, how you train, and the result you want. Not one flat number for every day.",
+      },
+      {
+        title: "Movement targets",
+        text: "Daily steps and movement are set from your job, travel, and current baseline, then tracked in the app so the week stays honest.",
+      },
+    ],
     features: [
       {
         title: "Your actual week",
         text: "Training built around your actual week, not an ideal one.",
       },
       {
-        title: "Macros that match training",
-        text: "Macros set against your training days, not one flat number.",
+        title: "Diet that matches training",
+        text: "Macros set against your training days, not one number copied across the week.",
       },
       {
         title: "Logged in activeX",
-        text: "Every set logged in the activeX app.",
+        text: "Every set, every food target, and every movement number lives in the activeX app.",
       },
       {
-        title: "Weekly check-in",
-        text: "A weekly check-in where every change comes from your data.",
+        title: "Weekly check in",
+        text: "A weekly check in where every change comes from your data.",
       },
     ],
     included: [
-      "8 weeks of individual programming",
-      "Training built around your actual week",
-      "Macros set to your training days",
+      "8 weeks of custom programming from your onboarding",
+      "Custom diet written from your answers",
+      "Movement targets set to your actual week",
       "Every set logged in the activeX app",
-      "Weekly check-in from your data",
+      "Weekly check in from your data",
       "$500 prize for the biggest transformation",
     ],
     inboxName: "Hooms",
