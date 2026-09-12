@@ -3775,12 +3775,22 @@ body.ch-body ::selection {
   color: #c9c0dc;
 }
 
+.ch-join {
+  text-align: center;
+}
+
+.ch-join .ch-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .ch-pricing {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .ch-pricing .pricing-card {
   max-width: 420px;
+  text-align: left;
 }
 
 #pricing {

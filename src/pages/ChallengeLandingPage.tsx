@@ -223,7 +223,7 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
       </Sec>
 
       <Sec id="pricing" className="ch-sec ch-sec-alt" bg="#0c0814">
-        <Reveal>
+        <Reveal className="ch-join">
           <p className="ch-kicker">Join the challenge</p>
           <h2 className="ch-title ch-title-md">
             {challenge.price} for {challenge.pricePer}.
