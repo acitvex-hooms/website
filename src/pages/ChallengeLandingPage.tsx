@@ -219,10 +219,12 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
           </Reveal>
           <Reveal delay={0.06}>
             <figure className="ch-figure">
-              <img
-                src={challenge.portraitImage.src}
-                alt={challenge.portraitImage.alt}
-              />
+              <div className="ch-stage-frame">
+                <img
+                  src={challenge.portraitImage.src}
+                  alt={challenge.portraitImage.alt}
+                />
+              </div>
             </figure>
           </Reveal>
         </div>

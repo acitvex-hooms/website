@@ -42,6 +42,8 @@ export type ChallengeConfig = {
   customPoints: { title: string; text: string }[];
   features: { title: string; text: string }[];
   inboxName: string;
+  seoTitle: string;
+  seoDescription: string;
 };
 
 /**
@@ -83,8 +85,8 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
       alt: "Xactive Hooman 8 week Xmas Shred",
     },
     portraitImage: {
-      src: "/images/hooms-portrait.webp",
-      alt: "Hooms",
+      src: "/images/hooms-stage.jpg",
+      alt: "Hooms on the Classic Physique stage",
     },
     problemTitle: "You don't have a discipline problem.",
     problemBody:
@@ -140,6 +142,9 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
       "$500 prize for the biggest transformation",
     ],
     inboxName: "Hooms",
+    seoTitle: "Xmas Shred Challenge | 8 Weeks with Hooms | activeX",
+    seoDescription:
+      "8 week Xmas Shred with Hooms. Custom program, diet, and movement targets written from your onboarding. $999 for 8 weeks. Only 5 places. $500 prize.",
   },
 };
 

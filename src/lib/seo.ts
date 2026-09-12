@@ -24,7 +24,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: "/",
     title: "activeX | Train Like You Understand Your Body",
     description:
-      "Structured programs, 600+ exercises with coaching cues, and workout tracking in one system. Built on the IQ Framework by Ana Coppola. Start training with activeX.",
+      "Structured programs, exercise education, and workout tracking in one system. From $19/mo billed annually. Built on the IQ Framework by Ana Coppola.",
   },
   "/iq-framework": {
     path: "/iq-framework",
@@ -40,9 +40,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   "/pricing": {
     path: "/pricing",
-    title: "Membership Pricing | Monthly & Annual Plans | activeX",
+    title: "Membership Pricing | Full Access, One Price | activeX",
     description:
-      "Full access membership with no locked features. Choose monthly or annual billing, or go further with coaching, custom programs, diets, and video consults.",
+      "No tiers, no locked features. Every program, tool, and exercise included. Choose monthly or annual, or go further with coaching, custom plans, and video consults.",
   },
   "/coaching": {
     path: "/coaching",
@@ -52,9 +52,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   "/coaches": {
     path: "/coaches",
-    title: "Coach Partner Pricing | activeX for Clients",
+    title: "Coach Partners | Structure Between Sessions | activeX",
     description:
-      "Your coach recommended activeX. Get partner pricing on full membership access: programs, tracking, and the IQ Framework for the days between sessions.",
+      "Your coach recommended activeX. Partner pricing on programs, workout tracking, and the IQ Framework so the days between sessions still count.",
     robots: "noindex, nofollow",
   },
   "/shop": {
@@ -71,9 +71,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   "/about": {
     path: "/about",
-    title: "About Ana Coppola | Founder of activeX",
+    title: "About Ana Coppola | Co-founder of activeX",
     description:
-      "Meet Ana Coppola, co-founder of activeX and creator of the IQ Framework. 18+ years coaching, from everyday clients to public figures. Learn why she built activeX.",
+      "Meet Ana Coppola, co-founder of activeX and creator of the IQ Framework. 18 years coaching, from everyday clients to public figures. Learn why she built activeX.",
   },
   "/about/hooms": {
     path: "/about/hooms",
@@ -129,21 +129,21 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: "/welcome",
     title: "Welcome to activeX | Get Started",
     description:
-      "You're in. Download the activeX app, create your account with your purchase email, and complete any intake steps for your custom plan or coaching.",
+      "You're in. Download the activeX app, create your account with your purchase email, and start training with structure.",
     robots: "noindex, nofollow",
   },
   "/welcome-challenge": {
     path: "/welcome-challenge",
-    title: "8-Week Challenge Onboarding | activeX",
+    title: "You're In | Challenge Onboarding | activeX",
     description:
-      "You're in. Download the activeX app, create your account with your purchase email, and complete the 8-week challenge intake.",
+      "Download the activeX app, create your account with your purchase email, and complete the 8 week challenge intake so we can prepare your onboarding.",
     robots: "noindex, nofollow",
   },
   "/private-coaching": {
     path: "/private-coaching",
-    title: "Private Hybrid Coaching | activeX",
+    title: "Private Hybrid Coaching | Ana Coppola | activeX",
     description:
-      "Private coaching with individual programming, movement analysis, and digital support between sessions. Request access with Ana Coppola.",
+      "Personalised private coaching with Ana Coppola. Individual programming, movement analysis, and digital support between sessions. Request access.",
     robots: "noindex, nofollow",
   },
   "/private-coaching/welcome": {
@@ -155,9 +155,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   "/Hooms-challenge": {
     path: "/Hooms-challenge",
-    title: "Xmas Shred Challenge | Hooms | activeX",
+    title: "Xmas Shred Challenge | 8 Weeks with Hooms | activeX",
     description:
-      "8 week Xmas Shred Challenge with Hooms. $999 for 8 weeks. Only 5 places. $500 prize for the biggest transformation.",
+      "8 week Xmas Shred with Hooms. Custom program, diet, and movement targets written from your onboarding. $999 for 8 weeks. Only 5 places. $500 prize.",
     ogImage: `${SITE_URL}/images/hooms-xmas-shred.jpg`,
     robots: "noindex, nofollow",
   },
@@ -172,11 +172,115 @@ export const PAGE_SEO: Record<string, PageSeo> = {
 
 export const DEFAULT_SEO: PageSeo = PAGE_SEO["/"];
 
-export function getSeoForPath(pathname: string): PageSeo {
+const WELCOME_PRODUCT_SEO: Record<
+  string,
+  { title: string; description: string }
+> = {
+  membership: {
+    title: "Welcome to activeX | Get Started",
+    description:
+      "You're in. Download the activeX app, create your account with your purchase email, and start training with structure.",
+  },
+  "custom-program": {
+    title: "Your Custom Program Is Being Built | activeX",
+    description:
+      "Download the app, sign up with your purchase email, and complete the custom program intake so we can personalise your plan.",
+  },
+  "custom-diet": {
+    title: "Your Custom Diet Is Being Built | activeX",
+    description:
+      "Download the app, sign up with your purchase email, and complete the custom diet intake so we can personalise your plan.",
+  },
+  "custom-program-diet": {
+    title: "Your Custom Program and Diet Are Being Built | activeX",
+    description:
+      "Download the app, sign up with your purchase email, and complete the intake so we can build your program and diet.",
+  },
+  "video-consult": {
+    title: "You Purchased a Video Consult | activeX",
+    description:
+      "Complete the short form so we can prepare for your consult. Downloading the app is optional but recommended.",
+  },
+  coaching: {
+    title: "You're In | Coaching Onboarding | activeX",
+    description:
+      "Download the app, sign up with your purchase email, and complete the coaching intake. We'll reach out within 24 hours.",
+  },
+  "bbe-ebook": {
+    title: "Your BBE eBook Is On the Way | activeX",
+    description:
+      "Check the email you used at checkout for your BBE eBook download. If it is not in inbox, look in spam.",
+  },
+  "bbe-ankle": {
+    title: "Your Ankle Strap Order Is In | activeX",
+    description:
+      "We'll pack and ship your BBE Ankle Strap within 2 business days. Watch your inbox for tracking.",
+  },
+  "bbe-bundle": {
+    title: "Your BBE Bundle Is Confirmed | activeX",
+    description:
+      "We'll email your eBook shortly and ship the ankle strap within 2 business days to your checkout address.",
+  },
+};
+
+function welcomeProductKey(search: string): string {
+  const raw = new URLSearchParams(search).get("product");
+  const v = (raw ?? "membership").toLowerCase().trim();
+  if (
+    v === "custom-program-diet" ||
+    v === "program-diet" ||
+    v === "program-and-diet" ||
+    v === "custom_program_diet" ||
+    v === "program_and_diet"
+  ) {
+    return "custom-program-diet";
+  }
+  if (v === "custom-program" || v === "program" || v === "custom_program") {
+    return "custom-program";
+  }
+  if (v === "custom-diet" || v === "diet" || v === "custom_diet") {
+    return "custom-diet";
+  }
+  if (
+    v === "video-consult" ||
+    v === "video" ||
+    v === "consult" ||
+    v === "video_consult"
+  ) {
+    return "video-consult";
+  }
+  if (v === "coaching" || v === "1-on-1" || v === "1on1") return "coaching";
+  if (v === "bbe-ebook" || v === "ebook" || v === "bbe_ebook") {
+    return "bbe-ebook";
+  }
+  if (v === "bbe-ankle" || v === "ankle" || v === "bbe_ankle") {
+    return "bbe-ankle";
+  }
+  if (v === "bbe-bundle" || v === "bundle" || v === "bbe_bundle") {
+    return "bbe-bundle";
+  }
+  return "membership";
+}
+
+export function getSeoForPath(pathname: string, search = ""): PageSeo {
   const normalized =
     pathname.length > 1 && pathname.endsWith("/")
       ? pathname.slice(0, -1)
       : pathname;
+
+  if (normalized === "/welcome") {
+    const key = welcomeProductKey(search);
+    const copy = WELCOME_PRODUCT_SEO[key] ?? WELCOME_PRODUCT_SEO.membership;
+    const product = new URLSearchParams(search).get("product");
+    return {
+      ...PAGE_SEO["/welcome"],
+      title: copy.title,
+      description: copy.description,
+      path: product
+        ? `/welcome?product=${encodeURIComponent(product)}`
+        : "/welcome",
+    };
+  }
 
   if (PAGE_SEO[normalized]) return PAGE_SEO[normalized];
 
@@ -184,8 +288,8 @@ export function getSeoForPath(pathname: string): PageSeo {
   if (challenge) {
     return {
       path: challenge.path,
-      title: `${challenge.name} | ${challenge.coach} | activeX`,
-      description: challenge.lede.slice(0, 160),
+      title: challenge.seoTitle,
+      description: challenge.seoDescription,
       ogImage: absoluteUrl(challenge.heroImage.src),
       robots: "noindex, nofollow",
     };

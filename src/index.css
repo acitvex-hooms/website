@@ -3897,6 +3897,31 @@ body.ch-body ::selection {
   object-position: center;
 }
 
+.ch-stage-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-stage-frame img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 38% 16%;
+}
+
+.ch-stage-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #07050c 0%,
+    transparent 16%,
+    transparent 84%,
+    #07050c 100%
+  );
+}
+
 .ch-custom {
   list-style: none;
   margin: 0;
@@ -4078,6 +4103,16 @@ body.ch-body ::selection {
   .ch-form .ch-cta {
     width: 100%;
   }
+
+  .ch-stage-frame::after {
+    background: linear-gradient(
+      90deg,
+      #07050c 0%,
+      transparent 18%,
+      transparent 82%,
+      #07050c 100%
+    );
+  }
 }
 
 @media (min-width: 901px) {
@@ -4090,5 +4125,15 @@ body.ch-body ::selection {
   .ch-custom {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+  }
+
+  .ch-stage-frame::after {
+    background: linear-gradient(
+      90deg,
+      #07050c 0%,
+      transparent 20%,
+      transparent 80%,
+      #07050c 100%
+    );
   }
 }

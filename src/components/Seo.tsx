@@ -51,10 +51,10 @@ function removeJsonLd(id: string) {
 
 /** Updates document title and social/SEO meta tags on every route change. */
 export function Seo() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
-    const seo = getSeoForPath(pathname);
+    const seo = getSeoForPath(pathname, search);
     const url = absoluteUrl(seo.path);
     const image = seo.ogImage ?? DEFAULT_OG_IMAGE;
     const robots = seo.robots ?? "index, follow";
@@ -164,7 +164,7 @@ export function Seo() {
     } else {
       removeJsonLd("ld-article");
     }
-  }, [pathname]);
+  }, [pathname, search]);
 
   return null;
 }
