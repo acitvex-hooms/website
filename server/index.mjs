@@ -8,7 +8,10 @@ import { Readable } from "node:stream";
 import Stripe from "stripe";
 import { fulfillCheckoutSession } from "./fulfill.mjs";
 import { openEbookFile, verifyDownloadToken } from "./download.mjs";
-import { sendPrivateCoachingEnquiry } from "./email.mjs";
+import {
+  sendPrivateCoachingEnquiry,
+  sendPrivateCoachingOnboarding,
+} from "./email.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -115,6 +118,98 @@ app.post("/api/private-coaching", async (c) => {
   } catch (err) {
     console.error("[private-coaching] email failed", err);
     return c.json({ error: "Could not send enquiry." }, 500);
+  }
+});
+
+app.post("/api/private-coaching-onboarding", async (c) => {
+  let body;
+  try {
+    body = await c.req.json();
+  } catch {
+    return c.json({ error: "Invalid request" }, 400);
+  }
+
+  if (String(body?.company ?? "").trim()) {
+    return c.json({ ok: true });
+  }
+
+  const type = body?.type === "health" ? "health" : body?.type === "intake" ? "intake" : "";
+  if (!type) return c.json({ error: "Unknown form." }, 400);
+
+  const fields = {};
+  for (const [key, value] of Object.entries(body || {})) {
+    if (key === "company" || key === "type") continue;
+    if (!/^[a-zA-Z][a-zA-Z0-9]{0,40}$/.test(key)) continue;
+    const text = Array.isArray(value) ? value.join(", ") : value;
+    fields[key] = String(text ?? "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 2000);
+  }
+
+  const email = fields.email || "";
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const name = fields.fullName || fields.signatureName || "";
+  if (!name || !emailOk) {
+    return c.json({ error: "Please complete the required fields." }, 400);
+  }
+
+  if (type === "intake") {
+    const needed = [
+      "whatsapp",
+      "occupation",
+      "mainGoal",
+      "successLook",
+      "trainingYears",
+      "currentTraining",
+      "trainingTypes",
+      "painNow",
+      "pastInjury",
+      "medical",
+      "restricted",
+      "sleep",
+      "stress",
+      "travel",
+      "trainDays",
+      "bestTimes",
+      "independent",
+      "coachStyle",
+      "value",
+    ];
+    if (needed.some((key) => !fields[key])) {
+      return c.json({ error: "Please complete the required fields." }, 400);
+    }
+  } else {
+    const needed = [
+      "heartCondition",
+      "chestPainActivity",
+      "chestPainRest",
+      "dizziness",
+      "jointProblem",
+      "bloodPressureMeds",
+      "otherReason",
+      "emergencyName",
+      "emergencyPhone",
+      "emergencyRelation",
+      "needsClearance",
+      "infoAccurate",
+      "exerciseConsent",
+      "seekAdvice",
+      "privacyConsent",
+      "coachingTerms",
+      "signatureName",
+    ];
+    if (needed.some((key) => !fields[key])) {
+      return c.json({ error: "Please complete the required fields." }, 400);
+    }
+  }
+
+  try {
+    await sendPrivateCoachingOnboarding({ type, fields });
+    return c.json({ ok: true });
+  } catch (err) {
+    console.error("[private-coaching-onboarding] email failed", err);
+    return c.json({ error: "Could not send form." }, 500);
   }
 });
 

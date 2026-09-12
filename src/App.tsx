@@ -11,8 +11,9 @@ import { GoogleTags } from "./components/GoogleTags";
 import { MetaPixel } from "./components/MetaPixel";
 import { Seo } from "./components/Seo";
 import { Footer, Nav } from "./components/Layout";
-import { C, FONT, PAGE_PATHS } from "./lib/tokens";
+import { C, FONT, isPrivateCoachingPath } from "./lib/tokens";
 import { PrivateCoachingPage } from "./pages/PrivateCoachingPage";
+import { PrivateCoachingWelcomePage } from "./pages/PrivateCoachingWelcomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { ApplyPage } from "./pages/ApplyPage";
 import { BlogPage } from "./pages/BlogPage";
@@ -65,7 +66,7 @@ function ScrollToTop() {
 
 function SiteShell() {
   const location = useLocation();
-  const isPrivateLanding = location.pathname === PAGE_PATHS.privateCoaching;
+  const isPrivateLanding = isPrivateCoachingPath(location.pathname);
 
   useEffect(() => {
     document.body.classList.toggle("pc-body", isPrivateLanding);
@@ -101,6 +102,10 @@ function SiteShell() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/welcome-challenge" element={<ChallengeWelcomePage />} />
         <Route path="/private-coaching" element={<PrivateCoachingPage />} />
+        <Route
+          path="/private-coaching/welcome"
+          element={<PrivateCoachingWelcomePage />}
+        />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/about/hooms" element={<HoomsPage />} />
         <Route path="/results" element={<ResultsPage />} />

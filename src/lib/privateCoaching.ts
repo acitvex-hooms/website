@@ -81,3 +81,88 @@ export const TIMEFRAME_OPTIONS = [
   "Within a month",
   "Flexible",
 ] as const;
+
+/** Stripe Payment Link → After payment → Redirect to /private-coaching/welcome */
+export const PRIVATE_COACHING_WELCOME_PATH = "/private-coaching/welcome";
+
+/** YouTube, Vimeo, or direct MP4. Empty shows Ana's portrait until the video is added. */
+export const WELCOME_VIDEO_URL = "";
+
+export const ONBOARDING_STEPS = [
+  "Welcome",
+  "Intake",
+  "Health + Consent",
+  "activeX",
+] as const;
+
+export const TRAINING_YEARS = [
+  "New to training",
+  "Less than 1 year",
+  "1–3 years",
+  "3–5 years",
+  "5+ years",
+] as const;
+
+export const TRAINING_TYPES = [
+  "Strength training",
+  "Hypertrophy / bodybuilding",
+  "Cardio / running",
+  "HIIT",
+  "CrossFit / functional",
+  "Yoga / Pilates",
+  "Sport-specific",
+  "Rehabilitation",
+  "Other",
+] as const;
+
+export const SLEEP_OPTIONS = ["Excellent", "Good", "Variable", "Poor"] as const;
+export const STRESS_OPTIONS = ["Low", "Moderate", "High", "Very high"] as const;
+export const TRAIN_DAYS = ["1", "2", "3", "4", "5", "6", "7"] as const;
+export const INDEPENDENT_TRAINING = [
+  "Yes",
+  "Sometimes",
+  "Prefer coached sessions only",
+] as const;
+export const COACHING_STYLE = [
+  "Supportive",
+  "Direct",
+  "Highly accountable",
+  "A combination",
+] as const;
+
+export const HEALTH_SCREEN = [
+  {
+    name: "heartCondition",
+    label:
+      "Has a doctor ever said you have a heart condition and that you should only do physical activity recommended by a medical professional?",
+  },
+  {
+    name: "chestPainActivity",
+    label: "Do you feel pain in your chest when you do physical activity?",
+  },
+  {
+    name: "chestPainRest",
+    label:
+      "In the past month, have you had chest pain when you were not doing physical activity?",
+  },
+  {
+    name: "dizziness",
+    label:
+      "Do you lose your balance because of dizziness, or do you ever lose consciousness?",
+  },
+  {
+    name: "jointProblem",
+    label:
+      "Do you have a bone or joint problem that could be made worse by a change in physical activity?",
+  },
+  {
+    name: "bloodPressureMeds",
+    label:
+      "Is your doctor currently prescribing medication for your blood pressure or a heart condition?",
+  },
+  {
+    name: "otherReason",
+    label:
+      "Do you know of any other reason why you should not do physical activity?",
+  },
+] as const;

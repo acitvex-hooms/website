@@ -291,3 +291,101 @@ export async function sendPrivateCoachingEnquiry(opts) {
 
   return { id: info.messageId };
 }
+
+const ONBOARDING_LABELS = {
+  type: "Form",
+  fullName: "Full name",
+  dob: "Date of birth",
+  email: "Email",
+  whatsapp: "WhatsApp",
+  occupation: "Occupation",
+  mainGoal: "Main training goal",
+  otherGoals: "Other goals",
+  successLook: "What success looks like",
+  trainingYears: "Training consistency",
+  currentTraining: "Current training",
+  trainingTypes: "Past training types",
+  workedWell: "What has worked",
+  hasntWorked: "What hasn't worked",
+  enjoy: "Exercises enjoyed",
+  avoid: "Exercises avoided",
+  painNow: "Current pain / injury / limitation",
+  painNowDetails: "Pain / injury details",
+  pastInjury: "Previous injuries or surgeries",
+  pastInjuryDetails: "Previous injury details",
+  medical: "Medical conditions / medication",
+  medicalDetails: "Medical details",
+  restricted: "Advised to restrict exercise",
+  restrictedDetails: "Restriction details",
+  sleep: "Sleep",
+  stress: "Stress",
+  travel: "Frequent travel / unpredictable hours",
+  travelDetails: "Travel details",
+  trainDays: "Trainable days / week",
+  bestTimes: "Best days and times",
+  independent: "Independent training",
+  blockers: "Consistency blockers",
+  coachStyle: "Preferred coaching style",
+  wishAttention: "What previous coaches missed",
+  value: "What would make this valuable",
+  nervous: "Nerves / discomfort",
+  anythingElse: "Anything else",
+  heartCondition: "Heart condition",
+  heartConditionDetails: "Heart condition details",
+  chestPainActivity: "Chest pain during activity",
+  chestPainActivityDetails: "Chest pain (activity) details",
+  chestPainRest: "Chest pain at rest",
+  chestPainRestDetails: "Chest pain (rest) details",
+  dizziness: "Dizziness / loss of consciousness",
+  dizzinessDetails: "Dizziness details",
+  jointProblem: "Bone or joint problem",
+  jointProblemDetails: "Joint problem details",
+  bloodPressureMeds: "Blood pressure / heart medication",
+  bloodPressureMedsDetails: "Medication details",
+  otherReason: "Other reason not to exercise",
+  otherReasonDetails: "Other reason details",
+  emergencyName: "Emergency contact name",
+  emergencyPhone: "Emergency contact phone",
+  emergencyRelation: "Emergency contact relationship",
+  needsClearance: "Needs medical clearance",
+  needsClearanceDetails: "Clearance details",
+  infoAccurate: "Confirmed information is accurate",
+  exerciseConsent: "Exercise consent",
+  seekAdvice: "Will seek medical advice if needed",
+  privacyConsent: "Privacy / record-keeping consent",
+  coachingTerms: "Coaching terms",
+  signatureName: "Signature name",
+};
+
+/**
+ * @param {{ type: "intake" | "health", fields: Record<string, string> }} opts
+ */
+export async function sendPrivateCoachingOnboarding(opts) {
+  const kind = opts.type === "health" ? "Health + consent" : "Coaching intake";
+  const name = opts.fields.fullName || opts.fields.signatureName || "Client";
+  const email = opts.fields.email || undefined;
+
+  const rows = Object.entries(opts.fields)
+    .filter(([key, value]) => key !== "type" && value)
+    .map(([key, value]) => {
+      const label = ONBOARDING_LABELS[key] || key;
+      return `<p style="margin:0 0 8px;"><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>`;
+    })
+    .join("");
+
+  const info = await transporter().sendMail({
+    from: fromAddress(),
+    to: "ana@activex.fit",
+    replyTo: email,
+    subject: `Private Hybrid Coaching ${kind} — ${name}`,
+    html: `
+      <div style="font-family:Montserrat,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;color:#1a1a2e;">
+        <h2 style="color:#272789;margin-bottom:8px;">Private Hybrid Coaching — ${escapeHtml(kind)}</h2>
+        <p style="color:#4a4a6a;margin-top:0;">From activex.fit/private-coaching/welcome</p>
+        ${rows}
+      </div>
+    `,
+  });
+
+  return { id: info.messageId };
+}

@@ -68,6 +68,7 @@ export type PageKey =
   | "welcome"
   | "welcomeChallenge"
   | "privateCoaching"
+  | "privateCoachingWelcome"
   | "about"
   | "hooms"
   | "results"
@@ -90,6 +91,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   welcome: "/welcome",
   welcomeChallenge: "/welcome-challenge",
   privateCoaching: "/private-coaching",
+  privateCoachingWelcome: "/private-coaching/welcome",
   about: "/about",
   hooms: "/about/hooms",
   results: "/results",
@@ -102,3 +104,10 @@ export const PAGE_PATHS: Record<PageKey, string> = {
 export const PATH_TO_PAGE: Record<string, PageKey> = Object.fromEntries(
   Object.entries(PAGE_PATHS).map(([k, v]) => [v, k as PageKey]),
 ) as Record<string, PageKey>;
+
+export function isPrivateCoachingPath(pathname: string) {
+  return (
+    pathname === PAGE_PATHS.privateCoaching ||
+    pathname.startsWith(`${PAGE_PATHS.privateCoaching}/`)
+  );
+}

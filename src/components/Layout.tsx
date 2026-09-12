@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
-import { C, PAGE_PATHS, PATH_TO_PAGE, RADIUS, SHADOW, type PageKey } from "../lib/tokens";
+import { C, PAGE_PATHS, PATH_TO_PAGE, RADIUS, SHADOW, isPrivateCoachingPath, type PageKey } from "../lib/tokens";
 import { CTA } from "./ui";
 
 const LINKS: { k: PageKey | "about-menu"; l: string }[] = [
@@ -37,7 +37,7 @@ export function Nav() {
   const isPartnerFunnel =
     location.pathname === "/founding-50" ||
     location.pathname === PAGE_PATHS.coaches;
-  const isPrivateLanding = location.pathname === PAGE_PATHS.privateCoaching;
+  const isPrivateLanding = isPrivateCoachingPath(location.pathname);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -122,7 +122,7 @@ export function Nav() {
         }}
       >
         <Link
-          to={isPrivateLanding ? PAGE_PATHS.privateCoaching : PAGE_PATHS.home}
+          to={isPrivateLanding ? location.pathname : PAGE_PATHS.home}
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -397,7 +397,7 @@ export function Nav() {
 
 export function Footer() {
   const location = useLocation();
-  if (location.pathname === PAGE_PATHS.privateCoaching) {
+  if (isPrivateCoachingPath(location.pathname)) {
     return (
       <footer className="pc-footer">
         <img

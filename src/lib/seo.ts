@@ -145,6 +145,13 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       "Private coaching with individual programming, movement analysis, and digital support between sessions. Request access with Ana Coppola.",
     robots: "noindex, nofollow",
   },
+  "/private-coaching/welcome": {
+    path: "/private-coaching/welcome",
+    title: "Welcome to Private Hybrid Coaching | activeX",
+    description:
+      "Your coaching starts before the first session. Complete your intake, health screening, and activeX setup.",
+    robots: "noindex, nofollow",
+  },
   "/founding-50": {
     path: "/founding-50",
     title: "Founding Members | $14.99/mo Locked for Life | activeX",

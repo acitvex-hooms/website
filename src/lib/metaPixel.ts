@@ -100,6 +100,7 @@ const WELCOME_PURCHASE: Record<string, MetaCommerce> = {
   "video-consult": item("Video Consult", "video-consult", 499),
   coaching: item("1-on-1 Coaching", "coaching", 799),
   "8-week-challenge": item("8-Week Challenge", "8-week-challenge", 0),
+  "private-coaching": item("Private Hybrid Coaching", "private-coaching", 0),
   "bbe-ebook": item("BBE eBook", "bbe-ebook", 60),
   "bbe-ankle": item("BBE Ankle Strap", "bbe-ankle", 81),
   "bbe-bundle": item("BBE Bundle", "bbe-bundle", 136),

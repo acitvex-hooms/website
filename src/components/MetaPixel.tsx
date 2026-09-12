@@ -21,8 +21,8 @@ function stripeHrefFromEvent(target: EventTarget | null): string | null {
 
 /**
  * Loads the Meta Pixel and fires SPA PageView, InitiateCheckout (Stripe
- * Payment Links), Purchase (/welcome and /welcome-challenge), and Lead
- * (Tally + contact form).
+ * Payment Links), Purchase (/welcome, /welcome-challenge,
+ * /private-coaching/welcome), and Lead (Tally + contact form).
  */
 export function MetaPixel() {
   const location = useLocation();
@@ -45,6 +45,9 @@ export function MetaPixel() {
     }
     if (location.pathname === "/welcome-challenge") {
       trackWelcomePurchase("?product=8-week-challenge");
+    }
+    if (location.pathname === "/private-coaching/welcome") {
+      trackWelcomePurchase("?product=private-coaching");
     }
   }, [location.pathname, location.search]);
 

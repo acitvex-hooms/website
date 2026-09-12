@@ -484,6 +484,14 @@ textarea:focus-visible {
   border-radius: var(--radius-xl) !important;
 }
 
+.coaching-ana-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: left center;
+}
+
 .split-txt > .cta-btn,
 .split-txt > .cta-row {
   width: 100%;
@@ -1823,6 +1831,10 @@ body.nav-open {
   .split-img-frame {
     height: unset !important;
     min-height: unset !important;
+  }
+
+  .coaching-ana-img {
+    height: 100%;
   }
 
   .phone-frame {
@@ -3447,5 +3459,215 @@ body.pc-body ::selection {
   .pc-art {
     min-height: 480px;
     padding: 44px 40px;
+  }
+}
+
+/* ——— Private Hybrid Coaching onboarding (Stripe after-purchase) ——— */
+.pc-progress {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+}
+
+.pc-progress li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 2px solid rgba(201, 169, 98, 0.2);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8d8678;
+}
+
+.pc-progress li span {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: inherit;
+}
+
+.pc-progress li.is-done {
+  border-top-color: #c9a962;
+  color: #d9d1c0;
+}
+
+.pc-progress li.is-current {
+  border-top-color: #c9a962;
+  color: #c9a962;
+}
+
+.pc-welcome-col {
+  max-width: 680px;
+}
+
+.pc-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 4px 0 32px;
+  max-width: 760px;
+  background: #111;
+  border: 1px solid rgba(201, 169, 98, 0.35);
+  overflow: hidden;
+}
+
+.pc-video iframe,
+.pc-video video,
+.pc-video img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.pc-video-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 14px 16px;
+  background: linear-gradient(transparent, rgba(10, 10, 10, 0.86));
+  color: #f4efe4;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pc-onboard-steps {
+  max-width: 680px;
+  margin: 0 0 36px;
+  padding: 0;
+  list-style: none;
+  counter-reset: pc-step;
+}
+
+.pc-onboard-steps li {
+  counter-increment: pc-step;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(201, 169, 98, 0.14);
+  color: #d9d1c0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.pc-onboard-steps li::before {
+  content: counter(pc-step, decimal-leading-zero);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c9a962;
+}
+
+.pc-form-wide {
+  max-width: 720px;
+  margin: 0;
+}
+
+.pc-form-sec {
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(201, 169, 98, 0.18);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c9a962;
+}
+
+.pc-yesno {
+  margin: 0;
+  padding: 14px 16px 8px;
+  border: 1px solid rgba(201, 169, 98, 0.28);
+}
+
+.pc-yesno legend {
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c9a962;
+}
+
+.pc-req {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #8d8678;
+}
+
+.pc-choice,
+.pc-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 10px 0;
+  color: #f4efe4;
+  font-size: 15px;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.pc-choice input,
+.pc-check input {
+  width: auto;
+  margin-top: 3px;
+  accent-color: #c9a962;
+}
+
+.pc-field-error {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #e8b4b4;
+}
+
+.pc-setup {
+  max-width: 560px;
+  padding: 28px 24px;
+  background: #161616;
+  border: 1px solid rgba(201, 169, 98, 0.2);
+}
+
+.pc-store {
+  display: inline-block;
+  line-height: 0;
+}
+
+.pc-store img {
+  height: 48px;
+  width: auto;
+  filter: invert(1);
+}
+
+.pc-fine a {
+  color: #c9a962;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .pc-progress li {
+    font-size: 0;
+  }
+
+  .pc-progress li span {
+    font-size: 12px;
+  }
+
+  .pc-progress li.is-current {
+    font-size: 10px;
   }
 }
