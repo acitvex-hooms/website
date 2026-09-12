@@ -79,14 +79,13 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
     instagramHandle: "@_active_x_",
     instagramKeyword: "CHALLENGE",
     heroImage: {
-      src: "/images/hooms-stage.jpg",
-      alt: "Hooms on the Classic Physique stage",
+      src: "/images/hooms-xmas-shred.jpg",
+      alt: "Xactive Hooman 8 week Xmas Shred",
     },
     portraitImage: {
       src: "/images/hooms-portrait.webp",
       alt: "Hooms",
     },
-    photoCredit: "Gary Phillips",
     problemTitle: "You don't have a discipline problem.",
     problemBody:
       "You hit targets at work. You show up when it's hard. Then the week moves, training is the first thing dropped, and the plan dies quietly.",
