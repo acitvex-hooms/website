@@ -37,6 +37,7 @@ export function Nav() {
   const isPartnerFunnel =
     location.pathname === "/founding-50" ||
     location.pathname === PAGE_PATHS.coaches;
+  const isPrivateLanding = location.pathname === PAGE_PATHS.privateCoaching;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -82,7 +83,7 @@ export function Nav() {
 
   return (
     <>
-      {!isPartnerFunnel && (
+      {!isPartnerFunnel && !isPrivateLanding && (
         <Link
           to={PAGE_PATHS.pricing}
           className="promo-banner"
@@ -101,7 +102,7 @@ export function Nav() {
         </Link>
       )}
       <nav
-        className="site-nav"
+        className={isPrivateLanding ? "site-nav pc-nav" : "site-nav"}
         style={{
           position: "sticky",
           top: 0,
@@ -111,24 +112,27 @@ export function Nav() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          background: navBg,
-          backdropFilter: "blur(var(--nav-blur))",
-          WebkitBackdropFilter: "blur(var(--nav-blur))",
-          borderBottom: `1px solid ${C.border}`,
+          background: isPrivateLanding ? "#0a0a0a" : navBg,
+          backdropFilter: isPrivateLanding ? "none" : "blur(var(--nav-blur))",
+          WebkitBackdropFilter: isPrivateLanding ? "none" : "blur(var(--nav-blur))",
+          borderBottom: isPrivateLanding
+            ? "1px solid rgba(201, 169, 98, 0.18)"
+            : `1px solid ${C.border}`,
           transition: "background var(--duration-ui), border-color var(--duration-ui)",
         }}
       >
         <Link
-          to={PAGE_PATHS.home}
+          to={isPrivateLanding ? PAGE_PATHS.privateCoaching : PAGE_PATHS.home}
           style={{
             display: "inline-flex",
             alignItems: "center",
+            gap: 14,
             textDecoration: "none",
           }}
         >
           <img
             className="nav-logo-img"
-            src="/images/logo-black.png"
+            src={isPrivateLanding ? "/images/logo-white.png" : "/images/logo-black.png"}
             alt="activeX"
             style={{
               height: 56,
@@ -137,11 +141,18 @@ export function Nav() {
               borderRadius: RADIUS.sm,
             }}
           />
+          {isPrivateLanding && (
+            <span className="pc-label">Private Client Services</span>
+          )}
         </Link>
 
         <div
           className="nav-desktop"
-          style={{ gap: 28, alignItems: "center" }}
+          style={{
+            gap: 28,
+            alignItems: "center",
+            display: isPrivateLanding ? "none" : undefined,
+          }}
         >
           {LINKS.map(({ k, l }) =>
             k === "about-menu" ? (
@@ -220,6 +231,7 @@ export function Nav() {
           </CTA>
         </div>
 
+        {!isPrivateLanding && (
         <button
           className="nav-burger"
           type="button"
@@ -273,9 +285,10 @@ export function Nav() {
             }}
           />
         </button>
+        )}
       </nav>
 
-      {menuOpen && (
+      {menuOpen && !isPrivateLanding && (
         <div
           className="nav-mobile-panel is-open"
           style={{
@@ -383,6 +396,25 @@ export function Nav() {
 }
 
 export function Footer() {
+  const location = useLocation();
+  if (location.pathname === PAGE_PATHS.privateCoaching) {
+    return (
+      <footer className="pc-footer">
+        <img
+          src="/images/logo-white.png"
+          alt="activeX"
+          style={{ height: 28, width: "auto", marginBottom: 14 }}
+        />
+        <div>
+          © 2026 activeX LLC FZ ·{" "}
+          <Link to={PAGE_PATHS.privacy}>Privacy</Link>
+          {" · "}
+          <Link to={PAGE_PATHS.terms}>Terms</Link>
+        </div>
+      </footer>
+    );
+  }
+
   const cols: { t: string; links: [string, PageKey][] }[] = [
     {
       t: "Product",

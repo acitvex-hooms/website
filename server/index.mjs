@@ -8,6 +8,7 @@ import { Readable } from "node:stream";
 import Stripe from "stripe";
 import { fulfillCheckoutSession } from "./fulfill.mjs";
 import { openEbookFile, verifyDownloadToken } from "./download.mjs";
+import { sendPrivateCoachingEnquiry } from "./email.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -68,6 +69,52 @@ app.post("/api/stripe/webhook", async (c) => {
   } catch (err) {
     console.error("[webhook] fulfill error", err);
     return c.json({ error: "Fulfillment failed" }, 500);
+  }
+});
+
+app.post("/api/private-coaching", async (c) => {
+  let body;
+  try {
+    body = await c.req.json();
+  } catch {
+    return c.json({ error: "Invalid request" }, 400);
+  }
+
+  const field = (key, max = 240) =>
+    String(body?.[key] ?? "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, max);
+
+  const name = field("name", 80);
+  const email = field("email", 120);
+  const whatsapp = field("whatsapp", 40);
+  const whoFor = field("whoFor", 40);
+  const goal = field("goal", 240);
+  const frequency = field("frequency", 80);
+  const timeframe = field("timeframe", 80);
+  const notes = field("notes", 1000);
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!name || !emailOk || !whatsapp || !whoFor || !goal || !frequency || !timeframe) {
+    return c.json({ error: "Please complete the required fields." }, 400);
+  }
+
+  try {
+    await sendPrivateCoachingEnquiry({
+      name,
+      email,
+      whatsapp,
+      whoFor,
+      goal,
+      frequency,
+      timeframe,
+      notes,
+    });
+    return c.json({ ok: true });
+  } catch (err) {
+    console.error("[private-coaching] email failed", err);
+    return c.json({ error: "Could not send enquiry." }, 500);
   }
 });
 

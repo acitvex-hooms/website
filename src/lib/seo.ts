@@ -138,6 +138,13 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       "You're in. Download the activeX app, create your account with your purchase email, and complete the 8-week challenge intake.",
     robots: "noindex, nofollow",
   },
+  "/private-coaching": {
+    path: "/private-coaching",
+    title: "Private Hybrid Coaching | activeX",
+    description:
+      "Private coaching with individual programming, movement analysis, and digital support between sessions. Request access with Ana Coppola.",
+    robots: "noindex, nofollow",
+  },
   "/founding-50": {
     path: "/founding-50",
     title: "Founding Members | $14.99/mo Locked for Life | activeX",

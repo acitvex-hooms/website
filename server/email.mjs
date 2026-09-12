@@ -251,3 +251,43 @@ export async function sendTeamShipEmail(opts) {
     hasPhysical: true,
   });
 }
+
+/**
+ * @param {{
+ *   name: string,
+ *   email: string,
+ *   whatsapp: string,
+ *   whoFor: string,
+ *   goal: string,
+ *   frequency: string,
+ *   timeframe: string,
+ *   notes?: string,
+ * }} opts
+ */
+export async function sendPrivateCoachingEnquiry(opts) {
+  const row = (label, value) =>
+    `<p style="margin:0 0 8px;"><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value || "—")}</p>`;
+
+  const info = await transporter().sendMail({
+    from: fromAddress(),
+    to: teamInbox(),
+    replyTo: opts.email,
+    subject: `Private Hybrid Coaching enquiry — ${opts.name}`,
+    html: `
+      <div style="font-family:Montserrat,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <h2 style="color:#272789;margin-bottom:8px;">Private Hybrid Coaching enquiry</h2>
+        <p style="color:#4a4a6a;margin-top:0;">From activex.fit/private-coaching</p>
+        ${row("Name", opts.name)}
+        ${row("Email", opts.email)}
+        ${row("WhatsApp", opts.whatsapp)}
+        ${row("Who coaching is for", opts.whoFor)}
+        ${row("Main goal", opts.goal)}
+        ${row("Preferred frequency", opts.frequency)}
+        ${row("Start timeframe", opts.timeframe)}
+        ${row("Notes", opts.notes)}
+      </div>
+    `,
+  });
+
+  return { id: info.messageId };
+}

@@ -11,7 +11,8 @@ import { GoogleTags } from "./components/GoogleTags";
 import { MetaPixel } from "./components/MetaPixel";
 import { Seo } from "./components/Seo";
 import { Footer, Nav } from "./components/Layout";
-import { C, FONT } from "./lib/tokens";
+import { C, FONT, PAGE_PATHS } from "./lib/tokens";
+import { PrivateCoachingPage } from "./pages/PrivateCoachingPage";
 import { AboutPage } from "./pages/AboutPage";
 import { ApplyPage } from "./pages/ApplyPage";
 import { BlogPage } from "./pages/BlogPage";
@@ -63,12 +64,20 @@ function ScrollToTop() {
 }
 
 function SiteShell() {
+  const location = useLocation();
+  const isPrivateLanding = location.pathname === PAGE_PATHS.privateCoaching;
+
+  useEffect(() => {
+    document.body.classList.toggle("pc-body", isPrivateLanding);
+    return () => document.body.classList.remove("pc-body");
+  }, [isPrivateLanding]);
+
   return (
     <div
       style={{
         fontFamily: FONT,
-        color: C.text,
-        background: C.white,
+        color: isPrivateLanding ? "#f4efe4" : C.text,
+        background: isPrivateLanding ? "#0a0a0a" : C.white,
         minHeight: "100vh",
       }}
     >
@@ -91,6 +100,7 @@ function SiteShell() {
         <Route path="/video-consult" element={<VideoConsultPage />} />
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/welcome-challenge" element={<ChallengeWelcomePage />} />
+        <Route path="/private-coaching" element={<PrivateCoachingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/about/hooms" element={<HoomsPage />} />
         <Route path="/results" element={<ResultsPage />} />

@@ -6,5 +6,6 @@ Disallow: /welcome-challenge
 Disallow: /apply
 Disallow: /video-consult
 Disallow: /founding-50
+Disallow: /private-coaching
 
 Sitemap: https://activex.fit/sitemap.xml
