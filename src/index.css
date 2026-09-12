@@ -1423,6 +1423,10 @@ body.nav-open {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
+  .auto-grid-programs {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
   .one-time-options {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 20px;
@@ -1999,7 +2003,12 @@ body.nav-open {
   }
 
   .auto-grid-programs {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Center a leftover pair on the last row; card copy stays left-aligned. */
+  .auto-grid-programs > :nth-child(4n + 1):nth-last-child(2) {
+    grid-column-start: 2;
   }
 
   .auto-grid-blog {
