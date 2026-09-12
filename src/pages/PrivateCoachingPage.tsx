@@ -360,7 +360,7 @@ export function PrivateCoachingPage() {
         <div className="pc-about">
           <Reveal>
             <img
-              src="/images/ana-training.jpg"
+              src="/images/ana-private-coaching.jpg"
               alt="Ana Coppola"
             />
           </Reveal>
