@@ -3314,7 +3314,7 @@ body.pc-body ::selection {
   height: auto;
   display: block;
   object-fit: cover;
-  filter: grayscale(0.15) contrast(1.05);
+  object-position: center top;
 }
 
 #request {

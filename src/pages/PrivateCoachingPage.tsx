@@ -207,8 +207,8 @@ function EnquiryForm() {
       {status === "error" && (
         <p className="pc-status pc-error">
           Couldn&apos;t send just now. Email{" "}
-          <a href="mailto:info@activex.fit" style={{ color: "#c9a962" }}>
-            info@activex.fit
+          <a href="mailto:ana@activex.fit" style={{ color: "#c9a962" }}>
+            ana@activex.fit
           </a>
           .
         </p>

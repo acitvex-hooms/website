@@ -270,7 +270,7 @@ export async function sendPrivateCoachingEnquiry(opts) {
 
   const info = await transporter().sendMail({
     from: fromAddress(),
-    to: teamInbox(),
+    to: "ana@activex.fit",
     replyTo: opts.email,
     subject: `Private Hybrid Coaching enquiry — ${opts.name}`,
     html: `
