@@ -84,6 +84,10 @@ registerStripe(
   "https://buy.stripe.com/00w9AS46A1yZe83a734ow06",
   item("Video Consult", "video-consult", 499),
 );
+registerStripe(
+  "https://buy.stripe.com/eVqaEW5aEa5vggb4MJ4ow0f",
+  item("8-Week Xmas Challenge", "8-week-challenge", 999),
+);
 
 for (const product of SHOP_PRODUCTS) {
   const value = Number(product.price.replace(/[^0-9.]/g, ""));
@@ -99,7 +103,7 @@ const WELCOME_PURCHASE: Record<string, MetaCommerce> = {
   "custom-diet": item("12-Week Custom Diet", "custom-diet", 499),
   "video-consult": item("Video Consult", "video-consult", 499),
   coaching: item("1-on-1 Coaching", "coaching", 799),
-  "8-week-challenge": item("8-Week Challenge", "8-week-challenge", 0),
+  "8-week-challenge": item("8-Week Challenge", "8-week-challenge", 999),
   "private-coaching": item("Private Hybrid Coaching", "private-coaching", 0),
   "bbe-ebook": item("BBE eBook", "bbe-ebook", 60),
   "bbe-ankle": item("BBE Ankle Strap", "bbe-ankle", 81),

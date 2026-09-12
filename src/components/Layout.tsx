@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MEMBERSHIP_CTAS } from "../lib/membershipCtas";
+import { getChallengeFromPath } from "../lib/challenges";
 import { C, PAGE_PATHS, PATH_TO_PAGE, RADIUS, SHADOW, isPrivateCoachingPath, type PageKey } from "../lib/tokens";
 import { CTA } from "./ui";
 
@@ -38,6 +39,9 @@ export function Nav() {
     location.pathname === "/founding-50" ||
     location.pathname === PAGE_PATHS.coaches;
   const isPrivateLanding = isPrivateCoachingPath(location.pathname);
+  const challenge = getChallengeFromPath(location.pathname);
+  const isChallengeLanding = Boolean(challenge);
+  const isDarkCampaign = isPrivateLanding || isChallengeLanding;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -83,7 +87,7 @@ export function Nav() {
 
   return (
     <>
-      {!isPartnerFunnel && !isPrivateLanding && (
+      {!isPartnerFunnel && !isDarkCampaign && (
         <Link
           to={PAGE_PATHS.pricing}
           className="promo-banner"
@@ -102,7 +106,13 @@ export function Nav() {
         </Link>
       )}
       <nav
-        className={isPrivateLanding ? "site-nav pc-nav" : "site-nav"}
+        className={
+          isPrivateLanding
+            ? "site-nav pc-nav"
+            : isChallengeLanding
+              ? "site-nav ch-nav"
+              : "site-nav"
+        }
         style={{
           position: "sticky",
           top: 0,
@@ -112,17 +122,23 @@ export function Nav() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          background: isPrivateLanding ? "#0a0a0a" : navBg,
-          backdropFilter: isPrivateLanding ? "none" : "blur(var(--nav-blur))",
-          WebkitBackdropFilter: isPrivateLanding ? "none" : "blur(var(--nav-blur))",
+          background: isDarkCampaign
+            ? isChallengeLanding
+              ? "#07050c"
+              : "#0a0a0a"
+            : navBg,
+          backdropFilter: isDarkCampaign ? "none" : "blur(var(--nav-blur))",
+          WebkitBackdropFilter: isDarkCampaign ? "none" : "blur(var(--nav-blur))",
           borderBottom: isPrivateLanding
             ? "1px solid rgba(201, 169, 98, 0.18)"
-            : `1px solid ${C.border}`,
+            : isChallengeLanding
+              ? "1px solid rgba(120, 40, 255, 0.28)"
+              : `1px solid ${C.border}`,
           transition: "background var(--duration-ui), border-color var(--duration-ui)",
         }}
       >
         <Link
-          to={isPrivateLanding ? location.pathname : PAGE_PATHS.home}
+          to={isDarkCampaign ? location.pathname : PAGE_PATHS.home}
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -132,7 +148,7 @@ export function Nav() {
         >
           <img
             className="nav-logo-img"
-            src={isPrivateLanding ? "/images/logo-white.png" : "/images/logo-black.png"}
+            src={isDarkCampaign ? "/images/logo-white.png" : "/images/logo-black.png"}
             alt="activeX"
             style={{
               height: 56,
@@ -144,6 +160,7 @@ export function Nav() {
           {isPrivateLanding && (
             <span className="pc-label">Private Client Services</span>
           )}
+          {challenge && <span className="ch-label">{challenge.navLabel}</span>}
         </Link>
 
         <div
@@ -151,7 +168,7 @@ export function Nav() {
           style={{
             gap: 28,
             alignItems: "center",
-            display: isPrivateLanding ? "none" : undefined,
+            display: isDarkCampaign ? "none" : undefined,
           }}
         >
           {LINKS.map(({ k, l }) =>
@@ -231,7 +248,7 @@ export function Nav() {
           </CTA>
         </div>
 
-        {!isPrivateLanding && (
+        {!isDarkCampaign && (
         <button
           className="nav-burger"
           type="button"
@@ -288,7 +305,7 @@ export function Nav() {
         )}
       </nav>
 
-      {menuOpen && !isPrivateLanding && (
+      {menuOpen && !isDarkCampaign && (
         <div
           className="nav-mobile-panel is-open"
           style={{
@@ -397,6 +414,24 @@ export function Nav() {
 
 export function Footer() {
   const location = useLocation();
+  if (getChallengeFromPath(location.pathname)) {
+    return (
+      <footer className="ch-footer">
+        <img
+          src="/images/logo-white.png"
+          alt="activeX"
+          style={{ height: 28, width: "auto", marginBottom: 14 }}
+        />
+        <div>
+          © 2026 activeX LLC FZ ·{" "}
+          <Link to={PAGE_PATHS.privacy}>Privacy</Link>
+          {" · "}
+          <Link to={PAGE_PATHS.terms}>Terms</Link>
+        </div>
+      </footer>
+    );
+  }
+
   if (isPrivateCoachingPath(location.pathname)) {
     return (
       <footer className="pc-footer">

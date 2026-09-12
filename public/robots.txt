@@ -7,5 +7,8 @@ Disallow: /apply
 Disallow: /video-consult
 Disallow: /founding-50
 Disallow: /private-coaching
+Disallow: /Hooms-challenge
+Disallow: /hooms-challenge
+Disallow: /challenge
 
 Sitemap: https://activex.fit/sitemap.xml

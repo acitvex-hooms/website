@@ -389,3 +389,44 @@ export async function sendPrivateCoachingOnboarding(opts) {
 
   return { id: info.messageId };
 }
+
+/**
+ * @param {{
+ *   to: string,
+ *   challengeName: string,
+ *   path: string,
+ *   name: string,
+ *   email: string,
+ *   whatsapp: string,
+ *   age: string,
+ *   goal: string,
+ *   situation: string,
+ *   instagram?: string,
+ * }} opts
+ */
+export async function sendChallengeApplication(opts) {
+  const row = (label, value) =>
+    `<p style="margin:0 0 8px;"><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value || "—")}</p>`;
+
+  const info = await transporter().sendMail({
+    from: fromAddress(),
+    to: opts.to,
+    replyTo: opts.email,
+    subject: `${opts.challengeName} application — ${opts.name}`,
+    html: `
+      <div style="font-family:Montserrat,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <h2 style="color:#272789;margin-bottom:8px;">${escapeHtml(opts.challengeName)} application</h2>
+        <p style="color:#4a4a6a;margin-top:0;">From activex.fit${escapeHtml(opts.path)}</p>
+        ${row("Name", opts.name)}
+        ${row("Email", opts.email)}
+        ${row("WhatsApp", opts.whatsapp)}
+        ${row("Age range", opts.age)}
+        ${row("Goal", opts.goal)}
+        ${row("What makes the week fall apart", opts.situation)}
+        ${row("Instagram", opts.instagram)}
+      </div>
+    `,
+  });
+
+  return { id: info.messageId };
+}

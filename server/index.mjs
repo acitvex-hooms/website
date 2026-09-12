@@ -9,6 +9,7 @@ import Stripe from "stripe";
 import { fulfillCheckoutSession } from "./fulfill.mjs";
 import { openEbookFile, verifyDownloadToken } from "./download.mjs";
 import {
+  sendChallengeApplication,
   sendPrivateCoachingEnquiry,
   sendPrivateCoachingOnboarding,
 } from "./email.mjs";
@@ -210,6 +211,68 @@ app.post("/api/private-coaching-onboarding", async (c) => {
   } catch (err) {
     console.error("[private-coaching-onboarding] email failed", err);
     return c.json({ error: "Could not send form." }, 500);
+  }
+});
+
+const CHALLENGE_INBOX = {
+  hooms: {
+    to: "hooms@activex.fit",
+    name: "Xmas Shred Challenge",
+    path: "/Hooms-challenge",
+  },
+};
+
+app.post("/api/challenge-apply", async (c) => {
+  let body;
+  try {
+    body = await c.req.json();
+  } catch {
+    return c.json({ error: "Invalid request" }, 400);
+  }
+
+  if (String(body?.company ?? "").trim()) {
+    return c.json({ ok: true });
+  }
+
+  const challenge = CHALLENGE_INBOX[body?.slug];
+  if (!challenge) return c.json({ error: "Unknown challenge." }, 400);
+
+  const field = (key, max = 240) =>
+    String(body?.[key] ?? "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, max);
+
+  const name = field("name", 80);
+  const email = field("email", 120);
+  const whatsapp = field("whatsapp", 40);
+  const age = field("age", 20);
+  const goal = field("goal", 1000);
+  const situation = field("situation", 1000);
+  const instagram = field("instagram", 80);
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!name || !emailOk || !whatsapp || !age || !goal || !situation) {
+    return c.json({ error: "Please complete the required fields." }, 400);
+  }
+
+  try {
+    await sendChallengeApplication({
+      to: challenge.to,
+      challengeName: challenge.name,
+      path: challenge.path,
+      name,
+      email,
+      whatsapp,
+      age,
+      goal,
+      situation,
+      instagram,
+    });
+    return c.json({ ok: true });
+  } catch (err) {
+    console.error("[challenge-apply] email failed", err);
+    return c.json({ error: "Could not send application." }, 500);
   }
 });
 

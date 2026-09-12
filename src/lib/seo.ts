@@ -1,4 +1,5 @@
 import { getPostBySlug } from "./blog";
+import { getChallengeFromPath } from "./challenges";
 
 export const SITE_URL = "https://activex.fit";
 export const SITE_NAME = "activeX";
@@ -152,6 +153,14 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       "Your coaching starts before the first session. Complete your intake, health screening, and activeX setup.",
     robots: "noindex, nofollow",
   },
+  "/Hooms-challenge": {
+    path: "/Hooms-challenge",
+    title: "Xmas Shred Challenge | Hooms | activeX",
+    description:
+      "8-week Xmas Shred Challenge with Hooms. $999 for 8 weeks. Only 5 places. $500 prize for the biggest transformation.",
+    ogImage: `${SITE_URL}/images/hooms-stage.jpg`,
+    robots: "noindex, nofollow",
+  },
   "/founding-50": {
     path: "/founding-50",
     title: "Founding Members | $14.99/mo Locked for Life | activeX",
@@ -170,6 +179,17 @@ export function getSeoForPath(pathname: string): PageSeo {
       : pathname;
 
   if (PAGE_SEO[normalized]) return PAGE_SEO[normalized];
+
+  const challenge = getChallengeFromPath(normalized);
+  if (challenge) {
+    return {
+      path: challenge.path,
+      title: `${challenge.name} | ${challenge.coach} | activeX`,
+      description: challenge.lede.slice(0, 160),
+      ogImage: absoluteUrl(challenge.heroImage.src),
+      robots: "noindex, nofollow",
+    };
+  }
 
   if (normalized.startsWith("/blog/")) {
     const slug = normalized.slice("/blog/".length);

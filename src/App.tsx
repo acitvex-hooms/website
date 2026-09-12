@@ -11,7 +11,9 @@ import { GoogleTags } from "./components/GoogleTags";
 import { MetaPixel } from "./components/MetaPixel";
 import { Seo } from "./components/Seo";
 import { Footer, Nav } from "./components/Layout";
+import { CHALLENGES, isChallengeLandingPath } from "./lib/challenges";
 import { C, FONT, isPrivateCoachingPath } from "./lib/tokens";
+import { ChallengeLandingPage } from "./pages/ChallengeLandingPage";
 import { PrivateCoachingPage } from "./pages/PrivateCoachingPage";
 import { PrivateCoachingWelcomePage } from "./pages/PrivateCoachingWelcomePage";
 import { AboutPage } from "./pages/AboutPage";
@@ -67,18 +69,32 @@ function ScrollToTop() {
 function SiteShell() {
   const location = useLocation();
   const isPrivateLanding = isPrivateCoachingPath(location.pathname);
+  const isChallengeLanding = isChallengeLandingPath(location.pathname);
+  const isDarkCampaign = isPrivateLanding || isChallengeLanding;
 
   useEffect(() => {
     document.body.classList.toggle("pc-body", isPrivateLanding);
-    return () => document.body.classList.remove("pc-body");
-  }, [isPrivateLanding]);
+    document.body.classList.toggle("ch-body", isChallengeLanding);
+    return () => {
+      document.body.classList.remove("pc-body");
+      document.body.classList.remove("ch-body");
+    };
+  }, [isPrivateLanding, isChallengeLanding]);
 
   return (
     <div
       style={{
         fontFamily: FONT,
-        color: isPrivateLanding ? "#f4efe4" : C.text,
-        background: isPrivateLanding ? "#0a0a0a" : C.white,
+        color: isPrivateLanding
+          ? "#f4efe4"
+          : isChallengeLanding
+            ? "#f6f3ff"
+            : C.text,
+        background: isDarkCampaign
+          ? isChallengeLanding
+            ? "#07050c"
+            : "#0a0a0a"
+          : C.white,
         minHeight: "100vh",
       }}
     >
@@ -106,6 +122,23 @@ function SiteShell() {
           path="/private-coaching/welcome"
           element={<PrivateCoachingWelcomePage />}
         />
+        {Object.values(CHALLENGES).map((challenge) => (
+          <Route
+            key={challenge.slug}
+            path={challenge.path}
+            element={<ChallengeLandingPage slug={challenge.slug} />}
+          />
+        ))}
+        {Object.values(CHALLENGES).flatMap((challenge) =>
+          challenge.aliases.map((alias) => (
+            <Route
+              key={alias}
+              path={alias}
+              element={<Navigate to={challenge.path} replace />}
+            />
+          )),
+        )}
+        <Route path="/challenge/:slug" element={<ChallengeLandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/about/hooms" element={<HoomsPage />} />
         <Route path="/results" element={<ResultsPage />} />
