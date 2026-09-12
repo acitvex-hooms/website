@@ -32,8 +32,8 @@ export function HoomsPage() {
           imgRadius={28}
           img={
             <img
-              src="/images/hooms-portrait.webp"
-              alt="Hooms"
+              src="/images/hooms-stage.jpg"
+              alt="Hooms on the Classic Physique stage"
               className="img-portrait"
               style={{
                 width: "100%",

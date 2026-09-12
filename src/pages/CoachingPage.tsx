@@ -59,9 +59,9 @@ export function CoachingPage() {
           text="Weekly 1-on-1 coaching with custom programming, movement analysis, form reviews, weekly check-ins, and ongoing accountability. Built around the same IQ Framework that powers everything inside activeX: Mobility IQ, Movement IQ, and Mindset IQ, applied directly to you."
           img={
             <img
-              src="/images/ana-training.jpg"
-              alt="1-on-1 coaching with Ana"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              className="coaching-ana-img"
+              src="/images/ana-gladiators.jpg"
+              alt="Ana Coppola on Gladiators Australia"
             />
           }
         >
@@ -97,8 +97,8 @@ export function CoachingPage() {
           imgRadius={IMG.portraitRadius}
           img={
             <img
-              src="/images/hooms-portrait.webp"
-              alt="1-on-1 coaching with Hooms"
+              src="/images/hooms-stage.jpg"
+              alt="Hooms on the Classic Physique stage"
               className="img-portrait"
             />
           }
