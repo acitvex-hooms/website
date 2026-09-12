@@ -360,8 +360,8 @@ export function PrivateCoachingPage() {
         <div className="pc-about">
           <Reveal>
             <img
-              src="/images/ana-private-coaching.jpg"
-              alt="Ana Coppola"
+              src="/images/ana-gladiators.jpg"
+              alt="Ana Coppola on Gladiators Australia"
             />
           </Reveal>
           <Reveal delay={0.06}>
