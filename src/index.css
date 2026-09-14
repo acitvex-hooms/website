@@ -3767,22 +3767,6 @@ body.ch-body ::selection {
   margin-bottom: 18px;
 }
 
-.ch-price-hero {
-  margin: 22px 0 8px;
-  font-size: clamp(36px, 8vw, 52px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: #fff;
-}
-
-.ch-price-hero span {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: #c9c0dc;
-}
-
 .ch-join {
   text-align: center;
 }
@@ -3792,17 +3776,9 @@ body.ch-body ::selection {
   margin-right: auto;
 }
 
-.ch-pricing {
-  justify-content: center;
-}
-
-.ch-pricing .pricing-card {
+.ch-join .cta-btn {
   max-width: 420px;
-  text-align: left;
-}
-
-#pricing {
-  scroll-margin-top: 88px;
+  margin-inline: auto;
 }
 
 .ch-lede {

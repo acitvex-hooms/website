@@ -15,14 +15,10 @@ export type ChallengeConfig = {
   lede: string;
   startsLabel: string;
   places: number;
-  price: string;
-  priceValue: number;
-  pricePer: string;
-  stripeUrl: string;
+  ctaUrl: string;
   cta: string;
   prize: string;
   prizeDetail: string;
-  included: string[];
   instagramUrl: string;
   instagramHandle: string;
   instagramKeyword: string;
@@ -69,10 +65,7 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
       "Eight weeks of structure designed to shift body fat and build a routine that survives a real schedule. Built for quick, visible results. Not another plan that dies when the week gets busy.",
     startsLabel: "Starts Monday 21st",
     places: 5,
-    price: "$999",
-    priceValue: 999,
-    pricePer: "8 weeks",
-    stripeUrl: "https://buy.stripe.com/eVqaEW5aEa5vggb4MJ4ow0f",
+    ctaUrl: "https://calendly.com/hooms-activex/xmas-challenge-intro-call",
     cta: "Join the challenge",
     prize: "$500",
     prizeDetail:
@@ -100,7 +93,7 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
     builtClose: "Written for you. Not a template.",
     customTitle: "Custom program. Custom diet. Movement targets.",
     customLede:
-      "After payment you complete a short onboarding. Those answers write the whole 8 weeks. Nothing is generic. Nothing is sent to the group as one plan.",
+      "Once you join, you complete a short onboarding. Those answers write the whole 8 weeks. Nothing is generic. Nothing is sent to the group as one plan.",
     customPoints: [
       {
         title: "Custom program",
@@ -133,18 +126,10 @@ export const CHALLENGES: Record<ChallengeSlug, ChallengeConfig> = {
         text: "A weekly check in where every change comes from your data.",
       },
     ],
-    included: [
-      "8 weeks of custom programming from your onboarding",
-      "Custom diet written from your answers",
-      "Movement targets set to your actual week",
-      "Every set logged in the activeX app",
-      "Weekly check in from your data",
-      "$500 prize for the biggest transformation",
-    ],
     inboxName: "Hooms",
     seoTitle: "Xmas Shred Challenge | 8 Weeks with Hooms | activeX",
     seoDescription:
-      "8 week Xmas Shred with Hooms. Custom program, diet, and movement targets written from your onboarding. $999 for 8 weeks. Only 5 places. $500 prize.",
+      "8 week Xmas Shred with Hooms. Custom program, diet, and movement targets written from your onboarding. Only 5 places. $500 prize. Book a call to join.",
   },
 };
 

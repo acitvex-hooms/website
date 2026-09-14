@@ -2,9 +2,8 @@ import { type ReactNode } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { CTA, Reveal, Sec } from "../components/ui";
 import { getChallenge, type ChallengeConfig } from "../lib/challenges";
-import { C, RADIUS } from "../lib/tokens";
 
-function BuyCta({
+function JoinCta({
   challenge,
   children,
 }: {
@@ -13,7 +12,7 @@ function BuyCta({
 }) {
   return (
     <CTA
-      href={challenge.stripeUrl}
+      href={challenge.ctaUrl}
       style={{
         width: "100%",
         justifyContent: "center",
@@ -21,100 +20,6 @@ function BuyCta({
     >
       {children}
     </CTA>
-  );
-}
-
-function PricingCard({ challenge }: { challenge: ChallengeConfig }) {
-  return (
-    <div className="pricing-cards ch-pricing">
-      <div
-        className="pricing-card is-featured"
-        style={{
-          background: C.white,
-          borderRadius: RADIUS.xl,
-          border: `2px solid ${C.purple}`,
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 16,
-            right: 16,
-            background: C.gradient,
-            color: "#fff",
-            fontSize: 11,
-            fontWeight: 700,
-            padding: "4px 12px",
-            borderRadius: 50,
-            letterSpacing: 0.5,
-          }}
-        >
-          Only {challenge.places} places
-        </div>
-        <div
-          style={{
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: 2,
-            textTransform: "uppercase",
-            color: C.textLight,
-            marginBottom: 8,
-          }}
-        >
-          {challenge.duration}
-        </div>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
-          <span
-            className="pricing-price"
-            style={{ fontWeight: 800, color: C.navy }}
-          >
-            {challenge.price}
-          </span>
-          <span style={{ fontSize: 15, color: C.textLight }}>
-            / {challenge.pricePer}
-          </span>
-        </div>
-        <div
-          style={{
-            fontSize: 13,
-            color: C.purple,
-            fontWeight: 500,
-            marginTop: 4,
-          }}
-        >
-          {challenge.startsLabel} · {challenge.prize} prize
-        </div>
-        <div style={{ height: 1, background: C.border, margin: "20px 0" }} />
-        {challenge.included.map((item) => (
-          <div
-            key={item}
-            style={{
-              display: "flex",
-              gap: 10,
-              marginBottom: 10,
-              alignItems: "flex-start",
-            }}
-          >
-            <span style={{ color: C.purple, fontSize: 14, marginTop: 2 }}>
-              ✓
-            </span>
-            <span
-              style={{
-                fontSize: 14,
-                color: C.textMid,
-                lineHeight: 1.5,
-              }}
-            >
-              {item}
-            </span>
-          </div>
-        ))}
-        <div style={{ marginTop: 20 }}>
-          <BuyCta challenge={challenge}>{challenge.cta}</BuyCta>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -128,18 +33,12 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
             <h1 className="ch-title">{challenge.name}</h1>
             <p className="ch-duration">{challenge.duration}</p>
             <p className="ch-lede">{challenge.audience}</p>
-            <p className="ch-price-hero">
-              {challenge.price}
-              <span> / {challenge.pricePer}</span>
-            </p>
             <div className="ch-pills">
               <span>{challenge.startsLabel}</span>
               <span>Only {challenge.places} places</span>
               <span>{challenge.prize} prize</span>
             </div>
-            <BuyCta challenge={challenge}>
-              {challenge.cta} · {challenge.price}
-            </BuyCta>
+            <JoinCta challenge={challenge}>{challenge.cta}</JoinCta>
           </Reveal>
           <Reveal delay={0.06}>
             <figure className="ch-figure ch-hero-photo">
@@ -244,18 +143,15 @@ function ChallengeView({ challenge }: { challenge: ChallengeConfig }) {
         </Reveal>
       </Sec>
 
-      <Sec id="pricing" className="ch-sec" bg="#07050c">
+      <Sec className="ch-sec" bg="#07050c">
         <Reveal className="ch-join">
           <p className="ch-kicker">Join the challenge</p>
-          <h2 className="ch-title ch-title-md">
-            {challenge.price} for {challenge.pricePer}.
-          </h2>
+          <h2 className="ch-title ch-title-md">Book a call with Hooms.</h2>
           <p className="ch-lede" style={{ maxWidth: 640, marginBottom: 28 }}>
-            Only {challenge.places} places. {challenge.startsLabel}. After
-            payment you land on onboarding. Your answers write your custom
-            program, diet, and movement targets, then you download the app.
+            Only {challenge.places} places. {challenge.startsLabel}. We will
+            go through fit, your week, and next steps on the call.
           </p>
-          <PricingCard challenge={challenge} />
+          <JoinCta challenge={challenge}>{challenge.cta}</JoinCta>
         </Reveal>
       </Sec>
     </div>
