@@ -204,6 +204,9 @@ export function WelcomePage() {
     product === "custom-program" ||
     product === "custom-diet" ||
     product === "custom-program-diet";
+  const isCustomProgram = product === "custom-program";
+  const isCustomDiet = product === "custom-diet";
+  const booksCalendly = isCustomProgram || isCustomDiet;
   const isVideo = product === "video-consult";
   const isCoaching = product === "coaching";
   const isShop =
@@ -229,10 +232,12 @@ export function WelcomePage() {
               : "Thanks — your BBE eBook is on the way."
           : "Congratulations. You're in.";
 
-  const sub = isCustom
-    ? "Here's how to get set up. Download the app first, then complete the short intake so we can personalise your plan."
-    : isVideo
-      ? "Complete the short form below so we can prepare for your consult. Downloading the app is optional, but it's the best way to stay in the activeX ecosystem."
+  const sub = booksCalendly
+    ? "Here's how to get set up. Download the app first, then complete the short intake so we can personalise your plan. When you submit, you'll be taken to Calendly to book your call."
+    : isCustom
+      ? "Here's how to get set up. Download the app first, then complete the short intake so we can personalise your plan."
+      : isVideo
+      ? "Complete the short form below so we can prepare for your consult. When you submit, you'll be taken to Calendly to book your call. Downloading the app is optional, but it's the best way to stay in the activeX ecosystem."
       : isCoaching
         ? "Here's how to get set up. Download the app first, then complete the short intake so we can prepare your coaching onboarding."
         : isShop
@@ -411,7 +416,13 @@ export function WelcomePage() {
         <Sec className="sec-pt-24">
           <Reveal>
             <div style={{ textAlign: "center", marginBottom: 28 }}>
-              <Pill>{isVideo ? "Prepare for your consult" : "Intake"}</Pill>
+              <Pill>
+                {isVideo
+                  ? "Prepare and book"
+                  : booksCalendly
+                    ? "Intake and book"
+                    : "Intake"}
+              </Pill>
               <h2
                 className="section-title"
                 style={{
@@ -422,8 +433,10 @@ export function WelcomePage() {
                 }}
               >
                 {isVideo
-                  ? "2. Tell us what you want from the consult"
-                  : "2. Complete your intake"}
+                  ? "2. Tell us what you want, then book your call"
+                  : booksCalendly
+                    ? "2. Complete your intake, then book your call"
+                    : "2. Complete your intake"}
               </h2>
               <p
                 style={{
@@ -435,8 +448,10 @@ export function WelcomePage() {
                 }}
               >
                 {isVideo
-                  ? "A few questions help Ana or Hooms prepare so your session is focused and useful."
-                  : "You're already in. Now help us personalise your plan. This only takes a few minutes."}
+                  ? "A few questions help Ana or Hooms prepare so your session is focused. When you submit, you'll go straight to Calendly to pick a time."
+                  : booksCalendly
+                    ? "You're already in. Now help us personalise your plan. When you submit, you'll go straight to Calendly to pick a time."
+                    : "You're already in. Now help us personalise your plan. This only takes a few minutes."}
               </p>
             </div>
             <TallyEmbed
@@ -474,10 +489,14 @@ export function WelcomePage() {
               {isCoaching
                 ? "After you submit the intake, we'll personally reach out within 24 hours to schedule your onboarding call."
                 : isVideo
-                  ? "After you submit the form, we'll confirm timing and details for your video consultation."
-                  : product === "custom-program-diet"
-                    ? "We'll review your answers and be in touch within 24 hours to discuss your program and diet."
-                    : "We'll review your answers and be in touch within 24 hours to discuss your plan."}
+                  ? "After you submit the form, you'll be taken to Calendly to pick a time for your video consult."
+                  : isCustomProgram
+                    ? "After you submit the form, you'll be taken to Calendly to pick a time to discuss your program."
+                    : isCustomDiet
+                      ? "After you submit the form, you'll be taken to Calendly to pick a time to discuss your diet."
+                      : product === "custom-program-diet"
+                        ? "We'll review your answers and be in touch within 24 hours to discuss your program and diet."
+                        : "We'll review your answers and be in touch within 24 hours to discuss your plan."}
             </p>
             <CTA to={PAGE_PATHS.home} variant="secondary">
               Back to home
