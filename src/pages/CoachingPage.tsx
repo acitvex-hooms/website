@@ -2,7 +2,7 @@ import { CelebrityClients } from "../components/CelebrityClients";
 import { TransformationsTeaser } from "../components/TransformationsTeaser";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { COACHING_PLANS } from "../lib/coachingPlans";
-import { C, IMG, PAGE_PATHS } from "../lib/tokens";
+import { C, CALENDLY, IMG, PAGE_PATHS } from "../lib/tokens";
 import { Card, CTA, Pill, Reveal, Sec, Split } from "../components/ui";
 
 const FAQ = [
@@ -16,7 +16,7 @@ const FAQ = [
   },
   {
     q: "Do I need to train at a gym?",
-    a: "Most coaching clients train at a gym, but programming can be adapted for home setups depending on available equipment. This is discussed during the application process.",
+    a: "Most coaching clients train at a gym, but programming can be adapted for home setups depending on available equipment. This is discussed on the intro call.",
   },
   {
     q: "Is there a minimum commitment?",
@@ -77,7 +77,7 @@ export function CoachingPage() {
           </p>
           <div className="cta-row">
             <CTA to={PAGE_PATHS.apply}>
-              Apply to work with Ana
+              Book a call with Ana
             </CTA>
             <CTA to={PAGE_PATHS.about} variant="secondary">
               Learn more about Ana
@@ -115,8 +115,8 @@ export function CoachingPage() {
             Specialist
           </p>
           <div className="cta-row">
-            <CTA to={PAGE_PATHS.apply}>
-              Apply to work with Hooms
+            <CTA href={CALENDLY.hoomsCoaching}>
+              Book a call with Hooms
             </CTA>
             <CTA to={PAGE_PATHS.hooms} variant="secondary">
               Learn more about Hooms
@@ -235,7 +235,7 @@ export function CoachingPage() {
           ))}
         </div>
         <p className="coaching-plans-foot">
-          Applications reviewed before accepted. Spots are limited.
+          We'll confirm fit on the call. Spots are limited.
         </p>
       </Sec>
 
@@ -251,7 +251,7 @@ export function CoachingPage() {
               marginBottom: 40,
             }}
           >
-            Apply. Build. Train & evolve.
+            Book a call. Build. Train & evolve.
           </h2>
         </Reveal>
         <div
@@ -265,8 +265,8 @@ export function CoachingPage() {
           {[
             {
               n: "01",
-              t: "Apply",
-              d: "Share your goals, training history, and where you are right now so we can confirm coaching is the right fit.",
+              t: "Book a call",
+              d: "We'll go through your goals, training history, and whether coaching is the right fit.",
             },
             {
               n: "02",

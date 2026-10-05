@@ -117,9 +117,12 @@ const WELCOME_PURCHASE: Record<string, MetaCommerce> = {
 
 const TALLY_LEAD_NAMES: Record<string, string> = {
   kd1q6d: "Coaching apply",
+  Ek4zpX: "Coaching intake",
   "9qyVe5": "Video consult form",
   kdXree: "Custom program intake",
+  gDR58N: "Custom program intake",
   MelGNA: "Custom diet intake",
+  gDR5Pd: "Custom diet intake",
   Y51OMz: "Custom program and diet intake",
   xXADME: "8-week challenge intake",
   ZjMV60: "Private coaching enquiry",

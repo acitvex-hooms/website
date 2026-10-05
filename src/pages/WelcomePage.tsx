@@ -252,13 +252,13 @@ export function WelcomePage() {
     product === "custom-program-diet"
       ? "https://tally.so/r/Y51OMz"
       : product === "custom-program"
-        ? "https://tally.so/r/kdXree"
+        ? "https://tally.so/r/gDR58N"
         : product === "custom-diet"
-          ? "https://tally.so/r/MelGNA"
+          ? "https://tally.so/r/gDR5Pd"
           : product === "video-consult"
             ? "https://tally.so/r/9qyVe5"
             : product === "coaching"
-              ? "https://tally.so/r/kd1q6d"
+              ? "https://tally.so/r/Ek4zpX"
               : null;
 
   const formTitle =
@@ -451,7 +451,9 @@ export function WelcomePage() {
                   ? "A few questions help Ana or Hooms prepare so your session is focused. When you submit, you'll go straight to Calendly to pick a time."
                   : booksCalendly
                     ? "You're already in. Now help us personalise your plan. When you submit, you'll go straight to Calendly to pick a time."
-                    : "You're already in. Now help us personalise your plan. This only takes a few minutes."}
+                    : isCoaching
+                      ? "You're already in. Fill this in so we can set up your program — it takes about 10–15 minutes."
+                      : "You're already in. Now help us personalise your plan. This only takes a few minutes."}
               </p>
             </div>
             <TallyEmbed

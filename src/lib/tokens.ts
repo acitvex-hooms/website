@@ -105,6 +105,10 @@ export const PATH_TO_PAGE: Record<string, PageKey> = Object.fromEntries(
   Object.entries(PAGE_PATHS).map(([k, v]) => [v, k as PageKey]),
 ) as Record<string, PageKey>;
 
+export const CALENDLY = {
+  hoomsCoaching: "https://calendly.com/hooms-activex/coaching-call-hooms",
+} as const;
+
 export function isPrivateCoachingPath(pathname: string) {
   return (
     pathname === PAGE_PATHS.privateCoaching ||
