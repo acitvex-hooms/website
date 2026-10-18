@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { ImageLightbox } from "../components/ImageLightbox";
-import { COACHING_PLANS } from "../lib/coachingPlans";
 import {
   hoomsGallery,
   type HoomsTransformation,
@@ -60,7 +59,7 @@ const FAQ = [
   },
   {
     q: "What if I can only train three days?",
-    a: "Four sessions is the default, because that is what most of these weeks can hold. If you only have three, the program is written for three. I will not invent a fourth day.",
+    a: "Three or four, depending on the week you actually have. If you only have three, the program is written for three. I will not invent a fourth day.",
   },
   {
     q: "Do I have to cook?",
@@ -72,7 +71,7 @@ const FAQ = [
   },
   {
     q: "What happens after twelve weeks?",
-    a: "Twelve weeks is the minimum. After that you can stay monthly, or take a longer commitment, which costs less. We decide that from the work, after we have spoken. Nobody is billed from this page.",
+    a: "We look at the work and decide what comes next. We talk first. Nobody is billed from this page.",
   },
   {
     q: "How fast will I see change?",
@@ -186,7 +185,7 @@ export function HoomanPage() {
       <section className="hm-sec hm-hero">
         <Reveal>
           <h1 className="hm-title">
-            Four sessions a week, built around the calendar you already have.
+            Three to four sessions a week, built around the calendar you already have.
           </h1>
           <p className="hm-lede">
             One on one coaching for men who run businesses, travel, and have
@@ -228,7 +227,7 @@ export function HoomanPage() {
         </Reveal>
       </section>
 
-      <section className="hm-sec">
+      <section className="hm-sec hm-center">
         <Reveal>
           <h2 className="hm-title hm-title-md">Why it is not working</h2>
         </Reveal>
@@ -239,7 +238,7 @@ export function HoomanPage() {
         </ul>
       </section>
 
-      <section className="hm-sec">
+      <section className="hm-sec hm-center">
         <Reveal>
           <h2 className="hm-title hm-title-md">How a week runs</h2>
         </Reveal>
@@ -253,7 +252,7 @@ export function HoomanPage() {
         </ol>
       </section>
 
-      <section className="hm-sec">
+      <section className="hm-sec hm-center">
         <Reveal>
           <h2 className="hm-title hm-title-md">What you get</h2>
         </Reveal>
@@ -306,61 +305,96 @@ export function HoomanPage() {
         </section>
       )}
 
-      <section className="hm-sec" id="pricing">
+      <section className="hm-sec hm-who">
         <Reveal>
-          <h2 className="hm-title hm-title-md">Pricing</h2>
+          <h2 className="hm-title">Who I am</h2>
+          <img
+            className="hm-portrait"
+            src="/images/hooms-hero.webp"
+            alt="Hooms training"
+            width={1200}
+            height={1600}
+          />
           <p className="hm-lede">
-            Twelve weeks is the minimum, because anything shorter is a
-            transaction rather than coaching. Longer commitments cost less,
-            for the simple reason that they work better.
+            I co-own activeX. I am a competitive bodybuilder, IFBB Pro League,
+            Classic Physique. I have trained for more than twenty years. I
+            coach men for hypertrophy and fat loss.
           </p>
         </Reveal>
-        <div className="hm-table-wrap">
-          <table className="hm-table">
-            <caption className="hm-sr">Coaching options. Twelve week minimum.</caption>
-            <thead>
-              <tr>
-                <th scope="col">Commitment</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {COACHING_PLANS.map((plan) => (
-                <tr key={plan.id}>
-                  <th scope="row">
-                    {plan.id === "annual" ? "12 months" : plan.name}
-                    {plan.id === "monthly" && (
-                      <span className="hm-row-note">12-week minimum</span>
-                    )}
-                  </th>
-                  <td>
-                    {plan.price}
-                    {plan.per ? plan.per : ""}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <Reveal>
+          <h3 className="hm-subhead">How I started</h3>
+          <p className="hm-lede">
+            I was the chubby kid. Then that flipped. I shot up, dropped the
+            weight, and ended up 65kg at 5&apos;11&quot;. Skinny. Not the
+            transformation people picture.
+          </p>
+          <p className="hm-lede">
+            My brother had been asking me to train with him, partly to get me
+            in the gym, partly so we would spend the time. I kept putting it
+            off.
+          </p>
+          <p className="hm-lede">
+            My grandfather was a bodybuilder. I grew up around the discipline,
+            the physiques, and the idea that you could build a body instead of
+            accepting the one you were handed. It was never foreign. I had just
+            not made it mine.
+          </p>
+        </Reveal>
+        <Reveal>
+          <h3 className="hm-subhead">Why I compete</h3>
+          <p className="hm-lede">
+            It is not the trophy. It is who you have to become to stand on
+            that stage. A prep takes the excuses. There is no start Monday, no
+            skipped meal because you are not feeling it, no half-effort set.
+            The stage reflects what you did in the months before it.
+          </p>
+          <p className="hm-lede">
+            The part I stay for is the discipline when nobody is watching. The
+            same meals, the same training, the same recovery, whether the day
+            feels like it or not.
+          </p>
+        </Reveal>
+        <Reveal>
+          <h3 className="hm-subhead">How I coach</h3>
+          <p className="hm-lede">
+            A week only works when the sessions fit the calendar you already
+            have, and each one progresses the one before it. I got tired of
+            people showing up, doing the work, and still not knowing whether
+            any of it was building toward something.
+          </p>
+        </Reveal>
+        <div className="hm-cols hm-cols-3">
+          <Reveal>
+            <div className="hm-card">
+              <p className="hm-card-title">Consistency</p>
+              <p className="hm-card-text">
+                Results do not come from a handful of perfect sessions. They
+                come from the days you do not feel like it.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div className="hm-card">
+              <p className="hm-card-title">Structured system</p>
+              <p className="hm-card-text">
+                Random workouts make you tired. They rarely make you better.
+                Every session connects to the one before it.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="hm-card">
+              <p className="hm-card-title">Progressive overload</p>
+              <p className="hm-card-text">
+                The body changes when it is asked to do something it currently
+                cannot. That is training. The rest is just exercise.
+              </p>
+            </div>
+          </Reveal>
         </div>
-        <p className="hm-lede hm-after-table">
-          Nobody pays on this page. We talk first, I tell you honestly whether
-          I can help, and you decide after that.
-        </p>
-        <BookCall />
       </section>
 
-      <section className="hm-sec">
-        <Reveal>
-          <h2 className="hm-title hm-title-md">Who I am</h2>
-          <p className="hm-lede">
-            I co-own activeX. I am a competitive bodybuilder. I coach this way
-            because a week only works when the sessions fit the calendar you
-            already have, and each one progresses the one before it.
-          </p>
-        </Reveal>
-      </section>
-
-      <section className="hm-sec">
+      <section className="hm-sec hm-center">
         <Reveal>
           <h2 className="hm-title hm-title-md">What this is not</h2>
         </Reveal>

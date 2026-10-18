@@ -863,6 +863,68 @@ textarea:focus-visible {
   line-height: 1.45;
 }
 
+.hm-card-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #272789;
+  line-height: 1.35;
+}
+
+.hm-card-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #4a4a6a;
+}
+
+.hm-center {
+  text-align: center;
+}
+
+.hm-center .hm-lines,
+.hm-center .hm-steps {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hm-center .hm-steps li {
+  display: block;
+}
+
+.hm-center .hm-steps li span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hm-who {
+  text-align: center;
+}
+
+.hm-who .hm-title,
+.hm-who .hm-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hm-who .hm-title {
+  font-size: clamp(34px, 10vw, 64px);
+}
+
+.hm-who .hm-lede {
+  max-width: 40rem;
+}
+
+.hm-portrait {
+  width: min(100%, 340px);
+  height: auto;
+  display: block;
+  margin: 28px auto 4px;
+  border-radius: 28px;
+}
+
 .hm-lines {
   list-style: none;
   margin: 8px 0 0;
@@ -905,59 +967,6 @@ textarea:focus-visible {
   letter-spacing: 0.08em;
 }
 
-.hm-table-wrap {
-  margin-top: 28px;
-  overflow-x: auto;
-}
-
-.hm-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.hm-table th,
-.hm-table td {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--color-border);
-  text-align: left;
-  vertical-align: baseline;
-}
-
-.hm-table thead th {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #7a7a9a;
-}
-
-.hm-table tbody th {
-  font-size: 16px;
-  font-weight: 700;
-  color: #272789;
-}
-
-.hm-table td {
-  font-size: 18px;
-  font-weight: 800;
-  color: #272789;
-  text-align: right;
-  white-space: nowrap;
-}
-
-.hm-row-note {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: #7828ff;
-}
-
-.hm-after-table {
-  margin-top: 20px;
-}
-
 .hm-book {
   margin-top: 28px;
 }
@@ -993,18 +1002,6 @@ textarea:focus-visible {
   line-height: 1.6;
   color: #7a7a9a;
   max-width: 36rem;
-}
-
-.hm-sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 .hm-sec.hm-close {
@@ -1053,6 +1050,10 @@ textarea:focus-visible {
   .hm-hero {
     padding-top: 56px;
   }
+
+  .hm-portrait {
+    width: min(100%, 420px);
+  }
 }
 
 @media (min-width: 901px) {
@@ -1070,12 +1071,8 @@ textarea:focus-visible {
     gap: 16px;
   }
 
-  .hm-table tbody th {
-    font-size: 18px;
-  }
-
-  .hm-table td {
-    font-size: 22px;
+  .hm-portrait {
+    width: min(100%, 480px);
   }
 }
 

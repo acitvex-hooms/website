@@ -83,9 +83,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   "/hooman": {
     path: "/hooman",
-    title: "Coaching with Hooms | Four Sessions a Week | activeX",
+    title: "Coaching with Hooms | Three to Four Sessions a Week | activeX",
     description:
-      "One on one coaching for men who run businesses and are done guessing. Four sessions a week, built around the calendar you already have. Book a call.",
+      "One on one coaching for men who run businesses and are done guessing. Three to four sessions a week, built around the calendar you already have. Book a call.",
     ogImage: `${SITE_URL}/images/hooms-stage.jpg`,
   },
   "/results": {
