@@ -56,6 +56,7 @@ type FaqAccordionProps = {
   pill?: string;
   /** Center the heading block (default true) */
   centered?: boolean;
+  headingColor?: string;
 };
 
 export function FaqAccordion({
@@ -63,6 +64,7 @@ export function FaqAccordion({
   title = "Frequently Asked Questions",
   pill,
   centered = true,
+  headingColor = C.navy,
 }: FaqAccordionProps) {
   return (
     <div className="faq-acc">
@@ -76,7 +78,7 @@ export function FaqAccordion({
             className="section-title"
             style={{
               fontWeight: 800,
-              color: C.navy,
+              color: headingColor,
               marginTop: pill ? 16 : 0,
               marginBottom: 0,
             }}

@@ -12,7 +12,7 @@ import { MetaPixel } from "./components/MetaPixel";
 import { Seo } from "./components/Seo";
 import { Footer, Nav } from "./components/Layout";
 import { CHALLENGES, isChallengeLandingPath } from "./lib/challenges";
-import { C, FONT, isPrivateCoachingPath } from "./lib/tokens";
+import { C, FONT, PAGE_PATHS, isPrivateCoachingPath } from "./lib/tokens";
 import { ChallengeLandingPage } from "./pages/ChallengeLandingPage";
 import { PrivateCoachingPage } from "./pages/PrivateCoachingPage";
 import { PrivateCoachingWelcomePage } from "./pages/PrivateCoachingWelcomePage";
@@ -71,31 +71,38 @@ function SiteShell() {
   const location = useLocation();
   const isPrivateLanding = isPrivateCoachingPath(location.pathname);
   const isChallengeLanding = isChallengeLandingPath(location.pathname);
+  const isHoomanLanding = location.pathname === PAGE_PATHS.hooman;
   const isDarkCampaign = isPrivateLanding || isChallengeLanding;
 
   useEffect(() => {
     document.body.classList.toggle("pc-body", isPrivateLanding);
     document.body.classList.toggle("ch-body", isChallengeLanding);
+    document.body.classList.toggle("hm-body", isHoomanLanding);
     return () => {
       document.body.classList.remove("pc-body");
       document.body.classList.remove("ch-body");
+      document.body.classList.remove("hm-body");
     };
-  }, [isPrivateLanding, isChallengeLanding]);
+  }, [isPrivateLanding, isChallengeLanding, isHoomanLanding]);
 
   return (
     <div
       style={{
         fontFamily: FONT,
-        color: isPrivateLanding
-          ? "#f4efe4"
-          : isChallengeLanding
-            ? "#f6f3ff"
-            : C.text,
-        background: isDarkCampaign
-          ? isChallengeLanding
-            ? "#07050c"
-            : "#0a0a0a"
-          : C.white,
+        color: isHoomanLanding
+          ? "#f4f4f8"
+          : isPrivateLanding
+            ? "#f4efe4"
+            : isChallengeLanding
+              ? "#f6f3ff"
+              : C.text,
+        background: isHoomanLanding
+          ? "#0a0a0a"
+          : isDarkCampaign
+            ? isChallengeLanding
+              ? "#07050c"
+              : "#0a0a0a"
+            : C.white,
         minHeight: "100vh",
       }}
     >

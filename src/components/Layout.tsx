@@ -112,7 +112,9 @@ export function Nav() {
             ? "site-nav pc-nav"
             : isChallengeLanding
               ? "site-nav ch-nav"
-              : "site-nav"
+              : isHoomanLanding
+                ? "site-nav hm-nav"
+                : "site-nav"
         }
         style={{
           position: "sticky",
@@ -123,21 +125,38 @@ export function Nav() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          background: isDarkCampaign
-            ? isChallengeLanding
-              ? "#07050c"
-              : "#0a0a0a"
-            : navBg,
-          backdropFilter: isDarkCampaign ? "none" : "blur(var(--nav-blur))",
-          WebkitBackdropFilter: isDarkCampaign ? "none" : "blur(var(--nav-blur))",
-          borderBottom: isPrivateLanding
-            ? "1px solid rgba(201, 169, 98, 0.18)"
-            : isChallengeLanding
-              ? "1px solid rgba(120, 40, 255, 0.28)"
-              : `1px solid ${C.border}`,
+          background: isHoomanLanding
+            ? "#0a0a0a"
+            : isDarkCampaign
+              ? isChallengeLanding
+                ? "#07050c"
+                : "#0a0a0a"
+              : navBg,
+          backdropFilter: isDarkCampaign || isHoomanLanding ? "none" : "blur(var(--nav-blur))",
+          WebkitBackdropFilter: isDarkCampaign || isHoomanLanding ? "none" : "blur(var(--nav-blur))",
+          borderBottom: isHoomanLanding
+            ? "1px solid rgba(255,255,255,0.08)"
+            : isPrivateLanding
+              ? "1px solid rgba(201, 169, 98, 0.18)"
+              : isChallengeLanding
+                ? "1px solid rgba(120, 40, 255, 0.28)"
+                : `1px solid ${C.border}`,
           transition: "background var(--duration-ui), border-color var(--duration-ui)",
         }}
       >
+        {isHoomanLanding ? (
+          <img
+            className="nav-logo-img"
+            src="/images/logo-white.png"
+            alt="activeX"
+            style={{
+              height: 56,
+              width: "auto",
+              display: "block",
+              borderRadius: RADIUS.sm,
+            }}
+          />
+        ) : (
         <Link
           to={isDarkCampaign ? location.pathname : PAGE_PATHS.home}
           style={{
@@ -163,13 +182,14 @@ export function Nav() {
           )}
           {challenge && <span className="ch-label">{challenge.navLabel}</span>}
         </Link>
+        )}
 
         <div
           className="nav-desktop"
           style={{
             gap: 28,
             alignItems: "center",
-            display: isDarkCampaign ? "none" : undefined,
+            display: isDarkCampaign || isHoomanLanding ? "none" : undefined,
           }}
         >
           {LINKS.map(({ k, l }) =>
@@ -249,7 +269,7 @@ export function Nav() {
           </CTA>
         </div>
 
-        {!isDarkCampaign && (
+        {!isDarkCampaign && !isHoomanLanding && (
         <button
           className="nav-burger"
           type="button"
@@ -306,7 +326,7 @@ export function Nav() {
         )}
       </nav>
 
-      {menuOpen && !isDarkCampaign && (
+      {menuOpen && !isDarkCampaign && !isHoomanLanding && (
         <div
           className="nav-mobile-panel is-open"
           style={{
@@ -415,6 +435,15 @@ export function Nav() {
 
 export function Footer() {
   const location = useLocation();
+  if (location.pathname === PAGE_PATHS.hooman) {
+    return (
+      <footer className="hm-footer">
+        <img src="/images/logo-white.png" alt="" />
+        <div>© 2026 activeX LLC FZ</div>
+      </footer>
+    );
+  }
+
   if (getChallengeFromPath(location.pathname)) {
     return (
       <footer className="ch-footer">

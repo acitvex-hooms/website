@@ -1,4 +1,4 @@
-import { TRANSFORMATIONS, type Transformation } from "./transformations";
+import type { Transformation } from "./transformations";
 
 export type HoomsTransformation = Transformation & {
   /** Hooms' own result. Renders full width above the client grid. */
@@ -6,14 +6,12 @@ export type HoomsTransformation = Transformation & {
 };
 
 /**
- * Gallery on /hooman, directly under the video.
- * Put Hooms' own photo first with featured: true, then 4–5 clients.
- * Files go in public/images/transformations/.
- * An empty list falls back to the published site results.
+ * Proof on /hooman, directly above pricing.
+ * Leave this empty until the photos and captions are real client results.
+ * First entry can set featured: true. Files go in public/images/transformations/.
  */
 export const HOOMS_TRANSFORMATIONS: HoomsTransformation[] = [];
 
 export function hoomsGallery(): HoomsTransformation[] {
-  if (HOOMS_TRANSFORMATIONS.length > 0) return HOOMS_TRANSFORMATIONS;
-  return TRANSFORMATIONS;
+  return HOOMS_TRANSFORMATIONS;
 }
