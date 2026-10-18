@@ -7,10 +7,24 @@ export type HoomsTransformation = Transformation & {
 
 /**
  * Proof on /hooman, directly above pricing.
- * Leave this empty until the photos and captions are real client results.
- * First entry can set featured: true. Files go in public/images/transformations/.
+ * Add a photo only when it is a real client result. No metrics unless the client confirms them.
  */
-export const HOOMS_TRANSFORMATIONS: HoomsTransformation[] = [];
+export const HOOMS_TRANSFORMATIONS: HoomsTransformation[] = [
+  {
+    id: "darren",
+    name: "Darren",
+    summary: "Front, side, and back.",
+    image: "/images/transformations/darren.jpg",
+    imageAlt: "Darren before and after from the front, side, and back",
+  },
+  {
+    id: "mark",
+    name: "Mark",
+    summary: "Front, side, and back.",
+    image: "/images/transformations/mark.jpg",
+    imageAlt: "Mark before and after from the front, side, and back",
+  },
+];
 
 export function hoomsGallery(): HoomsTransformation[] {
   return HOOMS_TRANSFORMATIONS;

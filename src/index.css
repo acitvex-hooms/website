@@ -758,10 +758,7 @@ textarea:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-}
-
-.hooms-xf-card {
-  height: 100%;
+  align-items: start;
 }
 
 @media (min-width: 601px) {
