@@ -372,7 +372,7 @@ export function HoomanPage() {
       </section>
 
       <section className="hm-sec">
-        <FaqAccordion items={FAQ} title="FAQ" headingColor="#ffffff" />
+        <FaqAccordion items={FAQ} title="FAQ" />
       </section>
 
       <section className="hm-sec hm-close">

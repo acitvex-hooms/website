@@ -781,20 +781,10 @@ textarea:focus-visible {
   }
 }
 
-/* Hooms coaching landing — black field, purple only on the booking action */
-body.hm-body {
-  background: #0a0a0a;
-  color: #f4f4f8;
-}
-
-body.hm-body ::selection {
-  background: rgba(120, 40, 255, 0.35);
-  color: #fff;
-}
-
+/* Hooms coaching landing — same white / navy / purple system as the rest of activeX */
 .hm-page {
-  color: #f4f4f8;
-  background: #0a0a0a;
+  color: #1a1a2e;
+  background: #fff;
 }
 
 .hm-sec {
@@ -823,12 +813,16 @@ body.hm-body ::selection {
   margin-right: auto;
 }
 
+.hm-sec:nth-child(even) {
+  background: #f9f9fa;
+}
+
 .hm-title {
   font-size: clamp(28px, 8vw, 48px);
   font-weight: 800;
   letter-spacing: -1.2px;
   line-height: 1.12;
-  color: #fff;
+  color: #272789;
   margin: 0;
 }
 
@@ -840,7 +834,7 @@ body.hm-body ::selection {
 .hm-lede {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.72);
+  color: #4a4a6a;
   max-width: 38rem;
   margin: 16px 0 0;
 }
@@ -848,7 +842,7 @@ body.hm-body ::selection {
 .hm-subhead {
   font-size: 20px;
   font-weight: 800;
-  color: #fff;
+  color: #272789;
   margin: 36px 0 0;
 }
 
@@ -862,10 +856,11 @@ body.hm-body ::selection {
 .hm-card {
   margin: 0;
   padding: 20px 18px;
-  background: #111118;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #fff;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  color: #fff;
+  box-shadow: var(--shadow-soft);
+  color: #272789;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.45;
@@ -879,8 +874,8 @@ body.hm-body ::selection {
 
 .hm-lines li {
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border-bottom: 1px solid var(--color-border);
+  color: #272789;
   font-size: 17px;
   font-weight: 700;
   line-height: 1.4;
@@ -899,8 +894,8 @@ body.hm-body ::selection {
   gap: 12px;
   align-items: baseline;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border-bottom: 1px solid var(--color-border);
+  color: #272789;
   font-size: 17px;
   font-weight: 700;
   line-height: 1.4;
@@ -926,7 +921,7 @@ body.hm-body ::selection {
 .hm-table th,
 .hm-table td {
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--color-border);
   text-align: left;
   vertical-align: baseline;
 }
@@ -936,19 +931,19 @@ body.hm-body ::selection {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: #7a7a9a;
 }
 
 .hm-table tbody th {
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
+  color: #272789;
 }
 
 .hm-table td {
   font-size: 18px;
   font-weight: 800;
-  color: #fff;
+  color: #272789;
   text-align: right;
   white-space: nowrap;
 }
@@ -959,7 +954,7 @@ body.hm-body ::selection {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.55);
+  color: #7828ff;
 }
 
 .hm-after-table {
@@ -985,7 +980,7 @@ body.hm-body ::selection {
   margin: 14px 0 0;
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
+  color: #7a7a9a;
   max-width: 28rem;
 }
 
@@ -999,7 +994,7 @@ body.hm-body ::selection {
   margin: 20px 0 0;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.45);
+  color: #7a7a9a;
   max-width: 36rem;
 }
 
@@ -1015,48 +1010,17 @@ body.hm-body ::selection {
   border: 0;
 }
 
-.hm-page .vsl-frame--empty {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: #111118;
-  color: rgba(255, 255, 255, 0.45);
+.hm-sec.hm-close {
+  background: #272789;
 }
 
-.hm-page .faq-acc-item {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-.hm-page .faq-acc-q,
-.hm-page .faq-acc-btn {
+.hm-close .hm-title,
+.hm-close .hm-lede {
   color: #fff;
 }
 
-.hm-page .faq-acc-a {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.hm-page .xf-card {
-  background: #111118;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.hm-page .xf-card-media {
-  background: #111118;
-}
-
-.hm-page .xf-card-name {
-  color: #fff;
-}
-
-.hm-page .xf-card-summary,
-.hm-page .xf-card-hint {
-  color: rgba(255, 255, 255, 0.62);
-}
-
-.hm-nav {
-  background: #0a0a0a !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+.hm-close .hm-lede {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .hm-nav .nav-desktop,
@@ -1068,9 +1032,9 @@ body.hm-body ::selection {
 .hm-footer {
   padding: 28px 16px 40px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   font-size: 13px;
-  background: #0a0a0a;
+  background: #272789;
 }
 
 .hm-footer img {

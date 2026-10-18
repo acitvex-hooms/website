@@ -125,29 +125,25 @@ export function Nav() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          background: isHoomanLanding
-            ? "#0a0a0a"
-            : isDarkCampaign
-              ? isChallengeLanding
-                ? "#07050c"
-                : "#0a0a0a"
-              : navBg,
-          backdropFilter: isDarkCampaign || isHoomanLanding ? "none" : "blur(var(--nav-blur))",
-          WebkitBackdropFilter: isDarkCampaign || isHoomanLanding ? "none" : "blur(var(--nav-blur))",
-          borderBottom: isHoomanLanding
-            ? "1px solid rgba(255,255,255,0.08)"
-            : isPrivateLanding
-              ? "1px solid rgba(201, 169, 98, 0.18)"
-              : isChallengeLanding
-                ? "1px solid rgba(120, 40, 255, 0.28)"
-                : `1px solid ${C.border}`,
+          background: isDarkCampaign
+            ? isChallengeLanding
+              ? "#07050c"
+              : "#0a0a0a"
+            : navBg,
+          backdropFilter: isDarkCampaign ? "none" : "blur(var(--nav-blur))",
+          WebkitBackdropFilter: isDarkCampaign ? "none" : "blur(var(--nav-blur))",
+          borderBottom: isPrivateLanding
+            ? "1px solid rgba(201, 169, 98, 0.18)"
+            : isChallengeLanding
+              ? "1px solid rgba(120, 40, 255, 0.28)"
+              : `1px solid ${C.border}`,
           transition: "background var(--duration-ui), border-color var(--duration-ui)",
         }}
       >
         {isHoomanLanding ? (
           <img
             className="nav-logo-img"
-            src="/images/logo-white.png"
+            src="/images/logo-black.png"
             alt="activeX"
             style={{
               height: 56,
@@ -438,7 +434,7 @@ export function Footer() {
   if (location.pathname === PAGE_PATHS.hooman) {
     return (
       <footer className="hm-footer">
-        <img src="/images/logo-white.png" alt="" />
+        <img src="/images/logo-footer.png" alt="activeX" />
         <div>© 2026 activeX LLC FZ</div>
       </footer>
     );

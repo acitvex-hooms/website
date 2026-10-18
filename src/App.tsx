@@ -89,20 +89,16 @@ function SiteShell() {
     <div
       style={{
         fontFamily: FONT,
-        color: isHoomanLanding
-          ? "#f4f4f8"
-          : isPrivateLanding
-            ? "#f4efe4"
-            : isChallengeLanding
-              ? "#f6f3ff"
-              : C.text,
-        background: isHoomanLanding
-          ? "#0a0a0a"
-          : isDarkCampaign
-            ? isChallengeLanding
-              ? "#07050c"
-              : "#0a0a0a"
-            : C.white,
+        color: isPrivateLanding
+          ? "#f4efe4"
+          : isChallengeLanding
+            ? "#f6f3ff"
+            : C.text,
+        background: isDarkCampaign
+          ? isChallengeLanding
+            ? "#07050c"
+            : "#0a0a0a"
+          : C.white,
         minHeight: "100vh",
       }}
     >
