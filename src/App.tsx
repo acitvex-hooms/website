@@ -20,6 +20,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { ApplyPage } from "./pages/ApplyPage";
 import { BlogPage } from "./pages/BlogPage";
 import { BlogPostPage } from "./pages/BlogPostPage";
+import { HoomanPage } from "./pages/HoomanPage";
 import { HoomsPage } from "./pages/HoomsPage";
 import { CoachesPage } from "./pages/CoachesPage";
 import { CoachingPage } from "./pages/CoachingPage";
@@ -141,6 +142,7 @@ function SiteShell() {
         <Route path="/challenge/:slug" element={<ChallengeLandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/about/hooms" element={<HoomsPage />} />
+        <Route path="/hooman" element={<HoomanPage />} />
         <Route path="/results" element={<ResultsPage />} />
         <Route
           path="/about/hooman"

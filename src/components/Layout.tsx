@@ -38,6 +38,7 @@ export function Nav() {
   const isPartnerFunnel =
     location.pathname === "/founding-50" ||
     location.pathname === PAGE_PATHS.coaches;
+  const isHoomanLanding = location.pathname === PAGE_PATHS.hooman;
   const isPrivateLanding = isPrivateCoachingPath(location.pathname);
   const challenge = getChallengeFromPath(location.pathname);
   const isChallengeLanding = Boolean(challenge);
@@ -87,7 +88,7 @@ export function Nav() {
 
   return (
     <>
-      {!isPartnerFunnel && !isDarkCampaign && (
+      {!isPartnerFunnel && !isDarkCampaign && !isHoomanLanding && (
         <Link
           to={PAGE_PATHS.pricing}
           className="promo-banner"

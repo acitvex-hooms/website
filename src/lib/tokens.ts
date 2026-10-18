@@ -71,6 +71,7 @@ export type PageKey =
   | "privateCoachingWelcome"
   | "about"
   | "hooms"
+  | "hooman"
   | "results"
   | "contact"
   | "privacy"
@@ -94,6 +95,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   privateCoachingWelcome: "/private-coaching/welcome",
   about: "/about",
   hooms: "/about/hooms",
+  hooman: "/hooman",
   results: "/results",
   contact: "/contact",
   privacy: "/privacy",
